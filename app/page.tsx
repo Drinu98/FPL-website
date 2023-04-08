@@ -29,14 +29,17 @@ export default function Home() {
           <div className='row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-3'>
             <div className='col-lg-4'>
                 <div className='widget2'>
+                  {/* @ts-ignore */}
                   <GameweekInfo /> 
                 </div>
                 <div className='widget5' >
+                  {/* @ts-ignore */}
                   <UpcomingFixtures />
                 </div>
               </div>
               <div className='col-lg-5'>
                 <div className='widget3'>
+                  {/* @ts-ignore */}
                   <Fixtures />
                 </div> 
               </div>
@@ -68,6 +71,7 @@ export default function Home() {
                 <div className='widget7'>
                   <div className='graphic-container'>
                     <h2 className='transfers-title'>TWAT</h2>
+                    {/* @ts-ignore */}
                     <TwatAPI />
                   </div>
                 </div>
@@ -75,6 +79,7 @@ export default function Home() {
                   <div className='graphic-container'>
                     <h2 className='transfers-title'>Player Transfers</h2>
                   </div>
+                  {/* @ts-ignore */}
                     <RealPlayers />
                 </div>
                 <div>

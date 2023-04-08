@@ -73,6 +73,7 @@ async function getTwat() {
     const data = await getTwat();
 
     return (
+      <>
         <div>
           {data?.length > 0 && (
             <div className='twat-box'>
@@ -99,5 +100,6 @@ async function getTwat() {
             </div>
           )}
         </div>
+      </>
       );
   }
