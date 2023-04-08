@@ -1,0 +1,26 @@
+{
+  "name": "fplfocalwebsite",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@fortawesome/free-brands-svg-icons": "^6.4.0",
+    "@fortawesome/free-solid-svg-icons": "^6.4.0",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@types/node": "18.15.11",
+    "@types/react": "18.0.33",
+    "@types/react-dom": "18.0.11",
+    "bootstrap": "^5.2.3",
+    "eslint": "8.37.0",
+    "eslint-config-next": "13.3.0",
+    "next": "13.3.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "typescript": "5.0.4"
+  }
+}
