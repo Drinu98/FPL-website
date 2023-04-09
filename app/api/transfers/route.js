@@ -1,7 +1,13 @@
 import { NextResponse } from 'next/server';
 
 export async function GET() {
-  const res = await fetch('https://fantasy.premierleague.com/api/bootstrap-static/', {});
+  const res = await fetch('https://fantasy.premierleague.com/api/bootstrap-static/', 
+  {
+    next: {
+      revalidate: 300
+    },
+  }
+);
   
   const data = await res.json();
 
