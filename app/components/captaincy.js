@@ -11,12 +11,12 @@ useEffect(() => {
     async function fetchData() {
       try {
         const [captaincyResponse, eoResponse] = await Promise.all([
-            fetch('http://localhost:3000/api/captaincy', 
+            fetch('/api/captaincy', 
             {
               cache: 'force-cache'
             },
           ),
-            fetch('http://localhost:3000/api/eo', 
+            fetch('/api/eo', 
             {
               cache: 'force-cache'
             },

@@ -10,7 +10,7 @@ function PlayerList() {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch('http://localhost:3000/api/playerchanges', 
+      const response = await fetch('/api/playerchanges', 
       {
         next: {
           revalidate: 86400
