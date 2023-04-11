@@ -72,6 +72,7 @@ ul{
   background-color: aliceblue;
   margin-top: 1.7rem;
   overflow-y: scroll;
+  overflow-x: hidden;
   display: flex;
 }
 
@@ -119,6 +120,13 @@ td{
   margin-right: auto;
   border-bottom-right-radius: 20px;
   border-bottom-left-radius: 20px;
+}
+
+.pricechanges-container{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  color: #340040;
 }
 
 .graphic-container-deadline{
@@ -381,6 +389,10 @@ border-bottom: 1px solid rgba(55, 0, 60, 0.08);
 .transfers-table{
   margin-top: 25px;
   width: 100%;
+}
+
+.transfers-table-playerchanges{
+  font-size: 0.66rem;
 }
 
 .transfers-table-captaincy{
@@ -1012,6 +1024,114 @@ padding-left: 0;
       font-size: 0.8rem;
   }
 }
+
+
+
+
+
+/* @media (min-width:1290px){
+  .transfers-table-playerchanges
+  {
+    font-size: 0.7rem;
+  }
+} */
+
+@media (max-width:1290px){
+  .transfers-table-playerchanges
+  {
+    font-size: 0.55rem;
+  }
+}
+
+@media (max-width:1200px){
+  .transfers-table-playerchanges
+  {
+    font-size: 0.45rem;
+  }
+}
+
+@media (max-width:992px){
+  .transfers-table-playerchanges
+  {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width:400px){
+  .transfers-table-playerchanges
+  {
+    font-size: 0.6rem;
+  }
+}
+
+@media (max-width:1290px){
+  .greenarrowup, .redarrowdown
+  {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+@media (max-width:1200px){
+  .greenarrowup, .redarrowdown
+  {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+@media (max-width:992px){
+  .greenarrowup, .redarrowdown
+  {
+    width: 15px;
+    height: 15px;
+  }
+}
+
+@media (max-width:400px){
+  .greenarrowup, .redarrowdown
+  {
+    width: 13px;
+    height: 13px;
+  }
+}
+
+@media (max-width:1200px){
+  .transfers-table-playerchanges .transfer-header
+  {
+    font-size: 0.44rem;
+  }
+}
+
+@media (max-width:992px){
+  .transfers-table-playerchanges .transfer-header
+  {
+    font-size: 0.55rem;
+  }
+}
+
+@media (max-width:400px){
+  .transfers-table-playerchanges .transfer-header
+  {
+    font-size: 0.5rem;
+  }
+}
+
+
+@media (max-width:1200px){
+  .arrow-box
+  {
+    padding-left: 2px !important;
+  }
+}
+
+@media (max-width:992px){
+  .arrow-box
+  {
+    padding-left: 5px !important;
+  }
+}
+
 
 
 

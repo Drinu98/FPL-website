@@ -51,12 +51,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div className='widget6'>
-                  <div className='graphic-container'>
-                    <h2 className='transfers-title'>Price Changes</h2>
-                    <div className='content'>
-                      <PriceChange />
-                    </div>   
-                  </div>
+                  <PriceChange />    
                 </div>
               </div>
             </div>
