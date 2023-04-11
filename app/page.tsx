@@ -51,6 +51,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div className='widget6'>
+                  {/* @ts-ignore */}
                   <PriceChange />    
                 </div>
               </div>
