@@ -53,7 +53,9 @@ export default function Home() {
                 <div className='widget6'>
                   <div className='graphic-container'>
                     <h2 className='transfers-title'>Price Changes</h2>
+                    <div className='content'>
                       <PriceChange />
+                    </div>   
                   </div>
                 </div>
               </div>
@@ -66,7 +68,7 @@ export default function Home() {
                     <Transfers />
                   </div>
                 </div>
-            </div>
+              </div>
               <div className='col-lg-5'>
                 <div className='widget7'>
                   <div className='graphic-container'>
@@ -82,8 +84,24 @@ export default function Home() {
                   {/* @ts-ignore */}
                     <RealPlayers />
                 </div>
-                <div>
+                <div className='container'>
                     <p className='courtesy-text'>Player FPL teams courtesy of <Link href={'https://fplbot.app/'} className='courtesy-link'>fplbot</Link></p>
+                </div>
+              </div>
+            </div>
+            <div className='row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-3'>
+              <div className='col-lg-3'>
+                <div className='widget9'>
+                  <div className='graphic-container'>
+                    <h2 className='transfers-title'>Custom Kits</h2>
+                    <div className="outer-container">
+                      <div className="inner-container">
+                      <Link href={'https://fplfocal.com/'}>
+                        <div className="image-container"></div>
+                      </Link>
+                      </div>
+                    </div>
+                  </div>              
                 </div>
               </div>
             </div>

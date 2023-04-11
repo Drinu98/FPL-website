@@ -11,12 +11,9 @@ const roboto = Roboto({
 
 export const metadata = {
   title: 'FPL Focal',
-  description: 'Website for FPL Focal',
-  keywords: ['FPL', 'Fantasy Premier League', 'fantasy', 'premier league', 'bonus points', 'transfers'],
-  publisher: 'Andre Galea',
-  icons: {
-    icon: '/images/logo.png',
-  } 
+  description: 'A website for FPL Focal that displays important information on Fantasy Premier League',
+  keywords: ['FPL', 'Fantasy Premier League', 'fantasy', 'premier league', 'bonus points', 'transfers', 'kits', 'fixtures', 'deadline'],
+  publisher: 'Andre Galea'
 }
 
 
