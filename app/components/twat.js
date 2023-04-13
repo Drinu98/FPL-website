@@ -77,7 +77,7 @@ async function getTwat() {
         <div>
           {data?.length > 0 && (
             <div className='twat-box'>
-                <h3 className='twat-description'>THE WORST ACTIVE TEAM</h3>
+                {/* <h3 className='twat-description'>THE WORST ACTIVE TEAM</h3> */}
             <p className='twat-text'>
                 {data[0]?.player_name}
             </p>

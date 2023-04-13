@@ -46,7 +46,7 @@ export default async function Page(){
 
   return (
     <>
-    <div className='pricechanges-container'>
+  <div className='pricechanges-container'>
       <div className='graphic-container'>
         <h2 className='transfers-title'>Price Changes</h2>
       </div>

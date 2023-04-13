@@ -59,24 +59,18 @@ export default function Home() {
             <div className='row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-3'>
               <div className='col-lg-7'>
                 <div className='widget'>
-                  <div className='graphic-container'>
-                    <h2 className='transfers-title'>Top 10 Transfers</h2>
-                    <Transfers />
-                  </div>
+                  <Transfers />
                 </div>
               </div>
               <div className='col-lg-5'>
                 <div className='widget7'>
                   <div className='graphic-container'>
-                    <h2 className='transfers-title'>TWAT</h2>
+                    <h2 className='transfers-title'>Disaster of the Week</h2>
                     {/* @ts-ignore */}
                     <TwatAPI />
                   </div>
                 </div>
                 <div className='widget8'>
-                  <div className='graphic-container'>
-                    <h2 className='transfers-title'>Player Transfers</h2>
-                  </div>
                   {/* @ts-ignore */}
                     <RealPlayers />
                 </div>

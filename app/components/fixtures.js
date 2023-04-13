@@ -163,7 +163,7 @@ async function getFixtures() {
           <div className="graphic-container">
             <h2 className="transfers-title">Bonus Points</h2>
           </div>
-          <ul className="fixture-ul-list" style={{ padding: 0, margin: 0 }}>
+          <ul className="fixture-ul-list" style={{ padding: 0, margin: 0, overflowY: 'auto', overflowX: 'hidden' }}>
             {/* loop through the fixtures grouped by date */}
             {Object.keys(fixturesByDate).map((date) => (
               <li key={date}>

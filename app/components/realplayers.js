@@ -64,56 +64,64 @@ async function getRealPlayers() {
   }
 
 
-  export default async function Page(){
+export default async function Page(){
     const data = await getRealPlayers();
     
-    return (
-            <table className="transfers-table-realplayers">
-              <thead>
-                <tr>
-                  <th className="transfer-header">Name</th>
-                  <th className="transfer-header">Points</th>
-                  <th className="transfer-header">Overall</th>
-                  <th className="transfer-header">Transfers</th>
-                  <th className="transfer-header">Link</th>
-                </tr>
-              </thead>
-              <tbody>
-                {data?.map((player, index) => (
-                  <tr key={index} className="table-row">
-                    <td>
-                    <div className='realplayer-name-box'>{`${player.name}`}</div>
-                      <div className='player-transfer-info-box'>
-                        <span>
-                          {player.team}
-                        </span>
-                      </div>
-                    </td>
-                    <td className='realplayer-name-box'>{player.points}</td>
-                    <td className='realplayer-name-box'>{player.overall}</td>
-                    <td>
-                        {player?.transfers?.length > 0 ? (
-                          <ul className='realplayers-transfer-list'>
-                            {player?.transfers?.map((transfer, index) => (
-                              <li key={index} style={{paddingTop: '10px'}}>
-                                <span style={{color: 'red'}}>{transfer.out}</span> <img className='realplayers-greenarrow' src='/images/greenarrow.png' alt='➡'></img> <span style={{color: 'green'}}>{transfer.in}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        ) : (
-                          'No transfers'
-                        )}
-                    </td>
-                    <td>
-                      <a href={player.link}>
-                        <FontAwesomeIcon icon={faArrowRight} />
-                      </a>
-                    </td>
-                  </tr>
+  return (
+    <>
+    <div className='realplayers-container'>
+      <div className='graphic-container'>
+        <h2 className='transfers-title'>Player Transfers</h2>
+      </div>
+      <div style={{overflowY: 'auto', overflowX: 'hidden'}}>
+        <table className="transfers-table-realplayers">
+          <thead>
+            <tr>
+              <th className="transfer-header">Name</th>
+              <th className="transfer-header">Points</th>
+              <th className="transfer-header">Overall</th>
+              <th className="transfer-header">Transfers</th>
+              <th className="transfer-header">Link</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data?.map((player, index) => (
+              <tr key={index} className="table-row">
+                <td>
+                  <div className='realplayer-name-box'>{`${player.name}`}</div>
+                    <div className='player-transfer-info-box'>
+                      <span>
+                        {player.team}
+                      </span>
+                    </div>
+                </td>
+                <td className='realplayer-name-box'>{player.points}</td>
+                <td className='realplayer-name-box'>{player.overall}</td>
+                <td>
+                  {player?.transfers?.length > 0 ? (
+                    <ul className='realplayers-transfer-list'>
+                      {player?.transfers?.map((transfer, index) => (
+                        <li key={index} style={{paddingTop: '10px'}}>
+                          <span style={{color: 'red'}}>{transfer.out}</span> <img className='realplayers-greenarrow' src='/images/greenarrow.png' alt='➡'></img> <span style={{color: 'green'}}>{transfer.in}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    ) : (
+                    'No transfers'
+                  )}
+                </td>
+                <td>
+                  <a href={player.link}>
+                    <FontAwesomeIcon icon={faArrowRight} />
+                  </a>
+                </td>
+              </tr>
                 ))}
-              </tbody>
-            </table>
-          
+          </tbody>
+        </table>
+      </div>
+    </div>
+    </>
         
-      );
+);
   }
