@@ -93,7 +93,8 @@ useEffect(() => {
           <thead>
             <tr>
               <th className="transfer-header" >Name</th>
-              <th className="transfer-header">{showCaptains ? 'Captaincy' : 'EO'}</th>
+              <th className="transfer-header"></th>
+              <th className="transfer-header" style={{textAlign: 'left'}}>{showCaptains ? 'Captaincy' : 'EO'}</th>
             </tr>
           </thead>
           <tbody className='table-body-captaincy'>
@@ -101,13 +102,15 @@ useEffect(() => {
               ? topPlayers.map((player, index) => (
                   <tr key={index} className="table-row">
                     <td>{player.name}</td>
-                    <td className='player-info-captaincy'>{player.percentage}%</td>
+                    <td></td>
+                    <td className='player-info-captaincy' style={{textAlign: 'left'}}>{player.percentage}%</td>
                   </tr>
                 ))
               : topEO.map((player, index) => (
                   <tr key={index} className="table-row">
                     <td>{player.name}</td>
-                    <td className='player-info-captaincy'>{player.count}%</td>
+                    <td></td>
+                    <td className='player-info-captaincy' style={{textAlign: 'left'}}>{player.count}%</td>
                   </tr>
                 ))}
           </tbody>

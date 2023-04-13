@@ -61,8 +61,6 @@ ul{
 .widget5{
   height: 39.9rem;
   background-color: aliceblue;
-  overflow-y: scroll;
-  overflow-x: hidden;
   display: flex;
   margin-top: 1.7rem;
 }
@@ -71,8 +69,8 @@ ul{
   height: 23.8rem;
   background-color: aliceblue;
   margin-top: 1.7rem;
-  overflow-y: scroll;
-  overflow-x: hidden;
+  /* overflow-y: scroll;
+  overflow-x: hidden; */
   display: flex;
 }
 
@@ -127,6 +125,11 @@ td{
   flex-direction: column;
   width: 100%;
   color: #340040;
+}
+
+.pricechanges-box{
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .graphic-container-deadline{
@@ -589,6 +592,8 @@ border-bottom: 1px solid rgba(55, 0, 60, 0.08);
   margin: 0px 0px 2rem;
   font-size: 0.7rem;
   list-style: none;
+  overflow-y: auto;
+  overflow-x: hidden;
   width: 100%;
 }
 

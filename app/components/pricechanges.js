@@ -50,7 +50,7 @@ export default async function Page(){
       <div className='graphic-container'>
         <h2 className='transfers-title'>Price Changes</h2>
       </div>
-    <div style={{display: 'flex', marginTop: 5}}>
+    <div style={{display: 'flex', marginTop: 5}} className='pricechanges-box'>
       <div style={{ flex: 1 }}>
         <table style={{ width: '100%', marginLeft: 5 }} className="transfers-table-playerchanges">
           <thead>
