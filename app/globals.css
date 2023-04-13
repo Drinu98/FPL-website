@@ -14,7 +14,7 @@ body{
   position: relative;
   margin-left: auto;
   margin-right: auto;
-  padding-top: 3%;
+  padding-top: 50px;
 }
 
 ul{
@@ -662,17 +662,21 @@ text-align: center;
   margin-top: 25px;
 }
 
+
 .twat-text{
-font-size: 1.3rem; 
+  text-align: center;
+  color: #340040;
+  font-size: 1.3rem;
 }
 
-.twat-description, .twat-text{
-text-align: center;
-color: #340040;
+.twat-text-link{
+  color: #340040;
+  text-align: center;
+  font-size: 1.3rem;
 }
 
-.twat-description{
-color: #F2055C;
+.twat-text-link:hover{
+  color: #F2055C;
 }
 
 .transfers-table-realplayers{

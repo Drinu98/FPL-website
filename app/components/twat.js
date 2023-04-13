@@ -12,6 +12,14 @@ async function getTwat() {
     let page = 1;
     let playersProcessed = 0;
 
+    const response = await fetch('https://fantasy.premierleague.com/api/bootstrap-static/');
+
+    const data = await response.json();
+
+    const currentGameweekData = data.events?.find(event => event?.is_current === true);
+
+    const currentGameweek = currentGameweekData?.id;
+
     while (page <= totalPages && playersProcessed < maxRank) {
         const res = await fetch(`https://fantasy.premierleague.com/api/leagues-classic/${leagueId}/standings?page_standings=${page}`,
         {
@@ -49,7 +57,7 @@ async function getTwat() {
             const rank = playerEntry.rank || 0;
             const lastRank = playerEntry.last_rank || 0;
             
-            results.push({ entry, player_name: playerName, entry_name: entryName, total: eventTotal, rank: rank, lastRank: lastRank });
+            results.push({ entry, player_name: playerName, entry_name: entryName, total: eventTotal, rank: rank, lastRank: lastRank, link: `https://fantasy.premierleague.com/entry/${entry}/event/${currentGameweek}` });
   
             results.sort((a, b) => a.total - b.total);
   
@@ -77,25 +85,25 @@ async function getTwat() {
         <div>
           {data?.length > 0 && (
             <div className='twat-box'>
-                {/* <h3 className='twat-description'>THE WORST ACTIVE TEAM</h3> */}
-            <p className='twat-text'>
-                {data[0]?.player_name}
-            </p>
-            <p className='twat-text'>
-                {data[0]?.entry_name}
+              <p className='twat-text'>
+                  {data[0]?.player_name}
+              </p>
+              <p style={{textAlign: 'center'}}>
+                <a href={data[0]?.link} className='twat-text-link'>{data[0]?.entry_name}</a>
+                  
               </p>
               <p className='twat-text'>
                 {data[0]?.total} Points
               </p>
               <p className='twat-text'>
                 {data[0]?.lastRank} <Image  
-                                    src='/images/redarrow.png' 
-                                    height={20}
-                                    width= {20} 
-                                    alt='➡'
-                                    style={{marginBottom: 4}}
-                                    /> {data[0]?.rank}
-              </p>
+                                      src='/images/redarrow.png' 
+                                      height={20}
+                                      width= {20} 
+                                      alt='➡'
+                                      style={{marginBottom: 4}}
+                                      /> {data[0]?.rank}
+                </p>
               
             </div>
           )}
