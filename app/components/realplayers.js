@@ -90,7 +90,7 @@ export default async function Page(){
                 <td>
                   <div className='realplayer-name-box'>{`${player.name}`}</div>
                     <div className='player-transfer-info-box'>
-                      <span>
+                      <span className='realplayer-name-box'>
                         {player.team}
                       </span>
                     </div>

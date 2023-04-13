@@ -1157,7 +1157,7 @@ padding-left: 0;
 }
 
 @media (max-width:1400px){
-  .upcomingfixture-ul-list, ul
+  .upcomingfixture-ul-list
   {
       padding: 0;
       margin: 0px 20px 2rem;
@@ -1165,7 +1165,7 @@ padding-left: 0;
 }
 
 @media (max-width:1200px){
-  .upcomingfixture-ul-list, ul
+  .upcomingfixture-ul-list
   {
       padding: 0;
       margin: 0px 20px 2rem;
@@ -1236,6 +1236,13 @@ padding-left: 0;
 }
 
 @media (max-width:1400px){
+  .home-box-2
+  {
+    flex: 1 1 calc(50% - 5rem);
+  }
+}
+
+@media (max-width:992px){
   .home-box-2
   {
     flex: 1 1 calc(50% - 5rem);
