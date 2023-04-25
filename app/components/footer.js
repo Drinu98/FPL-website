@@ -16,6 +16,9 @@ function Footer() {
           <FontAwesomeIcon icon={faYoutube} />
         </a>
       </div>
+      <div className='container' style={{marginBottom: '3rem'}}>
+        <span style={{color: '#F2055C', fontSize: '12px'}}>This website is not officially affiliated with Fantasy Premier League in any way.</span>
+      </div>
       <div className="trademark">
         <span>Copyright &copy; 2023 <p style={{color: '#F2055C'}}>Andre Galea</p></span>
       </div>

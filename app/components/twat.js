@@ -24,7 +24,7 @@ async function getTwat() {
         const res = await fetch(`https://fantasy.premierleague.com/api/leagues-classic/${leagueId}/standings?page_standings=${page}`,
         {
           next: {
-            revalidate: 21600
+            revalidate: 1
           },
         },
       );

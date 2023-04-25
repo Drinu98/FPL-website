@@ -7,7 +7,7 @@ export async function GET() {
     const res = await fetch('https://fantasy.premierleague.com/api/bootstrap-static/', 
     {
       next: {
-        revalidate: 259200
+        revalidate: 120
       },
     }
   );

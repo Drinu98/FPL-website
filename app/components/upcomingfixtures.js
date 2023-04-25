@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 async function getUpcomingFixtures() {
     const res = await fetch('https://fantasy.premierleague.com/api/bootstrap-static/');
     // The return value is *not* serialized
@@ -112,13 +114,13 @@ async function getUpcomingFixtures() {
                                 {fixture.home}{" "}
                               </span>
                               <div className='upcomingfixture-home-image-box'>
-                                <img className="home-image" src={fixture.homeImage} alt={fixture.home} />
+                              <Image className="home-image" src={fixture.homeImage} alt={fixture.home} width={40} height={40}/>
                               </div>
                             </div>
                             <span className='upcomingfixture-score-box'> {fixture.time} </span>   
                             <div className='away-box-2'>
                               <div className='upcomingfixture-away-image-box'>
-                                <img className="away-image" src={fixture.awayImage} alt={fixture.away} />
+                                <Image className="away-image" src={fixture.awayImage} alt={fixture.away} width={40} height={40}/>
                               </div>
                               <span className='upcomingfixture-away-text'>
                                 {fixture.away}{" "}

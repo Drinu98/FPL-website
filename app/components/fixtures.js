@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 async function getFixtures() {
     const res = await fetch('https://fantasy.premierleague.com/api/bootstrap-static/', {
       next: {
@@ -180,11 +182,7 @@ async function getFixtures() {
                           <div className="home-box">
                             <span className="home-text">{fixture.home} </span>
                             <div className="home-image-box">
-                              <img
-                                className="home-image"
-                                src={fixture.homeImage}
-                                alt={fixture.home}
-                              />
+                            <Image className="home-image" src={fixture.homeImage} alt={fixture.home} width={40} height={40}/>
                             </div>
                           </div>
                           {fixture.started ? (
@@ -196,11 +194,7 @@ async function getFixtures() {
                           )}
                           <div className="away-box">
                             <div className="away-image-box">
-                              <img
-                                className="away-image"
-                                src={fixture.awayImage}
-                                alt={fixture.away}
-                              />
+                            <Image className="away-image" src={fixture.awayImage} alt={fixture.away} width={40} height={40}/>
                             </div>
                             <span className="away-text">{fixture.away} </span>
                           </div>

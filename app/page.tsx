@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Transfers from './components/transfers'
+import Injuries from './components/injuries'
 import Fixtures from './components/fixtures'
 import GameweekInfo from './components/gameweek'
 import UpcomingFixtures from './components/upcomingfixtures'
@@ -7,6 +8,7 @@ import TwatAPI from './components/twat'
 import RealPlayers from './components/realplayers'
 import PriceChange from './components/pricechanges'
 import Captaincy from './components/captaincy'
+import Expected from './components/expected'
 import Footer from './components/footer'
 import Link from 'next/link'
 
@@ -45,10 +47,7 @@ export default function Home() {
               </div>
               <div className='col-lg-3'>
                 <div className='widget4'>
-                  <div className='graphic-container'>
-                    <h2 className='transfers-title'>Top 10K</h2>
-                    <Captaincy />
-                  </div>
+                  <Captaincy />
                 </div>
                 <div className='widget6'>
                   {/* @ts-ignore */}
@@ -57,12 +56,17 @@ export default function Home() {
               </div>
             </div>
             <div className='row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-3'>
-              <div className='col-lg-7'>
+              <div className='col-lg-4'>
+                <div className='widget'>
+                  <Injuries />
+                </div>
+              </div>
+              <div className='col-lg-5'>
                 <div className='widget'>
                   <Transfers />
                 </div>
               </div>
-              <div className='col-lg-5'>
+              <div className='col-lg-3'>
                 <div className='widget7'>
                   <div className='graphic-container'>
                     <h2 className='transfers-title'>Disaster of the Week</h2>
@@ -80,7 +84,7 @@ export default function Home() {
               </div>
             </div>
             <div className='row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-3'>
-              <div className='col-lg-3'>
+              <div className='col-lg-4'>
                 <div className='widget9'>
                   <div className='graphic-container'>
                     <h2 className='transfers-title'>Custom Kits</h2>
@@ -92,6 +96,11 @@ export default function Home() {
                       </div>
                     </div>
                   </div>              
+                </div>
+              </div>
+              <div className='col-lg-5'>
+                <div className='widget10'>
+                  <Expected />
                 </div>
               </div>
             </div>

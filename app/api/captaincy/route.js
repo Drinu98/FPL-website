@@ -7,7 +7,7 @@ export async function GET() {
     const res = await fetch('https://fantasy.premierleague.com/api/bootstrap-static/', 
     {
       next: {
-        revalidate: 259200
+        revalidate: 120
       },
     }
   );
@@ -79,5 +79,5 @@ export async function GET() {
       const countArray = Array.from(countMap.entries()).map(([name, count]) => ({ name, count }));
 
     
-    return NextResponse.json({ countArray })
+    return NextResponse.json({ currentGameweek, countArray })
 }

@@ -5,6 +5,7 @@ import { useState, useEffect, useMemo } from 'react';
 function Captaincy() {
   const [playerData, setPlayerData] = useState([]);
   const [playerEO, setPlayerEO] = useState([]);
+  const [currentGameweek, setCurrentGameweek] = useState([]);
   const [showCaptains, setShowCaptains] = useState(true);
 
 useEffect(() => {
@@ -13,13 +14,17 @@ useEffect(() => {
         const [captaincyResponse, eoResponse] = await Promise.all([
             fetch('/api/captaincy', 
             {
-              cache: 'force-cache'
-            },
+              next: {
+                revalidate: 1200
+              },
+            }
           ),
             fetch('/api/eo', 
             {
-              cache: 'force-cache'
-            },
+              next: {
+                revalidate: 1200
+              },
+            }
           )
         ]);
 
@@ -27,6 +32,7 @@ useEffect(() => {
         const eoData = await eoResponse.json();
         
         setPlayerData(captaincyData.countArray);
+        setCurrentGameweek(captaincyData.currentGameweek);
         setPlayerEO(eoData.countArray);
 
       } catch (error) {
@@ -80,20 +86,28 @@ useEffect(() => {
   }
 
   return (
-    <div>
-      <div className="text-center captaincy-button-box">
-        <button className="captaincy-button" onClick={() => handleToggle(false)}>
-          Captains
-        </button>
-        <button className="captaincy-button" onClick={() => handleToggle(true)}>
-          EO
-        </button>
+    <div className='captaincy-container'>
+      <div className='graphic-container'>
+        <h2 className='transfers-title'>Top 10K</h2>                  
       </div>
+      <div>
+        <h2 className="deadline-date">Gameweek {currentGameweek}</h2>
+      </div>
+      <div style={{overflowX: 'hidden', overflowY: 'auto'}}>
+        <div className="text-center captaincy-button-box">
+          <button className="captaincy-button" onClick={() => handleToggle(false)}>
+            Captains
+          </button>
+          <button className="captaincy-button" onClick={() => handleToggle(true)}>
+            EO
+          </button>
+        </div>
         <table className="transfers-table-captaincy">
           <thead>
             <tr>
-              <th className="transfer-header" >Name</th>
               <th className="transfer-header"></th>
+              <th className="transfer-header"></th>
+              <th className="transfer-header" >Name</th>
               <th className="transfer-header" style={{textAlign: 'left'}}>{showCaptains ? 'Captaincy' : 'EO'}</th>
             </tr>
           </thead>
@@ -101,21 +115,23 @@ useEffect(() => {
             {showCaptains
               ? topPlayers.map((player, index) => (
                   <tr key={index} className="table-row">
-                    <td>{player.name}</td>
                     <td></td>
+                    <td></td>
+                    <td>{player.name}</td>
                     <td className='player-info-captaincy' style={{textAlign: 'left'}}>{player.percentage}%</td>
                   </tr>
                 ))
               : topEO.map((player, index) => (
                   <tr key={index} className="table-row">
-                    <td>{player.name}</td>
                     <td></td>
+                    <td></td>
+                    <td>{player.name}</td>
                     <td className='player-info-captaincy' style={{textAlign: 'left'}}>{player.count}%</td>
                   </tr>
                 ))}
           </tbody>
         </table>
-      
+      </div>
     </div>
   );
 }

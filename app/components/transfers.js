@@ -44,8 +44,8 @@ const dataSortedByTransfersOut = [...data].sort((a, b) => b.transfers_out - a.tr
       </div>
       <div style={{overflowY: 'auto', overflowX: 'hidden'}}>
         <div className="text-center captaincy-button-box">
-          <button onClick={() => handleToggle(false)} className="captaincy-button">In</button>
-          <button onClick={() => handleToggle(true)} className="captaincy-button">Out</button>
+          <button onClick={() => handleToggle(false)} className="transfers-button">In</button>
+          <button onClick={() => handleToggle(true)} className="transfers-button">Out</button>
         </div>
       
         <table className="transfers-table">
@@ -64,7 +64,7 @@ const dataSortedByTransfersOut = [...data].sort((a, b) => b.transfers_out - a.tr
             {showTransfers 
               ? topPlayersIn?.map((player, index) => (
               <tr key={index} className="table-row">
-                <td><img className="player-photo" src={player.photo} alt={player.web_name} /></td>
+                <td><Image className="player-photo" src={player.photo} alt={player.web_name} width={65} height={80}/></td>
                 <td></td>
                 <td className="player-info">
                   <div style={{textAlign: 'left'}}>{player.web_name}</div>
@@ -85,7 +85,7 @@ const dataSortedByTransfersOut = [...data].sort((a, b) => b.transfers_out - a.tr
             )) 
             : topPlayersOut?.map((player, index) => (
               <tr key={index} className="table-row">
-                <td><img className="player-photo" src={player.photo} alt={player.web_name} /></td>
+                <td><Image className="player-photo" src={player.photo} alt={player.web_name} width={65} height={80}/></td>
                 <td></td>
                 <td className="player-info">
                   <div style={{textAlign: 'left'}}>{player.web_name}</div>
