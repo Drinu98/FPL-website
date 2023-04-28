@@ -2,13 +2,13 @@ import Image from 'next/image'
 
 async function getTwat() {
     const leagueId = 314; // Change league ID to your league ID
-    const maxRank = 10000; // Change max number of players to retrieve
+    const maxRank = 13000; // Change max number of players to retrieve
 
 
     const processedPlayers = {};
     const results = [];
 
-    let totalPages = 202; // Change to the total number of pages to fetch
+    let totalPages = 210; // Change to the total number of pages to fetch
     let page = 1;
     let playersProcessed = 0;
 

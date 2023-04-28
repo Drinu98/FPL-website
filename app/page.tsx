@@ -47,7 +47,7 @@ export default function Home() {
               </div>
               <div className='col-lg-3'>
                 <div className='widget4'>
-                  <Captaincy />
+                  {/* <Captaincy /> */}
                 </div>
                 <div className='widget6'>
                   {/* @ts-ignore */}
