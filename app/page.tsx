@@ -7,7 +7,7 @@ import UpcomingFixtures from './components/upcomingfixtures'
 import TwatAPI from './components/twat'
 import RealPlayers from './components/realplayers'
 import PriceChange from './components/pricechanges'
-// import Captaincy from './components/captaincy'
+import Captaincy from './components/captaincy'
 import Expected from './components/expected'
 import Footer from './components/footer'
 import Link from 'next/link'
@@ -47,7 +47,7 @@ export default function Home() {
               </div>
               <div className='col-lg-3'>
                 <div className='widget4'>
-                  {/* <Captaincy /> */}
+                  <Captaincy />
                 </div>
                 <div className='widget6'>
                   {/* @ts-ignore */}

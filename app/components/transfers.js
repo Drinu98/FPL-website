@@ -8,19 +8,17 @@ function Transfers() {
   const [showTransfers, setTransfers] = useState(true);
 
   useEffect(() => {
-    async function fetchData() {
-      const response = await fetch('/api/transfers', {
-        next: {
-          revalidate: 300
-        },
-      }
-    );
-
-      const data = await response.json();
-      setData(data.currentGameweekData);
-    }
     fetchData();
+    const interval = setInterval(fetchData, 5 * 60 * 1000);
+    return () => clearInterval(interval);
   }, []);
+
+  async function fetchData() {
+    const response = await fetch('/api/transfers');
+
+    const data = await response.json();
+    setData(data.currentGameweekData);
+  }
 
   // create an array sorted by transfers_in
 const dataSortedByTransfersIn = [...data].sort((a, b) => b.transfers_in - a.transfers_in);
