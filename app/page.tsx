@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import React from 'react'
 import Transfers from './components/transfers'
 import Injuries from './components/injuries'
 import Fixtures from './components/fixtures'
@@ -12,7 +13,7 @@ import Expected from './components/expected'
 import Footer from './components/footer'
 import Link from 'next/link'
 
-export default function Home() {
+export default async function Home() {
   return (
     <main>
       <div className='container'>
@@ -111,3 +112,4 @@ export default function Home() {
     </main>
   )
 }
+

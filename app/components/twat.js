@@ -77,7 +77,7 @@ async function getTwat() {
   }
 
 
-  export default async function Page(){
+  export default async function Twat(){
     const data = await getTwat();
 
     return (

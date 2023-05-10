@@ -14,7 +14,7 @@ async function getNextGameweek() {
 }
 
 
-export default async function Page() {
+export default async function GameweekInfo() {
 
     const data = await getNextGameweek();
 

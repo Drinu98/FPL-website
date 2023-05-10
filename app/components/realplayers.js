@@ -64,7 +64,7 @@ async function getRealPlayers() {
   }
 
 
-export default async function Page(){
+export default async function RealPlayers(){
     const data = await getRealPlayers();
     
   return (

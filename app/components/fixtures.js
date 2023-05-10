@@ -142,7 +142,7 @@ async function getFixtures() {
   }
 
 
-  export default async function Page(){
+  export default async function Fixtures(){
     const data = await getFixtures();
 
     

@@ -16,7 +16,7 @@ async function getPriceChanges(){
 }
 
 
-export default async function Page(){
+export default async function PriceChanges(){
 
   const data = await getPriceChanges();
 
