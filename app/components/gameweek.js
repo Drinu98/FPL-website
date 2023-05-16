@@ -1,5 +1,12 @@
+
+
 async function getNextGameweek() {
-    const res = await fetch('https://fantasy.premierleague.com/api/bootstrap-static/');
+    const res = await fetch('https://fantasy.premierleague.com/api/bootstrap-static/', 
+    {
+        next: {
+          revalidate: 1200
+        },
+    });
 
     if (!res.ok) {
         // This will activate the closest `error.js` Error Boundary

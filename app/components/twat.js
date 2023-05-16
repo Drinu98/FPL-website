@@ -12,7 +12,12 @@ async function getTwat() {
     let page = 1;
     let playersProcessed = 0;
 
-    const response = await fetch('https://fantasy.premierleague.com/api/bootstrap-static/');
+    const response = await fetch('https://fantasy.premierleague.com/api/bootstrap-static/', 
+    {
+      next: {
+        revalidate: 400
+      },
+    });
 
     const data = await response.json();
 
@@ -24,18 +29,19 @@ async function getTwat() {
         const res = await fetch(`https://fantasy.premierleague.com/api/leagues-classic/${leagueId}/standings?page_standings=${page}`,
         {
           next: {
-            revalidate: 1
+            revalidate: 400
           },
         },
       );
-
-         // Recommendation: handle errors
-        if (!res.ok) {
-        // This will activate the closest `error.js` Error Boundary
-            throw new Error('Failed to fetch data');
-        } 
         
         const data = await res.json();
+
+        
+         // Recommendation: handle errors
+        //  if (!data.ok) {
+        //   // This will activate the closest `error.js` Error Boundary
+        //       throw new Error('Failed to fetch data');
+        //   } 
 
         const standings = data?.standings;
 

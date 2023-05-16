@@ -1,40 +1,44 @@
 'use client'
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image'
 
-function Injuries() {
-  const [data, setData] = useState([]);
+type Player =  {
+  web_name: string
+  status: string
+  news: string
+  photo: string
+  position: string
+  teamShort: string
+  teamLong: string
+  chanceOfPlaying: number
+  newsAdded: string
+}
+
+
+type InjuriesProps = {
+  // injuries: Array<any>
+  injuries: Record<string, Array<Player>>
+}
+
+function Injuries(props: InjuriesProps) {
+  const {injuries} = props
+  // const [data, setData] = useState([]);
   const [selectedTeam, setSelectedTeam] = useState('Arsenal');
 
-  const handleTeamSelect = (event) => {
-    setSelectedTeam(event.target.value);
+  const handleTeamSelect = (event: React.FormEvent<HTMLSelectElement>) => {
+    setSelectedTeam(event.currentTarget.value);
   }
 
-  useEffect(() => {
-    async function fetchData() {
-      const response = await fetch('/api/injuries', {
-        next: {
-          revalidate: 300
-        },
-      }
-    );
+  const filteredData = [] as Array<any>;
 
-      const data = await response.json();
-      setData(data.groupedData);
-    }
-    fetchData();
-  }, []);
-
-  const filteredData = {};
-
-  for (const team in data) {
-    const playersWithIAndDStatus = data[team].filter(player => player.status === 'i' || player.status === 'd');
-    const sortedPlayers = playersWithIAndDStatus.sort((a, b) => {
-      return new Date(b.newsAdded) - new Date(a.newsAdded);
+  for (const team in injuries) {
+    const playersWithIAndDStatus = injuries[team].filter((player: any) => player.status === 'i' || player.status === 'd');
+    const sortedPlayers = playersWithIAndDStatus.sort((a: any, b: any) => {
+      return new Date(b.newsAdded).getTime() - new Date(a.newsAdded).getTime();
     });
   
-    filteredData[team] = sortedPlayers;
+    filteredData[team as typeof filteredData[number]] = sortedPlayers;
   }
   
   const renderPlayers = () => {
@@ -42,7 +46,7 @@ function Injuries() {
       return <p>Please select a team</p>;
     }
 
-    const playersForSelectedTeam = selectedTeam ? filteredData[selectedTeam] || [] : [];
+    const playersForSelectedTeam = (selectedTeam ? filteredData[selectedTeam as typeof filteredData[number]] || [] : []) as Array<any>;
     if (playersForSelectedTeam.length === 0) {
       return <p>No players injured found for the selected team</p>;
     }
@@ -82,6 +86,7 @@ function Injuries() {
                     <span className='transfers-team-box' style={{textAlign: 'left'}}>
                       {player.position}
                     </span> 
+                  
                   </div>
                 </td>
                 <td style={{paddingRight: '15px'}}></td>
@@ -102,7 +107,7 @@ function Injuries() {
       <label>
         <select value={selectedTeam} onChange={handleTeamSelect} className='injury-select select'>
           {Object.keys(filteredData).map((team, index) => (
-            <option key={index} value={team.Arsenal}>
+            <option key={index} value={team}>
               {team}
             </option>
           ))}

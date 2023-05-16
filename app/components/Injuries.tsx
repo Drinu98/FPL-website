@@ -1,7 +1,8 @@
-import { NextResponse } from 'next/server';
+import DisplayInjuries from './DisplayInjuries'
 
-export async function GET() {
-    const res = await fetch('https://fantasy.premierleague.com/api/bootstrap-static/', {
+const Injuries = async () => {
+    const res = await fetch('https://fantasy.premierleague.com/api/bootstrap-static/', 
+    {
       next: {
         revalidate: 600
       },
@@ -18,9 +19,9 @@ export async function GET() {
     const teams = data.teams;
     const players = data.elements;
   
-    const currentGameweekData = players.map(player => {
-      const position = elementTypes.find(type => type.id === player.element_type);
-      const team = teams.find(team => team.code === player.team_code);
+    const currentGameweekData = players.map((player : any) => {
+      const position = elementTypes.find((type : any) => type.id === player.element_type);
+      const team = teams.find((team : any) => team.code === player.team_code);
   
       return {
         web_name: player.web_name,
@@ -36,7 +37,7 @@ export async function GET() {
     });
   
     // Sort the players by teamLong
-    const sortedData = currentGameweekData.sort((a, b) => {
+    const sortedData = currentGameweekData.sort((a : any, b : any) => {
       if (a.teamLong < b.teamLong) {
         return -1;
       }
@@ -47,14 +48,14 @@ export async function GET() {
     });
   
     // Group the players by teamLong
-    const groupedData = {};
-    sortedData.forEach(player => {
+    const groupedData = {} as Record<string, any>;
+    sortedData.forEach((player : any) => {
       if (!groupedData[player.teamLong]) {
         groupedData[player.teamLong] = [];
       }
       groupedData[player.teamLong].push(player);
     });
   
-    return NextResponse.json({ groupedData });
-  }
-  
+    return <DisplayInjuries injuries={groupedData} />
+}
+export default Injuries

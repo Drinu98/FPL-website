@@ -1,7 +1,12 @@
 import Image from "next/image";
 
 async function getUpcomingFixtures() {
-    const res = await fetch('https://fantasy.premierleague.com/api/bootstrap-static/');
+    const res = await fetch('https://fantasy.premierleague.com/api/bootstrap-static/', 
+    {
+      next: {
+        revalidate: 300
+      },
+    });
     // The return value is *not* serialized
     // You can return Date, Map, Set, etc.
     const data = await res.json();
@@ -17,7 +22,12 @@ async function getUpcomingFixtures() {
     const upcomingGameweek = events?.find(event => event.is_current === false && event.is_next === true).id;
     
 
-    const res2  = await fetch(`https://fantasy.premierleague.com/api/fixtures?event=${upcomingGameweek}`);
+    const res2  = await fetch(`https://fantasy.premierleague.com/api/fixtures?event=${upcomingGameweek}`, 
+    {
+      next: {
+        revalidate: 300
+      },
+    });
 
     
     const fixtures = await res2.json();

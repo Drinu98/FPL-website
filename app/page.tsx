@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
 import Transfers from './components/transfers'
-import Injuries from './components/injuries'
+import Injuries from './components/Injuries'
 import Fixtures from './components/fixtures'
 import GameweekInfo from './components/gameweek'
 import UpcomingFixtures from './components/upcomingfixtures'
@@ -48,7 +48,10 @@ export default async function Home() {
               </div>
               <div className='col-lg-3'>
                 <div className='widget4'>
-                  <Captaincy />
+
+                    {/* @ts-ignore */}
+                    <Captaincy />
+
                 </div>
                 <div className='widget6'>
                   {/* @ts-ignore */}
@@ -59,12 +62,14 @@ export default async function Home() {
             <div className='row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-3'>
               <div className='col-lg-4'>
                 <div className='widget'>
+                  {/* @ts-ignore */}
                   <Injuries />
                 </div>
               </div>
               <div className='col-lg-5'>
                 <div className='widget'>
-                  <Transfers />
+                    {/* @ts-ignore */}
+                    <Transfers />
                 </div>
               </div>
               <div className='col-lg-3'>
@@ -101,6 +106,7 @@ export default async function Home() {
               </div>
               <div className='col-lg-5'>
                 <div className='widget10'>
+                  {/* @ts-ignore */}
                   <Expected />
                 </div>
               </div>
