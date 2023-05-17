@@ -5,10 +5,10 @@ import Injuries from './components/Injuries'
 import Fixtures from './components/fixtures'
 import GameweekInfo from './components/gameweek'
 import UpcomingFixtures from './components/upcomingfixtures'
-import TwatAPI from './components/twat'
+// import TwatAPI from './components/twat'
 import RealPlayers from './components/realplayers'
 import PriceChange from './components/pricechanges'
-import Captaincy from './components/captaincy'
+// import Captaincy from './components/captaincy'
 import Expected from './components/expected'
 import Footer from './components/footer'
 import Link from 'next/link'
@@ -50,7 +50,7 @@ export default async function Home() {
                 <div className='widget4'>
 
                     {/* @ts-ignore */}
-                    <Captaincy />
+                    {/* <Captaincy /> */}
 
                 </div>
                 <div className='widget6'>
@@ -77,7 +77,7 @@ export default async function Home() {
                   <div className='graphic-container'>
                     <h2 className='transfers-title'>Disaster of the Week</h2>
                     {/* @ts-ignore */}
-                    <TwatAPI />
+                    {/* <TwatAPI /> */}
                   </div>
                 </div>
                 <div className='widget8'>
