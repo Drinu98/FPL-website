@@ -1,6 +1,6 @@
 import { prisma } from "../../../../services/prisma";
 
-export const exclude = <O extends Record<string, any>, Key extends keyof O>(
+const exclude = <O extends Record<string, any>, Key extends keyof O>(
   obj: O & {
     [key: string]: any;
   },
