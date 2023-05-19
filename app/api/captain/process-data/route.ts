@@ -3,7 +3,7 @@ import {
   EffectiveOwnership,
   prisma,
 } from "../../../../services/prisma";
-export const POST = async (req: Request, res: Response) => {
+export async function POST(req: Request, res: Response){
   const body = (await req.json()) as {
     startPage: number;
     endPage: number;

@@ -11,7 +11,7 @@ const sleep = async () =>
     setTimeout(resolve, 2000);
   });
 
-async function handler(req: Request, res: Response) {
+export async function POST(req: Request, res: Response) {
   let executionCount = 0
   let page = 1;
   
@@ -132,4 +132,3 @@ async function handler(req: Request, res: Response) {
   return new Response(JSON.stringify({ page, result }));
 }
 
-export const POST = handler;
