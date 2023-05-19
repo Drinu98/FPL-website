@@ -19,7 +19,7 @@ const exclude = <O extends Record<string, any>, Key extends keyof O>(
   return newObj;
 };
 
-export async function POST(response: Response){
+export async function POST(request: Request, response: Response){
   console.log("Sum count started");
   const picks = await prisma.playerPicks.findMany({});
   const pickByTypeWithSum = picks.reduce(
