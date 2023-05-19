@@ -133,6 +133,8 @@ for (let gw = startGameweek; gw <= endGameweek; gw++) {
   }
 }
 
+
+
 // Add position and team data to the xGTotalLast4Gameweeks object
   Object.values(xGTotalLast4Gameweeks).forEach((playerObj) => {
     const playerData = players.find((player) => player.id === playerObj.id);

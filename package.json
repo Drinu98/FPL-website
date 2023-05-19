@@ -3,15 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev:start": "next dev",
+    "dev": "concurrently \"next dev\" \"npm run db:connect:dev\"",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "db:generate:schema": "prisma generate",
+    "db:connect:dev": "pscale connect fplwebsitedatabase dev --port 3309",
+    "db:push": "npx prisma db push"
   },
   "dependencies": {
     "@fortawesome/free-brands-svg-icons": "^6.4.0",
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
+    "@prisma/client": "^4.14.1",
     "@types/node": "18.15.11",
     "@types/react": "18.0.33",
     "@types/react-dom": "18.0.11",
@@ -19,8 +24,12 @@
     "eslint": "8.37.0",
     "eslint-config-next": "^13.4.0",
     "next": "^13.4.0",
+    "prisma": "^4.14.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "typescript": "5.0.4"
+  },
+  "devDependencies": {
+    "concurrently": "^8.0.1"
   }
 }

@@ -3,11 +3,41 @@
 
 generator client {
   provider = "prisma-client-js"
-  previewFeatures = ["referentialIntegrity"]
 }
 
 datasource db {
   provider = "mysql"
   url = env("DATABASE_URL")
-  referentialIntegrity = "prisma"
+  relationMode = "prisma"
+}
+
+model CaptainPick {
+  id  String @id @default(cuid())
+  name String
+  count Int
+  playerElementId Int @unique
+  chosenAsCaptainPercentage Float
+  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now())
+}
+
+
+model EffectiveOwnership {
+  id  String @id @default(cuid())
+  name String
+  count Int
+  playerElementId Int @unique
+  chosenEffectiveOwnershipPercentage Float
+  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now())
+}
+
+model PlayerPicks {
+  id  String @id @default(cuid())
+  name String
+  count Int
+  playerElementId Int
+  type String
+  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now())
 }

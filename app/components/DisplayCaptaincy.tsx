@@ -4,14 +4,15 @@ import { useState} from 'react';
 
 type Player = {
     name: string
-    count: number
+    chosenAsCaptainPercentage: number
+    chosenEffectiveOwnershipPercentage: number
 }
-
 
 type DisplayCaptaincyProps = {
     captaincy: Array<Player>
     eo: Array<Player>
     gameweek: number
+    chosenEffectiveOwershipPercentage: number
 }
 
 type DisplayPlayersType = 'captaincy' | 'eo'
@@ -60,26 +61,9 @@ function toggleDisplayPlayers(nextDisplayType : DisplayPlayersType) {
                      <td></td>
                      <td></td>
                      <td>{player.name}</td>
-                     <td className='player-info-captaincy' style={{textAlign: 'left'}}>{player.count}%</td>
+                     <td className='player-info-captaincy' style={{textAlign: 'left'}}>{showCaptains === 'captaincy' ? player.chosenAsCaptainPercentage + '%' : player.chosenEffectiveOwnershipPercentage + '%'}</td>
                   </tr>
             ))}
-            {/* {showCaptains
-              ? captaincy.map((player, index) => (
-                  <tr key={index} className="table-row">
-                    <td></td>
-                    <td></td>
-                    <td>{player.name}</td>
-                    <td className='player-info-captaincy' style={{textAlign: 'left'}}>{player.percentage}%</td>
-                  </tr>
-                ))
-              : eo.map((player, index) => (
-                  <tr key={index} className="table-row">
-                    <td></td>
-                    <td></td>
-                    <td>{player.name}</td>
-                    <td className='player-info-captaincy' style={{textAlign: 'left'}}>{player.count}%</td>
-                  </tr>
-                ))} */}
           </tbody>
         </table>
       </div>
