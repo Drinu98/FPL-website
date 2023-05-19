@@ -1,4 +1,4 @@
-import { NextApiRequest, NextApiResponse } from "next";
+import { NextResponse } from 'next/server';
 
 /**
  * Logging
@@ -11,7 +11,7 @@ const sleep = async () =>
     setTimeout(resolve, 2000);
   });
 
-export async function POST(req: Request, res: Response) {
+export async function POST(req: Request) {
   let executionCount = 0
   let page = 1;
   
@@ -115,7 +115,7 @@ export async function POST(req: Request, res: Response) {
       }),
     });
 
-    return new Response(
+    return new NextResponse(
       JSON.stringify({
         inProgress: true,
       })
@@ -129,6 +129,6 @@ export async function POST(req: Request, res: Response) {
     page,
     // result
   });
-  return new Response(JSON.stringify({ page, result }));
+  return new NextResponse(JSON.stringify({ page, result }));
 }
 

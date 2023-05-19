@@ -1,4 +1,5 @@
 import { prisma } from "../../../../services/prisma";
+import { NextResponse } from 'next/server';
 
 const exclude = <O extends Record<string, any>, Key extends keyof O>(
   obj: O & {
@@ -90,7 +91,7 @@ export async function POST(request: Request, response: Response){
 
   await prisma.playerPicks.deleteMany();
   console.log("Sum count Done");
-  return new Response(
+  return new NextResponse(
     JSON.stringify({
       //   pickByTypeWithSum,
       //   picks,

@@ -1,9 +1,11 @@
+import { NextResponse } from 'next/server';
+
 import {
   CaptainPick,
   EffectiveOwnership,
   prisma,
 } from "../../../../services/prisma";
-export async function POST(req: Request, res: Response){
+export async function POST(req: Request){
   const body = (await req.json()) as {
     startPage: number;
     endPage: number;
@@ -134,7 +136,7 @@ export async function POST(req: Request, res: Response){
     });
     console.timeEnd(`${startPage}-${endPage}`);
 
-    return new Response(
+    return new NextResponse(
       JSON.stringify({
         message: "ok",
       })
@@ -143,7 +145,7 @@ export async function POST(req: Request, res: Response){
     console.error(error);
     console.timeEnd(`${startPage}-${endPage}`);
 
-    return new Response(
+    return new NextResponse(
       JSON.stringify({
         message: (error as Error).message,
       })
