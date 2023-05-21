@@ -11,7 +11,7 @@ const sleep = async () =>
     setTimeout(resolve, 2000);
   });
 
-export async function POST(req: Request) {
+export async function GET(req: Request) {
   let executionCount = 0
   let page = 1;
   
@@ -107,7 +107,7 @@ export async function POST(req: Request) {
       `Calling another cron api function. Processed ${page} of ${totalPages}. Execution count: ${executionCount}`
     );
     fetch(`/api/captain?page=${page}&executionCount=${executionCount}`, {
-      method: "POST",
+      method: 'POST',
     
       body: JSON.stringify({
         executionCount: executionCount + 1,
