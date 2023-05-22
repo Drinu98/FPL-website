@@ -41,3 +41,21 @@ model PlayerPicks {
   updatedAt DateTime @updatedAt
   createdAt DateTime @default(now())
 }
+
+model PriceChangesIncrease {
+  id  String @id @default(cuid())
+  name String
+  cost String
+  team String
+  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now())
+}
+
+model PriceChangesDecrease {
+  id  String @id @default(cuid())
+  name String
+  cost String
+  team String
+  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now())
+}

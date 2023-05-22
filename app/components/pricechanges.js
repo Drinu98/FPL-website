@@ -1,18 +1,13 @@
 import Image from 'next/image'
+import { prisma } from "../../services/prisma";
 
 async function getPriceChanges(){
 
-  const response = await fetch('https://fantasy.premierleague.com/api/bootstrap-static/', 
-      {
-        next: {
-          revalidate: 86400
-        },
-      }
-    );
+  const risers = await prisma.priceChangesIncrease.findMany({});
+  const fallers = await prisma.priceChangesDecrease.findMany({});
 
-    const data = await response.json();
 
-    return data;
+  return {risers, fallers};
 }
 
 
@@ -20,29 +15,8 @@ export default async function PriceChanges(){
 
   const data = await getPriceChanges();
 
-  const players = data.elements;
-  const teams = data.teams;
-
-  const risers = players.filter((player) => player.cost_change_event > 0).map(player => {
-    const team = teams.find(team => team.code === player.team_code);
-
-    return {
-      web_name: player.web_name,
-      cost: (player.now_cost / 10).toFixed(1),
-      team: team ? team.short_name : ''
-    };
-  });
-
-  const fallers = players.filter((player) => player.cost_change_event_fall > 0).map(player => {
-    const team = teams.find(team => team.code === player.team_code);
-
-    return {
-      web_name: player.web_name,
-      cost: (player.now_cost / 10).toFixed(1),
-      team: team ? team.short_name : ''
-    };
-  });
-
+  const risers = data.risers;
+  const fallers = data.fallers;
 
   return (
     <>
@@ -66,7 +40,7 @@ export default async function PriceChanges(){
             {risers.map((player, index) => (
               <tr key={index} className="table-row">
                 <td style={{paddingRight: '0px'}} className='arrow-box'><Image alt='greenarrow up' src={'/images/greenarrowup.png'} width={15} height={15} className='greenarrowup'></Image></td>
-                <td>{player.web_name}</td>
+                <td>{player.name}</td>
                 <td></td>
                 <td style={{textAlign: 'left'}}>{player.team}</td>
                 <td style={{textAlign: 'left'}}>{player.cost}</td>
@@ -90,7 +64,7 @@ export default async function PriceChanges(){
             {fallers.map((player, index) => (
               <tr key={index} className="table-row">
                 <td style={{paddingRight: '0px'}} className='arrow-box'><Image alt='greenarrow up' src={'/images/redarrow.png'} width={15} height={15} className='redarrowdown' ></Image></td>
-                <td>{player.web_name}</td>
+                <td>{player.name}</td>
                 <td></td>
                 <td style={{textAlign: 'left'}}>{player.team}</td>
                 <td style={{textAlign: 'left'}}>{player.cost}</td>

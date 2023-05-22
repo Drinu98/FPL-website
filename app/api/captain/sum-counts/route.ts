@@ -74,6 +74,8 @@ export async function POST(request: Request, response: Response){
         chosenEffectiveOwnershipPercentage: combinedCount
     }
   })
+
+  console.log(allPlayersWithEoPercentage)
   await prisma.$transaction(async ($tx) => {
     await Promise.all([
       $tx.captainPick.deleteMany(),
