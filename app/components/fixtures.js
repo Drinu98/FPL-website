@@ -20,6 +20,7 @@ async function getFixtures() {
   
     const currentGameweek = events?.find(event => event.is_current === true).id;
     
+    
 
     const res2  = await fetch(`https://fantasy.premierleague.com/api/fixtures?event=${currentGameweek}`, 
     {
