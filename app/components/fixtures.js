@@ -3,7 +3,7 @@ import DisplayFixtures from './DisplayFixtures'
 async function getFixtures() {
     const res = await fetch('https://fantasy.premierleague.com/api/bootstrap-static/', {
       next: {
-        revalidate: 20
+        revalidate: 0
       },
     });
     // The return value is *not* serialized
@@ -24,7 +24,7 @@ async function getFixtures() {
     const res2  = await fetch(`https://fantasy.premierleague.com/api/fixtures?event=${currentGameweek}`, 
     {
       next: {
-        revalidate: 20
+        revalidate: 0
       },
     }
   );
