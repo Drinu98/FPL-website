@@ -21,7 +21,7 @@ const sleep = async () =>
 export async function GET(req: Request) {
   let executionCount = 0
   let page = 1;
-  
+  console.log('BASE URL', process.env.VERCEL_URL)
   try {
     
     // const res = await req.json();
@@ -93,7 +93,7 @@ export async function GET(req: Request) {
     }
 
     promises.push(
-      fetch('/api/captain/process-data', {
+      fetch(`${process.env.VERCEL_URL}/api/captain/process-data`, {
         method: 'POST',
         body: JSON.stringify({
           startPage,
@@ -139,7 +139,6 @@ export async function GET(req: Request) {
     method: 'POST'
   })
   console.log("Done", {
-    
     page,
     result
   });
