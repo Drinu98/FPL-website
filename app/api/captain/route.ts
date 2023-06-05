@@ -16,6 +16,7 @@ export async function GET(req: Request) {
   let page = 1;
   
   try {
+    
     const res = await req.json();
     console.log('res', res)
     if (res) {
