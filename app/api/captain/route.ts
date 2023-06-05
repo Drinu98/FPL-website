@@ -21,7 +21,8 @@ const sleep = async () =>
 export async function GET(req: Request) {
   let executionCount = 0
   let page = 1;
-  console.log('BASE URL', process.env.VERCEL_URL)
+  const BASE_URL = `${process.env.VERCEL_URL?.startsWith('localhost') ? 'http' : 'https'}://${process.env.VERCEL_URL}`
+  console.log('BASE URL', BASE_URL)
   try {
     
     // const res = await req.json();
@@ -93,7 +94,7 @@ export async function GET(req: Request) {
     }
 
     promises.push(
-      fetch(`${process.env.VERCEL_URL}/api/captain/process-data`, {
+      fetch(`${BASE_URL}/api/captain/process-data`, {
         method: 'POST',
         body: JSON.stringify({
           startPage,
@@ -120,7 +121,7 @@ export async function GET(req: Request) {
       `Calling another cron api function. Processed ${page} of ${totalPages}. Execution count: ${executionCount}`
     );
 
-    fetch(`${process.env.VERCEL_URL}/api/captain?page=${page}&executionCount=${executionCount}`, {
+    fetch(`${BASE_URL}/api/captain?page=${page}&executionCount=${executionCount}`, {
       method: 'GET',
     
       // body: JSON.stringify({
@@ -135,7 +136,7 @@ export async function GET(req: Request) {
       })
     );
   }
-  fetch(`${process.env.VERCEL_URL}/api/captain/sum-counts`, {
+  fetch(`${BASE_URL}/api/captain/sum-counts`, {
     method: 'POST'
   })
   console.log("Done", {
