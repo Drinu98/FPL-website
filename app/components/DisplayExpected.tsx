@@ -15,18 +15,22 @@ type ExpectedProps = {
     expectedGoalsCurrentGameweek: Array<Player>
     expectedGoalsLast4: Array<Player>
     expectedGoalsLast6: Array<Player>
+    groupedDataCurrent: Array<Player>
+    groupedDataLast4: Array<Player>
+    groupedDataLast6: Array<Player>
 }
 
 function Expected(props: ExpectedProps) {
-    const {expectedGoalsCurrentGameweek, expectedGoalsLast4, expectedGoalsLast6} = props
+    const {expectedGoalsCurrentGameweek, expectedGoalsLast4, expectedGoalsLast6, groupedDataCurrent, groupedDataLast4, groupedDataLast6} = props
     const [selectedData, setSelectedData] = useState(expectedGoalsCurrentGameweek);
+    const [selectedTeam, setSelectedTeam] = useState('');
     const [sortOrder, setSortOrder] = useState('asc'); // 'asc' or 'desc'
 
 
 
   const handleDataSelect = (event: React.FormEvent<HTMLSelectElement>) => {
     const value = event.currentTarget.value;
-  
+    const selectedPlayers = groupedDataCurrent[selectedTeam as keyof typeof groupedDataCurrent] || [];
     switch(value) {
       case 'currentGameweekXG':
         setSelectedData(expectedGoalsCurrentGameweek);
@@ -36,12 +40,18 @@ function Expected(props: ExpectedProps) {
         break;
       case 'xGTotal':
         setSelectedData(expectedGoalsLast6);
-        break;
+        break; 
       default:
         setSelectedData(expectedGoalsCurrentGameweek);
         break;
     }
   }
+
+  const handleSelectChange = (event: React.FormEvent<HTMLSelectElement>) => {
+    setSelectedTeam(event.currentTarget.value);
+  };
+
+  const players = groupedDataCurrent[selectedTeam as any] || [];
 
   const handleSortClick = (columnName : any) => {
     // Sort the selectedData array by the given column name
@@ -68,7 +78,15 @@ function Expected(props: ExpectedProps) {
           <option value="currentGameweekXG">Current Gameweek</option>
           <option value="xGTotalLast4Gameweeks">Last 4 GWs</option>
           <option value="xGTotal">Last 6 GWs</option>
-        </select>
+      </select>
+      <select value={selectedTeam} onChange={handleSelectChange} className='expected-select select'>
+        <option value="">Select a team</option>
+        {Object.keys(groupedDataCurrent).map((teamLong) => (
+          <option key={teamLong} value={teamLong}>
+            {teamLong}
+          </option>
+        ))}
+      </select>
         <div>
           <table style={{width: '100%'}}>
             <thead>

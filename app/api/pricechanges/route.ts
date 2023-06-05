@@ -4,7 +4,7 @@ import { prisma } from "../../../services/prisma";
 let risingPlayers = [] as Array<any>
 let fallingPlayers = [] as Array<any>
 
-export async function OPTIONS(){
+export async function POST(){
   console.log("Gathering Price changes");
   const risers = new Map();
   const fallers = new Map();  
@@ -18,11 +18,12 @@ export async function OPTIONS(){
 
     players.filter((player : any) => player.cost_change_event > 0).map((player: any) => {
     const team = teams.find((team : any) => team.code === player.team_code);
-    const name = player.web_name;
+    const id = player.id;
 
     risers.set(
-      name, 
+      id, 
       {
+        name: player.web_name,
         cost: (player.now_cost / 10).toFixed(1), 
         team: team ? team.short_name : ''
       })
@@ -30,19 +31,21 @@ export async function OPTIONS(){
 
     players.filter((player : any) => player.cost_change_event_fall > 0).map((player : any) => {
     const team = teams.find((team : any) => team.code === player.team_code);
-    const name = player.web_name;
+    const id = player.id;
 
     fallers.set(
-      name, 
+      id, 
       {
+        name: player.web_name,
         cost: (player.now_cost / 10).toFixed(1), 
         team: team ? team.short_name : ''
       }) 
     });
 
   risingPlayers = Array.from(risers.entries()).map(
-    ([name,{cost, team }]) => {
+    ([id,{name, cost, team }]) => {
       return {
+        id,
         name,
         cost,
         team,
@@ -51,8 +54,9 @@ export async function OPTIONS(){
   );
 
   fallingPlayers = Array.from(fallers.entries()).map(
-    ([name,{cost, team }]) => {
+    ([id,{name, cost, team }]) => {
       return {
+        id,
         name,
         cost,
         team,
@@ -60,17 +64,56 @@ export async function OPTIONS(){
     }
   );
 
+  const previousPriceChanges = await prisma.priceChanges.findMany({});
+
+
+
+// const newRisingPlayers = risingPlayers.filter((risingPlayer) => {
+//   // Check if the player's ID exists in oldRisers array
+//   const exists = previousPriceChanges.some((oldRiser) => oldRiser.playerElementId === risingPlayer.id);
+
+//   // Return false to remove the player from risingPlayers array
+//   return !exists;
+// });
+
+const newRisingPlayers = risingPlayers.filter((risingPlayer) => {
+  // Check if the player's ID exists in oldRisers array
+  const matchingOldRiser = previousPriceChanges.find((oldRiser) => oldRiser.playerElementId === risingPlayer.id);
+
+  // Return true if player's ID does not exist in oldRisers or the cost is different
+  return !matchingOldRiser || matchingOldRiser.cost !== risingPlayer.cost;
+});
+
+const newFallingPlayers = fallingPlayers.filter((fallingPlayer) => {
+  // Check if the player's ID exists in oldRisers array
+  const matchingOldFaller = previousPriceChanges.find((oldFaller) => oldFaller.playerElementId === fallingPlayer.id);
+
+  // Return true if player's ID does not exist in oldRisers or the cost is different
+  return !matchingOldFaller || matchingOldFaller.cost !== fallingPlayer.cost;
+});
+
+
+
+// const newFallingPlayers = fallingPlayers.filter((fallingPlayer) => {
+//   // Check if the player's ID exists in oldFallers array
+//   const exists = previousPriceChanges.some((oldFaller) => oldFaller.playerElementId === fallingPlayer.id);
+
+//   // Return false to remove the player from fallingPlayers array
+//   return !exists;
+// });
   
   await prisma.$transaction(async ($tx) => {
     await Promise.all([
       $tx.priceChangesIncrease.deleteMany(),
-      $tx.priceChangesDecrease.deleteMany(),   
+      $tx.priceChangesDecrease.deleteMany(),
+      $tx.priceChanges.deleteMany(),    
     ]);
     await Promise.all([
       $tx.priceChangesIncrease.createMany({
         data: [
-          ...risingPlayers.map((item) => {
+          ...newRisingPlayers.map((item) => {
             return {
+              playerElementId: item.id,
               name: item.name,
               cost: item.cost,
               team: item.team
@@ -80,8 +123,9 @@ export async function OPTIONS(){
       }),
       $tx.priceChangesDecrease.createMany({
         data: [
-          ...fallingPlayers.map((item) => {
+          ...newFallingPlayers.map((item) => {
             return {
+              playerElementId: item.id,
               name: item.name,
               cost: item.cost,
               team: item.team
@@ -90,9 +134,31 @@ export async function OPTIONS(){
         ]
       }),
     ]);
+    await $tx.priceChanges.createMany({
+      data: [
+        ...risingPlayers.map((item) => {
+          return {
+            playerElementId: item.id,
+            name: item.name,
+            cost: item.cost,
+            team: item.team,
+            type: "riser",
+          };
+        }),
+        ...fallingPlayers.map((item) => {
+          return {
+            playerElementId: item.id,
+            name: item.name,
+            cost: item.cost,
+            team: item.team,
+            type: "faller",
+          };
+        }),
+      ],
+    })
   });
 
   console.log("Price changes successfully gathered");
 
-  return new NextResponse(JSON.stringify({ message: 'ok'}));
+  return new NextResponse(JSON.stringify({ message: 'Price changes Successful'}));
 }

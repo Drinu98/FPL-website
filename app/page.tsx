@@ -37,7 +37,7 @@ export default async function Home() {
                 </div>
                 <div className='widget5' >
                   {/* @ts-ignore */}
-                  <UpcomingFixtures />
+                  {/* <UpcomingFixtures /> */}
                 </div>
               </div>
               <div className='col-lg-5'>
