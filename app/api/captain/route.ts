@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import url from 'url'
 
 /**
  * Logging
@@ -10,6 +11,12 @@ const sleep = async () =>
   new Promise((resolve) => {
     setTimeout(resolve, 2000);
   });
+  const getQueryParam = <T>(param: string | string[], defaultValue: T) => {
+    if (Array.isArray(param)) {
+      return param?.[0] || defaultValue
+    }
+    return param || defaultValue
+  }
 
 export async function GET(req: Request) {
   let executionCount = 0
@@ -17,11 +24,16 @@ export async function GET(req: Request) {
   
   try {
     
-    const res = await req.json();
-    console.log('res', res)
-    if (res) {
-      executionCount = res.executionCount || 0
-      page = res.page || 1
+    // const res = await req.json();
+    // console.log('res', res)
+    // if (res) {
+    //   executionCount = res.executionCount || 0
+    //   page = res.page || 1
+    // }
+    const { query } = url.parse(req.url, true);
+    if (query && query.page && query.executionCount) {
+      executionCount = parseInt(getQueryParam(query.executionCount, '0'))
+      page =  parseInt(getQueryParam(query.page, '1'))
     }
   } catch (error) {
     // console.error(error)
@@ -107,13 +119,14 @@ export async function GET(req: Request) {
     console.log(
       `Calling another cron api function. Processed ${page} of ${totalPages}. Execution count: ${executionCount}`
     );
-    fetch(`/api/captain?page=${page}&executionCount=${executionCount}`, {
-      method: 'POST',
+
+    fetch(`${process.env.VERCEL_URL}/api/captain?page=${page}&executionCount=${executionCount}`, {
+      method: 'GET',
     
-      body: JSON.stringify({
-        executionCount: executionCount + 1,
-        page,
-      }),
+      // body: JSON.stringify({
+      //   executionCount: executionCount + 1,
+      //   page,
+      // }),
     });
 
     return new NextResponse(
@@ -122,7 +135,7 @@ export async function GET(req: Request) {
       })
     );
   }
-  fetch(`/api/captain/sum-counts`, {
+  fetch(`${process.env.VERCEL_URL}/api/captain/sum-counts`, {
     method: 'POST'
   })
   console.log("Done", {
