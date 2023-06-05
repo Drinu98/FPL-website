@@ -11,7 +11,7 @@ const sleep = async () =>
     setTimeout(resolve, 2000);
   });
 
-export async function POST(req: Request) {
+export async function GET(req: Request) {
   let executionCount = 0
   let page = 1;
   
