@@ -17,7 +17,9 @@ async function getFixtures() {
     const teams = data.teams;
     const elements = data.elements
 
-    const currentGameweek = events?.find(event => event.is_current === true)?.id ?? 'Error: ID is undefined.';
+    // const currentGameweek = events?.find(event => event.is_current === true)?.id ?? 'Error: ID is undefined.';
+    const currentGameweek = events?.find(event => event.is_current === true)?.id ?? events?.find(event => event.is_next === true)?.id ?? 'Error: ID is undefined.';
+
     
     try{
       const res2  = await fetch(`https://fantasy.premierleague.com/api/fixtures?event=${currentGameweek}`, 
