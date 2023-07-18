@@ -6,23 +6,21 @@ async function getFixtures() {
         revalidate: 5
       },
     });
-    // The return value is *not* serialized
-    // You can return Date, Map, Set, etc.
-    const data = await res.json();
-    const events = data.events;
-    const teams = data.teams;
-    const elements = data.elements;
-    // Recommendation: handle errors
+
     if (!res.ok) {
       // This will activate the closest `error.js` Error Boundary
       throw new Error('Failed to fetch data');
     }
-  
-    const currentGameweek = events?.find(event => event.is_current === true).id;
-    
-    
+    // The return value is *not* serialized
+    const data = await res.json();
+    const events = data.events;
+    const teams = data.teams;
+    const elements = data.elements
 
-    const res2  = await fetch(`https://fantasy.premierleague.com/api/fixtures?event=${currentGameweek}`, 
+    const currentGameweek = events?.find(event => event.is_current === true)?.id ?? 'Error: ID is undefined.';
+    
+    try{
+      const res2  = await fetch(`https://fantasy.premierleague.com/api/fixtures?event=${currentGameweek}`, 
     {
       next: {
         revalidate: 5
@@ -30,6 +28,9 @@ async function getFixtures() {
     }
   );
 
+  if (!res2.ok) {
+    throw new Error('Failed to fetch fixtures');
+  }
     
     const fixtures = await res2.json();
 
@@ -47,6 +48,11 @@ async function getFixtures() {
     for (let fixture of Object.values(fixtures)) {
       const homeTeam = teams.find(team => team.id === fixture.team_h);
       const awayTeam = teams.find(team => team.id === fixture.team_a);
+      
+      if (!homeTeam || !awayTeam) {
+        throw new Error('Team data not found');
+      }
+      
       const homeTeamName = homeTeam.name;
       const awayTeamName = awayTeam.name;
       const homeTeamScore = fixture.team_h_score;
@@ -124,12 +130,43 @@ async function getFixtures() {
     }
 
     return fixturesArray;
+
+    }catch (error) {
+      console.error(error);
+      throw new Error('Failed to fetch fixtures');
+    }
+    
   }
 
 
-  export default async function Fixtures(){
-    const fixturesArray = await getFixtures();
-
-    return <DisplayFixtures fixturesArray={fixturesArray} />
-    
+  export default async function Fixtures() {
+    try {
+      const fixturesArray = await getFixtures();
+  
+      return (
+        <>
+          {fixturesArray ? (
+            <DisplayFixtures fixturesArray={fixturesArray} />
+          ) : (
+            <p>No upcoming gameweeks.</p>
+          )}
+        </>
+      );
+    } catch (error) {
+      console.error(error);
+      return <>
+        <div className="fixture-container">
+          <div className="graphic-container">
+            <h2 className="transfers-title">Bonus Points</h2>
+          </div>
+          <p className='error-message'>
+            <Image src="/images/errorlogo.png"
+                  alt="FPL Focal Logo"
+                  width={50}
+                  height={50}
+                  className='error-logo'>
+            </Image>The Game is Updating...</p>
+        </div>
+      </>
+    }
   }

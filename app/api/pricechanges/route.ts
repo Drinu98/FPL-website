@@ -4,7 +4,7 @@ import { prisma } from "../../../services/prisma";
 let risingPlayers = [] as Array<any>
 let fallingPlayers = [] as Array<any>
 
-export async function POST(){
+export async function GET(){
   console.log("Gathering Price changes");
   const risers = new Map();
   const fallers = new Map();  

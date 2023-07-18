@@ -1,8 +1,9 @@
 body{
   height: 100%;
-  background-image: url(../public/images/Background.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
+  /* background-image: url(../public/images/Background.jpg); */
+  background-color: #fe1d5c !important;
+  /* background-repeat: no-repeat; */
+  /* background-size: cover; */
   font-weight: bold !important;
   font-family: var(--roboto-font)
 }
@@ -108,12 +109,12 @@ td{
 .widget, .widget2, .widget3, .widget4, .widget5, .widget6, .widget7, .widget8, .widget9, .widget10 {
   background-color: aliceblue;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-  border: 5px solid #340040;
+  border: 5px solid black;
   border-radius: 8px;
 }
 
 .graphic-container{
-  background:#340040;
+  background: black;
   height: 40px;
   width: 80%;
   margin-left: auto;
@@ -126,7 +127,7 @@ td{
   display: flex;
   flex-direction: column;
   width: 100%;
-  color: #340040;
+  color: black;
 }
 
 .pricechanges-box{
@@ -135,7 +136,7 @@ td{
 }
 
 .graphic-container-deadline{
-  background: #340040;
+  background: black;
   height: 40px;
   width: 80%;
   margin-left: auto;
@@ -163,7 +164,7 @@ td{
   padding: 20px;
   margin-left: 20px;
   color: white;
-  background-color: #340040;
+  background-color: black;
   height: 20px;
   width: 20px;
   border-radius: 50%;
@@ -181,17 +182,17 @@ transform: scale(1.2);
 .trademark{
   float: left;
   font-size: 0.7rem;
-  color:#340040;
+  color:black;
 }
 
 .courtesy-text{
   font-size: 0.8rem;
-  color: #340040;
+  color: black;
   text-align: center;
 }
 
 .courtesy-link{
-  color: #F2055C;
+  color: white;
 }
 
 
@@ -354,7 +355,7 @@ transform: scale(1.2);
 
 .deadline-date {
   font-size: 1.5rem;
-  color: #340040;
+  color: black;
   text-align: center;
   margin-top: 5px;
   background-image: linear-gradient(to right, rgb(0, 255, 135), rgb(2, 239, 255));
@@ -366,7 +367,7 @@ transform: scale(1.2);
 
 .deadline-date-time {
   font-size: 1.5rem;
-  color: #340040;
+  color: black;
   text-align: center;
   padding-top: 6px;
   /* margin-top: 5px; */
@@ -376,7 +377,7 @@ transform: scale(1.2);
   text-align: center;
 }
 .topten-list{
-  color: #340040;
+  color: black;
   list-style: none;
   padding-top: 7px;
 }
@@ -404,13 +405,13 @@ border-bottom: 1px solid rgba(55, 0, 60, 0.08);
   margin-top: 20px;
   width: 100%;
   font-size: 1.0rem;
-  color: #340040;
+  color: black;
 }
 
 .player-info, .transfer-header, .transfers-table{
   /* border: 2px solid #05F26C; */
   font-size: 12px;
-  color: #340040;
+  color: black;
 }
 
 .player-photo{
@@ -480,7 +481,7 @@ border-bottom: 1px solid rgba(55, 0, 60, 0.08);
   flex-direction: column;
   width: 100%;
   align-items: center;
-  color: #340040;
+  color: black;
 }
 
 .fixture-ul-list{
@@ -678,12 +679,12 @@ text-align: center;
 
 .twat-text{
   text-align: center;
-  color: #340040;
+  color: black;
   font-size: 1.3rem;
 }
 
 .twat-text-link{
-  color: #340040;
+  color: black;
   text-align: center;
   font-size: 1.3rem;
   transition: all 0.3s ease 0s;
@@ -697,7 +698,7 @@ text-align: center;
 margin-top: 20px;
 width: 100%;
 font-size: 13px;
-color: #340040;
+color: black;
 }
 
 .realplayers-transfer-list{
@@ -717,7 +718,7 @@ margin-right: 2px;
 display: var(--fa-display, inline-block);
 padding: 7px;
 color: white;
-background-color: #340040;
+background-color: black;
 height: 18px;
 width: 18px;
 border-radius: 50%;
@@ -1433,4 +1434,21 @@ padding-left: 0;
   td{
     padding: 0.2rem;
   }
+}
+
+.error-message{
+  color: black;
+  font-size: 2.5rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.error-logo {
+  /* height: 5.5rem; */
+  pointer-events: none;
+  margin-right: 5px;
 }

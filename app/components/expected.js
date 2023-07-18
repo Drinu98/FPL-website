@@ -1,18 +1,21 @@
 import DisplayExpected from './DisplayExpected'
+import Image from 'next/image'
 
 const Expected = async () => {
+  try{
     const res = await fetch('https://fantasy.premierleague.com/api/bootstrap-static/', {
         next: {
           revalidate: 120
         },
       });
     
-      const data = await res.json();
-    
       if (!res.ok) {
         // This will activate the closest `error.js` Error Boundary
         throw new Error('Failed to fetch data');
       }
+
+      const data = await res.json();
+    
     
       const elementTypes = data.element_types;
       const teams = data.teams;
@@ -175,23 +178,6 @@ for (let gw = startGameweek; gw <= endGameweek; gw++) {
       groupedDataLast6[player.teamLong].push(player);
     });
 
-    // for (const teamLong in groupedDataCurrent) {
-    //   groupedDataCurrent[teamLong].sort((a, b) => b.xGI - a.xGI);
-    //   groupedDataCurrent[teamLong] = groupedDataCurrent[teamLong].slice(0, 15);
-    // }
-
-    // for (const teamLong in groupedDataLast4) {
-    //   groupedDataLast4[teamLong].sort((a, b) => b.xGI - a.xGI);
-    //   groupedDataLast4[teamLong] = groupedDataLast4[teamLong].slice(0, 15);
-    // }
-
-    // for (const teamLong in groupedDataLast6) {
-    //   groupedDataLast6[teamLong].sort((a, b) => b.xGI - a.xGI);
-    //   // groupedDataLast6[teamLong] = groupedDataLast6[teamLong].slice(0, 15);
-    // }
-    
-    //   // groupedDataLast6[teamLong] = groupedDataLast6[teamLong].slice(0, 15);
-    // }
 
     for (const teamLong in groupedDataCurrent) {
       groupedDataCurrent[teamLong].sort(customSort);
@@ -217,6 +203,23 @@ for (let gw = startGameweek; gw <= endGameweek; gw++) {
   const splicedExpectedGoalsLast6 = sortedExpectedGoalsLast6.splice(0, 15);
 
   return <DisplayExpected expectedGoalsCurrentGameweek={finalexpectedGoalsCurrentGameweek} expectedGoalsLast4={splicedExpectedGoalsLast4} expectedGoalsLast6={splicedExpectedGoalsLast6} groupedDataCurrent={groupedDataCurrent} groupedDataLast4={groupedDataLast4} groupedDataLast6={groupedDataLast6}/>
+  }catch (error) {
+      console.error(error);
+      return <>
+      <div className='transfers-container'>
+        <div className='graphic-container'>
+            <h2 className='transfers-title'>Expected Data</h2>
+        </div>
+        <p className='error-message'>
+          <Image src="/images/errorlogo.png"
+                  alt="FPL Focal Logo"
+                  width={50}
+                  height={50}
+                  className='error-logo'>
+          </Image>The Game is Updating...</p>
+      </div>    
+      </>
+    }  
 }
 
 export default Expected
@@ -224,10 +227,6 @@ export default Expected
 
 // Create a custom sorting function
 const customSort = (a, b) => {
-  // Sort by teamLong
-  // if (a.teamLong !== b.teamLong) {
-  //   return a.teamLong.localeCompare(b.teamLong);
-  // }
   
   // Sort by position
   if (a.position !== b.position) {

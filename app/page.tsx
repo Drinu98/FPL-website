@@ -19,7 +19,7 @@ export default async function Home() {
       <div className='container'>
         <div className='container-header'>
           <Image
-              src="/images/logo.png"
+              src="/images/whitelogo.png"
               alt="FPL Focal Logo"
               width={80}
               height={80}
@@ -37,7 +37,7 @@ export default async function Home() {
                 </div>
                 <div className='widget5' >
                   {/* @ts-ignore */}
-                  {/* <UpcomingFixtures /> */}
+                  <UpcomingFixtures />
                 </div>
               </div>
               <div className='col-lg-5'>
@@ -107,7 +107,7 @@ export default async function Home() {
               <div className='col-lg-5'>
                 <div className='widget10'>
                   {/* @ts-ignore */}
-                  <Expected />
+                  <Expected /> 
                 </div>
               </div>
             </div>
