@@ -205,6 +205,13 @@ transform: scale(1.2);
   }
 }
 
+@media (max-width:992px){
+  .widget10
+  {
+    margin-top: 25px;
+  }
+}
+
 
 @media (max-width:998px){
   .widget3, .widget4
@@ -1447,8 +1454,98 @@ padding-left: 0;
   margin-bottom: auto;
 }
 
+.error-message-captaincy{
+  color: black;
+  font-size: 2rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
 .error-logo {
   /* height: 5.5rem; */
   pointer-events: none;
   margin-right: 5px;
 }
+
+@media (max-width:1400px){
+  .error-message
+  {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width:1550px){
+  .error-message-captaincy
+  {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width:1200px){
+  .error-message
+  {
+      font-size: 1.5rem;
+  }
+}
+
+/* @media (max-width:1200px){
+  .error-message-captaincy
+  {
+      font-size: 1rem;
+  }
+} */
+
+@media (max-width:992px){
+  .error-message
+  {
+    font-size: 2.2rem;
+  }
+}
+
+
+@media (max-width:768px){
+  .error-message
+  {
+    font-size: 2rem;
+
+  }
+}
+
+@media (max-width:576px){
+  .error-message
+  {
+    font-size: 1.9rem;
+  }
+}
+
+@media (max-width:480px){
+  .error-message
+  {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width:480px){
+  .error-message-captaincy
+  {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width:400px){
+  .error-message
+  {
+    font-size: 1.3rem;
+  }
+}
+@media (max-width:400px){
+  .error-message-captaincy
+  {
+    font-size: 1.3rem;
+  }
+}
+

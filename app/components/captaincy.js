@@ -16,7 +16,8 @@ async function getCaptaincy() {
 
     const data = await res.json();
     const currentGameweekData = data?.events;
-    const currentGameweek = currentGameweekData.find(gw => gw.is_current === true) ?? 'Error: ID is undefined.';
+    // const currentGameweek = currentGameweekData.find(gw => gw.is_current === true) ?? 'Error: ID is undefined.';
+    const currentGameweek = currentGameweekData?.find(gw => gw.is_current === true) ?? currentGameweekData?.find(gw => gw.is_next === true) ?? 'Error: ID is undefined.';
     const captains = await prisma.captainPick.findMany({});
     const effectiveOwnership = await prisma.effectiveOwnership.findMany({});
 
@@ -59,7 +60,7 @@ export default async function Captaincy() {
         <div className='graphic-container'>
             <h2 className='transfers-title'>Top 10K</h2>
         </div>
-        <p className='error-message'>
+        <p className='error-message-captaincy'>
           <Image src="/images/errorlogo.png"
                   alt="FPL Focal Logo"
                   width={50}

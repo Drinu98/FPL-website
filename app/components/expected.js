@@ -24,8 +24,9 @@ const Expected = async () => {
   
       let gameweekJsonArray = [];
   
-      const currentGameweekData = events?.find(event => event?.is_current === true);
+      const currentGameweekData = events?.find(event => event?.is_current === true) ?? events?.find(event => event?.is_next === true) ?? 'Error: ID is undefined.';
       const currentGameweek = currentGameweekData?.id;
+
   
       for (let i = currentGameweek; i >= currentGameweek - 6; i--) {
           const gameweekData = await fetch(`https://fantasy.premierleague.com/api/event/${i}/live/` , {

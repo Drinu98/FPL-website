@@ -18,8 +18,7 @@ async function getNextGameweek() {
     const currentGameweekData = data?.events;
 
     return currentGameweekData;
-}
-
+  }
 
 export default async function GameweekInfo() {
 

@@ -4,24 +4,25 @@ import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 async function getRealPlayers() {
     const players = 
     [
-      {name: 'Adam Forshaw', id: 5104960}, 
-      {name: 'James Maddison', id: 4592228}, 
-      {name: 'James Justin', id: 4829454}, 
-      {name: 'Bukayo Saka', id: 3992333}, 
-      {name: 'Hamza Choudhury', id: 2335177}, 
-      {name: 'Patrick Bamford', id: 3127620}, 
-      {name: 'Matt Targett', id: 2733322}, 
-      {name: 'John McGinn', id: 3536258}, 
-      {name: 'Shane Duffy', id: 5510976}, 
-      {name: 'Mohamed Elneny', id: 6347993}, 
-      {name: 'Jack Stephens', id: 3467078}, 
-      {name: 'Jason Steele', id: 6053284}, 
-      {name: 'Rob Holding', id: 6410855}, 
-      {name: 'Kalvin Phillips', id: 4019399}, 
-      {name: 'Eddie Nketiah', id: 6230640}, 
-      {name: 'Jacob Ramsey', id: 6475988}, 
-      {name: 'Matt Turner', id: 6555943}, 
-      {name: 'Luke Ayling', id: 6567765}
+      // {name: 'Adam Forshaw', id: 5104960}, 
+      {name: 'Jason Steele', id: 912952},
+      {name: 'James Maddison', id: 659844} 
+      // {name: 'James Justin', id: 4829454}, 
+      // {name: 'Bukayo Saka', id: 3992333}, 
+      // {name: 'Hamza Choudhury', id: 2335177}, 
+      // {name: 'Patrick Bamford', id: 3127620}, 
+      // {name: 'Matt Targett', id: 2733322}, 
+      // {name: 'John McGinn', id: 3536258}, 
+      // {name: 'Shane Duffy', id: 5510976}, 
+      // {name: 'Mohamed Elneny', id: 6347993}, 
+      // {name: 'Jack Stephens', id: 3467078}, 
+      // {name: 'Jason Steele', id: 6053284}, 
+      // {name: 'Rob Holding', id: 6410855}, 
+      // {name: 'Kalvin Phillips', id: 4019399}, 
+      // {name: 'Eddie Nketiah', id: 6230640}, 
+      // {name: 'Jacob Ramsey', id: 6475988}, 
+      // {name: 'Matt Turner', id: 6555943}, 
+      // {name: 'Luke Ayling', id: 6567765}
     ];
 
     const results = [];

@@ -5,11 +5,13 @@
   "scripts": {
     "dev:start": "next dev",
     "dev": "concurrently \"next dev\" \"npm run db:connect:dev\"",
+    "dev2": "concurrently \"next dev\" \"npm run db:connect:master\"",
     "build": "prisma generate && next build",
     "start": "next start",
     "lint": "next lint",
     "postinstall": "prisma generate",
     "db:connect:dev": "pscale connect fplwebsitedatabase dev --port 3309",
+    "db:connect:master": "pscale connect fplwebsitedatabase master --port 3309",
     "db:push": "npx prisma db push"
   },
   "dependencies": {

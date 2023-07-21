@@ -72,3 +72,14 @@ model PriceChanges {
   updatedAt DateTime @updatedAt
   createdAt DateTime @default(now())
 }
+
+model CronTasks {
+  id  String @id @default(cuid())
+  scheduledExecutionTime DateTime
+  targetUrl String // domain.com/api/players/do-something
+  method String // GET | POST
+  queryParams String? // encoded query params message=hello&playerId=123
+  payload String? // Use superjson library to store arguments as a string
+  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now())
+}
