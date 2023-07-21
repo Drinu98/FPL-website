@@ -6,7 +6,7 @@
     "dev:start": "next dev",
     "dev": "concurrently \"next dev\" \"npm run db:connect:dev\"",
     "dev2": "concurrently \"next dev\" \"npm run db:connect:master\"",
-    "build": "prisma generate && next build && pscale connect fplwebsitedatabase master",
+    "build": "prisma generate && next build",
     "start": "next start",
     "lint": "next lint",
     "postinstall": "prisma generate",
