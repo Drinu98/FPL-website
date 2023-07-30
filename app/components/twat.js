@@ -1,6 +1,7 @@
 import Image from 'next/image'
 
 async function getTwat() {
+  try{
     const leagueId = 314; // Change league ID to your league ID
     const maxRank = 13000; // Change max number of players to retrieve
 
@@ -21,9 +22,10 @@ async function getTwat() {
 
     const data = await response.json();
 
-    const currentGameweekData = data.events?.find(event => event?.is_current === true);
+    // const currentGameweekData = data.events?.find(event => event?.is_current === true);
 
-    const currentGameweek = currentGameweekData?.id;
+    const currentGameweek = data.events?.find(event => event.is_current === true)?.id ?? data.events?.find(event => event.is_next === true)?.id;
+
 
     while (page <= totalPages && playersProcessed < maxRank) {
         const res = await fetch(`https://fantasy.premierleague.com/api/leagues-classic/${leagueId}/standings?page_standings=${page}`,
@@ -80,40 +82,94 @@ async function getTwat() {
     }
 
     return results;
+  }catch (error) {
+    console.error(error);
+    throw new Error('Failed to fetch data');
+  }
+   
   }
 
-
   export default async function Twat(){
-    const data = await getTwat();
+    try{
+      const data = await getTwat();
 
-    return (
-      <>
-        <div>
-          {data?.length > 0 && (
-            <div className='twat-box'>
-              <p className='twat-text'>
-                  {data[0]?.player_name}
-              </p>
-              <p style={{textAlign: 'center'}}>
-                <a href={data[0]?.link} className='twat-text-link'>{data[0]?.entry_name}</a>
-                  
-              </p>
-              <p className='twat-text'>
-                {data[0]?.total} Points
-              </p>
-              <p className='twat-text'>
-                {data[0]?.lastRank} <Image  
-                                      src='/images/redarrow.png' 
-                                      height={20}
-                                      width= {20} 
-                                      alt='➡'
-                                      style={{marginBottom: 4}}
-                                      /> {data[0]?.rank}
-                </p>
-              
+      if (!data || data.length === 0) {
+        // Display loading message while fetching data
+        return (
+          <>
+          <div className="fixture-container">
+            <div className='graphic-container'>
+              <h2 className='transfers-title'>Disaster of the Week</h2>          
             </div>
-          )}
+            <p className='error-message-twat'>
+              <Image
+                src='/images/errorlogo.png'
+                alt='FPL Focal Logo'
+                width={50}
+                height={50}
+                className='error-logo'
+              />
+              The Game is Updating...
+            </p>
+          </div>
+          </>
+        );
+      }
+
+      return (
+        <>
+        <div className="fixture-container">
+          <div className='graphic-container'>
+            <h2 className='transfers-title'>Disaster of the Week</h2>
+          </div>
+          <div>
+              <div className='twat-box'>
+                <p className='twat-text'>
+                    {data[0]?.player_name} 
+                </p>
+                <p style={{textAlign: 'center'}}>
+                  <a href={data[0]?.link} className='twat-text-link'>{data[0]?.entry_name}</a>
+                    
+                </p>
+                <p className='twat-text'>
+                  {data[0]?.total} Points
+                </p>
+                <p className='twat-text'>
+                  {data[0]?.lastRank} <Image  
+                                        src='/images/redarrow.png' 
+                                        height={20}
+                                        width= {20} 
+                                        alt='➡'
+                                        style={{marginBottom: 4}}
+                                        /> {data[0]?.rank}
+                  </p>
+                
+              </div>
+            
+          </div>
+        </div> 
+        </>
+        );
+    }catch(error){
+      console.error(error);
+      return (
+        <>
+        <div className="fixture-container">
+          <div className='graphic-container'>
+            <h2 className='transfers-title'>Disaster of the Week</h2>          
+          </div>
+          <p className='error-message-twat'>
+            <Image
+              src='/images/errorlogo.png'
+              alt='FPL Focal Logo'
+              width={50}
+              height={50}
+              className='error-logo'
+            />
+            The Game is Updating...
+          </p>
         </div>
-      </>
+        </>
       );
+    }
   }

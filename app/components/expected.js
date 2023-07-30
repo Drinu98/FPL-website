@@ -27,18 +27,44 @@ const Expected = async () => {
       const currentGameweekData = events?.find(event => event?.is_current === true) ?? events?.find(event => event?.is_next === true) ?? 'Error: ID is undefined.';
       const currentGameweek = currentGameweekData?.id;
 
-  
-      for (let i = currentGameweek; i >= currentGameweek - 6; i--) {
-          const gameweekData = await fetch(`https://fantasy.premierleague.com/api/event/${i}/live/` , {
+      try{
+          const gameweekData = await fetch(`https://fantasy.premierleague.com/api/event/${currentGameweek}/live/` , {
             next: {
               revalidate: 120
             },
           }
         );
           const gameweekJson = await gameweekData.json();
-          gameweekJsonArray.push({gameweek: i, data: gameweekJson});
+          gameweekJsonArray.push({gameweek: currentGameweek, data: gameweekJson});
+          // console.log(gameweekJsonArray);
           
           // Do something with the gameweek data, such as parsing and displaying it
+      
+      }catch(error) {
+          console.error(error);
+      }
+
+      for (let i = currentGameweek; i >= currentGameweek - 6; i--) {
+        try {
+          const gameweekData = await fetch(`https://fantasy.premierleague.com/api/event/${i}/live/`, {
+            next: {
+              revalidate: 120
+            },
+          });
+  
+          if (!gameweekData.ok) {
+            throw new Error(`Failed to fetch data for gameweek ${i}`);
+          }
+  
+          const gameweekJson = await gameweekData.json();
+          gameweekJsonArray.push({ gameweek: i, data: gameweekJson });
+  
+          // Do something with the gameweek data, such as parsing and displaying it
+        } catch (error) {
+          console.error(error);
+          
+          continue;
+        }
       }
   
       const expectedGoalsByGameweek = gameweekJsonArray.reduce((acc, gw) => {
@@ -64,7 +90,8 @@ const Expected = async () => {
             const positionObj = elementTypes.find((position) => position.id === playerObj.element_type);
             const teamObj = teams.find((team) => team.id === playerObj.team);
             if (positionObj) {
-            gwObj.position = positionObj.singular_name_short;
+            gwObj.position_short = positionObj.singular_name_short;
+            gwObj.position = positionObj.singular_name;
             }
             if (teamObj) {
             gwObj.team = teamObj.short_name;
@@ -101,7 +128,8 @@ Object.values(xGTotal).forEach((playerObj) => {
     const positionObj = elementTypes.find((position) => position.id === playerData.element_type);
     const teamObj = teams.find((team) => team.id === playerData.team);
     if (positionObj) {
-      playerObj.position = positionObj.singular_name_short;
+      playerObj.position_short = positionObj.singular_name_short;
+      playerObj.position = positionObj.singular_name;
     }
     if (teamObj) {
       playerObj.team = teamObj.short_name;
@@ -144,7 +172,8 @@ for (let gw = startGameweek; gw <= endGameweek; gw++) {
       const positionObj = elementTypes.find((position) => position.id === playerData.element_type);
       const teamObj = teams.find((team) => team.id === playerData.team);
       if (positionObj) {
-        playerObj.position = positionObj.singular_name_short;
+        playerObj.position_short = positionObj.singular_name_short;
+        playerObj.position = positionObj.singular_name;
       }
       if (teamObj) {
         playerObj.team = teamObj.short_name;
@@ -155,55 +184,55 @@ for (let gw = startGameweek; gw <= endGameweek; gw++) {
     }
   });
 
-  const groupedDataCurrent = {};
-  const groupedDataLast4 = {};
-  const groupedDataLast6 = {};
-  currentGameweekXG.forEach((player) => {
-      if (!groupedDataCurrent[player.teamLong]) {
-        groupedDataCurrent[player.teamLong] = [];
-      }
-      groupedDataCurrent[player.teamLong].push(player);
-    });
+  // const groupedDataCurrent = {};
+  // const groupedDataLast4 = {};
+  // const groupedDataLast6 = {};
+  // currentGameweekXG.forEach((player) => {
+  //     if (!groupedDataCurrent[player.teamLong]) {
+  //       groupedDataCurrent[player.teamLong] = [];
+  //     }
+  //     groupedDataCurrent[player.teamLong].push(player);
+  //   });
 
-    Object.values(xGTotalLast4Gameweeks).forEach((player) => {
-      if (!groupedDataLast4[player.teamLong]) {
-        groupedDataLast4[player.teamLong] = [];
-      }
-      groupedDataLast4[player.teamLong].push(player);
-    });
+  //   Object.values(xGTotalLast4Gameweeks).forEach((player) => {
+  //     if (!groupedDataLast4[player.teamLong]) {
+  //       groupedDataLast4[player.teamLong] = [];
+  //     }
+  //     groupedDataLast4[player.teamLong].push(player);
+  //   });
 
-    Object.values(xGTotal).forEach((player) => {
-      if (!groupedDataLast6[player.teamLong]) {
-        groupedDataLast6[player.teamLong] = [];
-      }
-      groupedDataLast6[player.teamLong].push(player);
-    });
+  //   Object.values(xGTotal).forEach((player) => {
+  //     if (!groupedDataLast6[player.teamLong]) {
+  //       groupedDataLast6[player.teamLong] = [];
+  //     }
+  //     groupedDataLast6[player.teamLong].push(player);
+  //   });
 
 
-    for (const teamLong in groupedDataCurrent) {
-      groupedDataCurrent[teamLong].sort(customSort);
-    }
+  //   for (const teamLong in groupedDataCurrent) {
+  //     groupedDataCurrent[teamLong].sort(customSort);
+  //   }
 
-    for (const teamLong in groupedDataLast4) {
-      groupedDataLast4[teamLong].sort(customSort);
-    }
+  //   for (const teamLong in groupedDataLast4) {
+  //     groupedDataLast4[teamLong].sort(customSort);
+  //   }
 
-    for (const teamLong in groupedDataLast6) {
-      groupedDataLast6[teamLong].sort(customSort);
-    }
+  //   for (const teamLong in groupedDataLast6) {
+  //     groupedDataLast6[teamLong].sort(customSort);
+  //   }
     
   
   
-  const expectedGoalsCurrentWeek = currentGameweekXG?.sort((a, b) => b.xGI - a.xGI);
-  const finalexpectedGoalsCurrentGameweek = expectedGoalsCurrentWeek.splice(0, 15);
+  // const expectedGoalsCurrentWeek = currentGameweekXG?.sort((a, b) => b.xGI - a.xGI);
+  // const finalexpectedGoalsCurrentGameweek = expectedGoalsCurrentWeek.splice(0, 15);
   
-  const sortedExpectedGoalsLast4 = Object.values(xGTotalLast4Gameweeks).sort((a, b) => parseFloat(b.xGI) - parseFloat(a.xGI));
-  const sortedExpectedGoalsLast6 = Object.values(xGTotal).sort((a, b) => parseFloat(b.xGI) - parseFloat(a.xGI));
+  // const sortedExpectedGoalsLast4 = Object.values(xGTotalLast4Gameweeks).sort((a, b) => parseFloat(b.xGI) - parseFloat(a.xGI));
+  // const sortedExpectedGoalsLast6 = Object.values(xGTotal).sort((a, b) => parseFloat(b.xGI) - parseFloat(a.xGI));
 
-  const splicedExpectedGoalsLast4 = sortedExpectedGoalsLast4.splice(0, 15);
-  const splicedExpectedGoalsLast6 = sortedExpectedGoalsLast6.splice(0, 15);
+  // const splicedExpectedGoalsLast4 = sortedExpectedGoalsLast4.splice(0, 15);
+  // const splicedExpectedGoalsLast6 = sortedExpectedGoalsLast6.splice(0, 15);
 
-  return <DisplayExpected expectedGoalsCurrentGameweek={finalexpectedGoalsCurrentGameweek} expectedGoalsLast4={splicedExpectedGoalsLast4} expectedGoalsLast6={splicedExpectedGoalsLast6} groupedDataCurrent={groupedDataCurrent} groupedDataLast4={groupedDataLast4} groupedDataLast6={groupedDataLast6}/>
+  return <DisplayExpected currentGameweekXG={currentGameweekXG} xGTotalLast4Gameweeks={xGTotalLast4Gameweeks} xGTotal={xGTotal}/>
   }catch (error) {
       console.error(error);
       return <>
@@ -226,14 +255,14 @@ for (let gw = startGameweek; gw <= endGameweek; gw++) {
 export default Expected
 
 
-// Create a custom sorting function
-const customSort = (a, b) => {
+// // Create a custom sorting function
+// const customSort = (a, b) => {
   
-  // Sort by position
-  if (a.position !== b.position) {
-    return a.position.localeCompare(b.position);
-  }
+//   // Sort by position
+//   if (a.position !== b.position) {
+//     return a.position.localeCompare(b.position);
+//   }
   
-  // Sort by xGI
-  return b.xGI - a.xGI;
-};
+//   // Sort by xGI
+//   return b.xGI - a.xGI;
+// };

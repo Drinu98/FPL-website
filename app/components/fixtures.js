@@ -36,13 +36,11 @@ async function getFixtures() {
     
     const fixtures = await res2.json();
 
-    
-
-    if (!fixtures) {
-        console.log('The game is being updated');
-        res.send("The game is being updated.");
-        return;
-    }
+    // if (!fixtures) {
+    //     console.log('The game is being updated');
+    //     res.send("The game is being updated.");
+    //     return;
+    // }
   
     const fixturesArray = [];
     const bonusStatsArray = [];
