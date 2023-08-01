@@ -63,7 +63,7 @@ async function getStatistics() {
             starts: player.starts, 
             photo: `https://resources.premierleague.com/premierleague/photos/players/110x140/p${player.photo.replace(".jpg", ".png")}`,
             position_short: position ? position.plural_name_short : '',
-            position_long: position ? position.singular_name : '',
+            position_long: position ? position.plural_name : '',
             team_short: team ? team.short_name : '',
             team: team ? team.name : '',
           };

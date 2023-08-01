@@ -27,22 +27,22 @@ const Expected = async () => {
       const currentGameweekData = events?.find(event => event?.is_current === true) ?? events?.find(event => event?.is_next === true) ?? 'Error: ID is undefined.';
       const currentGameweek = currentGameweekData?.id;
 
-      try{
-          const gameweekData = await fetch(`https://fantasy.premierleague.com/api/event/${currentGameweek}/live/` , {
-            next: {
-              revalidate: 120
-            },
-          }
-        );
-          const gameweekJson = await gameweekData.json();
-          gameweekJsonArray.push({gameweek: currentGameweek, data: gameweekJson});
-          // console.log(gameweekJsonArray);
+      // try{
+      //     const gameweekData = await fetch(`https://fantasy.premierleague.com/api/event/${currentGameweek}/live/` , {
+      //       next: {
+      //         revalidate: 120
+      //       },
+      //     }
+      //   );
+      //     const gameweekJson = await gameweekData.json();
+      //     gameweekJsonArray.push({gameweek: currentGameweek, data: gameweekJson});
+      //     // console.log(gameweekJsonArray);
           
-          // Do something with the gameweek data, such as parsing and displaying it
+      //     // Do something with the gameweek data, such as parsing and displaying it
       
-      }catch(error) {
-          console.error(error);
-      }
+      // }catch(error) {
+      //     console.error(error);
+      // }
 
       for (let i = currentGameweek; i >= currentGameweek - 6; i--) {
         try {
@@ -91,7 +91,7 @@ const Expected = async () => {
             const teamObj = teams.find((team) => team.id === playerObj.team);
             if (positionObj) {
             gwObj.position_short = positionObj.singular_name_short;
-            gwObj.position = positionObj.singular_name;
+            gwObj.position = positionObj.plural_name;
             }
             if (teamObj) {
             gwObj.team = teamObj.short_name;
@@ -129,7 +129,7 @@ Object.values(xGTotal).forEach((playerObj) => {
     const teamObj = teams.find((team) => team.id === playerData.team);
     if (positionObj) {
       playerObj.position_short = positionObj.singular_name_short;
-      playerObj.position = positionObj.singular_name;
+      playerObj.position = positionObj.plural_name;
     }
     if (teamObj) {
       playerObj.team = teamObj.short_name;
@@ -173,7 +173,7 @@ for (let gw = startGameweek; gw <= endGameweek; gw++) {
       const teamObj = teams.find((team) => team.id === playerData.team);
       if (positionObj) {
         playerObj.position_short = positionObj.singular_name_short;
-        playerObj.position = positionObj.singular_name;
+        playerObj.position = positionObj.plural_name;
       }
       if (teamObj) {
         playerObj.team = teamObj.short_name;

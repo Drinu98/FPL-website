@@ -22,7 +22,7 @@ export default async function Home() {
           <Image
               src="/images/whitelogo.png"
               alt="FPL Focal Logo"
-              width={80}
+              width={75}
               height={80}
               className='app-logo'
           />

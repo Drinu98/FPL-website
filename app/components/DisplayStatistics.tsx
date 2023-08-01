@@ -56,31 +56,10 @@ const DisplayStatistics = (props: DisplayTransfersProps) => {
     const {playerData} = props
     // const [showTransfers, setTransfers] = useState<DisplayPlayersType>('selected');
     const [selectedFilter, setSelectedFilter] = useState<string>(""); // State for selected position or team
-    const [selectedProperty, setSelectedProperty] = useState<keyof Player>('ict_index');
+    const [selectedProperty, setSelectedProperty] = useState<keyof Player>('selected_by_percent');
     // const [sortedAndTrimmedData, setSortedAndTrimmedData] = useState<Player[]>([]);
     const [sortedAndFilteredData, setSortedAndFilteredData] = useState<Player[]>([]);
-
-    // const sortData = (data: Player[], property: keyof Player) => {
-    //   return data.slice().sort((a, b) => {
-    //     if (property === 'selected_by_percent' || property === 'total_points' || property === 'cost') {
-    //       const aValue = parseFloat(String(a[property]));
-    //       const bValue = parseFloat(String(b[property]));
-    
-    //       if (!isNaN(aValue) && !isNaN(bValue)) {
-    //         // If both values are valid numbers, compare them as numbers
-    //         return bValue - aValue;
-    //       }
-    //     } else {
-    //       // For other properties, compare them as strings
-    //       const aStr = String(a[property]);
-    //       const bStr = String(b[property]);
-    //       return bStr.localeCompare(aStr);
-    //     }
-    
-    //     // Default return value when no specific conditions are met
-    //     return 0;
-    //   });
-    // };
+    const [sortOrder, setSortOrder] = useState('asc'); // 'asc' or 'desc'
 
     const sortData = (data: Player[], property: keyof Player) => {
       const customCompare = (a: string | number, b: string | number) => {
@@ -126,11 +105,6 @@ const DisplayStatistics = (props: DisplayTransfersProps) => {
     setSelectedFilter(selectedFilter);
   };
 
-    // useEffect(() => {
-    //   const sortedData = sortData(playerData, selectedProperty);
-    //   const trimmedData = trimData(sortedData);
-    //   setSortedAndTrimmedData(trimmedData);
-    // }, [playerData, selectedProperty]);
 
     useEffect(() => {
       // Filter the data based on selected position or team
@@ -147,9 +121,6 @@ const DisplayStatistics = (props: DisplayTransfersProps) => {
       setSortedAndFilteredData(trimmedData);
     }, [playerData, selectedFilter, selectedProperty]);
 
-    // function toggleDisplayPlayers(nextDisplayType : DisplayPlayersType) {
-    //   setTransfers(nextDisplayType);
-    // }
     useEffect(() => {
       // Set the default value of the filter to "All Positions/Teams" when the page loads
       setSelectedFilter("");
@@ -205,6 +176,20 @@ const DisplayStatistics = (props: DisplayTransfersProps) => {
         team: "Team name"
       };
 
+      // const handleSortClick = (columnName : any) => {
+      //   // Sort the selectedData array by the given column name
+      //   const sortedData = sortedAndFilteredData.sort((a : any, b : any) => {
+      //     if (sortOrder === 'asc') {
+      //       return a[columnName] - b[columnName];
+      //     } else {
+      //       return b[columnName] - a[columnName];
+      //     }
+      //   });
+    
+      //   setSortedAndFilteredData(sortedData);
+      //   setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+      // };
+
     return (
         <div className='transfers-container'>
         <div className='graphic-container'>
@@ -235,7 +220,7 @@ const DisplayStatistics = (props: DisplayTransfersProps) => {
         {/* <div className="text-center captaincy-button-box"> */}
         <select value={selectedProperty} onChange={handlePropertySelect} className='statistics-select select'>
             {/* Display all keys as options, except 'web_name' */}
-            {Object.keys(playerData[0]).filter(key => key !== 'web_name' && key !== 'position' && key !== 'photo' && key !== 'team' && key !== 'position_short' && key !== 'position_long').map((key, index) => (
+            {Object.keys(playerData[0]).filter(key => key !== 'web_name' && key !== 'position' && key !== 'photo' && key !== 'team' && key !== 'team_short' && key !== 'position_short' && key !== 'position_long').map((key, index) => (
               <option key={index} value={key as DisplayPlayersTypes}>
                 {customDisplayNames[key as DisplayPlayersTypes]}
               </option>
@@ -248,7 +233,7 @@ const DisplayStatistics = (props: DisplayTransfersProps) => {
                     <th className="transfer-header"></th>
                     <th className="transfer-header"></th>
                     <th className="transfer-header">Name</th>
-                    <th className="transfer-header">Cost</th>
+                    <th className='transfer-header'>Cost</th>
                     <th className="transfer-header">Selected</th>
                     <th className="transfer-header">Points</th>
                     <th className="transfer-header">**</th>
@@ -260,7 +245,7 @@ const DisplayStatistics = (props: DisplayTransfersProps) => {
                 <tbody className="transfers-body">
                   {sortedAndFilteredData.map((player, index) => (
                     <tr key={index} className="table-row">
-                      <td><Image className="player-photo" src={player.photo} alt={player.web_name} width={65} height={80}/></td>
+                      <td><Image className="player-photo" src={player.photo} alt={player.web_name} width={65} height={75}/></td>
                       <td></td>
                       <td className="player-info">
                         <div style={{textAlign: 'left'}}>{player.web_name}</div>

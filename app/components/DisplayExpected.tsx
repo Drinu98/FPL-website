@@ -22,12 +22,17 @@ type ExpectedProps = {
 function Expected(props: ExpectedProps) {
     const {currentGameweekXG, xGTotalLast4Gameweeks, xGTotal} = props
     const [selectedData, setSelectedData] = useState(currentGameweekXG);
-    const [selectedTeam, setSelectedTeam] = useState('');
+    const [selectedFilter, setSelectedFilter] = useState<string>("");
     const [selectedPosition, setSelectedPosition] = useState('');
     const [sortOrder, setSortOrder] = useState('asc'); // 'asc' or 'desc'
 
-
-
+    const positions = Array.from(new Set(currentGameweekXG.map((player) => player.position)));
+    const teams = Array.from(new Set(currentGameweekXG.map((player) => player.teamLong)));
+    
+    const handleFilterSelect = (event: React.ChangeEvent<HTMLSelectElement>) => {
+      const selectedFilter = event.target.value;
+      setSelectedFilter(selectedFilter);
+    };
   const handleDataSelect = (event: React.FormEvent<HTMLSelectElement>) => {
     const value = event.currentTarget.value;
     switch(value) {
@@ -46,21 +51,21 @@ function Expected(props: ExpectedProps) {
     }
   }
 
-  const handleSelectChange = (event: React.FormEvent<HTMLSelectElement>) => {
-    const selectName = event.currentTarget.name;
-    const value = event.currentTarget.value;
+  // const handleSelectChange = (event: React.FormEvent<HTMLSelectElement>) => {
+  //   const selectName = event.currentTarget.name;
+  //   const value = event.currentTarget.value;
 
-    switch (selectName) {
-      case 'teamSelect':
-        setSelectedTeam(value);
-        break;
-      case 'positionSelect':
-        setSelectedPosition(value);
-        break;
-      default:
-        break;
-    }
-  };
+  //   switch (selectName) {
+  //     case 'teamSelect':
+  //       setSelectedTeam(value);
+  //       break;
+  //     case 'positionSelect':
+  //       setSelectedPosition(value);
+  //       break;
+  //     default:
+  //       break;
+  //   }
+  // };
 
   const handleSortClick = (columnName : any) => {
     // Sort the selectedData array by the given column name
@@ -89,15 +94,36 @@ function Expected(props: ExpectedProps) {
           <option value="xGTotalLast4Gameweeks">Last 4 GWs</option>
           <option value="xGTotal">Last 6 GWs</option>
       </select>
-      <select value={selectedTeam} onChange={handleSelectChange} className='expected-select-teams select'>
-        <option value="">Select a Team</option>
+      <select
+            value={selectedFilter}
+            onChange={handleFilterSelect}
+            className="expected-select-teams  select"
+          >
+            <option value="">All Players</option>
+            <optgroup label="Positions">
+              {positions.map((position, index) => (
+                <option key={index} value={position}>
+                  {position}
+                </option>
+              ))}
+            </optgroup>
+            <optgroup label="Teams">
+              {teams.map((team, index) => (
+                <option key={index} value={team}>
+                  {team}
+                </option>
+              ))}
+            </optgroup>
+          </select>
+      {/* <select value={selectedTeam} onChange={handleSelectChange} className='expected-select-teams select'> */}
+        {/* <option value="">Select a Team</option> */}
         {/* {Object.keys(groupedDataCurrent).map((teamLong) => (
           <option key={teamLong} value={teamLong}>
             {teamLong}
           </option>
         ))} */}
-      </select>
-      <select value={selectedTeam} onChange={handleSelectChange} className='expected-select-teams select'>
+      {/* </select> */}
+      <select value={selectedFilter} onChange={handleFilterSelect} className='expected-select-teams select'>
         <option value="">Select a Position</option>
         {/* {Object.keys(groupedDataCurrent).map((teamLong) => (
           <option key={teamLong} value={teamLong}>
