@@ -144,9 +144,30 @@ const xGTotalLast4Gameweeks = {};
 const startGameweek = currentGameweek - 5;
 const endGameweek = currentGameweek - 1;
 
+// for (let gw = startGameweek; gw <= endGameweek; gw++) {
+//   const gwArray = expectedGoalsByGameweek[gw];
+//   if (gwArray) {
+//     gwArray.forEach((gwObj) => {
+//       const playerId = gwObj.id;
+//       if (!xGTotalLast4Gameweeks[playerId]) {
+//         xGTotalLast4Gameweeks[playerId] = {
+//           id: playerId,
+//           xG: parseFloat(gwObj.xG).toFixed(3),
+//           xGA: parseFloat(gwObj.xGA).toFixed(3),
+//           xGI: parseFloat(gwObj.xGI).toFixed(3),
+//         };
+//       } else {
+//         xGTotalLast4Gameweeks[playerId].xG = (parseFloat(xGTotalLast4Gameweeks[playerId].xG) + parseFloat(gwObj.xG)).toFixed(1);
+//         xGTotalLast4Gameweeks[playerId].xGA = (parseFloat(xGTotalLast4Gameweeks[playerId].xGA) + parseFloat(gwObj.xGA)).toFixed(1);
+//         xGTotalLast4Gameweeks[playerId].xGI = (parseFloat(xGTotalLast4Gameweeks[playerId].xGI) + parseFloat(gwObj.xGI)).toFixed(2);
+//       }
+//     });
+//   }
+// }
+
 for (let gw = startGameweek; gw <= endGameweek; gw++) {
   const gwArray = expectedGoalsByGameweek[gw];
-  if (gwArray) {
+  if (gwArray && gwArray.length > 0) {
     gwArray.forEach((gwObj) => {
       const playerId = gwObj.id;
       if (!xGTotalLast4Gameweeks[playerId]) {
@@ -162,8 +183,13 @@ for (let gw = startGameweek; gw <= endGameweek; gw++) {
         xGTotalLast4Gameweeks[playerId].xGI = (parseFloat(xGTotalLast4Gameweeks[playerId].xGI) + parseFloat(gwObj.xGI)).toFixed(2);
       }
     });
+  } else {
+    // Handle the case when gameweek data is not found or empty
+    console.log(`Gameweek ${gw} data not found.`);
+    // You can choose to add default values, skip, or perform other actions as per your requirement.
   }
 }
+
 
 // Add position and team data to the xGTotalLast4Gameweeks object
   Object.values(xGTotalLast4Gameweeks).forEach((playerObj) => {

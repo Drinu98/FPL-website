@@ -18,6 +18,21 @@ body{
   padding-top: 50px;
 }
 
+.error-container {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  margin-top: 300px;
+}
+
+.errorPage-text{
+  font-size: 40px;
+  color: white;
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+
 ul{
   padding: 0 !important;
 }
@@ -738,6 +753,20 @@ border-radius: 50%;
 overflow: visible;
 vertical-align: -0.125em;
 transition: all 0.5s ease 0s;
+}
+
+.fa-arrows-rotate{
+  display: var(--fa-display, inline-block);
+  padding: 20px;
+  color: black;
+  background-color: white;
+  height: 22px !important;
+  width: 22px;
+  border-radius: 50%;
+  overflow: visible;
+  vertical-align: -0.125em;
+  transition: all 0.5s ease 0s;
+  cursor: pointer;
 }
 
 ul{
@@ -1593,6 +1622,15 @@ padding-left: 0;
   margin-bottom: auto;
 }
 
+.error-message-gameweek{
+  color: black;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
 .error-logo {
   /* height: 5.5rem; */
   pointer-events: none;
@@ -1617,6 +1655,10 @@ padding-left: 0;
   .error-message
   {
       font-size: 1.5rem;
+  }
+  .error-message-gameweek
+  {
+    font-size: 1.3rem;
   }
 }
 
@@ -1655,25 +1697,26 @@ padding-left: 0;
   {
     font-size: 1.6rem;
   }
-}
-
-@media (max-width:480px){
   .error-message-captaincy
   {
     font-size: 1.6rem;
   }
 }
 
+
 @media (max-width:400px){
   .error-message
   {
     font-size: 1.3rem;
   }
-}
-@media (max-width:400px){
   .error-message-captaincy
   {
     font-size: 1.3rem;
   }
+  .error-message-gameweek
+  {
+    font-size: 1.3rem;
+  }
 }
+
 

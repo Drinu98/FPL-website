@@ -2,6 +2,7 @@ import Image from "next/image";
 import DisplayUpcomingFixtures from "./DisplayUpcomingFixtures";
 
 async function getUpcomingFixtures() {
+  try{
     const res = await fetch('https://fantasy.premierleague.com/api/bootstrap-static/', 
     {
       next: {
@@ -19,10 +20,9 @@ async function getUpcomingFixtures() {
       // This will activate the closest `error.js` Error Boundary
       throw new Error('Failed to fetch data');
     }
-  
-    const upcomingGameweek = events?.find(event => event.is_current === false && event.is_next === true).id;
     
-
+    const upcomingGameweek = events?.find(event => event.is_next === true).id;
+    
     const res2  = await fetch(`https://fantasy.premierleague.com/api/fixtures?event=${upcomingGameweek}`, 
     {
       next: {
@@ -35,11 +35,11 @@ async function getUpcomingFixtures() {
 
     
 
-    if (!fixtures) {
-        console.log('The game is being updated');
-        res.send("The game is being updated.");
-        return;
-    }
+    // if (!fixtures) {
+    //     console.log('The game is being updated');
+    //     res.send("The game is being updated.");
+    //     return;
+    // }
   
     const fixturesArray = [];
         for (let fixture of Object.values(fixtures)) {
@@ -64,13 +64,24 @@ async function getUpcomingFixtures() {
 
       
     }
-
+    
     return fixturesArray;
+
+  }catch(error){
+    console.error(error);
   }
+    
+}
 
 
-  export default async function UpcomingFixtures(){
+export default async function UpcomingFixtures(){
+  try{
     const fixturesArray = await getUpcomingFixtures();
-
+    
     return <DisplayUpcomingFixtures fixturesArray={fixturesArray} />
+  }catch(error){
+    console.error(error);
+    <p>no gameweeks</p>
   }
+    
+}
