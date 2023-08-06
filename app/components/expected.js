@@ -257,7 +257,7 @@ for (let gw = startGameweek; gw <= endGameweek; gw++) {
 
   // const splicedExpectedGoalsLast4 = sortedExpectedGoalsLast4.splice(0, 15);
   // const splicedExpectedGoalsLast6 = sortedExpectedGoalsLast6.splice(0, 15);
-
+  
   return <DisplayExpected currentGameweekXG={currentGameweekXG} xGTotalLast4Gameweeks={xGTotalLast4Gameweeks} xGTotal={xGTotal}/>
   }catch (error) {
       console.error(error);

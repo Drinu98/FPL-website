@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 type Player = {
     name: string
@@ -19,11 +19,13 @@ type ExpectedProps = {
   xGTotal: Array<Player>
 }
 
+type DisplayGamweeksType = 'currentGameweekXG' | 'xGTotalLast4Gameweeks' | 'xGTotal'
+
 function Expected(props: ExpectedProps) {
     const {currentGameweekXG, xGTotalLast4Gameweeks, xGTotal} = props
     const [selectedData, setSelectedData] = useState(currentGameweekXG);
     const [selectedFilter, setSelectedFilter] = useState<string>("");
-    const [selectedPosition, setSelectedPosition] = useState('');
+    const [sortedAndFilteredData, setSortedAndFilteredData] = useState<Player[]>([]);
     const [sortOrder, setSortOrder] = useState('asc'); // 'asc' or 'desc'
 
     const positions = Array.from(new Set(currentGameweekXG.map((player) => player.position)));
@@ -33,43 +35,118 @@ function Expected(props: ExpectedProps) {
       const selectedFilter = event.target.value;
       setSelectedFilter(selectedFilter);
     };
-  const handleDataSelect = (event: React.FormEvent<HTMLSelectElement>) => {
-    const value = event.currentTarget.value;
-    switch(value) {
-      case 'currentGameweekXG':
-        setSelectedData(currentGameweekXG);
-        break;
-      case 'xGTotalLast4Gameweeks':
-        setSelectedData(xGTotalLast4Gameweeks);
-        break;
-      case 'xGTotal':
-        setSelectedData(xGTotal);
-        break; 
-      default:
-        setSelectedData(currentGameweekXG);
-        break;
-    }
-  }
-
-  // const handleSelectChange = (event: React.FormEvent<HTMLSelectElement>) => {
-  //   const selectName = event.currentTarget.name;
+  // const handleDataSelect = (event: React.FormEvent<HTMLSelectElement>) => {
   //   const value = event.currentTarget.value;
-
-  //   switch (selectName) {
-  //     case 'teamSelect':
-  //       setSelectedTeam(value);
+  //   switch(value) {
+  //     case 'currentGameweekXG':
+  //       setSelectedData(currentGameweekXG);
   //       break;
-  //     case 'positionSelect':
-  //       setSelectedPosition(value);
+  //     case 'xGTotalLast4Gameweeks':
+  //       setSelectedData(xGTotalLast4Gameweeks);
   //       break;
+  //     case 'xGTotal':
+  //       setSelectedData(xGTotal);
+  //       break; 
   //     default:
+  //       setSelectedData(currentGameweekXG);
   //       break;
   //   }
-  // };
+  // }
+
+//   const handleDataSelect = (event: React.FormEvent<HTMLSelectElement>) => {
+//     const value = event.currentTarget.value;
+//     let selectedData = [];
+
+//     switch (value) {
+//       case 'currentGameweekXG':
+//           selectedData = currentGameweekXG?.sort((a, b) => parseFloat(b.xGI) - parseFloat(a.xGI)).slice(0, 15);
+//           break;
+//       case 'xGTotalLast4Gameweeks':
+//           selectedData = xGTotalLast4Gameweeks?.sort((a, b) => parseFloat(b.xGI) - parseFloat(a.xGI)).slice(0, 15);
+//           break;
+//       case 'xGTotal':
+//           selectedData = xGTotal?.sort((a, b) => parseFloat(b.xGI) - parseFloat(a.xGI)).slice(0, 15);
+//           break;
+//       default:
+//           selectedData = currentGameweekXG?.sort((a, b) => parseFloat(b.xGI) - parseFloat(a.xGI)).slice(0, 15);
+//           break;
+//   }
+
+//     setSelectedData(selectedData);
+// }
+
+// const handleDataSelect = (event: React.FormEvent<HTMLSelectElement>) => {
+//   const value = event.currentTarget.value;
+
+//   let filteredData: Player[] = [];
+//   switch (value) {
+//     case 'currentGameweekXG':
+//       filteredData = currentGameweekXG.filter((player) => {
+//         if (selectedFilter === '') return true;
+//         return player.position === selectedFilter || player.teamLong === selectedFilter;
+//       });
+//       break;
+//     case 'xGTotalLast4Gameweeks':
+//       filteredData = xGTotalLast4Gameweeks.filter((player) => {
+//         if (selectedFilter === '') return true;
+//         return player.position === selectedFilter || player.teamLong === selectedFilter;
+//       });
+//       break;
+//     case 'xGTotal':
+//       filteredData = xGTotal.filter((player) => {
+//         if (selectedFilter === '') return true;
+//         return player.position === selectedFilter || player.teamLong === selectedFilter;
+//       });
+//       break;
+//     default:
+//       break;
+//   }
+
+//   setSortedAndFilteredData(filteredData);
+// };
+
+const handleDataSelect = (event: React.FormEvent<HTMLSelectElement>) => {
+  const value = event.currentTarget.value;
+
+  let selectedData: Player[] = [];
+  switch (value) {
+    case 'currentGameweekXG':
+      selectedData = currentGameweekXG;
+      break;
+    case 'xGTotalLast4Gameweeks':
+      selectedData = xGTotalLast4Gameweeks;
+      break;
+    case 'xGTotal':
+      selectedData = xGTotal;
+      break;
+    default:
+      selectedData = currentGameweekXG;
+      break;
+  }
+
+  // Sort the data in descending order based on xGI
+  const sortedData = selectedData.sort((a, b) => parseFloat(b.xGI) - parseFloat(a.xGI));
+
+  // Splice the list to show only the top 15 players
+  const slicedData = sortedData.slice(0, 15);
+
+  // Apply the selected filter if it is set
+  let filteredData: Player[] = [];
+  if (selectedFilter) {
+    filteredData = slicedData.filter(
+      (player) => player.position === selectedFilter || player.teamLong === selectedFilter
+    );
+  } else {
+    filteredData = slicedData;
+  }
+
+  setSortedAndFilteredData(filteredData);
+};
+
 
   const handleSortClick = (columnName : any) => {
     // Sort the selectedData array by the given column name
-    const sortedData = selectedData.sort((a : any, b : any) => {
+    const sortedData = sortedAndFilteredData.sort((a : any, b : any) => {
       if (sortOrder === 'asc') {
         return a[columnName] - b[columnName];
       } else {
@@ -89,11 +166,6 @@ function Expected(props: ExpectedProps) {
             <h2 className='transfers-title'>Expected Data</h2>
         </div>
       <div style={{overflowY: 'auto', overflowX: 'hidden'}}>
-      <select className='expected-select select' onChange={handleDataSelect} value={selectedData === currentGameweekXG ? 'currentGameweekXG' : selectedData === xGTotalLast4Gameweeks ? 'xGTotalLast4Gameweeks' : 'xGTotal'}>
-          <option value="currentGameweekXG">Current Gameweek</option>
-          <option value="xGTotalLast4Gameweeks">Last 4 GWs</option>
-          <option value="xGTotal">Last 6 GWs</option>
-      </select>
       <select
             value={selectedFilter}
             onChange={handleFilterSelect}
@@ -115,21 +187,10 @@ function Expected(props: ExpectedProps) {
               ))}
             </optgroup>
           </select>
-      {/* <select value={selectedTeam} onChange={handleSelectChange} className='expected-select-teams select'> */}
-        {/* <option value="">Select a Team</option> */}
-        {/* {Object.keys(groupedDataCurrent).map((teamLong) => (
-          <option key={teamLong} value={teamLong}>
-            {teamLong}
-          </option>
-        ))} */}
-      {/* </select> */}
-      <select value={selectedFilter} onChange={handleFilterSelect} className='expected-select-teams select'>
-        <option value="">Select a Position</option>
-        {/* {Object.keys(groupedDataCurrent).map((teamLong) => (
-          <option key={teamLong} value={teamLong}>
-            {teamLong}
-          </option>
-        ))} */}
+      <select className='expected-select select' onChange={handleDataSelect} value={selectedData === currentGameweekXG ? 'currentGameweekXG' : selectedData === xGTotalLast4Gameweeks ? 'xGTotalLast4Gameweeks' : 'xGTotal'}>
+          <option value="currentGameweekXG">Current Gameweek</option>
+          <option value="xGTotalLast4Gameweeks">Last 4 GWs</option>
+          <option value="xGTotal">Last 6 GWs</option>
       </select>
         <div>
           <table style={{width: '100%'}}>
@@ -157,7 +218,7 @@ function Expected(props: ExpectedProps) {
               </tr>
             </thead>
             <tbody>
-              {selectedData.map((gwObj, index) => (
+              {sortedAndFilteredData.map((gwObj, index) => (
                 <tr key={index} className="table-row">
                   <td></td>
                   <td className="player-info" style={{textAlign: 'left'}}>{gwObj.name}

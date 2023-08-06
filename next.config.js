@@ -4,7 +4,6 @@ const nextConfig = {
   images: {
     domains: ['resources.premierleague.com'], // Add 'resources.premierleague.com' to the domains array
   },
-  exclude: ['api'],
 }
 
 module.exports = nextConfig

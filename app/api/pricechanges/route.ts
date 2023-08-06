@@ -66,15 +66,20 @@ export async function GET(){
 
   const previousPriceChanges = await prisma.priceChanges.findMany({});
 
+  const updatedDates = previousPriceChanges.map((dates) => {
+    const date = new Date(dates.updatedAt);
+    return date.toLocaleDateString('en-GB');
+  });
+  
+  const currentDate = new Date();
+  const todayDate = currentDate.toLocaleDateString('en-GB');
 
-
-// const newRisingPlayers = risingPlayers.filter((risingPlayer) => {
-//   // Check if the player's ID exists in oldRisers array
-//   const exists = previousPriceChanges.some((oldRiser) => oldRiser.playerElementId === risingPlayer.id);
-
-//   // Return false to remove the player from risingPlayers array
-//   return !exists;
-// });
+  if (updatedDates.some((dates) => dates === todayDate)) {
+    console.log("Dates match!");
+    return;
+  }else {
+    console.log("Dates are different.");
+  }
 
 const newRisingPlayers = risingPlayers.filter((risingPlayer) => {
   // Check if the player's ID exists in oldRisers array
@@ -92,15 +97,6 @@ const newFallingPlayers = fallingPlayers.filter((fallingPlayer) => {
   return !matchingOldFaller || matchingOldFaller.cost !== fallingPlayer.cost;
 });
 
-
-
-// const newFallingPlayers = fallingPlayers.filter((fallingPlayer) => {
-//   // Check if the player's ID exists in oldFallers array
-//   const exists = previousPriceChanges.some((oldFaller) => oldFaller.playerElementId === fallingPlayer.id);
-
-//   // Return false to remove the player from fallingPlayers array
-//   return !exists;
-// });
   
   await prisma.$transaction(async ($tx) => {
     await Promise.all([
