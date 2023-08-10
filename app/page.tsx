@@ -101,6 +101,18 @@ export default async function Home() {
                     </div>
                   </div>              
                 </div>
+                <div className='widget12'>
+                  <div className='graphic-container'>
+                    <h2 className='transfers-title'>Youtube</h2>
+                    </div>
+                    <div className="outer-container-youtube">
+                      <div className="inner-container">
+                      <Link href={'https://www.youtube.com/@FPLFocal'}>
+                        <div className="image-container-youtube"></div>
+                      </Link>
+                      </div>
+                    </div>                    
+                </div>
               </div>
               <div className='col-lg-5'>
                 <div className='widget10'>

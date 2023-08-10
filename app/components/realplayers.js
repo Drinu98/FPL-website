@@ -12,7 +12,7 @@ async function getRealPlayers() {
       // {name: 'Hamza Choudhury', id: 2335177}, 
       // {name: 'Patrick Bamford', id: 3127620}, 
       {name: 'Matt Targett', id: 2926894}, 
-      // {name: 'John McGinn', id: 3536258}, 
+      {name: 'John McGinn', id: 5318110}, 
       // {name: 'Shane Duffy', id: 5510976}, 
       // {name: 'Mohamed Elneny', id: 6347993}, 
       // {name: 'Jack Stephens', id: 3467078}, 

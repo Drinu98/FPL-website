@@ -114,6 +114,11 @@ ul{
   display: flex;
 }
 
+.widget12{
+  height: 18rem;
+  margin-top: 25px;
+}
+
 .transfers-title{
   text-align: center;
   padding-top: 4px;
@@ -127,7 +132,7 @@ td{
   padding: 0.4rem;
 }
 
-.widget, .widget2, .widget3, .widget4, .widget5, .widget6, .widget7, .widget8, .widget9, .widget10, .widget11 {
+.widget, .widget2, .widget3, .widget4, .widget5, .widget6, .widget7, .widget8, .widget9, .widget10, .widget11, .widget12 {
   background-color: aliceblue;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
   border: 5px solid black;
@@ -781,6 +786,15 @@ padding-left: 0;
   margin-right: auto; /* Add padding to make the outer container slightly bigger */
 }
 
+.outer-container-youtube {
+  width: 410px; /* Set the width of the outer container */
+  height: 200px; /* Set the height of the outer container */
+  padding: 20px;
+  margin-left: auto;
+  margin-right: auto; /* Add padding to make the outer container slightly bigger */
+  margin-top: 10px;
+}
+
 .inner-container {
   width: 100%;
   height: 100%;
@@ -797,8 +811,25 @@ padding-left: 0;
 
 }
 
+.image-container-youtube {
+  width: 100%;
+  height: 100%;
+  background-image: url('../public/images/fplyoutube.png');
+  background-size: cover;
+  background-position: center;
+  transition: background-image 0.3s ease;
+  cursor: pointer;
+  border-radius: 8px;
+
+}
+
 .outer-container:hover .image-container {
   background-image: url('../public/images/kits2.png');
+}
+
+.image-container-youtube:hover {
+  border: 3px solid #F2055C;
+  border-radius: 8px; /* Add a red border when hovered */
 }
 
 
@@ -859,6 +890,11 @@ padding-left: 0;
   .statistics-select-teams{
     margin-right: 10px;
   }
+  .outer-container-youtube{
+    width: 350px;
+    height: 150px;
+    margin-top: 30px;
+  }
 }
 
 @media (max-width:1200px){
@@ -877,6 +913,12 @@ padding-left: 0;
   .statistics-select-teams{
     margin-right: 10px;
   }
+  .outer-container-youtube{
+    width: 300px;
+    height: 150px;
+    margin-top: 30px;
+  }
+  
 }
 
 @media (max-width:992px){
@@ -891,6 +933,11 @@ padding-left: 0;
   }
   .statistics-select-teams, .statistics-select{
     width:200px;
+  }
+  .outer-container-youtube{
+    width: 400px;
+    height: 180px;
+    margin-top: 30px;
   }
 }
 
@@ -922,6 +969,11 @@ padding-left: 0;
   .statistics-select-teams, .statistics-select{
     width:150px;
   }
+  .outer-container-youtube{
+    width: 370px;
+    height: 180px;
+    margin-top: 30px;
+  }
 }
 
 @media (max-width:400px){
@@ -937,6 +989,11 @@ padding-left: 0;
   }
   .statistics-select-teams, .statistics-select{
     width:120px;
+  }
+  .outer-container-youtube{
+    width: 320px;
+    height: 160px;
+    margin-top: 30px;
   }
 }
 

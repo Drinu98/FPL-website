@@ -53,58 +53,6 @@ function Expected(props: ExpectedProps) {
   //   }
   // }
 
-//   const handleDataSelect = (event: React.FormEvent<HTMLSelectElement>) => {
-//     const value = event.currentTarget.value;
-//     let selectedData = [];
-
-//     switch (value) {
-//       case 'currentGameweekXG':
-//           selectedData = currentGameweekXG?.sort((a, b) => parseFloat(b.xGI) - parseFloat(a.xGI)).slice(0, 15);
-//           break;
-//       case 'xGTotalLast4Gameweeks':
-//           selectedData = xGTotalLast4Gameweeks?.sort((a, b) => parseFloat(b.xGI) - parseFloat(a.xGI)).slice(0, 15);
-//           break;
-//       case 'xGTotal':
-//           selectedData = xGTotal?.sort((a, b) => parseFloat(b.xGI) - parseFloat(a.xGI)).slice(0, 15);
-//           break;
-//       default:
-//           selectedData = currentGameweekXG?.sort((a, b) => parseFloat(b.xGI) - parseFloat(a.xGI)).slice(0, 15);
-//           break;
-//   }
-
-//     setSelectedData(selectedData);
-// }
-
-// const handleDataSelect = (event: React.FormEvent<HTMLSelectElement>) => {
-//   const value = event.currentTarget.value;
-
-//   let filteredData: Player[] = [];
-//   switch (value) {
-//     case 'currentGameweekXG':
-//       filteredData = currentGameweekXG.filter((player) => {
-//         if (selectedFilter === '') return true;
-//         return player.position === selectedFilter || player.teamLong === selectedFilter;
-//       });
-//       break;
-//     case 'xGTotalLast4Gameweeks':
-//       filteredData = xGTotalLast4Gameweeks.filter((player) => {
-//         if (selectedFilter === '') return true;
-//         return player.position === selectedFilter || player.teamLong === selectedFilter;
-//       });
-//       break;
-//     case 'xGTotal':
-//       filteredData = xGTotal.filter((player) => {
-//         if (selectedFilter === '') return true;
-//         return player.position === selectedFilter || player.teamLong === selectedFilter;
-//       });
-//       break;
-//     default:
-//       break;
-//   }
-
-//   setSortedAndFilteredData(filteredData);
-// };
-
 const handleDataSelect = (event: React.FormEvent<HTMLSelectElement>) => {
   const value = event.currentTarget.value;
 
