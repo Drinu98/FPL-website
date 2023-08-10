@@ -820,6 +820,7 @@ padding-left: 0;
   transition: background-image 0.3s ease;
   cursor: pointer;
   border: 3px solid white;
+  border-radius: 8px;
 
 }
 
