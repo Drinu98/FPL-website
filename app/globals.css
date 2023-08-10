@@ -787,7 +787,7 @@ padding-left: 0;
 }
 
 .outer-container-youtube {
-  width: 410px; /* Set the width of the outer container */
+  width: 420px; /* Set the width of the outer container */
   height: 200px; /* Set the height of the outer container */
   padding: 20px;
   margin-left: auto;
@@ -819,7 +819,7 @@ padding-left: 0;
   background-position: center;
   transition: background-image 0.3s ease;
   cursor: pointer;
-  border-radius: 8px;
+  border: 3px solid white;
 
 }
 
@@ -935,9 +935,9 @@ padding-left: 0;
     width:200px;
   }
   .outer-container-youtube{
-    width: 400px;
-    height: 180px;
-    margin-top: 30px;
+    width: 420px;
+    height: 200px;
+    margin-top: 20px;
   }
 }
 
@@ -991,7 +991,7 @@ padding-left: 0;
     width:120px;
   }
   .outer-container-youtube{
-    width: 320px;
+    width: 325px;
     height: 160px;
     margin-top: 30px;
   }
