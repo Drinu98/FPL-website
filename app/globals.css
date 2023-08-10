@@ -821,6 +821,7 @@ padding-left: 0;
   cursor: pointer;
   border: 3px solid white;
   border-radius: 8px;
+  transition: all 0.3s ease 0s;
 
 }
 
