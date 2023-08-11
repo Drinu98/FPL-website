@@ -102,7 +102,7 @@ const Expected = async () => {
             currentGameweekXG.push(gwObj);
         }
         });
-    
+
 const xGTotal = {};
 Object.values(expectedGoalsByGameweek).forEach((gwArray) => {
   gwArray.forEach((gwObj) => {
@@ -142,7 +142,7 @@ Object.values(xGTotal).forEach((playerObj) => {
 
 const xGTotalLast4Gameweeks = {};
 const startGameweek = currentGameweek - 5;
-const endGameweek = currentGameweek - 1;
+// const endGameweek = currentGameweek - 1;
 
 // for (let gw = startGameweek; gw <= endGameweek; gw++) {
 //   const gwArray = expectedGoalsByGameweek[gw];
@@ -165,7 +165,7 @@ const endGameweek = currentGameweek - 1;
 //   }
 // }
 
-for (let gw = startGameweek; gw <= endGameweek; gw++) {
+for (let gw = startGameweek; gw <= currentGameweek; gw++) {
   const gwArray = expectedGoalsByGameweek[gw];
   if (gwArray && gwArray.length > 0) {
     gwArray.forEach((gwObj) => {
@@ -257,8 +257,10 @@ for (let gw = startGameweek; gw <= endGameweek; gw++) {
 
   // const splicedExpectedGoalsLast4 = sortedExpectedGoalsLast4.splice(0, 15);
   // const splicedExpectedGoalsLast6 = sortedExpectedGoalsLast6.splice(0, 15);
-  
-  return <DisplayExpected currentGameweekXG={currentGameweekXG} xGTotalLast4Gameweeks={xGTotalLast4Gameweeks} xGTotal={xGTotal}/>
+
+  const xGTotalLast4GameweeksToArray = Object.values(xGTotalLast4Gameweeks);
+  const xGTotalToArray = Object.values(xGTotal);
+  return <DisplayExpected currentGameweekXG={currentGameweekXG} xGTotalLast4Gameweeks={xGTotalLast4GameweeksToArray} xGTotal={xGTotalToArray}/>
   }catch (error) {
       console.error(error);
       return <>
