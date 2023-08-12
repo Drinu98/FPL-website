@@ -22,7 +22,7 @@ type ExpectedProps = {
 type DisplayGamweeksType = 'currentGameweekXG' | 'xGTotalLast4Gameweeks' | 'xGTotal'
 
 function Expected(props: ExpectedProps) {
-    const {currentGameweekXG, xGTotalLast4Gameweeks, xGTotal} = props
+    const {currentGameweekXG} = props
     const [selectedData, setSelectedData] = useState(currentGameweekXG);
     const [selectedFilter, setSelectedFilter] = useState<string>("");
     const [sortedAndFilteredData, setSortedAndFilteredData] = useState<Player[]>([]);
@@ -35,61 +35,87 @@ function Expected(props: ExpectedProps) {
       const selectedFilter = event.target.value;
       setSelectedFilter(selectedFilter);
     };
-  // const handleDataSelect = (event: React.FormEvent<HTMLSelectElement>) => {
-  //   const value = event.currentTarget.value;
-  //   switch(value) {
-  //     case 'currentGameweekXG':
-  //       setSelectedData(currentGameweekXG);
-  //       break;
-  //     case 'xGTotalLast4Gameweeks':
-  //       setSelectedData(xGTotalLast4Gameweeks);
-  //       break;
-  //     case 'xGTotal':
-  //       setSelectedData(xGTotal);
-  //       break; 
-  //     default:
-  //       setSelectedData(currentGameweekXG);
-  //       break;
-  //   }
-  // }
-
-const handleDataSelect = (event: React.FormEvent<HTMLSelectElement>) => {
-  const value = event.currentTarget.value;
-
-  let selectedData: Player[] = [];
-  switch (value) {
-    case 'currentGameweekXG':
-      selectedData = currentGameweekXG;
-      break;
-    case 'xGTotalLast4Gameweeks':
-      selectedData = xGTotalLast4Gameweeks;
-      break;
-    case 'xGTotal':
-      selectedData = xGTotal;
-      break;
-    default:
-      selectedData = currentGameweekXG;
-      break;
+  const handleDataSelect = (event: React.FormEvent<HTMLSelectElement>) => {
+    const value = event.currentTarget.value;
+    switch(value) {
+      case 'currentGameweekXG':
+        setSelectedData(currentGameweekXG);
+        break;
+      default:
+        setSelectedData(currentGameweekXG);
+        break;
+    }
   }
 
-  // Sort the data in descending order based on xGI
-  const sortedData = selectedData.sort((a, b) => parseFloat(b.xGI) - parseFloat(a.xGI));
+// const handleDataSelect = (event: React.FormEvent<HTMLSelectElement>) => {
+//   const value = event.currentTarget.value;
 
-  // Splice the list to show only the top 15 players
-  const slicedData = sortedData.slice(0, 15);
+//   let selectedData: Player[] = [];
+//   switch (value) {
+//     case 'currentGameweekXG':
+//       selectedData = currentGameweekXG;
+//       break;
+//     case 'xGTotalLast4Gameweeks':
+//       selectedData = xGTotalLast4Gameweeks;
+//       break;
+//     case 'xGTotal':
+//       selectedData = xGTotal;
+//       break;
+//     default:
+//       selectedData = currentGameweekXG;
+//       break;
+//   }
 
-  // Apply the selected filter if it is set
-  let filteredData: Player[] = [];
-  if (selectedFilter) {
-    filteredData = slicedData.filter(
-      (player) => player.position === selectedFilter || player.teamLong === selectedFilter
-    );
-  } else {
-    filteredData = slicedData;
-  }
+//   // Sort the data in descending order based on xGI
+//   const sortedData = selectedData.sort((a, b) => parseFloat(b.xGI) - parseFloat(a.xGI));
 
-  setSortedAndFilteredData(filteredData);
-};
+//   // Splice the list to show only the top 15 players
+//   const slicedData = sortedData.slice(0, 15);
+
+//   // Apply the selected filter if it is set
+//   let filteredData: Player[] = [];
+//   if (selectedFilter) {
+//     filteredData = slicedData.filter(
+//       (player) => player.position === selectedFilter || player.teamLong === selectedFilter
+//     );
+//   } else {
+//     filteredData = slicedData;
+//   }
+
+//   setSortedAndFilteredData(filteredData);
+// };
+
+// const handleDataSelect = (event: React.FormEvent<HTMLSelectElement>) => {
+//   const value = event.currentTarget.value;
+
+//   let selectedData: Player[] = [];
+//   switch (value) {
+//     case 'currentGameweekXG':
+//       selectedData = currentGameweekXG;
+//       break;
+//     default:
+//       selectedData = currentGameweekXG;
+//       break;
+//   }
+
+//   // Sort the data in descending order based on xGI
+//   const sortedData = selectedData.sort((a, b) => parseFloat(b.xGI) - parseFloat(a.xGI));
+
+//   // Splice the list to show only the top 15 players
+//   const slicedData = sortedData.slice(0, 15);
+
+//   // Apply the selected filter if it is set
+//   let filteredData: Player[] = [];
+//   if (selectedFilter) {
+//     filteredData = slicedData.filter(
+//       (player) => player.position === selectedFilter || player.teamLong === selectedFilter
+//     );
+//   } else {
+//     filteredData = slicedData;
+//   }
+
+//   setSortedAndFilteredData(filteredData);
+// };
 
 
   const handleSortClick = (columnName : any) => {
@@ -114,7 +140,7 @@ const handleDataSelect = (event: React.FormEvent<HTMLSelectElement>) => {
             <h2 className='transfers-title'>Expected Data</h2>
         </div>
       <div style={{overflowY: 'auto', overflowX: 'hidden'}}>
-      <select
+      {/* <select
             value={selectedFilter}
             onChange={handleFilterSelect}
             className="expected-select-teams  select"
@@ -134,11 +160,11 @@ const handleDataSelect = (event: React.FormEvent<HTMLSelectElement>) => {
                 </option>
               ))}
             </optgroup>
-          </select>
-      <select className='expected-select select' onChange={handleDataSelect} value={selectedData === currentGameweekXG ? 'currentGameweekXG' : selectedData === xGTotalLast4Gameweeks ? 'xGTotalLast4Gameweeks' : 'xGTotal'}>
+          </select> */}
+      <select className='expected-select select' onChange={handleDataSelect} value={selectedData === currentGameweekXG ? 'currentGameweekXG' : 'currentGameweekXG'}>
           <option value="currentGameweekXG">Current Gameweek</option>
-          <option value="xGTotalLast4Gameweeks">Last 4 GWs</option>
-          <option value="xGTotal">Last 6 GWs</option>
+          {/* <option value="xGTotalLast4Gameweeks">Last 4 GWs</option> */}
+          {/* <option value="xGTotal">Last 6 GWs</option> */}
       </select>
         <div>
           <table style={{width: '100%'}}>
@@ -166,7 +192,7 @@ const handleDataSelect = (event: React.FormEvent<HTMLSelectElement>) => {
               </tr>
             </thead>
             <tbody>
-              {sortedAndFilteredData.map((gwObj, index) => (
+              {selectedData.map((gwObj, index) => (
                 <tr key={index} className="table-row">
                   <td></td>
                   <td className="player-info" style={{textAlign: 'left'}}>{gwObj.name}
