@@ -53,47 +53,6 @@ function Expected(props: ExpectedProps) {
   //   }
   // }
 
-  useEffect(() => {
-    const handleDataSelect = (event: React.FormEvent<HTMLSelectElement>) => {
-      const value = event.currentTarget.value;
-    
-      let selectedData: Player[] = [];
-      switch (value) {
-        case 'currentGameweekXG':
-          selectedData = currentGameweekXG;
-          break;
-        case 'xGTotalLast4Gameweeks':
-          selectedData = xGTotalLast4Gameweeks;
-          break;
-        case 'xGTotal':
-          selectedData = xGTotal;
-          break;
-        default:
-          selectedData = currentGameweekXG;
-          break;
-      }
-    
-      // Sort the data in descending order based on xGI
-      const sortedData = selectedData.sort((a, b) => parseFloat(b.xGI) - parseFloat(a.xGI));
-    
-      // Splice the list to show only the top 15 players
-      const slicedData = sortedData.slice(0, 15);
-    
-      // Apply the selected filter if it is set
-      let filteredData: Player[] = [];
-      if (selectedFilter) {
-        filteredData = slicedData.filter(
-          (player) => player.position === selectedFilter || player.teamLong === selectedFilter
-        );
-      } else {
-        filteredData = slicedData;
-      }
-    
-      setSortedAndFilteredData(filteredData);
-    };
-  
-}, [currentGameweekXG, xGTotalLast4Gameweeks, xGTotal, selectedFilter])
-
 const handleDataSelect = (event: React.FormEvent<HTMLSelectElement>) => {
   const value = event.currentTarget.value;
 
