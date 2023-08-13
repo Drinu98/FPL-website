@@ -58,7 +58,7 @@ return(
     <>
     <div className='fixture-container'>
       <div className='graphic-container'>
-        <h2 className='transfers-title'>Upcoming Fixtures</h2>
+        <h2 className='transfers-title'>Fixtures</h2>
       </div>
       <ul className='upcomingfixture-ul-list' style={{padding: 0, margin: 0}}>
         {/* loop through the fixtures grouped by date */}

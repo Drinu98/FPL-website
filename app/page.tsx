@@ -82,9 +82,6 @@ export default async function Home() {
                   {/* @ts-ignore */}
                     <RealPlayers />
                 </div>
-                <div className='container'>
-                    <p className='courtesy-text'>Player FPL teams courtesy of <Link href={'https://fplbot.app/'} className='courtesy-link'>fplbot</Link></p>
-                </div>
               </div>
             </div>
             <div className='row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-3'>

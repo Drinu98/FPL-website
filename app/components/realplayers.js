@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
+import Link from 'next/link'
 
 async function getRealPlayers() {
     const players = 
@@ -17,12 +18,17 @@ async function getRealPlayers() {
       {name: 'Charlie Taylor', id: 6046112}, 
       {name: 'Harvey Barnes', id: 6055592}, 
       {name: 'Sean Longstaff', id: 5000155}, 
-      {name: 'Matt Targett', id: 2926894}, 
+      {name: 'Antoine Semenyo', id: 7758622}, 
       {name: 'Rob Holding', id: 6329781}, 
       {name: 'Fabian Schär', id: 6123705}, 
       {name: 'Anthony Gordon', id: 8066182}, 
-      // {name: 'Matt Turner', id: 6555943}, 
-      // {name: 'Luke Ayling', id: 6567765}
+      {name: 'Chris Mepham', id: 4827843}, 
+      {name: 'David Brooks', id: 2300682},
+      {name: 'Mark Travers', id: 6481432},
+      {name: 'Jaidon Anthony', id: 2962034},
+      {name: 'Marcus Tavernier', id: 6201184},
+      {name: 'Milos Kerkez', id: 7725278},
+      {name: 'Tom Lockyer', id: 6965109},
     ];
 
     const results = [];
@@ -120,7 +126,11 @@ export default async function RealPlayers(){
                 ))}
           </tbody>
         </table>
+
+                    <p className='courtesy-text'>Player FPL teams courtesy of <Link href={'https://fplbot.app/'} className='courtesy-link'>fplbot</Link></p>
+
       </div>
+      
     </div>
     </>
         
