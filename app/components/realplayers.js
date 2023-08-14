@@ -135,7 +135,7 @@ export default async function RealPlayers(){
           </tbody>
         </table>
 
-                    <p className='courtesy-text'>Player FPL teams courtesy of <Link href={'https://fplbot.app/'} className='courtesy-link'>fplbot</Link></p>
+                    <p className='courtesy-text'>Player FPL teams courtesy of <a target="_blank" href={'https://fplbot.app/'} className='courtesy-link' rel="noopener noreferrer">fplbot</a></p>
 
       </div>
       
