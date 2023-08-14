@@ -1,11 +1,27 @@
+main{
+  background-color: #fe1d5c;
+}
+
 body{
   height: 100%;
-  /* background-image: url(../public/images/Background.jpg); */
-  background-color: #fe1d5c !important;
-  /* background-repeat: no-repeat; */
-  /* background-size: cover; */
   font-weight: bold !important;
   font-family: var(--roboto-font)
+}
+
+main.dark-theme {
+  background-color: #000000 !important; /* Dark background color */
+}
+
+.widget.dark-widget, .widget2.dark-widget, .widget3.dark-widget, .widget4.dark-widget, .widget5.dark-widget,
+.widget6.dark-widget, .widget7.dark-widget, .widget8.dark-widget, .widget9.dark-widget, .widget10.dark-widget,
+.widget11.dark-widget, .widget12.dark-widget {
+  background-color: #111111; /* Dark widget background color */
+  color: aliceblue !important;
+  border: 5px solid aliceblue;
+}
+
+.dark-text {
+  color: white !important; /* Adjust as needed */
 }
 
 .container-header {
@@ -176,7 +192,7 @@ td{
 
 .footer {
   margin-top: 5rem;
-  background-color: white;
+  background-color: aliceblue;
   left: 0;
   bottom: 0;
   padding: 3.5rem 4rem;
@@ -521,7 +537,7 @@ border-bottom: 1px solid rgba(55, 0, 60, 0.08);
   flex-direction: column;
   width: 100%;
   align-items: center;
-  color: black;
+  
 }
 
 .fixture-ul-list{
@@ -534,6 +550,7 @@ border-bottom: 1px solid rgba(55, 0, 60, 0.08);
 
 .fixture-item{
   border-bottom: 1px solid rgba(55, 0, 60, 0.08);
+  color: black;
 }
 
 .fixture-home-box{
@@ -591,6 +608,7 @@ border-bottom: 1px solid rgba(55, 0, 60, 0.08);
   margin-bottom: 10px;
   margin-top: 5px;
   font-weight: inherit;
+  color: black;
 }
 
 .away-image-box{

@@ -1,6 +1,7 @@
 import './globals.css'
 import 'bootstrap/dist/css/bootstrap.css'
 import { Analytics } from '@vercel/analytics/react';
+import GoogleAnalytics from '@/components/GoogleAnalytics';
 
 import { Roboto } from 'next/font/google'
 
@@ -27,6 +28,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={roboto.className}>
         {children}
+        <GoogleAnalytics GA_MEASUREMENT_ID='G-Z801EHYGJ6'/>
         <Analytics />
       </body>
     </html>

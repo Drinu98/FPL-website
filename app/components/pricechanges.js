@@ -62,7 +62,7 @@ return (
               </thead>
               <tbody>
                 <tr>
-                  <td colSpan="3" style={{marginLeft: 10, fontSize: 15}}>No price changes</td>
+                  <td colSpan="3" style={{marginLeft: 10, fontSize: 12}}>No price rises</td>
                 </tr>
               </tbody>
             </table>
@@ -106,7 +106,7 @@ return (
               </thead>
               <tbody>
                 <tr>
-                  <td colSpan="3" style={{marginLeft: 10, fontSize: 15}}>No price changes</td>
+                  <td colSpan="3" style={{marginLeft: 10, fontSize: 12}}>No price falls</td>
                 </tr>
               </tbody>
             </table>

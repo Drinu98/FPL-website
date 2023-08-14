@@ -40,6 +40,9 @@ async function getRealPlayers() {
       {name: 'Johann Gudmundsson', id: 3758723},
       {name: 'Lawrence Vigouroux', id: 6129161},
       {name: 'Zeki Amdouni', id: 6126421},
+      {name: 'Alfie Divine', id: 6196697},
+      {name: 'Harvey White', id: 1690038},
+      {name: 'Ashley Phillips', id: 2145123},
     ];
 
     const results = [];
