@@ -29,6 +29,12 @@ async function getRealPlayers() {
       {name: 'Marcus Tavernier', id: 6201184},
       {name: 'Milos Kerkez', id: 7725278},
       {name: 'Tom Lockyer', id: 6965109},
+      {name: 'Manor Solomon', id: 7740301},
+      {name: 'Conor Coady', id: 2106367},
+      {name: 'James Justin', id: 3672414},
+      {name: 'Ben Foster', id: 3471276},
+      {name: 'Reece James', id: 4782960},
+      {name: 'Tanganga', id: 3948239},
     ];
 
     const results = [];
