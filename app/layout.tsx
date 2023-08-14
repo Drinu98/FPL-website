@@ -13,7 +13,7 @@ const roboto = Roboto({
 export const metadata = {
   title: 'FPL Focal',
   description: 'A website for FPL Focal that displays important information on Fantasy Premier League',
-  keywords: ['FPL', 'Fantasy Premier League', 'fantasy', 'premier league', 'bonus points', 'transfers', 'kits', 'fixtures', 'deadline'],
+  keywords: ['FPL', 'Fantasy Premier League', 'fantasy', 'premier league', 'bonus points', 'transfers', 'kits', 'fixtures', 'deadline', 'focal', 'fplfocal', 'youtube'],
   publisher: 'Andre Galea'
 }
 

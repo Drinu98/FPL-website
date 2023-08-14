@@ -73,6 +73,8 @@ async function getRealPlayers() {
 
 export default async function RealPlayers(){
     const data = await getRealPlayers();
+
+    data.sort((playerA, playerB) => playerB.overall - playerA.overall);
     
   return (
     <>

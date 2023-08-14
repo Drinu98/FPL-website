@@ -120,7 +120,7 @@ function Expected(props: ExpectedProps) {
 
   const handleSortClick = (columnName : any) => {
     // Sort the selectedData array by the given column name
-    const sortedData = sortedAndFilteredData.sort((a : any, b : any) => {
+    const sortedData = selectedData.sort((a : any, b : any) => {
       if (sortOrder === 'asc') {
         return a[columnName] - b[columnName];
       } else {
