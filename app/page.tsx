@@ -91,9 +91,9 @@ export default async function Home() {
                     <h2 className='transfers-title'>Custom Kits</h2>
                     <div className="outer-container">
                       <div className="inner-container">
-                      <Link href={'https://fplfocal.com/'}>
+                      <a target="_blank" href='https://fplfocal.com/' rel="noopener noreferrer">
                         <div className="image-container"></div>
-                      </Link>
+                      </a>
                       </div>
                     </div>
                   </div>              
@@ -104,9 +104,9 @@ export default async function Home() {
                     </div>
                     <div className="outer-container-youtube">
                       <div className="inner-container">
-                      <Link href={'https://www.youtube.com/@FPLFocal'}>
-                        <div className="image-container-youtube"></div>
-                      </Link>
+                        <a target="_blank" href='https://www.youtube.com/@FPLFocal' rel="noopener noreferrer">
+                          <div className="image-container-youtube"></div>
+                        </a>
                       </div>
                     </div>                    
                 </div>

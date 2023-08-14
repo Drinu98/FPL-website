@@ -80,7 +80,7 @@ export default async function RealPlayers(){
     <>
     <div className='realplayers-container'>
       <div className='graphic-container'>
-        <h2 className='transfers-title'>Player Transfers</h2>
+        <h2 className='transfers-title'>Players Leauge</h2>
       </div>
       <div style={{overflowY: 'auto', overflowX: 'hidden'}}>
         <table className="transfers-table-realplayers">
@@ -120,7 +120,7 @@ export default async function RealPlayers(){
                   )}
                 </td>
                 <td>
-                  <a href={player.link}>
+                  <a target="_blank" href={player.link} rel="noopener noreferrer">
                     <FontAwesomeIcon icon={faArrowRight} />
                   </a>
                 </td>

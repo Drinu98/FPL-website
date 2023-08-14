@@ -128,7 +128,7 @@ async function getTwat() {
                     {data[0]?.player_name} 
                 </p>
                 <p style={{textAlign: 'center'}}>
-                  <a href={data[0]?.link} className='twat-text-link'>{data[0]?.entry_name}</a>
+                  <a target="_blank" href={data[0]?.link} className='twat-text-link' rel="noopener noreferrer">{data[0]?.entry_name}</a>
                     
                 </p>
                 <p className='twat-text'>

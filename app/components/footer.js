@@ -20,7 +20,7 @@ function Footer() {
         <span style={{color: '#F2055C', fontSize: '12px'}}>This website is not officially affiliated with Fantasy Premier League in any way.</span>
       </div>
       <div className="trademark">
-        <span>Copyright &copy; 2023 <p style={{color: '#F2055C'}}>Andre Galea</p></span>
+        <span>Copyright &copy; 2023 <p><a target="_blank" href='https://andregalea.com' rel="noopener noreferrer" className='andre-link'>Andre Galea</a></p></span>
       </div>
     </footer>
   );
