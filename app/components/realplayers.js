@@ -86,7 +86,7 @@ export default async function RealPlayers(){
     <>
     <div className='realplayers-container'>
       <div className='graphic-container'>
-        <h2 className='transfers-title'>Players Leauge</h2>
+        <h2 className='transfers-title'>Players League</h2>
       </div>
       <div style={{overflowY: 'auto', overflowX: 'hidden'}}>
         <table className="transfers-table-realplayers">
