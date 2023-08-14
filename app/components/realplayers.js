@@ -34,7 +34,12 @@ async function getRealPlayers() {
       {name: 'James Justin', id: 3672414},
       {name: 'Ben Foster', id: 3471276},
       {name: 'Reece James', id: 4782960},
-      {name: 'Tanganga', id: 3948239},
+      {name: "Dara O'Shea", id: 7063246},
+      {name: 'Japhet Tanganga', id: 3948239},
+      {name: 'Jordan Beyer', id: 6122005},
+      {name: 'Johann Gudmundsson', id: 3758723},
+      {name: 'Lawrence Vigouroux', id: 6129161},
+      {name: 'Zeki Amdouni', id: 6126421},
     ];
 
     const results = [];
