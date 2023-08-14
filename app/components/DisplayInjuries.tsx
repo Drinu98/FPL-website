@@ -24,7 +24,7 @@ type InjuriesProps = {
 function Injuries(props: InjuriesProps) {
   const {injuries} = props
   // const [data, setData] = useState([]);
-  const [selectedTeam, setSelectedTeam] = useState('Arsenal');
+  const [selectedTeam, setSelectedTeam] = useState('All Players');
 
   const handleTeamSelect = (event: React.FormEvent<HTMLSelectElement>) => {
     setSelectedTeam(event.currentTarget.value);
@@ -42,11 +42,17 @@ function Injuries(props: InjuriesProps) {
   }
   
   const renderPlayers = () => {
+    const allPlayers = Object.values(filteredData).flat();
+
     if (selectedTeam === '') {
       return <p>Please select a team</p>;
     }
 
-    const playersForSelectedTeam = (selectedTeam ? filteredData[selectedTeam as typeof filteredData[number]] || [] : []) as Array<any>;
+    // const playersForSelectedTeam = (selectedTeam ? filteredData[selectedTeam as typeof filteredData[number]] || [] : []) as Array<any>;
+    const playersForSelectedTeam = selectedTeam === 'All Players'
+    ? allPlayers
+    : (filteredData[selectedTeam as typeof filteredData[number]] || []);
+
     if (playersForSelectedTeam.length === 0) {
       return <p>No players injured found for the selected team</p>;
     }
@@ -64,7 +70,7 @@ function Injuries(props: InjuriesProps) {
           </tr>
         </thead>
         <tbody>
-          {playersForSelectedTeam?.map((player, index) => (
+          {playersForSelectedTeam?.map((player: any, index: any) => (
             <tr key={index} className="table-row">
                 <td style={{paddingRight: '10px', paddingLeft: '10px'}}>
                     {player.status === 'i' ? (
@@ -105,7 +111,15 @@ function Injuries(props: InjuriesProps) {
             <h2 className='transfers-title'>Injuries</h2>
         </div>
       <label>
+        {/* <select value={selectedTeam} onChange={handleTeamSelect} className='injury-select select'>
+          {Object.keys(filteredData).map((team, index) => (
+            <option key={index} value={team}>
+              {team}
+            </option>
+          ))}
+        </select> */}
         <select value={selectedTeam} onChange={handleTeamSelect} className='injury-select select'>
+          <option value="All Players">All Players</option> {/* Add the "All Players" option */}
           {Object.keys(filteredData).map((team, index) => (
             <option key={index} value={team}>
               {team}
