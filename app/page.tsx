@@ -13,8 +13,6 @@ import Expected from './components/expected'
 import Statistics from './components/statistics'
 import Footer from './components/footer'
 import Link from 'next/link'
-import DisplayDarkMode from './components/DisplayDarkMode'
-import { useSelector } from 'react-redux';
 
 
 export default async function Home() {
@@ -22,7 +20,6 @@ export default async function Home() {
   return (
     <main>
       <div className='container'>
-        {/* <DisplayDarkMode /> */}
         <div className='container-header'>
           <Image
               src="/images/whitelogo.png"

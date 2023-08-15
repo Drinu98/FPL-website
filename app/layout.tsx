@@ -4,6 +4,7 @@ import { Analytics } from '@vercel/analytics/react';
 import GoogleAnalytics from './components/GoogleAnalytics';
 
 import { Roboto } from 'next/font/google'
+import { Suspense } from 'react';
 
 const roboto = Roboto({
   subsets: ['latin'],
@@ -26,7 +27,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <GoogleAnalytics GA_MEASUREMENT_ID='G-Z801EHYGJ6'/>
+      <Suspense fallback={<></>}>
+        <GoogleAnalytics GA_MEASUREMENT_ID='G-Z801EHYGJ6'/>
+      </Suspense>
       <body className={roboto.className}>
         {children}
         {/* <Analytics /> */}
