@@ -26,10 +26,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <GoogleAnalytics GA_MEASUREMENT_ID='G-Z801EHYGJ6'/>
       <body className={roboto.className}>
         {children}
-        <GoogleAnalytics GA_MEASUREMENT_ID='G-Z801EHYGJ6'/>
-        <Analytics />
+        {/* <Analytics /> */}
       </body>
     </html>
   )
