@@ -1,7 +1,7 @@
 import './globals.css'
 import 'bootstrap/dist/css/bootstrap.css'
 import { Analytics } from '@vercel/analytics/react';
-import GoogleAnalytics from '@/components/GoogleAnalytics';
+import GoogleAnalytics from './components/GoogleAnalytics';
 
 import { Roboto } from 'next/font/google'
 
