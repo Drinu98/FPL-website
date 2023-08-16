@@ -25,6 +25,7 @@ type DisplayTransfersProps = {
 const DisplayTransfers = (props: DisplayTransfersProps) => {
     const {topPlayersIn, topPlayersOut} = props
     const [showTransfers, setTransfers] = useState<DisplayPlayersType>('in');
+    const [selectedButton, setSelectedButton] = useState<DisplayPlayersType>('in');
  
     function toggleDisplayPlayers(nextDisplayType : DisplayPlayersType) {
       setTransfers(nextDisplayType);
@@ -38,10 +39,28 @@ const DisplayTransfers = (props: DisplayTransfersProps) => {
           <h2 className='transfers-title'>Top 10 Transfers</h2>
         </div>
         <div  style={{overflowY: 'auto', overflowX: 'hidden'}}>
-              <div className="text-center captaincy-button-box">
-          <button onClick={() => setTransfers('in')} className="transfers-button">In</button>
-          <button onClick={() => setTransfers('out')} className="transfers-button">Out</button>
-        </div>
+          <div className="text-center captaincy-button-box">
+            <button
+              className={`transfers-button ${showTransfers === 'in' ? 'selected' : ''}`}
+              onClick={() => {
+                setTransfers('in');
+                setSelectedButton('in');
+              }}
+            >
+              In
+            </button>
+            <button
+              className={`transfers-button ${showTransfers === 'out' ? 'selected' : ''}`}
+              onClick={() => {
+                setTransfers('out');
+                setSelectedButton('out');
+              }}
+            >
+              Out
+            </button>
+            {/* <button onClick={() => setTransfers('in')} className="transfers-button">In</button>
+            <button onClick={() => setTransfers('out')} className="transfers-button">Out</button> */}
+          </div>
         <table className="transfers-table">
                 <thead>
                   <tr>

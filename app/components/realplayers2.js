@@ -61,8 +61,8 @@ async function getRealPlayers() {
     for (const player of players) {
       const res = await fetch(`https://fantasy.premierleague.com/api/entry/${player.id}/`);
       const playerData = await res.json();
-      const { summary_event_points, name, summary_overall_points } = playerData;
-      const result = { name: player.name, points: summary_event_points, team: name, overall: summary_overall_points, link: `https://fantasy.premierleague.com/entry/${player.id}/event/${currentGameweek}`, pic: player.pic };
+      const { summary_event_points, name, summary_overall_points, summary_overall_rank } = playerData;
+      const result = { name: player.name, points: summary_event_points, team: name, overall: summary_overall_points, rank: summary_overall_rank, link: `https://fantasy.premierleague.com/entry/${player.id}/event/${currentGameweek}`, pic: player.pic };
 
       const res2 = await fetch(`https://fantasy.premierleague.com/api/entry/${player.id}/transfers/`);
 
@@ -106,6 +106,7 @@ export default async function RealPlayers(){
               <th className="transfer-header">Name</th>
               <th className="transfer-header">Points</th>
               <th className="transfer-header">Overall</th>
+              <th className="transfer-header">Rank</th>
               <th className="transfer-header">Transfers</th>
               <th className="transfer-header">Link</th>
             </tr>
@@ -114,7 +115,7 @@ export default async function RealPlayers(){
             {data?.map((player, index) => (
               <tr key={index} className="table-row">
                 <td>
-                  <div className='realplayer-name-box'><Image src={player.pic} alt={player.name} width={29} height={37}/></div>
+                  <div className='realplayer-name-box' style={{textAlign:'center'}}><Image src={player.pic} alt={player.name} width={38} height={47} className='realplayers2-kits'/></div>
                 </td>
                 <td>
                   <div className='realplayer-name-box'>{`${player.name}`}</div>
@@ -126,6 +127,7 @@ export default async function RealPlayers(){
                 </td>
                 <td className='realplayer-name-box'>{player.points}</td>
                 <td className='realplayer-name-box'>{player.overall}</td>
+                <td className='realplayer-name-box'>{player.rank}</td>
                 <td>
                   {player?.transfers?.length > 0 ? (
                     <ul className='realplayers-transfer-list'>
@@ -149,7 +151,7 @@ export default async function RealPlayers(){
           </tbody>
         </table>
 
-                    <p className='courtesy-text'>In collaboration with <a target="_blank" href={'https://fplbot.app/'} className='courtesy-link' rel="noopener noreferrer">fplbot</a></p>
+                    <p className='courtesy-text' style={{marginTop: '30px', textAlign:'center'}}>In collaboration with <a target="_blank" href={'https://fplbot.app/'} className='courtesy-link' rel="noopener noreferrer">fplbot</a></p>
 
       </div>
       

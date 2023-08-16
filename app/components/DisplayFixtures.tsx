@@ -36,7 +36,7 @@ const DisplayFixtures = (props: DisplayFixturesProps) => {
         const kickOffTime = deadlineTime.toLocaleString('en-GB', {
           hour: 'numeric',
           minute: 'numeric',
-          hourCycle: 'h24',
+          hourCycle: 'h23',
         });
     
         return {
@@ -60,6 +60,7 @@ const DisplayFixtures = (props: DisplayFixturesProps) => {
     
       fixturesByDate[date]?.push(fixture);
     });
+
 
 return(
         <>{
@@ -88,9 +89,17 @@ return(
                             </div>
                           </div>
                           {fixture.started ? (
-                            <span className="score-box">
-                              {fixture.homeScore} - {fixture.awayScore}{" "}
-                            </span>
+                            <>
+                              <span className="score-box" style={{marginTop: '22px'}}>
+                                {fixture.homeScore} - {fixture.awayScore}{" "}
+                                {fixture.finished ? (
+                                  <span className='minutes' style={{ display: 'flex', flexDirection: 'column', marginTop: '10px', alignItems: 'center', justifyContent: 'center', color: '#94938f' }}>FT</span>
+                                ) : (
+                                  <span className='minutes' style={{ display: 'flex', flexDirection: 'column', marginTop: '10px', alignItems: 'center', justifyContent: 'center', color: '#94938f' }}>{`${fixture.minutes}'`}</span>
+                                )}
+                              </span>
+                              
+                            </>
                           ) : (
                             <span className="time-box">{fixture.time}</span>
                           )}
@@ -127,7 +136,7 @@ return(
                               <ul className="bonus-list" style={{ padding: 0, margin: 0 }}>
                                 {fixture.bps?.map((bps : any, index : any) => (
                                   <li key={index} className="bonus-item">
-                                    ({fixture.bps.length - index}) {bps.name} ({bps.value})   
+                                    ({fixture.bps.filter((player : any) => player.value >= bps.value).length}) {bps.name} ({bps.value})   
                                   </li>
                                 ))}
                               </ul>

@@ -21,6 +21,7 @@ function Captaincy(props: DisplayCaptaincyProps) {
   const {captaincy, eo, gameweek} = props
 
   const [showCaptains, setShowCaptains] = useState<DisplayPlayersType>('captaincy');
+  const [selectedButton, setSelectedButton] = useState<DisplayPlayersType>('captaincy');
 
 
 function toggleDisplayPlayers(nextDisplayType : DisplayPlayersType) {
@@ -39,12 +40,24 @@ function toggleDisplayPlayers(nextDisplayType : DisplayPlayersType) {
       </div>
       <div style={{overflowX: 'hidden', overflowY: 'auto'}}>
         <div className="text-center captaincy-button-box">
-          <button className="captaincy-button" onClick={() => setShowCaptains('captaincy')}>
-            Captains
-          </button>
-          <button className="captaincy-button" onClick={() => setShowCaptains('eo')}>
-            EO
-          </button>
+        <button
+          className={`captaincy-button ${showCaptains === 'captaincy' ? 'selected' : ''}`}
+          onClick={() => {
+            setShowCaptains('captaincy');
+            setSelectedButton('captaincy');
+          }}
+        >
+          Captains
+        </button>
+        <button
+          className={`captaincy-button ${showCaptains === 'eo' ? 'selected' : ''}`}
+          onClick={() => {
+            setShowCaptains('eo');
+            setSelectedButton('eo');
+          }}
+        >
+          EO
+        </button>
         </div>
         <table className="transfers-table-captaincy">
           <thead>

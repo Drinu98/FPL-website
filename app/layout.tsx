@@ -2,6 +2,7 @@ import './globals.css'
 import 'bootstrap/dist/css/bootstrap.css'
 import { Analytics } from '@vercel/analytics/react';
 import GoogleAnalytics from './components/GoogleAnalytics';
+import Footer from './components/footer'
 
 import { Roboto } from 'next/font/google'
 import { Suspense } from 'react';
@@ -32,7 +33,8 @@ export default function RootLayout({
       </Suspense>
       <body className={roboto.className}>
         {children}
-        {/* <Analytics /> */}
+        <Analytics />
+        <Footer />
       </body>
     </html>
   )

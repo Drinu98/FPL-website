@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import React from 'react'
+import HamburgerMenu from './components/HamburgerMenu'
 import Transfers from './components/transfers'
 import Injuries from './components/Injuries'
 import Fixtures from './components/fixtures'
@@ -13,13 +14,15 @@ import Expected from './components/expected'
 import Statistics from './components/statistics'
 import Footer from './components/footer'
 import Link from 'next/link'
+import { relative } from 'path'
 
 
 export default async function Home() {
 
   return (
     <main>
-      <div className='container'>
+      <HamburgerMenu />
+      <div className='container' style={{position: 'relative'}}>
         <div className='container-header'>
           <Image
               src="/images/whitelogo.png"
@@ -128,7 +131,7 @@ export default async function Home() {
             </div>
           </div>
       </section>
-        <Footer />
+        {/* <Footer /> */}
  
     </main>
   )

@@ -119,6 +119,7 @@ async function getFixtures() {
         started: fixture.started,
         homeScore: homeTeamScore,
         awayScore: awayTeamScore,
+        minutes: fixture.minutes,
         finished: isFinished,
         bps: bonusStatsPlayersList,
         bonus: bonusPointsPlayers

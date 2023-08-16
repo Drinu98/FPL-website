@@ -2,7 +2,7 @@ import Image from "next/image";
 import DisplayUpcomingFixtures from "./DisplayUpcomingFixtures";
 
 async function getUpcomingFixtures() {
-  try{
+  
     const res = await fetch('https://fantasy.premierleague.com/api/bootstrap-static/', 
     {
       next: {
@@ -22,7 +22,7 @@ async function getUpcomingFixtures() {
     }
     
     const upcomingGameweek = events?.find(event => event.is_next === true).id;
-    
+  try{
     const res2  = await fetch(`https://fantasy.premierleague.com/api/fixtures?event=${upcomingGameweek}`, 
     {
       next: {
@@ -69,6 +69,7 @@ async function getUpcomingFixtures() {
 
   }catch(error){
     console.error(error);
+    throw new Error('Failed to fetch fixtures');
   }
     
 }
@@ -81,7 +82,20 @@ export default async function UpcomingFixtures(){
     return <DisplayUpcomingFixtures fixturesArray={fixturesArray} />
   }catch(error){
     console.error(error);
-    <p>no gameweeks</p>
+    return <>
+        <div className="fixture-container">
+          <div className="graphic-container">
+            <h2 className="transfers-title">Fixtures</h2>
+          </div>
+          <p className='error-message-upcoming'>
+            <Image src="/images/errorlogo.png"
+                  alt="FPL Focal Logo"
+                  width={50}
+                  height={50}
+                  className='error-logo'>
+            </Image>The Game is Updating...</p>
+        </div>
+      </>
   }
     
 }

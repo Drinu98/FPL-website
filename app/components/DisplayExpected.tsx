@@ -35,6 +35,12 @@ function Expected(props: ExpectedProps) {
       const selectedFilter = event.target.value;
       setSelectedFilter(selectedFilter);
     };
+
+ 
+    const trimData = (data: Player[]) => {
+      return data.slice(0, 30);
+    };
+
   const handleDataSelect = (event: React.FormEvent<HTMLSelectElement>) => {
     const value = event.currentTarget.value;
     switch(value) {
@@ -46,6 +52,23 @@ function Expected(props: ExpectedProps) {
         break;
     }
   }
+
+  useEffect(() => {
+    // Filter the data based on selected position or team
+    let filteredData = currentGameweekXG;
+    if (selectedFilter) {
+      filteredData = filteredData.filter(
+        (player) => player.position === selectedFilter || player.teamLong === selectedFilter
+      );
+    }
+
+     // Sort the filtered data by descending xGI
+    filteredData.sort((a, b) => parseFloat(b.xGI) - parseFloat(a.xGI));
+
+  // Trim the sorted data to the top 30
+  const trimmedData = trimData(filteredData);
+  setSortedAndFilteredData(trimmedData);
+}, [currentGameweekXG, selectedFilter]);
 
 // const handleDataSelect = (event: React.FormEvent<HTMLSelectElement>) => {
 //   const value = event.currentTarget.value;
@@ -120,7 +143,7 @@ function Expected(props: ExpectedProps) {
 
   const handleSortClick = (columnName : any) => {
     // Sort the selectedData array by the given column name
-    const sortedData = selectedData.sort((a : any, b : any) => {
+    const sortedData = sortedAndFilteredData.sort((a : any, b : any) => {
       if (sortOrder === 'asc') {
         return a[columnName] - b[columnName];
       } else {
@@ -132,7 +155,6 @@ function Expected(props: ExpectedProps) {
     setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
   };
 
-
   return (
     <>
     <div className='transfers-container'>
@@ -140,7 +162,7 @@ function Expected(props: ExpectedProps) {
             <h2 className='transfers-title'>Expected Data</h2>
         </div>
       <div style={{overflowY: 'auto', overflowX: 'hidden'}}>
-      {/* <select
+      <select
             value={selectedFilter}
             onChange={handleFilterSelect}
             className="expected-select-teams  select"
@@ -160,7 +182,7 @@ function Expected(props: ExpectedProps) {
                 </option>
               ))}
             </optgroup>
-          </select> */}
+          </select>
       <select className='expected-select select' onChange={handleDataSelect} value={selectedData === currentGameweekXG ? 'currentGameweekXG' : 'currentGameweekXG'}>
           <option value="currentGameweekXG">Current Gameweek</option>
           {/* <option value="xGTotalLast4Gameweeks">Last 4 GWs</option> */}
@@ -192,7 +214,7 @@ function Expected(props: ExpectedProps) {
               </tr>
             </thead>
             <tbody>
-              {selectedData.map((gwObj, index) => (
+              {sortedAndFilteredData.map((gwObj, index) => (
                 <tr key={index} className="table-row">
                   <td></td>
                   <td className="player-info" style={{textAlign: 'left'}}>{gwObj.name}
