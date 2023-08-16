@@ -131,6 +131,14 @@ main.dark-theme {
   padding-top: 50px;
 }
 
+.container-header a{
+  transition: all 0.5s ease 0s;
+}
+
+.container-header a:hover{
+  transform: scale(1.2);
+}
+
 .error-container {
   text-align: center;
   margin-left: auto;
@@ -151,8 +159,11 @@ ul{
 }
 
 .app-logo {
-  /* height: 5.5rem; */
-  pointer-events: none;
+  transition: all 0.5s ease 0s; /* Apply smooth transition effect */
+}
+
+.app-logo:hover {
+  transform: scale(1.2); /* Increase size on hover */
 }
 
 .widget-box{

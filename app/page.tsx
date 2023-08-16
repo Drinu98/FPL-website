@@ -24,13 +24,15 @@ export default async function Home() {
       <HamburgerMenu />
       <div className='container' style={{position: 'relative'}}>
         <div className='container-header'>
-          <Image
-              src="/images/whitelogo.png"
-              alt="FPL Focal Logo"
-              width={75}
-              height={80}
-              className='app-logo'
-          />
+          <a href='/'>
+            <Image
+                src="/images/whitelogo.png"
+                alt="FPL Focal Logo"
+                width={75}
+                height={80}
+                className='app-logo'
+            />
+          </a>
         </div>
       </div>
       <section className='widget-box min-vh-95'>
