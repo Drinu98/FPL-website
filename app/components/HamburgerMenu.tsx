@@ -23,7 +23,7 @@
 //         </>  
 //   );
 // }
-
+import Image from 'next/image'
 import React, { useState, useRef, useEffect } from 'react';
 import MenuContent from './MenuContent';
 
@@ -56,6 +56,21 @@ export default function HamburgerMenu() {
 
   return (
     <>
+      <button
+        className="darkmode-button"
+        onClick={() => {
+          const currentTheme = document.body.dataset.theme;
+          document.body.dataset.theme = currentTheme === 'light' ? 'dark' : 'light';
+        }}
+      >
+        <Image
+          src="/images/darkmode.png"
+          alt="Dark Mode"
+          width={45} // Set the desired width of the image
+          height={45}
+          style={{}} // Set the desired height of the image
+        />
+      </button>
       <div className={`menu-toggle ${menuOpen ? 'open' : ''}`} onClick={toggleMenu}>
         <div className="bar"></div>
         <div className="bar"></div>

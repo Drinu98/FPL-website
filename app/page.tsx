@@ -13,6 +13,7 @@ import Captaincy from './components/captaincy'
 import Expected from './components/expected'
 import Statistics from './components/statistics'
 import Footer from './components/footer'
+
 import Link from 'next/link'
 import { relative } from 'path'
 

@@ -28,10 +28,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      
       <Suspense fallback={<></>}>
         <GoogleAnalytics GA_MEASUREMENT_ID='G-Z801EHYGJ6'/>
       </Suspense>
-      <body className={roboto.className}>
+      <body className={roboto.className} data-theme="light" id='light'>
         {children}
         <Analytics />
         <Footer />
