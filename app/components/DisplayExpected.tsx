@@ -15,14 +15,17 @@ type Player = {
 
 type ExpectedProps = {
   currentGameweekXG: Array<Player>
+  previousGameweekXG: Array<Player>
   xGTotalLast4Gameweeks: Array<Player>
   xGTotal: Array<Player>
 }
 
+// type DisplayGamweeksType = 'currentGameweekXG' | 'xGTotalLast4Gameweeks' | 'xGTotal'
 type DisplayGamweeksType = 'currentGameweekXG' | 'xGTotalLast4Gameweeks' | 'xGTotal'
 
+
 function Expected(props: ExpectedProps) {
-    const {currentGameweekXG} = props
+    const {currentGameweekXG, previousGameweekXG} = props
     const [selectedData, setSelectedData] = useState(currentGameweekXG);
     const [selectedFilter, setSelectedFilter] = useState<string>("");
     const [sortedAndFilteredData, setSortedAndFilteredData] = useState<Player[]>([]);
@@ -47,6 +50,9 @@ function Expected(props: ExpectedProps) {
       case 'currentGameweekXG':
         setSelectedData(currentGameweekXG);
         break;
+      case 'previousGameweekXG':
+        setSelectedData(previousGameweekXG);
+        break;
       default:
         setSelectedData(currentGameweekXG);
         break;
@@ -55,7 +61,7 @@ function Expected(props: ExpectedProps) {
 
   useEffect(() => {
     // Filter the data based on selected position or team
-    let filteredData = currentGameweekXG;
+    let filteredData = selectedData;
     if (selectedFilter) {
       filteredData = filteredData.filter(
         (player) => player.position === selectedFilter || player.teamLong === selectedFilter
@@ -68,7 +74,7 @@ function Expected(props: ExpectedProps) {
   // Trim the sorted data to the top 30
   const trimmedData = trimData(filteredData);
   setSortedAndFilteredData(trimmedData);
-}, [currentGameweekXG, selectedFilter]);
+}, [selectedData, selectedFilter]);
 
 // const handleDataSelect = (event: React.FormEvent<HTMLSelectElement>) => {
 //   const value = event.currentTarget.value;
@@ -183,8 +189,9 @@ function Expected(props: ExpectedProps) {
               ))}
             </optgroup>
           </select>
-      <select className='expected-select select' onChange={handleDataSelect} value={selectedData === currentGameweekXG ? 'currentGameweekXG' : 'currentGameweekXG'}>
+      <select className='expected-select select' onChange={handleDataSelect} value={selectedData === currentGameweekXG ? 'currentGameweekXG' : 'previousGameweekXG'}>
           <option value="currentGameweekXG">Current Gameweek</option>
+          <option value="previousGameweekXG">Gameweek 2</option>
           {/* <option value="xGTotalLast4Gameweeks">Last 4 GWs</option> */}
           {/* <option value="xGTotal">Last 6 GWs</option> */}
       </select>

@@ -136,7 +136,7 @@ return(
                               <ul className="bonus-list" style={{ padding: 0, margin: 0 }}>
                                 {fixture.bps?.map((bps : any, index : any) => (
                                   <li key={index} className="bonus-item">
-                                    ({fixture.bps.filter((player : any) => player.value >= bps.value).length}) {bps.name} ({bps.value})   
+                                    ({fixture.bps.length - index}) {bps.name} ({bps.value})   
                                   </li>
                                 ))}
                               </ul>

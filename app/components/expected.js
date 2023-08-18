@@ -23,8 +23,10 @@ const Expected = async () => {
       const events = data?.events;
   
       let gameweekJsonArray = [];
+      let previousGameweekJsonArray = [];
   
       const currentGameweekData = events?.find(event => event?.is_current === true) ?? events?.find(event => event?.is_next === true) ?? 'Error: ID is undefined.';
+      const previousGamweek = events?.find(event => event?.is_previous === true)?.id; 
       const currentGameweek = currentGameweekData?.id;
 
       try{
@@ -43,6 +45,23 @@ const Expected = async () => {
       }catch(error) {
           console.error(error);
       }
+
+      try{
+        const gameweekData = await fetch(`https://fantasy.premierleague.com/api/event/${previousGamweek}/live/` , {
+          next: {
+            revalidate: 120
+          },
+        }
+      );
+        const gameweekJson = await gameweekData.json();
+        previousGameweekJsonArray.push({gameweek: previousGamweek, data: gameweekJson});
+        // console.log(gameweekJsonArray);
+        
+        // Do something with the gameweek data, such as parsing and displaying it
+    
+    }catch(error) {
+        console.error(error);
+    }
 
       // for (let i = currentGameweek; i >= currentGameweek - 6; i--) {
       //   try {
@@ -81,8 +100,22 @@ const Expected = async () => {
           return acc;
         }, {});
 
+        const expectedGoalsPrevious = previousGameweekJsonArray.reduce((acc, gw) => {
+          const elementsArray = gw.data.elements;
+          const expectedGoalsArray = elementsArray.map((el) => {
+            return {
+              id: el.id,
+              xG: el.stats.expected_goals,
+              xGA: el.stats.expected_assists,
+              xGI: el.stats.expected_goal_involvements,
+            };
+          });
+          acc[gw.gameweek] = expectedGoalsArray;
+          return acc;
+        }, {});
+
         const currentGameweekXG = [];
-        const currentGameweekXG2 = [];
+        const previousGameweekXG = [];
       // Add position and team data to the expectedGoalsByGameweek object
         const gwArray = expectedGoalsByGameweek[currentGameweek];
         gwArray.forEach((gwObj) => {
@@ -101,7 +134,26 @@ const Expected = async () => {
             gwObj.name = playerObj.web_name;
             // delete gwObj.id;
             currentGameweekXG.push(gwObj);
-            currentGameweekXG2.push(gwObj);
+        }
+        });
+
+        const previousGwArray = expectedGoalsPrevious[previousGamweek];
+        previousGwArray.forEach((gwObj) => {
+        const playerObj = players.find((player) => player.id === gwObj.id);
+        if (playerObj) {
+            const positionObj = elementTypes.find((position) => position.id === playerObj.element_type);
+            const teamObj = teams.find((team) => team.id === playerObj.team);
+            if (positionObj) {
+            gwObj.position_short = positionObj.singular_name_short;
+            gwObj.position = positionObj.plural_name;
+            }
+            if (teamObj) {
+            gwObj.team = teamObj.short_name;
+            gwObj.teamLong = teamObj.name;
+            }
+            gwObj.name = playerObj.web_name;
+            // delete gwObj.id;
+            previousGameweekXG.push(gwObj);
         }
         });
 
@@ -262,7 +314,7 @@ const Expected = async () => {
 
   // const xGTotalLast4GameweeksToArray = Object.values(xGTotalLast4Gameweeks);
   // const xGTotalToArray = Object.values(xGTotal);
-  return <DisplayExpected currentGameweekXG={currentGameweekXG}/>
+  return <DisplayExpected currentGameweekXG={currentGameweekXG} previousGameweekXG={previousGameweekXG}/>
   }catch (error) {
       console.error(error);
       return <>
