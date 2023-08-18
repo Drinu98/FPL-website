@@ -74,26 +74,27 @@ model PriceChanges {
   createdAt DateTime @default(now())
 }
 
-model PriceChangesGameweek {
+model CronTasks {
   id  String @id @default(cuid())
-  playerElementId Int 
-  name String
-  cost String
-  team String
-  type String
-  gameweek Int
-  Date DateTime @default(now())
+  scheduledExecutionTime DateTime
+  targetUrl String // domain.com/api/players/do-something
+  method String // GET | POST
+  queryParams String? // encoded query params message=hello&playerId=123
+  payload String? // Use superjson library to store arguments as a string
   updatedAt DateTime @updatedAt
   createdAt DateTime @default(now())
 }
 
-// model CronTasks {
+// model PriceChangesGameweek {
 //   id  String @id @default(cuid())
-//   scheduledExecutionTime DateTime
-//   targetUrl String // domain.com/api/players/do-something
-//   method String // GET | POST
-//   queryParams String? // encoded query params message=hello&playerId=123
-//   payload String? // Use superjson library to store arguments as a string
+//   playerElementId Int 
+//   name String
+//   cost String
+//   team String
+//   type String
+//   gameweek Int
+//   Date DateTime @default(now())
 //   updatedAt DateTime @updatedAt
 //   createdAt DateTime @default(now())
 // }
+
