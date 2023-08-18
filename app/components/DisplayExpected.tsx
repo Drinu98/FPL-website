@@ -157,7 +157,7 @@ function Expected(props: ExpectedProps) {
       }
     });
 
-    setSelectedData(sortedData);
+    setSortedAndFilteredData(sortedData);
     setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
   };
 
