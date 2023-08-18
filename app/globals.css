@@ -588,6 +588,14 @@ transform: scale(1.2);
   border-bottom: 1px solid rgba(55, 0, 60, 0.08);
 }
 
+.transfer-header-realplayers2{
+  font-size: 0.55rem;
+  padding: 0.2rem 0.3rem;
+  color: rgb(122, 122, 122);
+  text-align: left;
+  border-bottom: 1px solid rgba(55, 0, 60, 0.08);
+}
+
 .player-info-captaincy{
   font-size: 0.95rem;
 }
@@ -730,7 +738,7 @@ transform: scale(1.2);
   line-height: 1.1;
   text-align: center;
   font-size: 0.9rem;
-  margin-left: 10px;
+  margin-left: 5px;
 }
 
 .time-box{
@@ -855,6 +863,13 @@ font-size: 12px;
 color: black;
 }
 
+.transfers-table-realplayers2{
+  margin-top: 20px;
+  width: 100%;
+  font-size: 12px;
+  color: black;
+  }
+
 .realplayers-transfer-list{
 font-size: 12px;
 list-style: none;
@@ -862,11 +877,21 @@ padding-left: 0px;
 padding-top: 5px;
 }
 
+.realplayers2-transfer-list{
+  list-style: none;
+}
+
 .realplayers-greenarrow{
 width: 13px;
 margin-left: 2px;
 margin-right: 2px;
 }
+
+.realplayers2-greenarrow{
+  width: 13px;
+  margin-left: 2px;
+  margin-right: 2px;
+  }
 
 .fa-arrow-right {
 display: var(--fa-display, inline-block);
@@ -1417,6 +1442,19 @@ padding-left: 0;
   {
     font-size: 1.5rem;
   }
+  .realplayers2-kits{
+    width: 32px;
+    height: 40px;
+  }
+  .realplayer2-name-box, .realplayers2-transfer-list{
+    font-size: 16px;
+  }
+  .transfer-header-realplayers2{
+    font-size: 12px;
+  }
+  .transfers-table-realplayers2{
+    font-size: 16px;
+  }
 }
 
 
@@ -1443,6 +1481,19 @@ padding-left: 0;
 .away-image-box
   {
     margin-right: 15px;
+  }
+  .realplayers2-kits{
+    width: 28px;
+    height: 37px;
+  }
+  .realplayer2-name-box, .realplayers2-transfer-list{
+    font-size: 12px;
+  }
+  .transfer-header-realplayers2{
+    font-size: 12px;
+  }
+  .transfers-table-realplayers2{
+    font-size: 12px;
   }
 }
 
@@ -1474,6 +1525,19 @@ padding-left: 0;
 .away-image-box
   {
     margin-right: 15px;
+  }
+  .realplayers2-kits{
+    width: 27px;
+    height: 34px;
+  }
+  .realplayer2-name-box, .realplayers2-transfer-list{
+    font-size: 10px;
+  }
+  .transfer-header-realplayers2{
+    font-size: 10px;
+  }
+  .transfers-table-realplayers2{
+    font-size: 10px;
   }
 }
 
@@ -1576,6 +1640,22 @@ padding-left: 0;
 .realplayers-greenarrow{
     width: 10px;
   }
+  .realplayers2-greenarrow{
+    width: 8px;
+  }
+  .realplayers2-kits{
+    width: 25px;
+    height: 32px;
+  }
+  .realplayer2-name-box, .realplayers2-transfer-list{
+    font-size: 7px;
+  }
+  .transfer-header-realplayers2{
+    font-size: 7px;
+  }
+  .transfers-table-realplayers2{
+    font-size: 7px;
+  }
 .fa-arrow-right{
     width: 12px;
     height: 12px;
@@ -1617,8 +1697,11 @@ padding-left: 0;
     font-size: 8px;
   }
     .realplayers2-kits{
-    width: 30px;
-    height: 37px;
+    width: 25px;
+    height: 32px;
+  }
+  .realplayer2-name-box, .realplayers2-transfer-list{
+    font-size: 6px;
   }
   .upcomingfixture-home-text, .upcomingfixture-away-text
   {
@@ -1627,6 +1710,12 @@ padding-left: 0;
   .transfers-table-playerchanges .transfer-header
   {
     font-size: 0.5rem;
+  }
+  .transfer-header-realplayers2{
+    font-size: 7px;
+  }
+  .transfers-table-realplayers2{
+    font-size: 6px;
   }
   .greenarrowup, .redarrowdown
   {

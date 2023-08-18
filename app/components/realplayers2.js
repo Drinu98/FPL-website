@@ -99,41 +99,41 @@ export default async function RealPlayers(){
         <h2 className='transfers-title'>Players League</h2>
       </div>
       <div style={{overflowY: 'auto', overflowX: 'hidden'}}>
-        <table className="transfers-table-realplayers">
+        <table className="transfers-table-realplayers2">
           <thead>
             <tr>
-              <th className="transfer-header"></th>
-              <th className="transfer-header">Name</th>
-              <th className="transfer-header">Points</th>
-              <th className="transfer-header">Overall</th>
-              <th className="transfer-header">Rank</th>
-              <th className="transfer-header">Transfers</th>
-              <th className="transfer-header">Link</th>
+              <th className="transfer-header-realplayers2"></th>
+              <th className="transfer-header-realplayers2">Name</th>
+              <th className="transfer-header-realplayers2">Points</th>
+              <th className="transfer-header-realplayers2">Overall</th>
+              <th className="transfer-header-realplayers2">Rank</th>
+              <th className="transfer-header-realplayers2">Transfers</th>
+              <th className="transfer-header-realplayers2">Link</th>
             </tr>
           </thead>
           <tbody>
             {data?.map((player, index) => (
               <tr key={index} className="table-row">
                 <td>
-                  <div className='realplayer-name-box' style={{textAlign:'center'}}><Image src={player.pic} alt={player.name} width={38} height={47} className='realplayers2-kits'/></div>
+                  <div className='realplayer2-name-box' style={{textAlign:'center'}}><Image src={player.pic} alt={player.name} width={38} height={47} className='realplayers2-kits'/></div>
                 </td>
                 <td>
-                  <div className='realplayer-name-box'>{`${player.name}`}</div>
+                  <div className='realplayer2-name-box'>{`${player.name}`}</div>
                     <div className='player-transfer-info-box'>
-                      <span className='realplayer-name-box'>
+                      <span className='realplayer2-name-box'>
                         {player.team}
                       </span>
                     </div>
                 </td>
-                <td className='realplayer-name-box'>{player.points}</td>
-                <td className='realplayer-name-box'>{player.overall}</td>
-                <td className='realplayer-name-box'>{player.rank}</td>
+                <td className='realplayer2-name-box'>{player.points}</td>
+                <td className='realplayer2-name-box'>{player.overall}</td>
+                <td className='realplayer2-name-box'>{player.rank}</td>
                 <td>
                   {player?.transfers?.length > 0 ? (
-                    <ul className='realplayers-transfer-list'>
+                    <ul className='realplayers2-transfer-list'>
                       {player?.transfers?.map((transfer, index) => (
                         <li key={index} style={{paddingTop: '10px'}}>
-                          <span style={{color: 'red'}}>{transfer.out}</span> <img className='realplayers-greenarrow' src='/images/greenarrow.png' alt='➡'></img> <span style={{color: 'green'}}>{transfer.in}</span>
+                          <span style={{color: 'red'}}>{transfer.out}</span> <img className='realplayers2-greenarrow' src='/images/greenarrow.png' alt='➡'></img> <span style={{color: 'green'}}>{transfer.in}</span>
                         </li>
                       ))}
                     </ul>
