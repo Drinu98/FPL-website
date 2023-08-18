@@ -1264,10 +1264,6 @@ padding-left: 0;
   {
     margin-right: 15px;
   }
-.transfers-table-playerchanges
-  {
-    font-size: 0.45rem;
-  }
 .greenarrowup, .redarrowdown
   {
     width: 10px;
@@ -1333,7 +1329,7 @@ padding-left: 0;
   {
     font-size: 2.2rem;
   }
-  .widget10, .widget11
+  .widget10, .widget11, .widget2
   {
     margin-top: 25px;
   }
@@ -1388,7 +1384,7 @@ padding-left: 0;
     margin-right: 17px;
     margin-left: 5px;
   }
-.transfers-table-playerchanges
+.transfers-table-playerchanges 
   {
     font-size: 0.7rem;
   }
@@ -1584,6 +1580,10 @@ padding-left: 0;
     width: 12px;
     height: 12px;
   }
+  .transfers-table-playerchanges
+  {
+    font-size: 0.55rem;
+  }
 }
 
 @media (max-width:400px){
@@ -1607,7 +1607,7 @@ padding-left: 0;
   }
   td
   {
-    padding: 0.2rem;
+    padding: 0.4rem;
   }
   .fa-arrow-right{
     width: 10px;
@@ -1635,7 +1635,7 @@ padding-left: 0;
   }
   .transfers-table-playerchanges
   {
-    font-size: 0.6rem;
+    font-size: 0.55rem;
   }
   .player-photo
   {
@@ -1693,4 +1693,14 @@ padding-left: 0;
   }
 }
 
+@media screen and (max-width: 992px) {
+  .row{
+    display:flex;
+    flex-direction: column;
+    flex-flow: row wrap;
+  } 
+  .col-lg-4{
+    order: 1;
+  }
+}
 

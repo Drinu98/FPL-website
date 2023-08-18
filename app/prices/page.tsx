@@ -27,7 +27,7 @@ const page: FC<Props> = () => {
         </div>
         <section className='widget-box min-vh-95'>
             <div className='container'>
-                <div className="row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-3" style={{marginTop: '100px', marginBottom: '300px', justifyContent:'center'}}>
+                <div className="row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-3" style={{marginBottom: '100px', justifyContent:'center'}}>
                     <div className='col-lg-5'>
                     <   div className='widget6'>
                         <Suspense>

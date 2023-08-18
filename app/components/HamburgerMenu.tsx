@@ -31,6 +31,20 @@ export default function HamburgerMenu() {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement | null>(null);
 
+  useEffect(() => {
+    const currentTheme = localStorage.getItem('theme');
+    if (currentTheme) {
+      document.body.dataset.theme = currentTheme;
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    const currentTheme = document.body.dataset.theme;
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    document.body.dataset.theme = newTheme;
+    localStorage.setItem('theme', newTheme);
+  };
+
   const toggleMenu = () => {
     // Close the menu if it's open, otherwise open it
     setMenuOpen(!menuOpen);
@@ -54,9 +68,11 @@ export default function HamburgerMenu() {
     };
   }, [menuOpen]);
 
+  
+
   return (
     <>
-      <button
+      {/* <button
         className="darkmode-button"
         onClick={() => {
           const currentTheme = document.body.dataset.theme;
@@ -70,7 +86,16 @@ export default function HamburgerMenu() {
           height={45}
           style={{}} // Set the desired height of the image
         />
-      </button>
+      </button> */}
+      <button className="darkmode-button" onClick={toggleTheme}>
+      <Image
+        src="/images/darkmode.png"
+        alt="Dark Mode"
+        width={45}
+        height={45}
+        style={{}}
+      />
+    </button>
       <div className={`menu-toggle ${menuOpen ? 'open' : ''}`} onClick={toggleMenu}>
         <div className="bar"></div>
         <div className="bar"></div>
