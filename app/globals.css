@@ -497,7 +497,9 @@ transform: scale(1.2);
 [data-theme="dark"] .twat-text-link,
 [data-theme="dark"] .transfers-table-realplayers,
 [data-theme="dark"] .trademark,
-[data-theme="dark"] .courtesy-text 
+[data-theme="dark"] .courtesy-text,
+[data-theme="dark"] .realplayer2-name-box,
+[data-theme="dark"] .transfers-table-realplayers2 
 {
     color: white;
 }
