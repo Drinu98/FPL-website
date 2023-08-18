@@ -47,8 +47,8 @@ export default async function Captaincy() {
     const dataSortedByChosenAsCaptainPercentage = [...allCaptains].sort((a, b) => b.chosenAsCaptainPercentage - a.chosenAsCaptainPercentage);
     const dataSortedByChosenEffectiveOwnershipPercentage = [...allEffectiveOwnership].sort((a, b) => b.chosenEffectiveOwnershipPercentage - a.chosenEffectiveOwnershipPercentage);
 
-    const captaincy = dataSortedByChosenAsCaptainPercentage?.slice(0, 7);
-    const effectiveOwnership = dataSortedByChosenEffectiveOwnershipPercentage?.slice(0, 7);
+    const captaincy = dataSortedByChosenAsCaptainPercentage?.slice(0, 10);
+    const effectiveOwnership = dataSortedByChosenEffectiveOwnershipPercentage?.slice(0, 10);
 
     return (
       <DisplayCaptaincy captaincy={captaincy} eo={effectiveOwnership} gameweek={currentGameweek} />
