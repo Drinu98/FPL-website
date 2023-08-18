@@ -190,7 +190,7 @@ function Expected(props: ExpectedProps) {
             </optgroup>
           </select>
       <select className='expected-select select' onChange={handleDataSelect} value={selectedData === currentGameweekXG ? 'currentGameweekXG' : 'previousGameweekXG'}>
-          <option value="currentGameweekXG">Gameweek 2</option>
+          <option value="currentGameweekXG">Current Gameweek</option>
           <option value="previousGameweekXG">Gameweek 1</option>
           {/* <option value="xGTotalLast4Gameweeks">Last 4 GWs</option> */}
           {/* <option value="xGTotal">Last 6 GWs</option> */}
