@@ -11,7 +11,7 @@ async function getRealPlayers() {
       {name: 'James Maddison', id: 659844, pic: '/images/spurs.png'}, 
       {name: 'Jason Steele', id: 912952, pic: '/images/brightongk.png'}, 
       {name: 'Hjalmar Ekdal', id: 116239, pic: '/images/burnley.png'}, 
-      {name: 'Arijanet Muric', id: 7801056, pic: '/images/burnley.png'}, 
+      {name: 'Arijanet Muric', id: 7801056, pic: '/images/burnleygk.png'}, 
       {name: 'Jack Cork', id: 2378857, pic: '/images/burnley.png'}, 
       {name: 'Josh Brownhill', id: 5675578, pic: '/images/burnley.png'}, 
       {name: 'Matt Targett', id: 2926894, pic: '/images/newcastle.png'}, 
@@ -45,6 +45,7 @@ async function getRealPlayers() {
       {name: 'Harvey White', id: 1690038, pic: '/images/spurs.png'},
       {name: 'Ashley Phillips', id: 2145123, pic: '/images/spurs.png'},
       {name: 'Chris Smalling', id: 6381366, pic: '/images/roma.png'},
+      {name: 'James Trafford', id: 7158249, pic: '/images/burnleygk.png'},
     ];
 
     const results = [];
