@@ -35,11 +35,11 @@ async function getUpcomingFixtures() {
 
     
 
-    // if (!fixtures) {
-    //     console.log('The game is being updated');
-    //     res.send("The game is being updated.");
-    //     return;
-    // }
+    if (!fixtures) {
+        console.log('The game is being updated');
+        res.send("The game is being updated.");
+        return;
+    }
   
     const fixturesArray = [];
         for (let fixture of Object.values(fixtures)) {
