@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import React from 'react'
+import { Suspense } from 'react';
 import HamburgerMenu from './components/HamburgerMenu'
 import Transfers from './components/transfers'
 import Injuries from './components/Injuries'
@@ -42,7 +43,7 @@ export default async function Home() {
             <div className='col-lg-4'>
                 <div className='widget2'>
                   {/* @ts-ignore */}
-                  <GameweekInfo /> 
+                    <GameweekInfo />
                 </div>
                 <div className='widget5' >
                   {/* @ts-ignore */}
@@ -84,7 +85,7 @@ export default async function Home() {
               <div className='col-lg-3'>
                 <div className='widget7'>
                   {/* @ts-ignore */}
-                  <TwatAPI />
+                    <TwatAPI />
                 </div>
                 <div className='widget8'>
                   {/* @ts-ignore */}

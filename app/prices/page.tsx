@@ -2,6 +2,7 @@ import { FC } from "react"
 import HamburgerMenu from '../components/HamburgerMenu'
 import Image from 'next/image'
 import PriceChange from '../components/pricechanges'
+import { Suspense } from 'react';
 
 interface Props {
     
@@ -29,8 +30,10 @@ const page: FC<Props> = () => {
                 <div className="row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-3" style={{marginTop: '100px', marginBottom: '300px', justifyContent:'center'}}>
                     <div className='col-lg-5'>
                     <   div className='widget6'>
+                        <Suspense>
                             {/* @ts-ignore */}
-                            <PriceChange />    
+                            <PriceChange />
+                        </Suspense>    
                         </div>
                     </div>
                 </div>

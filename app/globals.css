@@ -496,7 +496,8 @@ transform: scale(1.2);
 [data-theme="dark"] .twat-text,
 [data-theme="dark"] .twat-text-link,
 [data-theme="dark"] .transfers-table-realplayers,
-[data-theme="dark"] .trademark 
+[data-theme="dark"] .trademark,
+[data-theme="dark"] .courtesy-text 
 {
     color: white;
 }
@@ -552,6 +553,14 @@ transform: scale(1.2);
   /* border: 2px solid #05F26C; */
   font-size: 12px;
   color: black;
+}
+
+.transfers-table td {
+  padding: 0.4rem 0.4rem 0;
+}
+
+.injuries-table td{
+  padding: 0.4rem 0.4rem 0;
 }
 
 .player-photo{

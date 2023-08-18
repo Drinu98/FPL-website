@@ -32,11 +32,11 @@ export default function RootLayout({
       <Suspense fallback={<></>}>
         <GoogleAnalytics GA_MEASUREMENT_ID='G-Z801EHYGJ6'/>
       </Suspense>
-      <body className={roboto.className} data-theme="light" id='light'>
-        {children}
-        <Analytics />
-        <Footer />
-      </body>
+        <body className={roboto.className} data-theme="light" id='light'>
+          {children}
+          <Analytics />
+          <Footer />
+        </body>
     </html>
   )
 }

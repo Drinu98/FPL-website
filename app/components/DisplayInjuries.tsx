@@ -58,7 +58,7 @@ function Injuries(props: InjuriesProps) {
     }
 
     return (
-    <table style={{width: '100%'}}>
+    <table className='injuries-table' style={{width: '100%'}}>
     <thead>
         <tr>
         <th className="transfer-header"></th>
