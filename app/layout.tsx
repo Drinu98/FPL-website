@@ -28,7 +28,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      
       <Suspense fallback={<></>}>
         <GoogleAnalytics GA_MEASUREMENT_ID='G-Z801EHYGJ6'/>
       </Suspense>
