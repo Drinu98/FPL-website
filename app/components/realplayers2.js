@@ -62,7 +62,8 @@ async function getRealPlayers() {
       const res = await fetch(`https://fantasy.premierleague.com/api/entry/${player.id}/`);
       const playerData = await res.json();
       const { summary_event_points, name, summary_overall_points, summary_overall_rank } = playerData;
-      const result = { name: player.name, points: summary_event_points, team: name, overall: summary_overall_points, rank: summary_overall_rank, link: `https://fantasy.premierleague.com/entry/${player.id}/event/${currentGameweek}`, pic: player.pic };
+      const formattedOverallPoints = summary_overall_rank.toLocaleString();
+      const result = { name: player.name, points: summary_event_points, team: name, overall: summary_overall_points, rank: formattedOverallPoints, link: `https://fantasy.premierleague.com/entry/${player.id}/event/${currentGameweek}`, pic: player.pic };
 
       const res2 = await fetch(`https://fantasy.premierleague.com/api/entry/${player.id}/transfers/`);
 
