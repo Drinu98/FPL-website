@@ -741,6 +741,7 @@ transform: scale(1.2);
   text-align: center;
   font-size: 0.9rem;
   margin-left: 10px;
+  /* margin-top: 22px; */
 }
 
 .time-box{
@@ -1031,6 +1032,12 @@ padding-left: 0;
 
 .minutes{
   font-size: 12px;
+  display: flex; 
+  flex-direction: column; 
+  margin-top: 10px; 
+  align-items: center; 
+  justify-content: center;
+  color: #94938f;
 }
 
 .error-message{
@@ -1623,7 +1630,9 @@ padding-left: 0;
 .time-box
   {
     font-size: 0.55rem;
-    margin-left: 0px;
+    flex: 1 0 2rem;
+    margin-left: 5px;
+    margin-right: 3px;
   }
 .home-image-box
   {
@@ -1759,7 +1768,8 @@ padding-left: 0;
   }
   .time-box{
     font-size: 0.5rem;
-    margin-left: -5px;
+    flex: 1 0 2rem;
+    margin-right: 2px;
   }
   .away-box{
     flex: 1 1 calc(40% - 1rem);
