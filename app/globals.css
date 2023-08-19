@@ -740,7 +740,7 @@ transform: scale(1.2);
   line-height: 1.1;
   text-align: center;
   font-size: 0.9rem;
-  margin-left: 5px;
+  margin-left: 10px;
 }
 
 .time-box{
@@ -1411,6 +1411,9 @@ padding-left: 0;
     margin-right: 17px;
     margin-left: 5px;
   }
+  .time-box{
+    margin-left: -3px;
+  }
 .transfers-table-playerchanges 
   {
     font-size: 0.7rem;
@@ -1590,7 +1593,7 @@ padding-left: 0;
   }
 .home-text, .away-text, .score-box
   {
-    font-size: 0.55rem;
+    font-size: 0.48rem;
   }.minutes{
     font-size: 8px;
   }
@@ -1748,7 +1751,21 @@ padding-left: 0;
   }
   .home-text, .away-text, .score-box
   {
-    font-size: 0.48rem;
+    font-size: 0.43rem;
+  }
+  .away-image, .home-image{
+    width: 25px;
+    height: 25px;
+  }
+  .time-box{
+    font-size: 0.5rem;
+    margin-left: -5px;
+  }
+  .away-box{
+    flex: 1 1 calc(40% - 1rem);
+  }
+  .home-box{
+    flex: 1 1 calc(55% - 2rem);
   }
   .minutes
   {

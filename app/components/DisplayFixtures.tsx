@@ -92,7 +92,7 @@ return(
                             <>
                               <span className="score-box" style={{marginTop: '22px'}}>
                                 {fixture.homeScore} - {fixture.awayScore}{" "}
-                                <span className='minutes' style={{ display: 'flex', flexDirection: 'column', marginTop: '8px', alignItems: 'center', justifyContent: 'center', color: '#94938f' }}>
+                                <span className='minutes' style={{ display: 'flex', flexDirection: 'column', marginTop: '10px', alignItems: 'center', justifyContent: 'center', color: '#94938f' }}>
                                   {fixture.finished && 'FT'}
                                 </span>
                               </span>  
