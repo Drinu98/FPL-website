@@ -136,7 +136,7 @@ async function getTwat() {
                 </p>
                 <p className='twat-text'>
                   {data[0]?.lastRank} <Image  
-                                        src='/images/redarrow.png' 
+                                        src='/images/redarrowdark.png' 
                                         height={20}
                                         width= {20} 
                                         alt='➡'
