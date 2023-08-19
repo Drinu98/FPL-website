@@ -7,7 +7,7 @@ interface Props {
     
 }
  
-const page: FC<Props> = () => {
+export default function page(){
     return (
         <main>
         <HamburgerMenu />
@@ -40,4 +40,4 @@ const page: FC<Props> = () => {
     );
 }
  
-export default page;
+export const revalidate = 20;

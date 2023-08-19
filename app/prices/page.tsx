@@ -8,7 +8,7 @@ interface Props {
     
 }
  
-const page: FC<Props> = () => {
+export default function page(){
     return (
         <main>
         <HamburgerMenu />
@@ -29,11 +29,9 @@ const page: FC<Props> = () => {
             <div className='container'>
                 <div className="row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-3" style={{marginBottom: '100px', justifyContent:'center'}}>
                     <div className='col-lg-5'>
-                    <   div className='widget6'>
-                        <Suspense>
+                    <   div className='widget6' style={{height: '500px'}}>
                             {/* @ts-ignore */}
                             <PriceChange />
-                        </Suspense>    
                         </div>
                     </div>
                 </div>
@@ -43,4 +41,4 @@ const page: FC<Props> = () => {
     );
 }
  
-export default page;
+export const revalidate = 60;
