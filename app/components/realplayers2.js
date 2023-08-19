@@ -34,7 +34,6 @@ async function getRealPlayers() {
       {name: 'Conor Coady', id: 2106367, pic: '/images/leicster.png'},
       {name: 'James Justin', id: 3672414, pic: '/images/leicster.png'},
       {name: 'Ben Foster', id: 3471276, pic: '/images/wrexham.png'},
-      {name: 'Reece James', id: 4782960, pic: '/images/chelsea.png'},
       {name: "Dara O'Shea", id: 7063246, pic: '/images/burnley.png'},
       {name: 'Japhet Tanganga', id: 3948239, pic: '/images/spurs.png'},
       {name: 'Jordan Beyer', id: 6122005, pic: '/images/burnley.png'},

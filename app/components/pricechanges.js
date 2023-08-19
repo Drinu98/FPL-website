@@ -134,7 +134,7 @@ return (
             risers.map((player, index) => (
               <tr key={index}>
                 <td style={{ paddingRight: '0px' }} className='arrow-box'>
-                  <Image alt='greenarrow up' src={'/images/greenarrowup.png'} width={15} height={15} className='greenarrowup'></Image>
+                  <Image alt='greenarrow up' src={'/images/greenarrowdark.png'} width={15} height={15} className='greenarrowup'></Image>
                 </td>
                 <td>{player.name}</td>
                 <td></td>
@@ -168,7 +168,7 @@ return (
             fallers.map((player, index) => (
               <tr key={index}>
                 <td style={{ paddingRight: '0px' }} className='arrow-box'>
-                  <Image alt='redarrow down' src={'/images/redarrow.png'} width={15} height={15} className='redarrowdown' ></Image>
+                  <Image alt='redarrow down' src={'/images/redarrowdark.png'} width={15} height={15} className='redarrowdown' ></Image>
                 </td>
                 <td>{player.name}</td>
                 <td></td>
