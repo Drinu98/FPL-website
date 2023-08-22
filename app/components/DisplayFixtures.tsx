@@ -130,14 +130,46 @@ return(
                                 marginLeft: "10px",
                               }}
                             >
-                              <ul className="bonus-list" style={{ padding: 0, margin: 0 }}>
+                              {/* <ul className="bonus-list" style={{ padding: 0, margin: 0 }}>
                                 {fixture.bps?.map((bps : any, index : any) => (
                                   <li key={index} className="bonus-item">
                                     ({fixture.bps.length - index}) {bps.name} ({bps.value})   
                                   </li>
                                 ))}
-                              </ul>
-                            </div>
+                              </ul> */}
+                              <ul className="bonus-list" style={{ padding: 0, margin: 0 }}>
+                              {fixture.bps?.map((bps : any, index : any) => {
+                                // Calculate points based on tie-breaking rules
+                                let points;
+                                if (index === 0) {
+                                  points = 3;
+                                } else if (index === 1) {
+                                  if (fixture.bps[0].value === bps.value) {
+                                    points = 3;
+                                  } else {
+                                    points = 2;
+                                  }
+                                } else if (index === 2) {
+                                  if (fixture.bps[0].value === bps.value) {
+                                    points = 3;
+                                  } else if (fixture.bps[1].value === bps.value) {
+                                    points = 2;
+                                  } else {
+                                    points = 1;
+                                  }
+                                }else {
+                                  points = 1; // All remaining players get 1 point
+                                }
+
+                                // Display bonus points for each player
+                                return (
+                                  <li key={index} className="bonus-item">
+                                    ({points}) {bps.name} ({bps.value})
+                                  </li>
+                                );
+                              })}
+                            </ul>
+                           </div>
                           )}
                         </div>
                       </div>

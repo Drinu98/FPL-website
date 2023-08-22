@@ -25,7 +25,7 @@ type DisplayGamweeksType = 'currentGameweekXG' | 'xGTotalLast4Gameweeks' | 'xGTo
 
 
 function Expected(props: ExpectedProps) {
-    const {currentGameweekXG, previousGameweekXG} = props
+    const {currentGameweekXG, previousGameweekXG, xGTotal} = props
     const [selectedData, setSelectedData] = useState(currentGameweekXG);
     const [selectedFilter, setSelectedFilter] = useState<string>("");
     const [sortedAndFilteredData, setSortedAndFilteredData] = useState<Player[]>([]);
@@ -53,6 +53,9 @@ function Expected(props: ExpectedProps) {
       case 'previousGameweekXG':
         setSelectedData(previousGameweekXG);
         break;
+      case 'xGTotal':
+        setSelectedData(xGTotal);
+        break;  
       default:
         setSelectedData(currentGameweekXG);
         break;
@@ -189,9 +192,10 @@ function Expected(props: ExpectedProps) {
               ))}
             </optgroup>
           </select>
-      <select className='expected-select select' onChange={handleDataSelect} value={selectedData === currentGameweekXG ? 'currentGameweekXG' : 'previousGameweekXG'}>
-          <option value="currentGameweekXG">Current Gameweek</option>
+          <select className='expected-select select' onChange={handleDataSelect} value={selectedData === currentGameweekXG ? 'currentGameweekXG' : (selectedData === previousGameweekXG ? 'previousGameweekXG' : 'xGTotal')}>
+          <option value="currentGameweekXG">Gameweek 2</option>
           <option value="previousGameweekXG">Gameweek 1</option>
+          <option value="xGTotal">Total xG</option>
           {/* <option value="xGTotalLast4Gameweeks">Last 4 GWs</option> */}
           {/* <option value="xGTotal">Last 6 GWs</option> */}
       </select>

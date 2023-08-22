@@ -65,7 +65,7 @@ function toggleDisplayPlayers(nextDisplayType : DisplayPlayersType) {
               <th className="transfer-header"></th>
               <th className="transfer-header"></th>
               <th className="transfer-header" >Name</th>
-              <th className="transfer-header" style={{textAlign: 'left'}}>{showCaptains ? 'Captaincy' : 'EO'}</th>
+              <th className="transfer-header" style={{textAlign: 'left'}}>{selectedButton === 'captaincy' ? 'Captaincy' : 'EO'}</th>
             </tr>
           </thead>
           <tbody className='table-body-captaincy'>

@@ -92,7 +92,7 @@ const DisplayTransfers = (props: DisplayTransfersProps) => {
                       <td className="player-info" style={{textAlign: 'left'}}>{player.cost}</td>
                       <td className="player-info" style={{textAlign: 'left'}}>{player.selected_by_percent}%</td>
                       <td className="player-info" style={{textAlign: 'left'}}>{player.total_points}</td>
-                      <td className="player-info" style={{textAlign: 'left'}}>{showTransfers === 'in' ? player.transfers_in : player.transfers_out}</td>
+                      <td className="player-info" style={{textAlign: 'left'}}>{showTransfers === 'in' ? player.transfers_in.toLocaleString() : player.transfers_out.toLocaleString()}</td>
                     </tr>
                   ))} 
                   {/* {topPlayersOut?.map((player, index) => (

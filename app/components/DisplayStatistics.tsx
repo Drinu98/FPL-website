@@ -261,7 +261,7 @@ const DisplayStatistics = (props: DisplayTransfersProps) => {
                       <td className="player-info" style={{textAlign: 'left'}}>{player.cost}</td>
                       <td className="player-info" style={{textAlign: 'left'}}>{player.selected_by_percent}%</td>
                       <td className="player-info" style={{textAlign: 'left'}}>{player.total_points}</td>
-                      <td className="player-info" style={{textAlign: 'left'}}>{player[selectedProperty]}</td>
+                      <td className="player-info" style={{textAlign: 'left'}}>{player[selectedProperty].toLocaleString()}</td>
                     </tr>
                   ))} 
                 </tbody>
