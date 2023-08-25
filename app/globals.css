@@ -1040,6 +1040,7 @@ padding-left: 0;
   color: #94938f;
 }
 
+
 .error-message{
   color: black;
   font-size: 2.5rem;
@@ -1331,8 +1332,8 @@ padding-left: 0;
   }
 .captaincy-button
   {
-    width: 80px;
-    height: 20px;
+    width: 85px;
+    height: 25px;
   }
 .realplayers-transfer-list, .realplayer-name-box, .transfers-table-realplayers{
     font-size: 9px;
@@ -1618,9 +1619,13 @@ padding-left: 0;
     flex: 1 0 2.0rem;
     margin: 0px;
   }
-.player-info, .player-transfer-info-box
+.player-info
   {
-    font-size: 12px;
+    font-size: 9px;
+  }
+  .player-transfer-info-box
+  {
+    font-size: 8px;
   }
 .player-photo
   {
@@ -1731,6 +1736,9 @@ padding-left: 0;
   .transfers-table-realplayers2{
     font-size: 6px;
   }
+  /* .transfers-table-captaincy .transfer-header, .player-info-captaincy{
+    padding-left: 50px !important;
+  } */
   .greenarrowup, .redarrowdown
   {
     width: 13px;
@@ -1745,9 +1753,12 @@ padding-left: 0;
     height: 50px;
     width: 40px;
   }
-  .player-info, .player-transfer-info-box
+  .player-info 
   {
-    font-size: 10px;
+    font-size: 8px;
+  }
+  .player-transfer-info-box{
+    font-size: 7.5px;
   }
   .bonus-box
   {

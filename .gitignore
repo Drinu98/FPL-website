@@ -39,5 +39,7 @@ next-env.d.ts
 .env.local  
 .env.staging
 
-# price changes folder
+# job folders
 /app/api/pricechanges2
+/app/api/top10kplayers
+/app/api/comparetop10kplayers

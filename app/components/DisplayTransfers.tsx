@@ -61,11 +61,11 @@ const DisplayTransfers = (props: DisplayTransfersProps) => {
             {/* <button onClick={() => setTransfers('in')} className="transfers-button">In</button>
             <button onClick={() => setTransfers('out')} className="transfers-button">Out</button> */}
           </div>
-        <table className="transfers-table">
+        <table className="transfers-table" style={{tableLayout: 'fixed'}}>
                 <thead>
                   <tr>
                     <th className="transfer-header"></th>
-                    <th className="transfer-header"></th>
+                    {/* <th className="transfer-header"></th> */}
                     <th className="transfer-header">Name</th>
                     <th className="transfer-header">Cost</th>
                     <th className="transfer-header">Selected</th>
@@ -77,7 +77,7 @@ const DisplayTransfers = (props: DisplayTransfersProps) => {
                   {players.map((player, index) => (
                     <tr key={index} className="table-row">
                       <td><Image className="player-photo" src={player.photo} alt={player.web_name} width={65} height={80}/></td>
-                      <td></td>
+                      {/* <td></td> */}
                       <td className="player-info">
                         <div style={{textAlign: 'left'}}>{player.web_name}</div>
                         <div className='player-transfer-info-box' style={{textAlign: 'left'}}>

@@ -92,10 +92,10 @@ return(
                             <>
                               <span className="score-box">
                                 {fixture.homeScore} - {fixture.awayScore}{" "}
-                                {/* <span className='minutes'>
+                              </span>
+                              {/* <span className='minutes'>
                                   {fixture.finished && 'FT'}
-                                </span> */}
-                              </span>  
+                              </span> */}
                             </>
                           ) : (
                             <span className="time-box">{fixture.time}</span>
