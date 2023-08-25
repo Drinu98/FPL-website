@@ -121,10 +121,10 @@ async function getFixtures() {
         awayScore: awayTeamScore,
         minutes: fixture.minutes,
         finished: isFinished,
-        bps: bonusStatsPlayers,
+        bps: bonusStatsPlayersList,
         bonus: bonusPointsPlayers
       });
-      bonusStatsArray.push(...bonusStatsPlayers);
+      bonusStatsArray.push(...bonusStatsPlayersList);
       bonusPointsArray.push(...bonusPointsPlayers);
 
       
