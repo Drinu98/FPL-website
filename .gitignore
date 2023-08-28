@@ -40,6 +40,8 @@ next-env.d.ts
 .env.staging
 
 # job folders
+/app/api/captain
+/app/api/pricechanges
 /app/api/pricechanges2
 /app/api/top10kplayers
 /app/api/comparetop10kplayers

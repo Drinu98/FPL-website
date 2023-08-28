@@ -1,17 +1,8 @@
 import Image from 'next/image'
+import { prisma } from "../../services/prisma";
 
 async function getTwat() {
   try{
-    const leagueId = 314; // Change league ID to your league ID
-    const maxRank = 13000; // Change max number of players to retrieve
-
-
-    const processedPlayers = {};
-    const results = [];
-
-    let totalPages = 210; // Change to the total number of pages to fetch
-    let page = 1;
-    let playersProcessed = 0;
 
     const response = await fetch('https://fantasy.premierleague.com/api/bootstrap-static/', 
     {
@@ -22,66 +13,15 @@ async function getTwat() {
 
     const data = await response.json();
 
-    // const currentGameweekData = data.events?.find(event => event?.is_current === true);
+    const currentGameweek = data.events?.find(event => event.is_current === true)?.id;
 
-    const currentGameweek = data.events?.find(event => event.is_current === true)?.id ?? data.events?.find(event => event.is_next === true)?.id;
+    const top10kplayers = await prisma.top10kPlayersChange.findMany({});
 
+    top10kplayers.sort((a, b) => a.eventTotal - b.eventTotal);
 
-    while (page <= totalPages && playersProcessed < maxRank) {
-        const res = await fetch(`https://fantasy.premierleague.com/api/leagues-classic/${leagueId}/standings?page_standings=${page}`,
-        {
-          next: {
-            revalidate: 500
-          },
-        },
-      );
-        
-        const data = await res.json();
+    const spliceTop10kPlayers = top10kplayers.splice(0, 1);
 
-        
-         // Recommendation: handle errors
-        //  if (!data.ok) {
-        //   // This will activate the closest `error.js` Error Boundary
-        //       throw new Error('Failed to fetch data');
-        //   } 
-
-        const standings = data?.standings;
-
-        if (standings?.results.length === 0) {
-            totalPages = page - 1;
-            break;
-        }
-
-        for (const playerEntry of standings?.results) {
-            const playerEntryId = playerEntry.entry;
-            if (processedPlayers[playerEntryId]) {
-              continue;
-            }
-  
-            const entry = playerEntry.entry || 0;
-            const playerName = playerEntry.player_name || '';
-            const entryName = playerEntry.entry_name || '';
-            const eventTotal = playerEntry.event_total || 0;
-            const rank = playerEntry.rank || 0;
-            const lastRank = playerEntry.last_rank || 0;
-            
-            results.push({ entry, player_name: playerName, entry_name: entryName, total: eventTotal, rank: rank, lastRank: lastRank, link: `https://fantasy.premierleague.com/entry/${entry}/event/${currentGameweek}` });
-  
-            results.sort((a, b) => a.total - b.total);
-  
-            processedPlayers[playerEntryId] = true;
-            playersProcessed++;
-        
-            if (playersProcessed >= maxRank) {
-              break;
-            }
-          }
-
-          page++;
-        
-    }
-
-    return results;
+    return {spliceTop10kPlayers, currentGameweek};
   }catch (error) {
     console.error(error);
     throw new Error('Failed to fetch data');
@@ -92,6 +32,9 @@ async function getTwat() {
   export default async function Twat(){
     try{
       const data = await getTwat();
+
+      const twat = data.spliceTop10kPlayers;
+      const currentGameweek = data.currentGameweek;
 
       if (!data || data.length === 0) {
         // Display loading message while fetching data
@@ -115,7 +58,7 @@ async function getTwat() {
           </>
         );
       }
-
+      
       return (
         <>
         <div className="fixture-container">
@@ -125,23 +68,30 @@ async function getTwat() {
           <div>
               <div className='twat-box'>
                 <p className='twat-text'>
-                    {data[0]?.player_name} 
+                    {twat[0]?.playerName} 
                 </p>
                 <p style={{textAlign: 'center'}}>
-                  <a target="_blank" href={data[0]?.link} className='twat-text-link' rel="noopener noreferrer">{data[0]?.entry_name}</a>
+                <a
+  target="_blank"
+  href={`https://fantasy.premierleague.com/entry/${twat[0]?.entry}/event/${currentGameweek}`}
+  className='twat-text-link'
+  rel="noopener noreferrer"
+>
+  {twat[0]?.entryName}
+</a>
                     
                 </p>
                 <p className='twat-text'>
-                  {data[0]?.total} Points
+                  {twat[0]?.eventTotal} Points
                 </p>
                 <p className='twat-text'>
-                  {data[0]?.lastRank} <Image  
+                  {twat[0]?.lastRank} <Image  
                                         src='/images/redarrowdark.png' 
                                         height={20}
                                         width= {20} 
                                         alt='➡'
                                         style={{marginBottom: 4}}
-                                        /> {data[0]?.rank}
+                                        /> {twat[0]?.currentRank.toLocaleString()}
                   </p>
                 
               </div>

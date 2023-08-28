@@ -11,7 +11,7 @@ export default function MenuContent() {
         <a href='/'>Home<FontAwesomeIcon icon={faHome} /></a>
         <a href='/bonus'>Bonus Points <FontAwesomeIcon icon={faPlus} /></a>
         <a href='/top10k'>Top 10K <FontAwesomeIcon icon={faCrown} /></a>
-        <a href='/prices'>Price Changes <FontAwesomeIcon icon={faMoneyBillTransfer} /></a>
+        <a href='/pricechangeshistory'>Price Changes<FontAwesomeIcon icon={faMoneyBillTransfer} /></a>
         <a href='/realplayers'>Players League<FontAwesomeIcon icon={faPerson} /></a>
         <a href='/injuries'>Injuries <FontAwesomeIcon icon={faPersonCircleXmark} /></a>
         <a href='/transfers'>Top Transfers <FontAwesomeIcon icon={faUpRightAndDownLeftFromCenter} /></a>

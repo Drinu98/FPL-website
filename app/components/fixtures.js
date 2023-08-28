@@ -45,6 +45,8 @@ async function getFixtures() {
     const fixturesArray = [];
     const bonusStatsArray = [];
     const bonusPointsArray = [];
+    const finalScoringPlayers = [];
+    const finalAssistingPlayers = [];
     for (let fixture of Object.values(fixtures)) {
       const homeTeam = teams.find(team => team.id === fixture.team_h);
       const awayTeam = teams.find(team => team.id === fixture.team_a);
@@ -60,8 +62,9 @@ async function getFixtures() {
       const isFinished = fixture.finished;
       const bonusStats = fixture.stats.filter(stat => stat.identifier === 'bps');
       const bonusPoints = fixture.stats.filter(stat => stat.identifier === 'bonus');
+      const scorers = fixture.stats.filter(stat => stat.identifier === 'goals_scored');
+      const assists = fixture.stats.filter(stat => stat.identifier === 'assists');
 
-      
 
       const bonusStatsFiltered = bonusStats.flatMap(obj => {
         const filtered = Object.fromEntries(
@@ -80,6 +83,42 @@ async function getFixtures() {
         const away = filtered.a ?? [];
         return [...home, ...away];
       });
+
+      // const scorersFiltered = scorers.flatMap(obj => {
+      //   const filtered = Object.fromEntries(
+      //     Object.entries(obj).filter(([key, value]) => value.length > 0)
+      //   );
+      //   const home = filtered.h ?? [];
+      //   const away = filtered.a ?? [];
+      //   return [...home, ...away];
+      // });
+      const scorersFiltered = scorers.flatMap(obj => {
+        const filtered = Object.fromEntries(
+          Object.entries(obj).filter(([key, value]) => value.length > 0)
+        );
+        
+        const home = filtered.h ?? [];
+        const away = filtered.a ?? [];
+      
+        const homeScorers = home.map(scorer => ({ ...scorer, team: 'home' }));
+        const awayScorers = away.map(scorer => ({ ...scorer, team: 'away' }));
+      
+        return [...homeScorers, ...awayScorers];
+      });
+
+      // console.log(scorersFiltered);
+      const assistsFiltered = assists.flatMap(obj => {
+        const filtered = Object.fromEntries(
+          Object.entries(obj).filter(([key, value]) => value.length > 0)
+        );
+        const home = filtered.h ?? [];
+        const away = filtered.a ?? [];
+
+        const homeAssisters = home.map(scorer => ({ ...scorer, team: 'home' }));
+        const awayAssisters = away.map(scorer => ({ ...scorer, team: 'away' }));
+
+        return [...homeAssisters, ...awayAssisters];
+      });
       
       const bonusStatsPlayers = [];
       for (const element of bonusStatsFiltered) {
@@ -97,6 +136,30 @@ async function getFixtures() {
         const player = elements.find(el => el.id === element.element);
         if (player) {
           bonusPointsPlayers.push({
+          name: player.web_name,
+          value: element.value
+          });
+        }
+      }
+
+      const scoringPlayers = [];
+      for (const element of scorersFiltered) {
+        const player = elements.find(el => el.id === element.element);
+        if (player) {
+          scoringPlayers.push({
+          name: player.web_name,
+          value: element.value,
+          team: element.team,
+          });
+        }
+      }
+      // console.log(scoringPlayers);
+
+      const assistingPlayers = [];
+      for (const element of assistsFiltered) {
+        const player = elements.find(el => el.id === element.element);
+        if (player) {
+          assistingPlayers.push({
           name: player.web_name,
           value: element.value
           });
@@ -122,10 +185,14 @@ async function getFixtures() {
         minutes: fixture.minutes,
         finished: isFinished,
         bps: bonusStatsPlayersList,
-        bonus: bonusPointsPlayers
+        bonus: bonusPointsPlayers,
+        scorers: scoringPlayers,
+        assists: assistingPlayers,
       });
       bonusStatsArray.push(...bonusStatsPlayersList);
       bonusPointsArray.push(...bonusPointsPlayers);
+      finalScoringPlayers.push(...scoringPlayers);
+      finalAssistingPlayers.push(...assistingPlayers);
 
       
     }
@@ -143,7 +210,7 @@ async function getFixtures() {
   export default async function Fixtures() {
     try {
       const fixturesArray = await getFixtures();
-  
+
       return (
         <>
           {fixturesArray ? (

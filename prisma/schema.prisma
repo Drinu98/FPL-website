@@ -106,6 +106,7 @@ model Top10kPlayersChange {
   playerName String
   eventTotal Int
   currentRank Int
+  lastRank Int
   updatedAt DateTime @updatedAt
   createdAt DateTime @default(now())
 }

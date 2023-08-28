@@ -88,14 +88,25 @@ return(
                             <Image className="home-image" src={fixture.homeImage} alt={fixture.home} width={40} height={40}/>
                             </div>
                           </div>
+                          {/* <div className="scorers-box">
+                            <ul className="scorers-list">
+                              {fixture.scorers?.map((scorer : any, index : any) => (
+                                <li key={index} className="scorer-item">
+                                  {scorer.team === 'home' ? scorer.name : null}
+                                </li>
+                              ))}
+                            </ul>
+                          </div> */}
                           {fixture.started ? (
                             <>
-                              <span className="score-box">
-                                {fixture.homeScore} - {fixture.awayScore}{" "}
-                              </span>
-                              {/* <span className='minutes'>
-                                  {fixture.finished && 'FT'}
-                              </span> */}
+                            {/* <div style={{display:'flex', justifyContent:'center', flexDirection:'column', alignItems:'center', flex: '1 0 3.6rem'}}> */}
+                                <span className="score-box">
+                                  {fixture.homeScore} - {fixture.awayScore}{" "}
+                                </span>
+                                {/* <span className='minutes'>
+                                  {fixture.started && !fixture.finished ? 'LIVE' : ''}
+                                </span> */}
+                            {/* </div> */}
                             </>
                           ) : (
                             <span className="time-box">{fixture.time}</span>

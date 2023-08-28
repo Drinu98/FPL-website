@@ -134,7 +134,7 @@ export default async function RealPlayers(){
                     <ul className='realplayers2-transfer-list'>
                       {player?.transfers?.map((transfer, index) => (
                         <li key={index} style={{paddingTop: '10px'}}>
-                          <span style={{color: 'red'}}>{transfer.out}</span> <img className='realplayers2-greenarrow' src='/images/greenarrow.png' alt='➡'></img> <span style={{color: 'green'}}>{transfer.in}</span>
+                          <span style={{color: 'red'}}>{transfer.out}</span> <img className='realplayers2-greenarrow' src='/images/greenarrowright.png' alt='➡'></img> <span style={{color: 'green'}}>{transfer.in}</span>
                         </li>
                       ))}
                     </ul>

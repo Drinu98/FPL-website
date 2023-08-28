@@ -1,8 +1,9 @@
 import { FC } from "react"
 import HamburgerMenu from '../components/HamburgerMenu'
 import Image from 'next/image'
-import PriceChange from '../components/pricechanges'
+import PriceChange from '../components/priceChangesHistory'
 import { Suspense } from 'react';
+import PriceChanges from "../components/pricechanges";
 
 interface Props {
     
@@ -29,7 +30,7 @@ export default function page(){
             <div className='container'>
                 <div className="row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-3" style={{marginBottom: '100px', justifyContent:'center'}}>
                     <div className='col-lg-5'>
-                    <   div className='widget6' style={{height: '500px'}}>
+                    <   div className='widget6' style={{height: '70%'}}>
                             {/* @ts-ignore */}
                             <PriceChange />
                         </div>
