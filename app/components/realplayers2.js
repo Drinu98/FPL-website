@@ -181,7 +181,7 @@ export default async function RealPlayers() {
                   <td className="realplayer2-name-box">{player.overall}</td>
                   <td className="realplayer2-name-box">{player.rank}</td>
                   <td>
-                    <div style={{display: 'flex', flexDirection: 'column', marginTop:'12px'}}>
+                    <div style={{display: 'flex', flexDirection: 'column', marginTop:'12px' }}>
                       <ul className="realplayers2-transfer-list" style={{paddingLeft: 0 }}>
                         <li style={{ display: "flex" }}>
                           <span
