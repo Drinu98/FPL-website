@@ -347,10 +347,6 @@ td {
   color: black;
 }
 
-.pricechanges-box {
-  /* overflow-y: auto;
-  overflow-x: hidden; */
-}
 
 .graphic-container-deadline {
   background: black;
@@ -390,6 +386,20 @@ td {
   overflow: visible;
   vertical-align: -0.125em;
   transition: all 0.5s ease 0s;
+}
+
+.fa-copyright{
+  height: 16px;
+  width: 16px;
+  margin-left: 3px;
+  border-radius: 50%;
+  overflow: visible;
+  vertical-align: -0.125em;
+  display: var(--fa-display, inline-block);
+}
+
+.realplayers-container td{
+  padding: 5px;
 }
 
 /* .svg-inline--fa:hover{
@@ -1657,6 +1667,10 @@ ul {
     width: 12px;
     height: 12px;
   }
+  .fa-copyright{
+    height: 12px;
+    width: 12px;
+  }
   .transfers-table-playerchanges {
     font-size: 0.55rem;
   }
@@ -1777,6 +1791,10 @@ ul {
     width: 13px;
     padding: 13px;
     margin-left: 13px;
+  }
+  .fa-copyright{
+    height: 11px;
+    width: 11px;
   }
   .error-message {
     font-size: 1.3rem;

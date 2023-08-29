@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight, faCopyright } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -103,8 +103,26 @@ async function getRealPlayers() {
       }
     }
 
+    const picksResponse = await fetch(
+      `https://fantasy.premierleague.com/api/entry/${player.id}/event/${currentGameweek}/picks/`
+    );
+
+    const playerPicks = await picksResponse.json();
+
+    const picksData = playerPicks?.picks;
+
+    const captainPick = picksData?.find((pick) => pick.is_captain === true);
+
+    const captainPlayer = playerList.find(
+      (player) => player.id === captainPick.element
+    );
+
+    const playerName = captainPlayer?.web_name;
+
     result.transfers = transfers;
+    result.captain = playerName;
     results.push(result);
+    // results.push(playerName);
   }
 
   return results;
@@ -163,10 +181,22 @@ export default async function RealPlayers() {
                   <td className="realplayer2-name-box">{player.overall}</td>
                   <td className="realplayer2-name-box">{player.rank}</td>
                   <td>
-                    {player?.transfers?.length > 0 ? (
-                      <ul className="realplayers2-transfer-list">
+                    <div style={{display: 'flex', flexDirection: 'column', marginTop:'12px'}}>
+                      <ul className="realplayers2-transfer-list" style={{paddingLeft: 0 }}>
+                        <li style={{ display: "flex" }}>
+                          <span
+                            style={{
+                              display: "flex",
+                              justifyContent: "center",
+                              alignItems: "center",
+                            }}
+                          >
+                            {player.captain}
+                            <FontAwesomeIcon icon={faCopyright} />
+                          </span>
+                        </li>
                         {player?.transfers?.map((transfer, index) => (
-                          <li key={index} style={{ paddingTop: "10px" }}>
+                          <li key={index} style={{ paddingTop: "5px" }}>
                             <span style={{ color: "red" }}>{transfer.out}</span>{" "}
                             <img
                               className="realplayers2-greenarrow"
@@ -178,10 +208,11 @@ export default async function RealPlayers() {
                             </span>
                           </li>
                         ))}
+                        {player?.transfers?.length === 0 && (
+                          <li style={{marginTop:'10px'}}>No transfers</li>
+                        )}
                       </ul>
-                    ) : (
-                      "No transfers"
-                    )}
+                    </div>
                   </td>
                   <td>
                     <a
