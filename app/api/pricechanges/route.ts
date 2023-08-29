@@ -1,49 +1,51 @@
 import { NextResponse } from "next/server";
 import { prisma } from "../../../services/prisma";
 
-let risingPlayers = [] as Array<any>
-let fallingPlayers = [] as Array<any>
+let risingPlayers = [] as Array<any>;
+let fallingPlayers = [] as Array<any>;
 
-export async function GET(){
+export async function GET() {
   console.log("Gathering Price changes");
   const risers = new Map();
-  const fallers = new Map();  
-  
-  const response = await fetch('https://fantasy.premierleague.com/api/bootstrap-static/');
+  const fallers = new Map();
 
-    const data = await response.json();
+  const response = await fetch(
+    "https://fantasy.premierleague.com/api/bootstrap-static/"
+  );
 
-    const players = data.elements;
-    const teams = data.teams;
+  const data = await response.json();
 
-    players.filter((player : any) => player.cost_change_event > 0).map((player: any) => {
-    const team = teams.find((team : any) => team.code === player.team_code);
-    const id = player.id;
+  const players = data.elements;
+  const teams = data.teams;
 
-    risers.set(
-      id, 
-      {
+  players
+    .filter((player: any) => player.cost_change_event > 0)
+    .map((player: any) => {
+      const team = teams.find((team: any) => team.code === player.team_code);
+      const id = player.id;
+
+      risers.set(id, {
         name: player.web_name,
-        cost: (player.now_cost / 10).toFixed(1), 
-        team: team ? team.short_name : ''
-      })
+        cost: (player.now_cost / 10).toFixed(1),
+        team: team ? team.short_name : "",
+      });
     });
 
-    players.filter((player : any) => player.cost_change_event_fall > 0).map((player : any) => {
-    const team = teams.find((team : any) => team.code === player.team_code);
-    const id = player.id;
+  players
+    .filter((player: any) => player.cost_change_event_fall > 0)
+    .map((player: any) => {
+      const team = teams.find((team: any) => team.code === player.team_code);
+      const id = player.id;
 
-    fallers.set(
-      id, 
-      {
+      fallers.set(id, {
         name: player.web_name,
-        cost: (player.now_cost / 10).toFixed(1), 
-        team: team ? team.short_name : ''
-      }) 
+        cost: (player.now_cost / 10).toFixed(1),
+        team: team ? team.short_name : "",
+      });
     });
 
   risingPlayers = Array.from(risers.entries()).map(
-    ([id,{name, cost, team }]) => {
+    ([id, { name, cost, team }]) => {
       return {
         id,
         name,
@@ -54,7 +56,7 @@ export async function GET(){
   );
 
   fallingPlayers = Array.from(fallers.entries()).map(
-    ([id,{name, cost, team }]) => {
+    ([id, { name, cost, team }]) => {
       return {
         id,
         name,
@@ -68,41 +70,44 @@ export async function GET(){
 
   const updatedDates = previousPriceChanges.map((dates) => {
     const date = new Date(dates.updatedAt);
-    return date.toLocaleDateString('en-GB');
+    return date.toLocaleDateString("en-GB");
   });
-  
+
   const currentDate = new Date();
-  const todayDate = currentDate.toLocaleDateString('en-GB');
+  const todayDate = currentDate.toLocaleDateString("en-GB");
 
   if (updatedDates.some((dates) => dates === todayDate)) {
     console.log("Dates match!");
     return;
-  }else {
+  } else {
     console.log("Dates are different.");
   }
 
-const newRisingPlayers = risingPlayers.filter((risingPlayer) => {
-  // Check if the player's ID exists in oldRisers array
-  const matchingOldRiser = previousPriceChanges.find((oldRiser) => oldRiser.playerElementId === risingPlayer.id);
+  const newRisingPlayers = risingPlayers.filter((risingPlayer) => {
+    // Check if the player's ID exists in oldRisers array
+    const matchingOldRiser = previousPriceChanges.find(
+      (oldRiser) => oldRiser.playerElementId === risingPlayer.id
+    );
 
-  // Return true if player's ID does not exist in oldRisers or the cost is different
-  return !matchingOldRiser || matchingOldRiser.cost !== risingPlayer.cost;
-});
+    // Return true if player's ID does not exist in oldRisers or the cost is different
+    return !matchingOldRiser || matchingOldRiser.cost !== risingPlayer.cost;
+  });
 
-const newFallingPlayers = fallingPlayers.filter((fallingPlayer) => {
-  // Check if the player's ID exists in oldRisers array
-  const matchingOldFaller = previousPriceChanges.find((oldFaller) => oldFaller.playerElementId === fallingPlayer.id);
+  const newFallingPlayers = fallingPlayers.filter((fallingPlayer) => {
+    // Check if the player's ID exists in oldRisers array
+    const matchingOldFaller = previousPriceChanges.find(
+      (oldFaller) => oldFaller.playerElementId === fallingPlayer.id
+    );
 
-  // Return true if player's ID does not exist in oldRisers or the cost is different
-  return !matchingOldFaller || matchingOldFaller.cost !== fallingPlayer.cost;
-});
+    // Return true if player's ID does not exist in oldRisers or the cost is different
+    return !matchingOldFaller || matchingOldFaller.cost !== fallingPlayer.cost;
+  });
 
-  
   await prisma.$transaction(async ($tx) => {
     await Promise.all([
       $tx.priceChangesIncrease.deleteMany(),
       $tx.priceChangesDecrease.deleteMany(),
-      $tx.priceChanges.deleteMany(),    
+      $tx.priceChanges.deleteMany(),
     ]);
     await Promise.all([
       $tx.priceChangesIncrease.createMany({
@@ -112,10 +117,10 @@ const newFallingPlayers = fallingPlayers.filter((fallingPlayer) => {
               playerElementId: item.id,
               name: item.name,
               cost: item.cost,
-              team: item.team
-            }
-          })
-        ]       
+              team: item.team,
+            };
+          }),
+        ],
       }),
       $tx.priceChangesDecrease.createMany({
         data: [
@@ -124,10 +129,10 @@ const newFallingPlayers = fallingPlayers.filter((fallingPlayer) => {
               playerElementId: item.id,
               name: item.name,
               cost: item.cost,
-              team: item.team
-            }
-          })
-        ]
+              team: item.team,
+            };
+          }),
+        ],
       }),
     ]);
     await $tx.priceChanges.createMany({
@@ -151,10 +156,12 @@ const newFallingPlayers = fallingPlayers.filter((fallingPlayer) => {
           };
         }),
       ],
-    })
+    });
   });
 
   console.log("Price changes successfully gathered");
 
-  return new NextResponse(JSON.stringify({ message: 'Price changes Successful'}));
+  return new NextResponse(
+    JSON.stringify({ message: "Price changes Successful" })
+  );
 }

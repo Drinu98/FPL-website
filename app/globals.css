@@ -1,11 +1,15 @@
-body{
+body {
   height: 100%;
   font-weight: bold !important;
-  font-family: var(--roboto-font)
+  font-family: var(--roboto-font);
 }
 
 body[data-theme="light"] {
-  background: linear-gradient(180deg, rgba(254,0,114,1) 0%, rgba(107,80,120,1) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(254, 0, 114, 1) 0%,
+    rgba(107, 80, 120, 1) 100%
+  );
 }
 
 body[data-theme="dark"] {
@@ -14,13 +18,13 @@ body[data-theme="dark"] {
 }
 
 .menu-toggle {
- /* Hide by default on larger screens */
+  /* Hide by default on larger screens */
   position: absolute;
   top: 20px;
   right: 20px;
   cursor: pointer;
   z-index: 1000;
-  width: 45px; 
+  width: 45px;
   height: 45px;
   background-color: aliceblue;
   border-radius: 50%; /* Make it circular */
@@ -42,11 +46,9 @@ body[data-theme="dark"] {
 }
 
 /* Styling for the expanded menu */
-.menu-toggle.open 
-.bar{
+.menu-toggle.open .bar {
   background-color: #fe1d5c;
 }
-
 
 .menu-content {
   position: absolute;
@@ -63,7 +65,7 @@ body[data-theme="dark"] {
   transition: all 0.5s ease 0s;
 }
 
-.menu-toggle:hover{
+.menu-toggle:hover {
   transform: scale(1.2);
 }
 
@@ -102,14 +104,13 @@ body[data-theme="dark"] {
   fill: #333;
 }
 
-
 .menu-content svg {
   width: 20px;
   height: 20px;
   fill: #333;
   margin-left: auto;
   margin-right: 0;
-   /* Adjust this to add space between text and icon */
+  /* Adjust this to add space between text and icon */
 }
 
 .darkmode-button {
@@ -129,13 +130,12 @@ body[data-theme="dark"] {
   transition: all 0.5s ease 0s;
 }
 
-[data-theme="dark"] .darkmode-button
-{
+[data-theme="dark"] .darkmode-button {
   border: 3px solid white;
   border-radius: 50%;
 }
 
-.darkmode-button:hover{
+.darkmode-button:hover {
   transform: scale(1.2);
 }
 
@@ -149,11 +149,11 @@ body[data-theme="dark"] {
   padding-top: 50px;
 }
 
-.container-header a{
+.container-header a {
   transition: all 0.5s ease 0s;
 }
 
-.container-header a:hover{
+.container-header a:hover {
   transform: scale(1.2);
 }
 
@@ -165,14 +165,14 @@ body[data-theme="dark"] {
   margin-top: 300px;
 }
 
-.errorPage-text{
+.errorPage-text {
   font-size: 40px;
   color: white;
   margin-top: 60px;
   margin-bottom: 60px;
 }
 
-ul{
+ul {
   padding: 0 !important;
 }
 
@@ -184,13 +184,13 @@ ul{
   transform: scale(1.2); /* Increase size on hover */
 }
 
-.widget-box{
+.widget-box {
   padding: 30px 0;
   margin: auto;
   display: flex;
 }
 
-.widget{
+.widget {
   height: 43.5rem;
   display: flex;
   margin-top: 1.7rem;
@@ -232,89 +232,102 @@ ul{
   border: 5px solid white;
 }
 
-
-.widget3{
+.widget3 {
   height: 51.6rem;
 
   display: flex;
 }
 
-.widget4{
+.widget4 {
   height: 28.5rem;
 
   display: flex;
-  
 }
 
-.widget5{
+.widget5 {
   height: 39.9rem;
 
   display: flex;
   margin-top: 1.7rem;
 }
 
-.widget6{
+.widget6 {
   height: 21.4rem;
 
   margin-top: 1.7rem;
   display: flex;
 }
 
-.widget7{
+.widget7 {
   height: 17rem;
 
   margin-top: 1.7rem;
   display: flex;
 }
 
-.widget8{
+.widget8 {
   height: 24.75rem;
   margin-top: 1.7rem;
   display: flex;
 }
 
-.widget9{
+.widget9 {
   height: 18rem;
   margin-top: 1.7rem;
 }
 
-.widget10{
+.widget10 {
   height: 43.5rem;
   display: flex;
   margin-top: 1.7rem;
 }
 
-.widget11{
+.widget11 {
   height: 43.5rem;
   display: flex;
   margin-top: 1.7rem;
 }
 
-.widget12{
+.widget12 {
   height: 18rem;
   margin-top: 1.7rem;
 }
 
-.transfers-title{
+.transfers-title {
   text-align: center;
   padding-top: 4px;
-  background-image: linear-gradient(to right, rgb(0, 255, 135), rgb(2, 239, 255));
+  background-image: linear-gradient(
+    to right,
+    rgb(0, 255, 135),
+    rgb(2, 239, 255)
+  );
   background-clip: text;
   font-weight: bold;
   -webkit-text-fill-color: transparent;
 }
 
-td{
+td {
   padding: 0.4rem;
 }
 
-.widget, .widget2, .widget3, .widget4, .widget5, .widget6, .widget7, .widget8, .widget9, .widget10, .widget11, .widget12 {
+.widget,
+.widget2,
+.widget3,
+.widget4,
+.widget5,
+.widget6,
+.widget7,
+.widget8,
+.widget9,
+.widget10,
+.widget11,
+.widget12 {
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
   border: 5px solid black;
   border-radius: 8px;
 }
 
-.graphic-container{
+.graphic-container {
   background: black;
   height: 40px;
   width: 80%;
@@ -324,19 +337,22 @@ td{
   border-bottom-left-radius: 20px;
 }
 
-.pricechanges-container, .transfers-container, .realplayers-container, .captaincy-container{
+.pricechanges-container,
+.transfers-container,
+.realplayers-container,
+.captaincy-container {
   display: flex;
   flex-direction: column;
   width: 100%;
   color: black;
 }
 
-.pricechanges-box{
-  overflow-y: auto;
-  overflow-x: hidden;
+.pricechanges-box {
+  /* overflow-y: auto;
+  overflow-x: hidden; */
 }
 
-.graphic-container-deadline{
+.graphic-container-deadline {
   background: black;
   height: 40px;
   width: 80%;
@@ -356,11 +372,13 @@ td{
   text-align: center;
 }
 
-.social-media-icons{
+.social-media-icons {
   padding: 2rem;
 }
 
-.fa-youtube, .fa-twitter, .fa-instagram{
+.fa-youtube,
+.fa-twitter,
+.fa-instagram {
   display: var(--fa-display, inline-block);
   padding: 20px;
   margin-left: 20px;
@@ -372,7 +390,6 @@ td{
   overflow: visible;
   vertical-align: -0.125em;
   transition: all 0.5s ease 0s;
-  
 }
 
 /* .svg-inline--fa:hover{
@@ -380,40 +397,37 @@ background-color: #F2055C;
 transform: scale(1.2);
 } */
 
-.fa-youtube:hover, .fa-twitter:hover, .fa-instagram:hover{
-  background-color: #F2055C;
+.fa-youtube:hover,
+.fa-twitter:hover,
+.fa-instagram:hover {
+  background-color: #f2055c;
   transform: scale(1.2);
 }
 
-.trademark{
+.trademark {
   float: left;
   font-size: 0.7rem;
-  color:black;
-}
-
-.courtesy-text{
-  font-size: 0.8rem;
   color: black;
-  margin-left: 7px;
+}
+
+.courtesy-text {
+  font-size: 12px;
+  color: black;
   margin-top: 5px;
-  /* text-align: center; */
+  text-align: center;
 }
 
-.courtesy-link{
-  color: #F2055C;
+.courtesy-link {
+  color: #f2055c;
 }
 
-.andre-link{
-  color: #F2055C;
+.andre-link {
+  color: #f2055c;
 }
 
-
-
-
-@media (min-width:1000px){
-  .container
-  {
-      max-width: 1720px !important;
+@media (min-width: 1000px) {
+  .container {
+    max-width: 1720px !important;
   }
 }
 
@@ -423,19 +437,15 @@ transform: scale(1.2);
   }
 }
 
-
-
-@media (min-width: 1200px){
-  .col-lg-4 
-  {
+@media (min-width: 1200px) {
+  .col-lg-4 {
     flex: 0 0 auto;
     width: 30% !important;
   }
 }
 
-@media (min-width: 1200px){
-  .col-lg-3 
-  {
+@media (min-width: 1200px) {
+  .col-lg-3 {
     width: 28.3% !important;
   }
 }
@@ -450,25 +460,28 @@ transform: scale(1.2);
 /* Track */
 ::-webkit-scrollbar-track {
   border-radius: 1px;
-  
 }
- 
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
   border-radius: 4px;
-  background-color:darkgray;
+  background-color: darkgray;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #F2055C; 
+  background: #f2055c;
 }
 
 .deadline-date {
   font-size: 1.5rem;
   text-align: center;
   margin-top: 5px;
-  background-image: linear-gradient(to right, rgb(0, 255, 135), rgb(2, 239, 255));
+  background-image: linear-gradient(
+    to right,
+    rgb(0, 255, 135),
+    rgb(2, 239, 255)
+  );
   height: 35px;
   width: 100%;
   padding: 3px;
@@ -487,7 +500,7 @@ transform: scale(1.2);
   color: black;
 }
 
-[data-theme="dark"] .deadline-date-time, 
+[data-theme="dark"] .deadline-date-time,
 [data-theme="dark"] .player-info,
 [data-theme="dark"] .fixture-item,
 [data-theme="dark"] .transfers-table-captaincy,
@@ -499,59 +512,59 @@ transform: scale(1.2);
 [data-theme="dark"] .trademark,
 [data-theme="dark"] .courtesy-text,
 [data-theme="dark"] .realplayer2-name-box,
-[data-theme="dark"] .transfers-table-realplayers2 
-{
-    color: white;
+[data-theme="dark"] .transfers-table-realplayers2 {
+  color: white;
 }
 
-[data-theme="dark"] .footer{
+[data-theme="dark"] .footer {
   background-color: darkgrey;
 }
 
 [data-theme="dark"] .fa-twitter,
 [data-theme="dark"] .fa-youtube,
-[data-theme="dark"] .fa-instagram
-{
+[data-theme="dark"] .fa-instagram {
   background-color: white;
   color: black;
 }
 
-.transfers-container{
+.transfers-container {
   text-align: center;
 }
-.topten-list{
+.topten-list {
   color: black;
   list-style: none;
   padding-top: 7px;
 }
-.playerin{
+.playerin {
   margin-left: 30px;
 }
-.playername{
+.playername {
   margin-left: 30px;
 }
 
-.table-row{
+.table-row {
   border-bottom: 1px solid rgba(55, 0, 60, 0.08);
 }
-.transfers-table{
+.transfers-table {
   margin-top: 25px;
   width: 100%;
   overflow-y: auto;
 }
 
-.transfers-table-playerchanges{
+.transfers-table-playerchanges {
   font-size: 0.66rem;
 }
 
-.transfers-table-captaincy{
+.transfers-table-captaincy {
   margin-top: 20px;
   width: 100%;
-  font-size: 1.0rem;
+  font-size: 1rem;
   color: black;
 }
 
-.player-info, .transfer-header, .transfers-table{
+.player-info,
+.transfer-header,
+.transfers-table {
   /* border: 2px solid #05F26C; */
   font-size: 12px;
   color: black;
@@ -561,16 +574,16 @@ transform: scale(1.2);
   padding: 0.4rem 0.4rem 0;
 }
 
-.injuries-table td{
+.injuries-table td {
   padding: 0.4rem 0.4rem 0;
 }
 
-.player-photo{
+.player-photo {
   height: 75px;
   width: 60px;
 }
 
-.player-transfer-info-box{
+.player-transfer-info-box {
   margin-top: 5px;
   /* font-family: PremierSans-Regular, Arial, "Helvetica Neue", Helvetica, "sans-serif"; */
   font-weight: 400;
@@ -578,11 +591,11 @@ transform: scale(1.2);
   font-size: 0.75rem;
 }
 
-.transfers-team-box{
+.transfers-team-box {
   margin-left: 7px;
 }
 
-.transfer-header{
+.transfer-header {
   font-size: 0.55rem;
   padding: 0.2rem 0.3rem;
   color: rgb(122, 122, 122);
@@ -590,7 +603,7 @@ transform: scale(1.2);
   border-bottom: 1px solid rgba(55, 0, 60, 0.08);
 }
 
-.transfer-header-realplayers2{
+.transfer-header-realplayers2 {
   font-size: 0.55rem;
   padding: 0.2rem 0.3rem;
   color: rgb(122, 122, 122);
@@ -598,15 +611,17 @@ transform: scale(1.2);
   border-bottom: 1px solid rgba(55, 0, 60, 0.08);
 }
 
-.player-info-captaincy{
+.player-info-captaincy {
   font-size: 0.95rem;
 }
 
-.captaincy-button, .transfers-button{
+.captaincy-button,
+.transfers-button {
   width: 100px;
   height: 30px;
   font-size: 0.8rem;
-  box-shadow: rgba(0, 0, 0, 0.08) 0px 3px 4px 0px, rgba(0, 0, 0, 0.08) 0px 3px 3px -2px, rgba(0, 0, 0, 0.16) 0px 1px 8px 0px;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 3px 4px 0px,
+    rgba(0, 0, 0, 0.08) 0px 3px 3px -2px, rgba(0, 0, 0, 0.16) 0px 1px 8px 0px;
   background: transparent;
   border-radius: 3px;
   background-color: white;
@@ -614,38 +629,35 @@ transform: scale(1.2);
   border: none;
   color: #340040;
   transition: all 0.5s ease 0s;
-
 }
 
 .selected {
-  background-color: #F2055C;
+  background-color: #f2055c;
   color: white;
 }
 
-.transfers-button{
+.transfers-button {
   margin-top: 15px;
 }
 
-.captaincy-button{
+.captaincy-button {
   margin-top: 5px;
 }
 
-
-.captaincy-button:hover, .transfers-button:hover{
-
-  background-color: #F2055C;
+.captaincy-button:hover,
+.transfers-button:hover {
+  background-color: #f2055c;
   color: white;
 }
 
- .fixture-container {
+.fixture-container {
   display: flex;
   flex-direction: column;
   width: 100%;
   align-items: center;
-  
 }
 
-.fixture-ul-list{
+.fixture-ul-list {
   list-style: initial;
   margin: 0px 0px 2rem;
   /* font-size: 1rem; */
@@ -653,62 +665,65 @@ transform: scale(1.2);
   width: 100%;
 }
 
-.fixture-item{
+.fixture-item {
   border-bottom: 1px solid rgba(55, 0, 60, 0.08);
   color: black;
 }
 
-.fixture-home-box{
+.fixture-home-box {
   position: relative;
 }
 
-.fixture-inner-box{
+.fixture-inner-box {
   display: flex;
   margin: 0.6rem 0px;
   -webkit-box-align: center;
   align-items: center;
 }
 
-.home-box{
+.home-box {
   display: flex;
   align-items: center;
-  flex: 1 1 calc(55% - 2.2rem);
+  flex: 1 1 calc(60% - 2rem);
   justify-content: right;
-
 }
 
-.home-text{
-  font-size: 1.0rem;
+.home-text {
+  font-size: 1rem;
   vertical-align: middle;
 }
 
-.home-image-box{
+.home-image-box {
   width: 20px;
   margin-right: 10px;
   margin-left: 10px;
 }
 
-.home-image{
+.home-image {
   display: block;
   margin: 0 auto;
   width: 40px;
   height: auto;
 }
 
-.away-box{
+.away-box {
   display: flex;
   align-items: center;
   flex: 1 1 calc(40% - 2.2rem);
 }
 
-.fixture-date-box{
-  text-align: center;  
+.fixture-date-box {
+  text-align: center;
 }
 
-.fixture-date{
+.fixture-date {
   font-size: 1rem;
   padding: 5px;
-  background-image: linear-gradient(to right, rgb(0, 255, 135), rgb(2, 239, 255));
+  background-image: linear-gradient(
+    to right,
+    rgb(0, 255, 135),
+    rgb(2, 239, 255)
+  );
   width: 100%;
   margin-bottom: 10px;
   margin-top: 5px;
@@ -716,25 +731,24 @@ transform: scale(1.2);
   color: black;
 }
 
-.away-image-box{
+.away-image-box {
   width: 20px;
   margin-right: 30px;
 }
 
-.away-image{
+.away-image {
   display: block;
   margin: 0 auto;
   width: 40px;
   height: auto;
 }
 
-.away-text{
-  font-size: 1.0rem;
+.away-text {
+  font-size: 1rem;
   vertical-align: middle;
 }
 
-
-.score-box{
+.score-box {
   display: inline-block;
   flex: 1 0 3.6rem;
   line-height: 1.1;
@@ -744,7 +758,7 @@ transform: scale(1.2);
   /* margin-top: 22px; */
 }
 
-.time-box{
+.time-box {
   display: inline-block;
   flex: 1 0 3.6rem;
   line-height: 1.1;
@@ -753,24 +767,24 @@ transform: scale(1.2);
   margin-left: 10px;
 }
 
-.bonus-box{
+.bonus-box {
   margin-left: 20px;
   width: 8rem;
 }
-.bonus-list{
+.bonus-list {
   list-style: none;
-  font-size: 0.70rem;
+  font-size: 0.7rem;
 }
 
-.scorers-box{
+.scorers-box {
   display: inline-block;
 }
-.scorers-list{
+.scorers-list {
   list-style: none;
   font-size: 12px;
 }
 
-.upcomingfixture-ul-list{
+.upcomingfixture-ul-list {
   margin: 0px 0px 2rem;
   font-size: 0.7rem;
   list-style: none;
@@ -779,53 +793,56 @@ transform: scale(1.2);
   width: 100%;
 }
 
-.upcomingfixture-home-box{
+.upcomingfixture-home-box {
   position: relative;
 }
 
-.upcomingfixture-inner-box{
+.upcomingfixture-inner-box {
   display: flex;
   margin: 0.6rem 0px;
   -webkit-box-align: center;
   align-items: center;
 }
 
-.upcomingfixture-home-text, .upcomingfixture-away-text{
+.upcomingfixture-home-text,
+.upcomingfixture-away-text {
   font-size: 0.8rem;
   vertical-align: middle;
 }
 
-.home-box-2{
+.home-box-2 {
   display: flex;
   align-items: center;
   flex: 1 1 calc(50% - 5rem);
   justify-content: right;
-
 }
 
-.away-box-2{
+.away-box-2 {
   display: flex;
   align-items: center;
   flex: 1 1 calc(50% - 2.2rem);
-
 }
 
-.upcomingfixture-home-image-box, .upcomingfixture-away-image-box{
+.upcomingfixture-home-image-box,
+.upcomingfixture-away-image-box {
   margin-right: 10px;
   margin-left: 10px;
 }
 
-.upcomingfixture-date-box{
+.upcomingfixture-date-box {
   text-align: center;
   /* border-top: 1px solid rgba(55, 0, 60, 0.08);  */
-   
 }
 
-.upcomingfixture-date{
+.upcomingfixture-date {
   font-size: 0.9rem;
   align-items: center;
   padding: 5px;
-  background-image: linear-gradient(to right, rgb(0, 255, 135), rgb(2, 239, 255));
+  background-image: linear-gradient(
+    to right,
+    rgb(0, 255, 135),
+    rgb(2, 239, 255)
+  );
   width: 100%;
   margin-left: auto;
   margin-right: auto;
@@ -836,7 +853,6 @@ transform: scale(1.2);
   border-bottom-left-radius: 10px; */
 }
 
-
 /* .twat-description{
 font-size: 1rem;
 margin-top: 10px;
@@ -844,18 +860,17 @@ margin-bottom: 10px;
 font-weight: inherit;
 text-align: center;
 } */
-.twat-box{
+.twat-box {
   margin-top: 25px;
 }
 
-
-.twat-text{
+.twat-text {
   text-align: center;
   color: black;
   font-size: 1.3rem;
 }
 
-.twat-text-link{
+.twat-text-link {
   color: black;
   text-align: center;
   font-size: 1.3rem;
@@ -863,66 +878,66 @@ text-align: center;
   cursor: pointer;
 }
 
-.twat-text-link:hover{
-  color: #F2055C;
+.twat-text-link:hover {
+  color: #f2055c;
 }
 
-.transfers-table-realplayers{
-margin-top: 20px;
-width: 100%;
-font-size: 12px;
-color: black;
-}
-
-.transfers-table-realplayers2{
+.transfers-table-realplayers {
   margin-top: 20px;
   width: 100%;
   font-size: 12px;
   color: black;
-  }
-
-.realplayers-transfer-list{
-font-size: 12px;
-list-style: none;
-padding-left: 0px;
-padding-top: 5px;
 }
 
-.realplayers2-transfer-list{
+.transfers-table-realplayers2 {
+  margin-top: 20px;
+  width: 100%;
+  font-size: 12px;
+  color: black;
+}
+
+.realplayers-transfer-list {
+  font-size: 12px;
+  list-style: none;
+  padding-left: 0px;
+  padding-top: 5px;
+}
+
+.realplayers2-transfer-list {
   list-style: none;
 }
 
-.realplayers-greenarrow{
-width: 13px;
-margin-left: 2px;
-margin-right: 2px;
-}
-
-.realplayers2-greenarrow{
+.realplayers-greenarrow {
   width: 13px;
   margin-left: 2px;
   margin-right: 2px;
-  }
-
-.fa-arrow-right {
-display: var(--fa-display, inline-block);
-padding: 7px;
-color: white;
-background-color: black;
-height: 18px;
-width: 18px;
-border-radius: 50%;
-overflow: visible;
-vertical-align: -0.125em;
-transition: all 0.5s ease 0s;
 }
 
-.fa-arrow-right:hover{
-  background-color: #F2055C;
+.realplayers2-greenarrow {
+  width: 13px;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+.fa-arrow-right {
+  display: var(--fa-display, inline-block);
+  padding: 7px;
+  color: white;
+  background-color: black;
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  overflow: visible;
+  vertical-align: -0.125em;
+  transition: all 0.5s ease 0s;
+}
+
+.fa-arrow-right:hover {
+  background-color: #f2055c;
   transform: scale(1.2);
 }
 
-.fa-arrows-rotate{
+.fa-arrows-rotate {
   display: var(--fa-display, inline-block);
   padding: 20px;
   color: black;
@@ -936,8 +951,8 @@ transition: all 0.5s ease 0s;
   cursor: pointer;
 }
 
-ul{
-padding-left: 0;
+ul {
+  padding-left: 0;
 }
 
 .outer-container {
@@ -965,18 +980,17 @@ padding-left: 0;
 .image-container {
   width: 100%;
   height: 100%;
-  background-image: url('../public/images/kits.png');
+  background-image: url("../public/images/kits.png");
   background-size: cover;
   background-position: center;
   transition: background-image 0.3s ease;
   cursor: pointer;
-
 }
 
 .image-container-youtube {
   width: 100%;
   height: 100%;
-  background-image: url('../public/images/fplyoutube.png');
+  background-image: url("../public/images/fplyoutube.png");
   background-size: cover;
   background-position: center;
   transition: background-image 0.3s ease;
@@ -984,24 +998,23 @@ padding-left: 0;
   border: 3px solid white;
   border-radius: 8px;
   transition: all 0.3s ease 0s;
-
 }
 
 .outer-container:hover .image-container {
-  background-image: url('../public/images/kits2.png');
+  background-image: url("../public/images/kits2.png");
 }
 
 .image-container-youtube:hover {
-  border: 3px solid #F2055C;
+  border: 3px solid #f2055c;
   border-radius: 8px; /* Add a red border when hovered */
 }
 
-
-.select{
+.select {
   height: 40px;
   margin-top: 20px;
   margin-bottom: 25px;
-  box-shadow: rgba(0, 0, 0, 0.08) 0px 3px 4px 0px, rgba(0, 0, 0, 0.08) 0px 3px 3px -2px, rgba(0, 0, 0, 0.16) 0px 1px 8px 0px;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 3px 4px 0px,
+    rgba(0, 0, 0, 0.08) 0px 3px 3px -2px, rgba(0, 0, 0, 0.16) 0px 1px 8px 0px;
   cursor: pointer;
   border: none;
   color: black;
@@ -1011,45 +1024,44 @@ padding-left: 0;
   /* transition: all 0.5s ease 0s; */
 }
 
-.select option{
+.select option {
   color: black;
   height: 150px;
 }
 
-.injury-select{
+.injury-select {
   width: 150px;
 }
 
-.expected-select{
-  width:200px;
+.expected-select {
+  width: 200px;
 }
 
-.statistics-select{
-  width:180px;
+.statistics-select {
+  width: 180px;
 }
 
-.statistics-select-teams{
-  width:150px;
+.statistics-select-teams {
+  width: 150px;
   margin-right: 20px;
 }
 
-.expected-select-teams{
-  width:170px;
+.expected-select-teams {
+  width: 170px;
   margin-right: 20px;
 }
 
-.minutes{
+.minutes {
   font-size: 12px;
-  display: flex; 
-  flex-direction: column; 
-  margin-top: 10px; 
-  align-items: center; 
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  align-items: center;
   justify-content: center;
   color: red;
 }
 
-
-.error-message{
+.error-message {
   color: black;
   font-size: 2.5rem;
   text-align: center;
@@ -1060,7 +1072,7 @@ padding-left: 0;
   margin-bottom: auto;
 }
 
-.error-message-captaincy{
+.error-message-captaincy {
   color: black;
   font-size: 2rem;
   text-align: center;
@@ -1071,7 +1083,7 @@ padding-left: 0;
   margin-bottom: auto;
 }
 
-.error-message-twat{
+.error-message-twat {
   color: black;
   font-size: 1.5rem;
   text-align: center;
@@ -1082,7 +1094,7 @@ padding-left: 0;
   margin-bottom: auto;
 }
 
-.error-message-gameweek{
+.error-message-gameweek {
   color: black;
   font-size: 1.5rem;
   display: flex;
@@ -1091,7 +1103,7 @@ padding-left: 0;
   margin-top: 20px;
 }
 
-.error-message-upcoming{
+.error-message-upcoming {
   color: black;
   font-size: 1.6rem;
   text-align: center;
@@ -1108,736 +1120,685 @@ padding-left: 0;
   margin-right: 5px;
 }
 
-@media (max-width:1999px){
-  .transfers-title
-  {
-      font-size: 25px;
+@media (max-width: 1999px) {
+  .transfers-title {
+    font-size: 25px;
   }
-.news-info {
+  .news-info {
     font-size: 12px;
   }
-.home-text, .away-text
-  {
-      font-size: 0.8rem;
+  .home-text,
+  .away-text {
+    font-size: 0.8rem;
   }
-.upcomingfixture-score-box
-  {
+  .upcomingfixture-score-box {
     padding: 10px;
   }
-.home-box-2
-  {
+  .home-box-2 {
     flex: 1 1 calc(60% - 5rem);
   }
 }
 
-@media (max-width:1550px){
-  .error-message-captaincy
-  {
+@media (max-width: 1550px) {
+  .error-message-captaincy {
     font-size: 1.3rem;
   }
 }
 
-@media (max-width:1500px){
-  .outer-container-youtube{
+@media (max-width: 1500px) {
+  .outer-container-youtube {
     width: 350px;
     height: 150px;
     margin-top: 30px;
   }
 }
 
-@media (max-width:1400px){
-  .error-message
-  {
+@media (max-width: 1400px) {
+  .error-message {
     font-size: 2rem;
   }
-  .transfers-title
-  {
-      font-size: 23px;
+  .transfers-title {
+    font-size: 23px;
   }
-.expected-select-teams, .expected-select {
-    width:150px;
+  .expected-select-teams,
+  .expected-select {
+    width: 150px;
   }
-  .expected-select-teams{
+  .expected-select-teams {
     margin-right: 10px;
   }
-  .select{
+  .select {
     font-size: 12px;
   }
-  .statistics-select-teams, .statistics-select{
-    width:150px;
+  .statistics-select-teams,
+  .statistics-select {
+    width: 150px;
   }
-  .statistics-select-teams{
+  .statistics-select-teams {
     margin-right: 10px;
   }
-  .outer-container-youtube{
+  .outer-container-youtube {
     width: 320px;
     height: 155px;
     margin-top: 30px;
   }
-.home-text, .away-text, .score-box
-  {
-      font-size: 0.67rem;
+  .home-text,
+  .away-text,
+  .score-box {
+    font-size: 0.67rem;
   }
-.bonus-list
-  {
-      font-size: 0.55rem;
-  }
-.bonus-box
-  {
-      width: 6.5rem;
-      margin-left: 10px;
-  }
-.fixture-date
-  {
-      font-size: 0.8rem;
-  }
-.upcomingfixture-home-image-box
-  {
-      margin-left: 5px;
-      margin-right: 5px;
-  }
-.upcomingfixture-away-image-box
-  {
-      margin-left: 5px;
-      margin-right: 5px;
-  }
-.upcomingfixture-ul-list
-  {
-      padding: 0;
-      margin: 0px 20px 2rem;
-  }
-.upcomingfixture-home-text, .upcomingfixture-away-text
-  {
-      font-size: 0.55rem;
-  }
-.upcomingfixture-score-box
-  {
-    padding: 5px;
-  }
-.home-box-2
-  {
-    flex: 1 1 calc(50% - 5rem);
-  }
-.deadline-date-time
-  {
-    font-size: 1.3rem;
-  }
-.deadline-date
-  {
-    font-size: 1.3rem;
-  }
-.upcomingfixture-date
-  {
-    font-size: 0.8rem;
-  }
-
-}
-
-@media (max-width:1290px){
-  .transfers-table-playerchanges
-  {
+  .bonus-list {
     font-size: 0.55rem;
   }
-  .greenarrowup, .redarrowdown
-  {
+  .bonus-box {
+    width: 6.5rem;
+    margin-left: 10px;
+  }
+  .fixture-date {
+    font-size: 0.8rem;
+  }
+  .upcomingfixture-home-image-box {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  .upcomingfixture-away-image-box {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  .upcomingfixture-ul-list {
+    padding: 0;
+    margin: 0px 20px 2rem;
+  }
+  .upcomingfixture-home-text,
+  .upcomingfixture-away-text {
+    font-size: 0.55rem;
+  }
+  .upcomingfixture-score-box {
+    padding: 5px;
+  }
+  .home-box-2 {
+    flex: 1 1 calc(50% - 5rem);
+  }
+  .deadline-date-time {
+    font-size: 1.3rem;
+  }
+  .deadline-date {
+    font-size: 1.3rem;
+  }
+  .upcomingfixture-date {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 1290px) {
+  .transfers-table-playerchanges {
+    font-size: 0.55rem;
+  }
+  .greenarrowup,
+  .redarrowdown {
     width: 12px;
     height: 12px;
   }
 }
 
-@media (max-width:1200px){
-  .error-message
-  {
-      font-size: 1.5rem;
+@media (max-width: 1200px) {
+  .error-message {
+    font-size: 1.5rem;
   }
-  .error-message-gameweek
-  {
+  .error-message-gameweek {
     font-size: 1.3rem;
   }
-  .transfers-title
-  {
-      font-size: 20px;
+  .transfers-title {
+    font-size: 20px;
   }
-.expected-select-teams, .expected-select {
-    width:120px;
+  .expected-select-teams,
+  .expected-select {
+    width: 120px;
   }
-  .expected-select-teams{
+  .expected-select-teams {
     margin-right: 10px;
   }
-  .select{
+  .select {
     font-size: 12px;
   }
-  .statistics-select-teams, .statistics-select{
-    width:95px;
+  .statistics-select-teams,
+  .statistics-select {
+    width: 95px;
   }
-  .statistics-select-teams{
+  .statistics-select-teams {
     margin-right: 10px;
   }
-  .outer-container-youtube{
+  .outer-container-youtube {
     width: 300px;
     height: 150px;
     margin-top: 30px;
   }
-.news-info {
+  .news-info {
     font-size: 10px;
   }
-.player-photo {
+  .player-photo {
     height: 65px;
     width: 50px;
   }
-.home-text, .away-text, .score-box
-  {
-      font-size: 0.7rem;
+  .home-text,
+  .away-text,
+  .score-box {
+    font-size: 0.7rem;
   }
-.score-box
-  {
+  .score-box {
     flex: 1 0 2.7rem;
     margin: 0px;
   }
-.home-image, .away-image
-  {
-      height: 30px;
-      width: 30px;
+  .home-image,
+  .away-image {
+    height: 30px;
+    width: 30px;
   }
-.home-image-box
-  {
+  .home-image-box {
     margin-left: 5px;
   }
-.away-image-box
-  {
+  .away-image-box {
     margin-right: 15px;
   }
-.greenarrowup, .redarrowdown
-  {
+  .greenarrowup,
+  .redarrowdown {
     width: 10px;
     height: 10px;
   }
-.transfers-table-playerchanges .transfer-header
-  {
+  .transfers-table-playerchanges .transfer-header {
     font-size: 0.44rem;
   }
-.arrow-box
-  {
+  .arrow-box {
     padding-left: 2px !important;
   }
-.upcomingfixture-ul-list
-  {
-      padding: 0;
-      margin: 0px 20px 2rem;
+  .upcomingfixture-ul-list {
+    padding: 0;
+    margin: 0px 20px 2rem;
   }
-.upcomingfixture-home-text, .upcomingfixture-away-text
-  {
-      font-size: 0.55rem;
+  .upcomingfixture-home-text,
+  .upcomingfixture-away-text {
+    font-size: 0.55rem;
   }
-.upcomingfixture-score-box
-  {
+  .upcomingfixture-score-box {
     padding: 5px;
   }
-.transfers-button
-  {
+  .transfers-button {
     width: 80px;
     height: 20px;
   }
-.captaincy-button
-  {
+  .captaincy-button {
     width: 85px;
     height: 25px;
   }
-.realplayers-transfer-list, .realplayer-name-box, .transfers-table-realplayers{
+  .realplayers-transfer-list,
+  .realplayer-name-box,
+  .transfers-table-realplayers {
     font-size: 9px;
   }
-.realplayers-greenarrow{
+  .realplayers-greenarrow {
     width: 10px;
   }
-.fa-arrow-right{
+  .fa-arrow-right {
     width: 12px;
     height: 12px;
   }
 }
 
-
-@media (max-width:998px){
-  .widget3, .widget4
-  {
+@media (max-width: 998px) {
+  .widget3,
+  .widget4 {
     margin-top: 1.7rem;
   }
-  .container-header
-  {
+  .container-header {
     height: 8rem;
   }
 }
 
-@media (max-width:992px){
-  .error-message
-  {
+@media (max-width: 992px) {
+  .error-message {
     font-size: 2.2rem;
   }
-  .widget10, .widget11, .widget2
-  {
+  .widget10,
+  .widget11,
+  .widget2 {
     margin-top: 25px;
   }
-.transfers-title
-  {
+  .transfers-title {
     font-size: 20px;
   }
-.expected-select-teams, .expected-select {
-    width:170px;
+  .expected-select-teams,
+  .expected-select {
+    width: 170px;
   }
-  .expected-select-teams{
+  .expected-select-teams {
     margin-right: 20px;
   }
-  .select{
+  .select {
     font-size: 13px;
   }
-  .statistics-select-teams, .statistics-select{
-    width:200px;
+  .statistics-select-teams,
+  .statistics-select {
+    width: 200px;
   }
-  .outer-container-youtube{
+  .outer-container-youtube {
     width: 420px;
     height: 200px;
     margin-top: 20px;
   }
-.news-info
-  {
+  .news-info {
     font-size: 12px;
   }
-.home-text, .away-text, .score-box
-  {
+  .home-text,
+  .away-text,
+  .score-box {
     font-size: 0.8rem;
   }
-.bonus-list
-  {
-      font-size: 0.75rem;
+  .bonus-list {
+    font-size: 0.75rem;
   }
-.bonus-box
-  {
-     width: 8rem;
+  .bonus-box {
+    width: 8rem;
   }
-.home-image-box
-  {
+  .home-image-box {
     margin-right: 15px;
     margin-left: 10px;
   }
-.home-box
-  {
+  .home-box {
     flex: 1 1 calc(60% - 2.2rem);
   }
-.away-image-box
-  {
+  .away-image-box {
     margin-right: 17px;
     margin-left: 5px;
   }
-  .time-box{
+  .time-box {
     margin-left: -3px;
   }
-.transfers-table-playerchanges 
-  {
+  .transfers-table-playerchanges {
     font-size: 0.7rem;
   }
-.greenarrowup, .redarrowdown
-  {
+  .greenarrowup,
+  .redarrowdown {
     width: 15px;
     height: 15px;
   }
-.transfers-table-playerchanges .transfer-header
-  {
+  .transfers-table-playerchanges .transfer-header {
     font-size: 0.55rem;
   }
-.arrow-box
-  {
+  .arrow-box {
     padding-left: 5px !important;
   }
-.upcomingfixture-home-text, .upcomingfixture-away-text
-  {
-      font-size: 0.8rem;
+  .upcomingfixture-home-text,
+  .upcomingfixture-away-text {
+    font-size: 0.8rem;
   }
-.upcomingfixture-score-box
-  {
+  .upcomingfixture-score-box {
     padding: 10px;
   }
-.home-box-2
-  {
+  .home-box-2 {
     flex: 1 1 calc(50% - 5rem);
   }
-.deadline-date
-  {
+  .deadline-date {
     font-size: 1.5rem;
   }
-  .realplayers2-kits{
+  .realplayers2-kits {
     width: 32px;
     height: 40px;
   }
-  .realplayer2-name-box, .realplayers2-transfer-list{
+  .realplayer2-name-box,
+  .realplayers2-transfer-list {
     font-size: 16px;
   }
-  .transfer-header-realplayers2{
+  .transfer-header-realplayers2 {
     font-size: 12px;
   }
-  .transfers-table-realplayers2{
+  .transfers-table-realplayers2 {
     font-size: 16px;
   }
 }
 
-
-@media (max-width:768px){
-  .error-message
-  {
+@media (max-width: 768px) {
+  .error-message {
     font-size: 2rem;
   }
-  .transfers-title
-  {
+  .transfers-title {
     font-size: 20px;
-
   }
-.home-text, .away-text, .score-box
-  {
+  .home-text,
+  .away-text,
+  .score-box {
     font-size: 0.7rem;
-  }.minutes{
+  }
+  .minutes {
     font-size: 10px;
   }
-.bonus-list
-  {
-      font-size: 0.6rem;
+  .bonus-list {
+    font-size: 0.6rem;
   }
-.away-image-box
-  {
+  .away-image-box {
     margin-right: 15px;
   }
-  .realplayers2-kits{
+  .realplayers2-kits {
     width: 28px;
     height: 37px;
   }
-  .realplayer2-name-box, .realplayers2-transfer-list{
+  .realplayer2-name-box,
+  .realplayers2-transfer-list {
     font-size: 12px;
   }
-  .transfer-header-realplayers2{
+  .transfer-header-realplayers2 {
     font-size: 12px;
   }
-  .transfers-table-realplayers2{
+  .transfers-table-realplayers2 {
     font-size: 12px;
   }
 }
 
-@media (max-width:576px){
-  .error-message
-  {
+@media (max-width: 576px) {
+  .error-message {
     font-size: 1.9rem;
   }
-  .transfers-title
-  {
+  .transfers-title {
     font-size: 20px;
   }
-.expected-select-teams, .expected-select {
-    width:150px;
+  .expected-select-teams,
+  .expected-select {
+    width: 150px;
   }
-  .expected-select-teams{
+  .expected-select-teams {
     margin-right: 15px;
   }
-  .select{
+  .select {
     font-size: 12px;
   }
-  .statistics-select-teams, .statistics-select{
-    width:200px;
+  .statistics-select-teams,
+  .statistics-select {
+    width: 200px;
   }
-.home-text, .away-text
-  {
+  .home-text,
+  .away-text {
     font-size: 0.7rem;
   }
-.away-image-box
-  {
+  .away-image-box {
     margin-right: 15px;
   }
-  .realplayers2-kits{
+  .realplayers2-kits {
     width: 27px;
     height: 34px;
   }
-  .realplayer2-name-box, .realplayers2-transfer-list{
+  .realplayer2-name-box,
+  .realplayers2-transfer-list {
     font-size: 10px;
   }
-  .transfer-header-realplayers2{
+  .transfer-header-realplayers2 {
     font-size: 10px;
   }
-  .transfers-table-realplayers2{
+  .transfers-table-realplayers2 {
     font-size: 10px;
   }
 }
 
-@media (max-width:480px){
-  .error-message
-  {
+@media (max-width: 480px) {
+  .error-message {
     font-size: 1.6rem;
   }
-  .error-message-captaincy
-  {
+  .error-message-captaincy {
     font-size: 1.6rem;
   }
-  .fa-youtube, .fa-twitter, .fa-instagram
-  {
+  .fa-youtube,
+  .fa-twitter,
+  .fa-instagram {
     height: 15px;
     width: 15px;
     padding: 15px;
     margin-left: 15px;
   }
-.trademark
-  {
+  .trademark {
     font-size: 0.6rem;
     float: none;
   }
-.expected-select-teams, .expected-select {
-    width:115px;
+  .expected-select-teams,
+  .expected-select {
+    width: 115px;
   }
-  .expected-select-teams{
+  .expected-select-teams {
     margin-right: 7px;
   }
-  .select{
+  .select {
     font-size: 11px;
   }
-  .statistics-select-teams, .statistics-select{
-    width:150px;
+  .statistics-select-teams,
+  .statistics-select {
+    width: 150px;
   }
-  .outer-container-youtube{
+  .outer-container-youtube {
     width: 360px;
     height: 180px;
     margin-top: 30px;
   }
-.news-info {
+  .news-info {
     font-size: 10px;
   }
-.player-photo {
+  .player-photo {
     height: 65px;
     width: 50px;
   }
-.home-text, .away-text, .score-box
-  {
+  .home-text,
+  .away-text,
+  .score-box {
     font-size: 0.48rem;
-  }.minutes{
+  }
+  .minutes {
     font-size: 8px;
   }
-.bonus-list
-  {
-      font-size: 0.52rem;
+  .bonus-list {
+    font-size: 0.52rem;
   }
-.bonus-box
-  {
-      width: 6rem;
-      margin-left: 10px;
+  .bonus-box {
+    width: 6rem;
+    margin-left: 10px;
   }
-.score-box
-  {
-    flex: 1 0 2.0rem;
+  .score-box {
+    flex: 1 0 2rem;
     margin: 0px;
   }
-.player-info
-  {
+  .player-info {
     font-size: 9px;
   }
-  .player-transfer-info-box
-  {
+  .player-transfer-info-box {
     font-size: 8px;
   }
-.player-photo
-  {
-      height: 60px;
-      width: 45px;
+  .player-photo {
+    height: 60px;
+    width: 45px;
   }
-.time-box
-  {
+  .time-box {
     font-size: 0.55rem;
     flex: 1 0 2rem;
     margin-left: 5px;
     margin-right: 3px;
   }
-.home-image-box
-  {
+  .home-image-box {
     margin-right: 10px;
     margin-left: 7px;
   }
-.away-image-box
-  {
+  .away-image-box {
     margin-right: 15px;
     margin-left: 0px;
   }
-.realplayers-transfer-list, .realplayer-name-box{
+  .realplayers-transfer-list,
+  .realplayer-name-box {
     font-size: 10px;
   }
-.realplayers2-kits{
+  .realplayers2-kits {
     width: 30px;
     height: 37px;
   }
-.realplayers-greenarrow{
+  .realplayers-greenarrow {
     width: 10px;
   }
-  .realplayers2-greenarrow{
+  .realplayers2-greenarrow {
     width: 8px;
   }
-  .realplayers2-kits{
+  .realplayers2-kits {
     width: 25px;
     height: 32px;
   }
-  .realplayer2-name-box, .realplayers2-transfer-list{
+  .realplayer2-name-box,
+  .realplayers2-transfer-list {
     font-size: 7px;
   }
-  .transfer-header-realplayers2{
+  .transfer-header-realplayers2 {
     font-size: 7px;
   }
-  .transfers-table-realplayers2{
+  .transfers-table-realplayers2 {
     font-size: 7px;
   }
-.fa-arrow-right{
+  .fa-arrow-right {
     width: 12px;
     height: 12px;
   }
-  .transfers-table-playerchanges
-  {
+  .transfers-table-playerchanges {
     font-size: 0.55rem;
   }
 }
 
-@media (max-width:400px){
-  .expected-select-teams, .expected-select  {
-    width:100px;
-    
+@media (max-width: 400px) {
+  .expected-select-teams,
+  .expected-select {
+    width: 100px;
   }
-  .expected-select-teams{
+  .expected-select-teams {
     margin-right: 5px;
   }
-  .select{
+  .select {
     font-size: 10px;
   }
-  .statistics-select-teams, .statistics-select{
-    width:120px;
+  .statistics-select-teams,
+  .statistics-select {
+    width: 120px;
   }
-  .outer-container-youtube{
+  .outer-container-youtube {
     width: 310px;
     height: 160px;
     margin-top: 30px;
   }
-  td
-  {
+  td {
     padding: 0.4rem;
   }
-  .fa-arrow-right{
+  .fa-arrow-right {
     width: 10px;
     height: 10px;
   }
-  .realplayers-transfer-list, .realplayer-name-box{
+  .realplayers-transfer-list,
+  .realplayer-name-box {
     font-size: 8px;
   }
-    .realplayers2-kits{
+  .realplayers2-kits {
     width: 25px;
     height: 32px;
   }
-  .realplayer2-name-box, .realplayers2-transfer-list{
+  .realplayer2-name-box,
+  .realplayers2-transfer-list {
     font-size: 6px;
   }
-  .upcomingfixture-home-text, .upcomingfixture-away-text
-  {
+  .upcomingfixture-home-text,
+  .upcomingfixture-away-text {
     font-size: 0.6rem;
   }
-  .transfers-table-playerchanges .transfer-header
-  {
+  .transfers-table-playerchanges .transfer-header {
     font-size: 0.5rem;
   }
-  .transfer-header-realplayers2{
+  .transfer-header-realplayers2 {
     font-size: 7px;
   }
-  .transfers-table-realplayers2{
+  .transfers-table-realplayers2 {
     font-size: 6px;
   }
   /* .transfers-table-captaincy .transfer-header, .player-info-captaincy{
     padding-left: 50px !important;
   } */
-  .greenarrowup, .redarrowdown
-  {
+  .greenarrowup,
+  .redarrowdown {
     width: 13px;
     height: 13px;
   }
-  .transfers-table-playerchanges
-  {
+  .transfers-table-playerchanges {
     font-size: 0.55rem;
   }
-  .player-photo
-  {
+  .player-photo {
     height: 50px;
     width: 40px;
   }
-  .player-info 
-  {
+  .player-info {
     font-size: 8px;
   }
-  .player-transfer-info-box{
+  .player-transfer-info-box {
     font-size: 7.5px;
   }
-  .bonus-box
-  {
+  .bonus-box {
     width: 4.6rem;
     margin-left: 10px;
   }
-  .bonus-list
-  {
+  .bonus-list {
     font-size: 0.45rem;
   }
-  .home-text, .away-text, .score-box
-  {
+  .home-text,
+  .away-text,
+  .score-box {
     font-size: 0.43rem;
   }
-  .away-image, .home-image{
+  .away-image,
+  .home-image {
     width: 25px;
     height: 25px;
   }
-  .time-box{
+  .time-box {
     font-size: 0.5rem;
     flex: 1 0 2rem;
     margin-right: 2px;
   }
-  .away-box{
+  .away-box {
     flex: 1 1 calc(40% - 1rem);
   }
-  .home-box{
+  .home-box {
     flex: 1 1 calc(55% - 2rem);
   }
-  .minutes
-  {
+  .minutes {
     font-size: 8px;
   }
-  .trademark
-  {
+  .trademark {
     font-size: 0.6rem;
     float: none;
   }
-  .fa-youtube, .fa-twitter, .fa-instagram
-  {
+  .fa-youtube,
+  .fa-twitter,
+  .fa-instagram {
     height: 13px;
     width: 13px;
     padding: 13px;
     margin-left: 13px;
   }
-  .error-message
-  {
+  .error-message {
     font-size: 1.3rem;
   }
-  .error-message-captaincy
-  {
+  .error-message-captaincy {
     font-size: 1.3rem;
   }
-  .error-message-gameweek
-  {
+  .error-message-gameweek {
     font-size: 1.3rem;
   }
-  .error-message-upcoming
-  {
+  .error-message-upcoming {
     font-size: 1.3rem;
   }
 }
 
 @media screen and (max-width: 992px) {
-  .row{
-    display:flex;
+  .row {
+    display: flex;
     flex-direction: column;
     flex-flow: row wrap;
-  } 
-  .col-lg-4{
+  }
+  .col-lg-4 {
     order: 1;
   }
 }
-

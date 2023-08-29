@@ -72,13 +72,13 @@ async function getTwat() {
                 </p>
                 <p style={{textAlign: 'center'}}>
                 <a
-  target="_blank"
-  href={`https://fantasy.premierleague.com/entry/${twat[0]?.entry}/event/${currentGameweek}`}
-  className='twat-text-link'
-  rel="noopener noreferrer"
->
-  {twat[0]?.entryName}
-</a>
+                  target="_blank"
+                  href={`https://fantasy.premierleague.com/entry/${twat[0]?.entry}/event/${currentGameweek}`}
+                  className='twat-text-link'
+                  rel="noopener noreferrer"
+                >
+                  {twat[0]?.entryName}
+                </a>
                     
                 </p>
                 <p className='twat-text'>

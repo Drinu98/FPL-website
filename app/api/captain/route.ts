@@ -7,10 +7,6 @@ import url from 'url'
  * What if the summation transaction fails? Schedule retry
  */
 
-const sleep = async () =>
-  new Promise((resolve) => {
-    setTimeout(resolve, 2000);
-  });
   const getQueryParam = <T>(param: string | string[], defaultValue: T) => {
     if (Array.isArray(param)) {
       return param?.[0] || defaultValue
@@ -112,6 +108,8 @@ export async function GET(req: Request) {
     // });
     page = endPage + 1;
     pagesProcessed+= (endPage - startPage)
+
+    await new Promise((resolve) => setTimeout(resolve, 3000));
   }
 
   const result = await Promise.allSettled(promises);

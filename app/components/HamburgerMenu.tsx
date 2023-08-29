@@ -1,38 +1,15 @@
-"use client"
+"use client";
 
-// import React, { useState } from 'react';
-// import MenuContent from './MenuContent'; // Import the MenuContent component
-
-// export default function HamburgerMenu() {
-//   const [menuOpen, setMenuOpen] = useState(false);
-
-//   const toggleMenu = () => {
-//     setMenuOpen(!menuOpen);
-//   };
-
-//   return (
-//         <>
-//             <div className={`menu-toggle ${menuOpen ? 'open' : ''}`} onClick={toggleMenu}>
-//                 <div className="bar"></div>
-//                 <div className="bar"></div>
-//                 <div className="bar"></div>
-//             </div>
-      
-//       {/* Conditionally render the menu content */}
-//       {menuOpen && <MenuContent />}
-//         </>  
-//   );
-// }
-import Image from 'next/image'
-import React, { useState, useRef, useEffect } from 'react';
-import MenuContent from './MenuContent';
+import Image from "next/image";
+import React, { useState, useRef, useEffect } from "react";
+import MenuContent from "./MenuContent";
 
 export default function HamburgerMenu() {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    const currentTheme = localStorage.getItem('theme');
+    const currentTheme = localStorage.getItem("theme");
     if (currentTheme) {
       document.body.dataset.theme = currentTheme;
     }
@@ -40,9 +17,9 @@ export default function HamburgerMenu() {
 
   const toggleTheme = () => {
     const currentTheme = document.body.dataset.theme;
-    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    const newTheme = currentTheme === "light" ? "dark" : "light";
     document.body.dataset.theme = newTheme;
-    localStorage.setItem('theme', newTheme);
+    localStorage.setItem("theme", newTheme);
   };
 
   const toggleMenu = () => {
@@ -58,45 +35,31 @@ export default function HamburgerMenu() {
     }
 
     if (menuOpen) {
-      document.addEventListener('click', handleClickOutside);
+      document.addEventListener("click", handleClickOutside);
     } else {
-      document.removeEventListener('click', handleClickOutside);
+      document.removeEventListener("click", handleClickOutside);
     }
 
     return () => {
-      document.removeEventListener('click', handleClickOutside);
+      document.removeEventListener("click", handleClickOutside);
     };
   }, [menuOpen]);
 
-  
-
   return (
     <>
-      {/* <button
-        className="darkmode-button"
-        onClick={() => {
-          const currentTheme = document.body.dataset.theme;
-          document.body.dataset.theme = currentTheme === 'light' ? 'dark' : 'light';
-        }}
-      >
+      <button className="darkmode-button" onClick={toggleTheme}>
         <Image
           src="/images/darkmode.png"
           alt="Dark Mode"
-          width={45} // Set the desired width of the image
+          width={45}
           height={45}
-          style={{}} // Set the desired height of the image
+          style={{}}
         />
-      </button> */}
-      <button className="darkmode-button" onClick={toggleTheme}>
-      <Image
-        src="/images/darkmode.png"
-        alt="Dark Mode"
-        width={45}
-        height={45}
-        style={{}}
-      />
-    </button>
-      <div className={`menu-toggle ${menuOpen ? 'open' : ''}`} onClick={toggleMenu}>
+      </button>
+      <div
+        className={`menu-toggle ${menuOpen ? "open" : ""}`}
+        onClick={toggleMenu}
+      >
         <div className="bar"></div>
         <div className="bar"></div>
         <div className="bar"></div>
@@ -110,7 +73,3 @@ export default function HamburgerMenu() {
     </>
   );
 }
-
-
-
-

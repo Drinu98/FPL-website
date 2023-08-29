@@ -1,11 +1,11 @@
-import { NextResponse } from 'next/server';
+import { NextResponse } from "next/server";
 
 import {
   CaptainPick,
   EffectiveOwnership,
   prisma,
 } from "../../../../services/prisma";
-export async function POST(req: Request){
+export async function POST(req: Request) {
   const body = (await req.json()) as {
     startPage: number;
     endPage: number;
@@ -151,4 +151,4 @@ export async function POST(req: Request){
       })
     );
   }
-};
+}

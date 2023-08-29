@@ -1,5 +1,5 @@
 import { prisma } from "../../../../services/prisma";
-import { NextResponse } from 'next/server';
+import { NextResponse } from "next/server";
 
 const exclude = <O extends Record<string, any>, Key extends keyof O>(
   obj: O & {
@@ -20,7 +20,7 @@ const exclude = <O extends Record<string, any>, Key extends keyof O>(
   return newObj;
 };
 
-export async function POST(request: Request, response: Response){
+export async function POST(request: Request, response: Response) {
   console.log("Sum count started");
   const picks = await prisma.playerPicks.findMany({});
   const pickByTypeWithSum = picks.reduce(
@@ -52,28 +52,31 @@ export async function POST(request: Request, response: Response){
     return player;
   });
 
-  const allCaptainsWithPercentageById = allCaptainsWithPercentage.reduce((acc, captain) => {
-    acc[captain.playerElementId] = captain
-    return acc
-  }, {} as Record<string, typeof allCaptainsWithPercentage[number]>)
+  const allCaptainsWithPercentageById = allCaptainsWithPercentage.reduce(
+    (acc, captain) => {
+      acc[captain.playerElementId] = captain;
+      return acc;
+    },
+    {} as Record<string, (typeof allCaptainsWithPercentage)[number]>
+  );
 
-
-  const allPlayersWithEoPercentage = allPlayers.map(player => {
-    const isPlayerCaptain = allCaptainsWithPercentageById[player.playerElementId]
+  const allPlayersWithEoPercentage = allPlayers.map((player) => {
+    const isPlayerCaptain =
+      allCaptainsWithPercentageById[player.playerElementId];
 
     if (!isPlayerCaptain) {
-        return {
-            ...player,
-            chosenEffectiveOwnershipPercentage: ((player.count + 0) / 10000) * 100
-        }
+      return {
+        ...player,
+        chosenEffectiveOwnershipPercentage: ((player.count + 0) / 10000) * 100,
+      };
     }
     const captaincyCount = isPlayerCaptain.count ?? 0;
     const combinedCount = ((player.count + captaincyCount) / 10000) * 100;
     return {
-        ...player,
-        chosenEffectiveOwnershipPercentage: combinedCount
-    }
-  })
+      ...player,
+      chosenEffectiveOwnershipPercentage: combinedCount,
+    };
+  });
 
   await prisma.$transaction(async ($tx) => {
     await Promise.all([
@@ -99,4 +102,4 @@ export async function POST(request: Request, response: Response){
       message: "ok",
     })
   );
-};
+}
