@@ -1,6 +1,8 @@
 "use client";
 
 import Image from "next/image";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faA, faFutbol } from "@fortawesome/free-solid-svg-icons";
 
 type Fixture = {
   home: string;
@@ -92,26 +94,21 @@ const DisplayFixtures = (props: DisplayFixturesProps) => {
                       <div className="fixture-home-box">
                         <div className="fixture-inner-box">
                           <div className="home-box">
-                            <span className="home-text">{fixture.home} </span>
-                            <div className="home-image-box">
-                              <Image
-                                className="home-image"
-                                src={fixture.homeImage}
-                                alt={fixture.home}
-                                width={40}
-                                height={40}
-                              />
+                            <div
+                              style={{ display: "flex", alignItems: "center" }}
+                            >
+                              <span className="home-text">{fixture.home}</span>
+                              <div className="home-image-box">
+                                <Image
+                                  className="home-image"
+                                  src={fixture.homeImage}
+                                  alt={fixture.home}
+                                  width={40}
+                                  height={40}
+                                />
+                              </div>
                             </div>
                           </div>
-                          {/* <span className="scorers-box">
-                            <ul className="scorers-list">
-                              {fixture.scorers?.map((scorer : any, index : any) => (
-                                <li key={index} className="scorer-item">
-                                  {scorer.team === 'home' ? scorer.name : null}
-                                </li>
-                              ))}
-                            </ul>
-                          </span> */}
                           {fixture.started ? (
                             <>
                               {/* <div style={{display:'flex', justifyContent:'center', flexDirection:'column', alignItems:'center', flex: '1 0 3.6rem'}}> */}
@@ -138,82 +135,273 @@ const DisplayFixtures = (props: DisplayFixturesProps) => {
                             </div>
                             <span className="away-text">{fixture.away} </span>
                           </div>
-                          {fixture.finished ? (
-                            <div
-                              className="bonus-box"
-                              style={{
-                                display: "inline-block",
-                                marginLeft: "10px",
-                              }}
-                            >
+                        </div>
+                      {fixture.started ? (
+                        <div
+                          style={{
+                            display: "flex",
+                            justifyContent: "center",
+                            width: "100%",
+                            marginTop: "10px",
+                            marginBottom: "10px",
+                          }}
+                        >
+                          <div
+                            style={{
+                              display: "flex",
+                              width: "50%",
+                              justifyContent: "right",
+                              borderRight: "1px solid #ccc",
+                              flexDirection: "column",
+                            }}
+                          >
+                            <div className="scorers-box-home">
                               <ul
-                                className="bonus-list"
-                                style={{ padding: 0, margin: 0 }}
+                                className="scorers-list"
+                                style={{ marginBottom: "5px" }}
                               >
-                                {fixture.bonus?.map(
-                                  (bonus: any, index: any) => (
-                                    <li key={index} className="bonus-item">
-                                      ({bonus.value}) {bonus.name}
+                                {fixture.scorers?.map(
+                                  (scorer: any, index: any) => (
+                                    <>
+                                      <li
+                                        key={scorer.id}
+                                        className="scorer-item"
+                                        style={{
+                                          display: "flex",
+                                          justifyContent:
+                                            scorer.team === "home"
+                                              ? "flex-end"
+                                              : "flex-start", // Align to the end for home team scorers
+                                          alignItems: "center",
+                                        }}
+                                      >
+                                        {scorer.team === "home" ? (
+                                          <span
+                                            style={{
+                                              display: "flex",
+                                              alignItems: "center",
+                                            }}
+                                          >
+                                            {scorer.name}
+                                            {[...Array(scorer.value)].map(
+                                              (_, i) => (
+                                                <FontAwesomeIcon
+                                                  key={i}
+                                                  icon={faFutbol}
+                                                  className="home-icon-goals"
+                                                />
+                                              )
+                                            )}
+                                          </span>
+                                        ) : null}
+                                      </li>
+                                    </>
+                                  )
+                                )}
+                              </ul>
+                            </div>
+                            <div className="scorers-box-home">
+                              <ul className="scorers-list">
+                                {fixture.assists?.map(
+                                  (assist: any, index: any) => (
+                                    <li
+                                      key={assist.id}
+                                      className="scorer-item"
+                                      style={{
+                                        display: "flex",
+                                        justifyContent:
+                                          assist.team === "home"
+                                            ? "flex-end"
+                                            : "flex-start", // Align to the end for home team scorers
+                                        alignItems: "center",
+                                        textAlign: "left",
+                                      }}
+                                    >
+                                      {assist.team === "home" ? (
+                                        <span
+                                          style={{
+                                            display: "flex",
+                                            alignItems: "center",
+                                          }}
+                                        >
+                                          {assist.name}
+                                          {[...Array(assist.value)].map(
+                                            (_, i) => (
+                                              <FontAwesomeIcon
+                                                key={i}
+                                                icon={faA}
+                                                className="home-icon-assists"
+                                              />
+                                            )
+                                          )}
+                                        </span>
+                                      ) : null}
                                     </li>
                                   )
                                 )}
                               </ul>
                             </div>
-                          ) : (
-                            <div
-                              className="bonus-box"
-                              style={{
-                                display: "inline-block",
-                                marginLeft: "10px",
-                              }}
-                            >
-                              {/* <ul className="bonus-list" style={{ padding: 0, margin: 0 }}>
-                                {fixture.bps?.map((bps : any, index : any) => (
-                                  <li key={index} className="bonus-item">
-                                    ({fixture.bps.length - index}) {bps.name} ({bps.value})   
-                                  </li>
-                                ))}
-                              </ul> */}
-                              <ul
-                                className="bonus-list"
-                                style={{ padding: 0, margin: 0 }}
-                              >
-                                {fixture.bps?.map((bps: any, index: any) => {
-                                  // Calculate points based on tie-breaking rules
-                                  let points;
-                                  if (index === 0) {
-                                    points = 3;
-                                  } else if (index === 1) {
-                                    if (fixture.bps[0].value === bps.value) {
-                                      points = 3;
-                                    } else {
-                                      points = 2;
-                                    }
-                                  } else if (index === 2) {
-                                    if (fixture.bps[0].value === bps.value) {
-                                      points = 3;
-                                    } else if (
-                                      fixture.bps[1].value === bps.value
-                                    ) {
-                                      points = 2;
-                                    } else {
-                                      points = 1;
-                                    }
-                                  } else {
-                                    points = 1; // All remaining players get 1 point
-                                  }
-
-                                  // Display bonus points for each player
-                                  return (
-                                    <li key={index} className="bonus-item">
-                                      ({points}) {bps.name} ({bps.value})
-                                    </li>
-                                  );
-                                })}
-                              </ul>
+                          </div>
+                          <div
+                            style={{
+                              display: "flex",
+                              width: "50%",
+                              
+                            }}
+                          >
+                            <div style={{display: "flex", justifyContent: "left", flexDirection: "column", width:'50%'}}>
+                              <div className="scorers-box-away">
+                                <ul
+                                  className="scorers-list"
+                                  style={{ marginBottom: "5px" }}
+                                >
+                                  {fixture.scorers?.map(
+                                    (scorer: any, index: any) => (
+                                      <li
+                                        key={scorer.id}
+                                        className="scorer-item"
+                                        style={{ display: "flex" }}
+                                      >
+                                        {scorer.team === "away" ? (
+                                          <span
+                                            style={{
+                                              display: "flex",
+                                              alignItems: "center",
+                                            }}
+                                          >
+                                            {[...Array(scorer.value)].map(
+                                              (_, i) => (
+                                                <FontAwesomeIcon
+                                                  key={i}
+                                                  icon={faFutbol}
+                                                  className="away-icon-goals"
+                                                />
+                                              )
+                                            )}
+                                            {scorer.name}
+                                          </span>
+                                        ) : null}
+                                      </li>
+                                    )
+                                  )}
+                                </ul>
+                              </div>
+                              <div className="scorers-box-away">
+                                <ul className="scorers-list">
+                                  {fixture.assists?.map(
+                                    (assist: any, index: any) => (
+                                      <li
+                                        key={assist.id}
+                                        className="scorer-item"
+                                        style={{ display: "flex" }}
+                                      >
+                                        {assist.team === "away" ? (
+                                          <span
+                                            style={{
+                                              display: "flex",
+                                              alignItems: "center",
+                                            }}
+                                          >
+                                            {[...Array(assist.value)].map(
+                                              (_, i) => (
+                                                <FontAwesomeIcon
+                                                  key={i}
+                                                  icon={faA}
+                                                  className="away-icon-assists"
+                                                />
+                                              )
+                                            )}
+                                            {assist.name}
+                                          </span>
+                                        ) : null}
+                                      </li>
+                                    )
+                                  )}
+                                </ul>
+                              </div>
                             </div>
-                          )}
+                            {fixture.finished ? (
+                              <>
+                              <div style={{display:'flex', width:'50%'}}>
+                                <div
+                                  className="bonus-box"
+                                  style={{
+                                    display: "flex",
+                                    // marginLeft: "60px",
+                                    justifyContent:'right',
+                                  }}
+                                >
+                                  <ul
+                                    className="bonus-list"
+                                    style={{ padding: 0, margin: 0 }}
+                                  >
+                                    <h6 style={{fontWeight:'bold'}} className="bonus-title">Bonus</h6>
+                                    {fixture.bonus?.map(
+                                      (bonus: any, index: any) => (
+                                        <li key={index} className="bonus-item">
+                                          ({bonus.value}) {bonus.name}
+                                        </li>
+                                      )
+                                    )}
+                                  </ul>
+                                </div>
+                              </div>
+                              </>
+                            ) : (
+                              <>
+                              <div style={{justifyContent:'right'}}>
+                                <div
+                                  className="bonus-box"
+                                  style={{
+                                    display: "inline-block",
+                                  }}
+                                >
+                                  <ul
+                                    className="bonus-list"
+                                    style={{ padding: 0, margin: 0 }}
+                                  >
+                                    <h6 style={{fontWeight:'bold'}} className="bonus-title">Live Bonus</h6>
+                                    {fixture.bps?.map((bps: any, index: any) => {
+                                      // Calculate points based on tie-breaking rules
+                                      let points;
+                                      if (index === 0) {
+                                        points = 3;
+                                      } else if (index === 1) {
+                                        if (fixture.bps[0].value === bps.value) {
+                                          points = 3;
+                                        } else {
+                                          points = 2;
+                                        }
+                                      } else if (index === 2) {
+                                        if (fixture.bps[0].value === bps.value) {
+                                          points = 3;
+                                        } else if (
+                                          fixture.bps[1].value === bps.value
+                                        ) {
+                                          points = 2;
+                                        } else {
+                                          points = 1;
+                                        }
+                                      } else {
+                                        points = 1; // All remaining players get 1 point
+                                      }
+
+                                      // Display bonus points for each player
+                                      return (
+                                        <li key={index} className="bonus-item">
+                                          ({points}) {bps.name} ({bps.value})
+                                        </li>
+                                      );
+                                    })}
+                                  </ul>
+                                </div>
+                              </div>
+                              </>
+                            )}
+                            
+                          </div>
                         </div>
+                      ) : null}
                       </div>
                     </li>
                   ))}

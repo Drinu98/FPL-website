@@ -129,11 +129,11 @@ async function getFixtures() {
 
         const homeAssisters = home.map((scorer) => ({
           ...scorer,
-          team: "home",
+          team: "home"
         }));
         const awayAssisters = away.map((scorer) => ({
           ...scorer,
-          team: "away",
+          team: "away"
         }));
 
         return [...homeAssisters, ...awayAssisters];
@@ -166,6 +166,7 @@ async function getFixtures() {
         const player = elements.find((el) => el.id === element.element);
         if (player) {
           scoringPlayers.push({
+            id: element.element,
             name: player.web_name,
             value: element.value,
             team: element.team,
@@ -179,8 +180,10 @@ async function getFixtures() {
         const player = elements.find((el) => el.id === element.element);
         if (player) {
           assistingPlayers.push({
+            id: element.element,
             name: player.web_name,
             value: element.value,
+            team: element.team,
           });
         }
       }
@@ -225,6 +228,7 @@ export default async function Fixtures() {
   try {
     const fixturesArray = await getFixtures();
 
+    // console.log(fixturesArray);
     return (
       <>
         {fixturesArray ? (

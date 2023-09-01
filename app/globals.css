@@ -184,6 +184,14 @@ ul {
   transform: scale(1.2); /* Increase size on hover */
 }
 
+.scout-photo{
+  transition: all 0.5s ease 0s; /* Apply smooth transition effect */
+}
+
+.scout-photo:hover{
+  transform: scale(1.2);
+}
+
 .widget-box {
   padding: 30px 0;
   margin: auto;
@@ -366,6 +374,8 @@ td {
   padding: 3.5rem 4rem;
   width: 100%;
   text-align: center;
+  display: "flex"; 
+  /* flex-direction: column; */
 }
 
 .social-media-icons {
@@ -396,6 +406,45 @@ td {
   overflow: visible;
   vertical-align: -0.125em;
   display: var(--fa-display, inline-block);
+}
+
+/* .fa-futbol{
+  height: 14px;
+  width: 14px;
+  margin-left: 3px;
+  overflow: visible;
+  vertical-align: -0.125em;
+  display: var(--fa-display, inline-block);
+} */
+
+/* .fa-a{
+  height: 14px;
+  width: 14px;
+  margin-left: 3px;
+  overflow: visible;
+  vertical-align: -0.125em;
+  display: var(--fa-display, inline-block);
+  color: red;
+} */
+
+.away-icon-assists, .away-icon-goals, .home-icon-goals, .home-icon-assists{
+  height: 14px;
+  width: 14px;
+  overflow: visible;
+  vertical-align: -0.125em;
+  display: var(--fa-display, inline-block);
+}
+
+.away-icon-assists, .home-icon-assists{
+  color: red;
+}
+
+.away-icon-goals, .away-icon-assists{
+  margin-right: 3px;
+}
+
+.home-icon-goals, .home-icon-assists{
+  margin-left: 3px;
 }
 
 .realplayers-container td{
@@ -694,7 +743,7 @@ transform: scale(1.2);
 .home-box {
   display: flex;
   align-items: center;
-  flex: 1 1 calc(60% - 2rem);
+  flex: 1 1 calc(50% - 2.3rem);
   justify-content: right;
 }
 
@@ -719,7 +768,7 @@ transform: scale(1.2);
 .away-box {
   display: flex;
   align-items: center;
-  flex: 1 1 calc(40% - 2.2rem);
+  flex: 1 1 calc(50% - 1.5rem);
 }
 
 .fixture-date-box {
@@ -778,22 +827,26 @@ transform: scale(1.2);
 }
 
 .bonus-box {
-  margin-left: 20px;
-  width: 8rem;
+  margin-left: 30px;
+  /* width: 8rem; */
 }
 .bonus-list {
   list-style: none;
-  font-size: 0.7rem;
+  font-size: 12px;
 }
 
-.scorers-box {
-  display: inline-block;
-}
 .scorers-list {
   list-style: none;
   font-size: 12px;
 }
 
+.scorers-box-home{
+  margin-right: 42px;
+}
+
+.scorers-box-away{
+  margin-left: 42px;
+}
 .upcomingfixture-ul-list {
   margin: 0px 0px 2rem;
   font-size: 0.7rem;
@@ -1201,7 +1254,6 @@ ul {
     font-size: 0.55rem;
   }
   .bonus-box {
-    width: 6.5rem;
     margin-left: 10px;
   }
   .fixture-date {
@@ -1406,15 +1458,9 @@ ul {
   .bonus-list {
     font-size: 0.75rem;
   }
-  .bonus-box {
-    width: 8rem;
-  }
   .home-image-box {
     margin-right: 15px;
     margin-left: 10px;
-  }
-  .home-box {
-    flex: 1 1 calc(60% - 2.2rem);
   }
   .away-image-box {
     margin-right: 17px;
@@ -1464,6 +1510,28 @@ ul {
   .transfers-table-realplayers2 {
     font-size: 16px;
   }
+  .home-image, .away-image{
+    width: 35px;
+    height: 35px;
+  }
+  .away-box {
+    flex: 1 1 calc(50% - 2rem);
+  }
+  .home-box {
+    flex: 1 1 calc(50% - 2rem);
+  }
+  .bonus-title{
+    font-size: 14px;
+  }
+  .bonus-box {
+    margin-left: 60px;
+  }
+  .scorers-box-home{
+    margin-right: 40px;
+  }
+  .scorers-box-away{
+    margin-left: 40px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -1501,6 +1569,31 @@ ul {
   .transfers-table-realplayers2 {
     font-size: 12px;
   }
+  .scorers-list{
+    font-size: 12px;
+  }
+  .away-icon-assists, .away-icon-goals, .home-icon-assists, .home-icon-goals{
+    width: 13px;
+    height: 13px;
+  }
+  .scorers-box-home{
+    margin-right: 40px;
+  }
+  .scorers-box-away{
+    margin-left: 40px;
+  }
+  .away-box {
+    flex: 1 1 calc(50% - 2rem);
+  }
+  .home-box {
+    flex: 1 1 calc(50% - 2rem);
+  }
+  .bonus-title{
+    font-size: 12px;
+  }
+  .bonus-box {
+    margin-left: 50px;
+  }
 }
 
 @media (max-width: 576px) {
@@ -1524,6 +1617,10 @@ ul {
   .statistics-select {
     width: 200px;
   }
+  .score-box {
+    flex: 1 0 1.5rem;
+    margin: 0px;
+  }
   .home-text,
   .away-text {
     font-size: 0.7rem;
@@ -1544,6 +1641,31 @@ ul {
   }
   .transfers-table-realplayers2 {
     font-size: 10px;
+  }
+  .scorers-list{
+    font-size: 10px;
+  }
+  .away-icon-assists, .away-icon-goals, .home-icon-assists, .home-icon-goals{
+    width: 12px;
+    height: 12px;
+  }
+  .scorers-box-home{
+    margin-right: 33px;
+  }
+  .scorers-box-away{
+    margin-left: 33px;
+  }
+  .away-box {
+    flex: 1 1 calc(50% - 2rem);
+  }
+  .home-box {
+    flex: 1 1 calc(50% - 2rem);
+  }
+  .bonus-title{
+    font-size: 12px;
+  }
+  .bonus-box {
+    margin-left: 30px;
   }
 }
 
@@ -1595,7 +1717,7 @@ ul {
   .home-text,
   .away-text,
   .score-box {
-    font-size: 0.48rem;
+    font-size: 10px;
   }
   .minutes {
     font-size: 8px;
@@ -1604,11 +1726,10 @@ ul {
     font-size: 0.52rem;
   }
   .bonus-box {
-    width: 6rem;
-    margin-left: 10px;
+    margin-left: 18px;
   }
   .score-box {
-    flex: 1 0 2rem;
+    flex: 1 0 1rem;
     margin: 0px;
   }
   .player-info {
@@ -1623,9 +1744,20 @@ ul {
   }
   .time-box {
     font-size: 0.55rem;
-    flex: 1 0 2rem;
+    flex: 1 0 1rem;
     margin-left: 5px;
     margin-right: 3px;
+  }
+  .home-image,
+  .away-image{
+    width: 31px;
+    height: 31px;
+  }
+  .away-box {
+    flex: 1 1 calc(50% - 2rem);
+  }
+  .home-box {
+    flex: 1 1 calc(50% - 2rem);
   }
   .home-image-box {
     margin-right: 10px;
@@ -1673,6 +1805,22 @@ ul {
   }
   .transfers-table-playerchanges {
     font-size: 0.55rem;
+  }
+  .scorers-list{
+    font-size: 8px;
+  }
+  .away-icon-assists, .away-icon-goals, .home-icon-assists, .home-icon-goals{
+    width: 10px;
+    height: 10px;
+  }
+  .scorers-box-home{
+    margin-right: 25px;
+  }
+  .scorers-box-away{
+    margin-left: 25px;
+  }
+  .bonus-title{
+    font-size: 10px;
   }
 }
 
@@ -1749,17 +1897,16 @@ ul {
   .player-transfer-info-box {
     font-size: 7.5px;
   }
-  .bonus-box {
-    width: 4.6rem;
-    margin-left: 10px;
-  }
   .bonus-list {
-    font-size: 0.45rem;
+    font-size: 7px;
+  }
+  .bonus-box {
+    margin-left: 15px;
   }
   .home-text,
   .away-text,
   .score-box {
-    font-size: 0.43rem;
+    font-size: 8px;
   }
   .away-image,
   .home-image {
@@ -1772,10 +1919,10 @@ ul {
     margin-right: 2px;
   }
   .away-box {
-    flex: 1 1 calc(40% - 1rem);
+    flex: 1 1 calc(50% - 2rem);
   }
   .home-box {
-    flex: 1 1 calc(55% - 2rem);
+    flex: 1 1 calc(50% - 2rem);
   }
   .minutes {
     font-size: 8px;
@@ -1807,6 +1954,22 @@ ul {
   }
   .error-message-upcoming {
     font-size: 1.3rem;
+  }
+  .scorers-list{
+    font-size: 8px;
+  }
+  .away-icon-assists, .away-icon-goals, .home-icon-assists, .home-icon-goals{
+    width: 10px;
+    height: 10px;
+  }
+  .scorers-box-home{
+    margin-right: 25px;
+  }
+  .scorers-box-away{
+    margin-left: 25px;
+  }
+  .bonus-title{
+    font-size: 9px;
   }
 }
 
