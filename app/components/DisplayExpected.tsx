@@ -141,8 +141,8 @@ function Expected(props: ExpectedProps) {
                 : "xGTotal"
             }
           >
-            <option value="currentGameweekXG">Gameweek 3</option>
-            <option value="previousGameweekXG">Gameweek 2</option>
+            <option value="currentGameweekXG">Current Gameweek</option>
+            <option value="previousGameweekXG">Gameweek 3</option>
             <option value="xGTotal">Total</option>
             {/* <option value="xGTotalLast4Gameweeks">Last 4 GWs</option> */}
             {/* <option value="xGTotal">Last 6 GWs</option> */}
