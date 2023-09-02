@@ -198,6 +198,40 @@ const DisplayFixtures = (props: DisplayFixturesProps) => {
                                     </>
                                   )
                                 )}
+                                  {fixture.ownGoals?.map((scorer: any, index: any) =>
+                                    <li
+                                    key={scorer.id}
+                                        className="scorer-item"
+                                        style={{
+                                          display: "flex",
+                                          justifyContent:
+                                            scorer.team === "away"
+                                              ? "flex-end"
+                                              : "flex-start", // Align to the end for home team scorers
+                                          alignItems: "center",
+                                    }}
+                                  >
+                                    {scorer.team === "away" ? (
+                                      <span
+                                        style={{
+                                          display: "flex",
+                                          alignItems: "center",
+                                        }}
+                                      >
+                                        {scorer.name}
+                                        {[...Array(scorer.value)].map(
+                                          (_, i) => (
+                                            <FontAwesomeIcon
+                                              key={i}
+                                              icon={faFutbol}
+                                              className="home-icon-ownGoals"
+                                            />
+                                          )
+                                        )} 
+                                      </span>
+                                    ) : null}
+                                  </li>
+                                  )}
                               </ul>
                             </div>
                             <div className="scorers-box-home">
@@ -283,6 +317,36 @@ const DisplayFixtures = (props: DisplayFixturesProps) => {
                                         ) : null}
                                       </li>
                                     )
+                                  )}
+                                  {fixture.ownGoals?.map((scorer: any, index: any) =>
+                                    <li
+                                    key={scorer.id}
+                                        className="scorer-item"
+                                        style={{
+                                          display: "flex",
+                                    }}
+                                  >
+                                    {scorer.team === "home" ? (
+                                      <span
+                                        style={{
+                                          display: "flex",
+                                          alignItems: "center",
+                                        }}
+                                      >
+                                        
+                                        {[...Array(scorer.value)].map(
+                                          (_, i) => (
+                                            <FontAwesomeIcon
+                                              key={i}
+                                              icon={faFutbol}
+                                              className="away-icon-ownGoals"
+                                            />
+                                          )
+                                        )}
+                                        {scorer.name} 
+                                      </span>
+                                    ) : null}
+                                  </li>
                                   )}
                                 </ul>
                               </div>

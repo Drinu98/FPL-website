@@ -53,6 +53,7 @@ async function getFixtures() {
     const bonusPointsArray = [];
     const finalScoringPlayers = [];
     const finalAssistingPlayers = [];
+    const finalOwnGoalPlayers = [];
     for (let fixture of Object.values(fixtures)) {
       const homeTeam = teams.find((team) => team.id === fixture.team_h);
       const awayTeam = teams.find((team) => team.id === fixture.team_a);
@@ -79,6 +80,10 @@ async function getFixtures() {
         (stat) => stat.identifier === "assists"
       );
 
+      const ownGoals = fixture.stats.filter(
+        (stat) => stat.identifier === "own_goals"
+      );
+
       const bonusStatsFiltered = bonusStats.flatMap((obj) => {
         const filtered = Object.fromEntries(
           Object.entries(obj).filter(([key, value]) => value.length > 0)
@@ -97,14 +102,6 @@ async function getFixtures() {
         return [...home, ...away];
       });
 
-      // const scorersFiltered = scorers.flatMap(obj => {
-      //   const filtered = Object.fromEntries(
-      //     Object.entries(obj).filter(([key, value]) => value.length > 0)
-      //   );
-      //   const home = filtered.h ?? [];
-      //   const away = filtered.a ?? [];
-      //   return [...home, ...away];
-      // });
       const scorersFiltered = scorers.flatMap((obj) => {
         const filtered = Object.fromEntries(
           Object.entries(obj).filter(([key, value]) => value.length > 0)
@@ -137,6 +134,20 @@ async function getFixtures() {
         }));
 
         return [...homeAssisters, ...awayAssisters];
+      });
+
+      const ownGoalsFiltered = ownGoals.flatMap((obj) => {
+        const filtered = Object.fromEntries(
+          Object.entries(obj).filter(([key, value]) => value.length > 0)
+        );
+
+        const home = filtered.h ?? [];
+        const away = filtered.a ?? [];
+
+        const homeOwnGoals = home.map((scorer) => ({ ...scorer, team: "home" }));
+        const awayOwnGoals = away.map((scorer) => ({ ...scorer, team: "away" }));
+
+        return [...homeOwnGoals, ...awayOwnGoals];
       });
 
       const bonusStatsPlayers = [];
@@ -188,6 +199,19 @@ async function getFixtures() {
         }
       }
 
+      const ownGoalPlayers = [];
+      for (const element of ownGoalsFiltered) {
+        const player = elements.find((el) => el.id === element.element);
+        if (player) {
+          ownGoalPlayers.push({
+            id: element.element,
+            name: player.web_name,
+            value: element.value,
+            team: element.team,
+          });
+        }
+      }
+
       bonusStatsPlayers.sort((a, b) => b.value - a.value);
       bonusPointsPlayers.sort((a, b) => b.value - a.value);
 
@@ -210,11 +234,13 @@ async function getFixtures() {
         bonus: bonusPointsPlayers,
         scorers: scoringPlayers,
         assists: assistingPlayers,
+        ownGoals: ownGoalPlayers,
       });
       bonusStatsArray.push(...bonusStatsPlayersList);
       bonusPointsArray.push(...bonusPointsPlayers);
       finalScoringPlayers.push(...scoringPlayers);
       finalAssistingPlayers.push(...assistingPlayers);
+      finalOwnGoalPlayers.push(...ownGoalPlayers);
     }
 
     return fixturesArray;

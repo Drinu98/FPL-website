@@ -427,7 +427,7 @@ td {
   color: red;
 } */
 
-.away-icon-assists, .away-icon-goals, .home-icon-goals, .home-icon-assists{
+.away-icon-assists, .away-icon-goals, .home-icon-goals, .home-icon-assists, .home-icon-ownGoals, .away-icon-ownGoals{
   height: 14px;
   width: 14px;
   overflow: visible;
@@ -435,15 +435,15 @@ td {
   display: var(--fa-display, inline-block);
 }
 
-.away-icon-assists, .home-icon-assists{
+.away-icon-assists, .home-icon-assists, .home-icon-ownGoals, .away-icon-ownGoals{
   color: red;
 }
 
-.away-icon-goals, .away-icon-assists{
+.away-icon-goals, .away-icon-assists, .away-icon-ownGoals {
   margin-right: 3px;
 }
 
-.home-icon-goals, .home-icon-assists{
+.home-icon-goals, .home-icon-assists, .home-icon-ownGoals{
   margin-left: 3px;
 }
 
@@ -846,6 +846,11 @@ transform: scale(1.2);
 
 .scorers-box-away{
   margin-left: 42px;
+}
+
+.own-goal-label{
+  font-size: 9px;
+  margin-left: 3px;
 }
 .upcomingfixture-ul-list {
   margin: 0px 0px 2rem;
@@ -1572,7 +1577,7 @@ ul {
   .scorers-list{
     font-size: 12px;
   }
-  .away-icon-assists, .away-icon-goals, .home-icon-assists, .home-icon-goals{
+  .away-icon-assists, .away-icon-goals, .home-icon-assists, .home-icon-goals, .away-icon-ownGoals, .home-icon-ownGoals, .away-icon-ownGoals{
     width: 13px;
     height: 13px;
   }
@@ -1645,7 +1650,7 @@ ul {
   .scorers-list{
     font-size: 10px;
   }
-  .away-icon-assists, .away-icon-goals, .home-icon-assists, .home-icon-goals{
+  .away-icon-assists, .away-icon-goals, .home-icon-assists, .home-icon-goals, .home-icon-ownGoals, .away-icon-ownGoals{
     width: 12px;
     height: 12px;
   }
@@ -1809,7 +1814,7 @@ ul {
   .scorers-list{
     font-size: 8px;
   }
-  .away-icon-assists, .away-icon-goals, .home-icon-assists, .home-icon-goals{
+  .away-icon-assists, .away-icon-goals, .home-icon-assists, .home-icon-goals, .home-icon-ownGoals, .away-icon-ownGoals{
     width: 10px;
     height: 10px;
   }
@@ -1961,7 +1966,7 @@ ul {
   .scorers-list{
     font-size: 8px;
   }
-  .away-icon-assists, .away-icon-goals, .home-icon-assists, .home-icon-goals{
+  .away-icon-assists, .away-icon-goals, .home-icon-assists, .home-icon-goals, .away-icon-ownGoals{
     width: 10px;
     height: 10px;
   }
@@ -1988,6 +1993,9 @@ ul {
   .menu-toggle {
     width: 40px;
     height: 40px;
+  }
+  .deadline-date-time{
+    font-size: 1.2rem;
   }
 }
 
