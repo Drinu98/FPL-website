@@ -53,7 +53,7 @@ export default function HamburgerMenu() {
           alt="Dark Mode"
           width={45}
           height={45}
-          style={{}}
+          className="darkmode-img"
         />
       </button>
       <div

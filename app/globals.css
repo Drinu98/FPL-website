@@ -718,7 +718,7 @@ transform: scale(1.2);
 
 .fixture-ul-list {
   list-style: initial;
-  margin: 0px 0px 2rem;
+  /* margin: 0px 0px 2rem; */
   /* font-size: 1rem; */
   list-style: none;
   width: 100%;
@@ -1744,7 +1744,7 @@ ul {
   }
   .time-box {
     font-size: 0.55rem;
-    flex: 1 0 1rem;
+    flex: 1 0 2rem;
     margin-left: 5px;
     margin-right: 3px;
   }
@@ -1903,6 +1903,9 @@ ul {
   .bonus-box {
     margin-left: 15px;
   }
+  .time-box{
+    margin-left: 0;
+  }
   .home-text,
   .away-text,
   .score-box {
@@ -1915,8 +1918,8 @@ ul {
   }
   .time-box {
     font-size: 0.5rem;
-    flex: 1 0 2rem;
-    margin-right: 2px;
+    flex: 1 0 1.5rem;
+    margin-right: 4px;
   }
   .away-box {
     flex: 1 1 calc(50% - 2rem);
@@ -1970,6 +1973,21 @@ ul {
   }
   .bonus-title{
     font-size: 9px;
+  }
+  .darkmode-button {
+    width: 40px;
+    height: 40px;
+    top: 20px;
+    right: 75px;
+    z-index: 1000;
+  }
+  .darkmode-img{
+    width: 40px;
+    height: 40px;
+  }
+  .menu-toggle {
+    width: 40px;
+    height: 40px;
   }
 }
 
