@@ -41,7 +41,6 @@ model PlayerPicks {
   updatedAt DateTime @updatedAt
   createdAt DateTime @default(now())
 }
-
 model PriceChangesIncrease {
   id  String @id @default(cuid())
   playerElementId Int 
@@ -63,6 +62,38 @@ model PriceChangesDecrease {
 }
 
 model PriceChanges {
+  id  String @id @default(cuid())
+  playerElementId Int 
+  name String
+  cost String
+  team String
+  type String
+  Date DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now())
+}
+
+model PriceChangesIncreaseTest {
+  id  String @id @default(cuid())
+  playerElementId Int 
+  name String
+  cost String
+  team String
+  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now())
+}
+
+model PriceChangesDecreaseTest {
+  id  String @id @default(cuid())
+  playerElementId Int 
+  name String
+  cost String
+  team String
+  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now())
+}
+
+model PriceChangesTest {
   id  String @id @default(cuid())
   playerElementId Int 
   name String
