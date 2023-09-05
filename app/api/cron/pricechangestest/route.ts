@@ -10,7 +10,12 @@ export async function GET() {
   const fallers = new Map();
 
   const response = await fetch(
-    "https://fantasy.premierleague.com/api/bootstrap-static/"
+    "https://fantasy.premierleague.com/api/bootstrap-static/",
+    {
+      next: {
+        revalidate: 5,
+      },
+    }
   );
   
   const data = await response.json();
@@ -108,7 +113,7 @@ export async function GET() {
       await Promise.all([
         $tx.priceChangesIncreaseTest.deleteMany(),
         $tx.priceChangesDecreaseTest.deleteMany(),
-        $tx.priceChanges.deleteMany(),
+        $tx.priceChangesTest.deleteMany(),
       ]);
       await Promise.all([
         $tx.priceChangesIncreaseTest.createMany({
