@@ -13,11 +13,11 @@ export async function GET() {
     "https://fantasy.premierleague.com/api/bootstrap-static/",
     {
       next: {
-        revalidate: 5,
+        revalidate: 1,
       },
     }
   );
-  
+
   const data = await response.json();
 
   const players = data.elements;
@@ -71,7 +71,7 @@ export async function GET() {
     }
   );
 
-  const previousPriceChanges = await prisma.priceChangesTest.findMany({});
+  const previousPriceChanges = await prisma.priceChanges.findMany({});
 
   const updatedDates = previousPriceChanges.map((dates) => {
     const date = new Date(dates.updatedAt);
@@ -111,12 +111,12 @@ export async function GET() {
   try{
     await prisma.$transaction(async ($tx) => {
       await Promise.all([
-        $tx.priceChangesIncreaseTest.deleteMany(),
-        $tx.priceChangesDecreaseTest.deleteMany(),
-        $tx.priceChangesTest.deleteMany(),
+        $tx.priceChangesIncrease.deleteMany(),
+        $tx.priceChangesDecrease.deleteMany(),
+        $tx.priceChanges.deleteMany(),
       ]);
       await Promise.all([
-        $tx.priceChangesIncreaseTest.createMany({
+        $tx.priceChangesIncrease.createMany({
           data: [
             ...newRisingPlayers.map((item) => {
               return {
@@ -128,7 +128,7 @@ export async function GET() {
             }),
           ],
         }),
-        $tx.priceChangesDecreaseTest.createMany({
+        $tx.priceChangesDecrease.createMany({
           data: [
             ...newFallingPlayers.map((item) => {
               return {
@@ -141,7 +141,7 @@ export async function GET() {
           ],
         }),
       ]);
-      await $tx.priceChangesTest.createMany({
+      await $tx.priceChanges.createMany({
         data: [
           ...risingPlayers.map((item) => {
             return {
@@ -168,6 +168,7 @@ export async function GET() {
     return new NextResponse(
       JSON.stringify({ message: "Price changes Successful" })
     );
+
   }catch(error){
     console.error(error)
     return new NextResponse(

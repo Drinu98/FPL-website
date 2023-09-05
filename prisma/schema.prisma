@@ -86,38 +86,6 @@ model PriceChangesGameweek {
   createdAt DateTime @default(now())
 }
 
-model PriceChangesDecreaseTest {
-  id  String @id @default(cuid())
-  playerElementId Int 
-  name String
-  cost String
-  team String
-  updatedAt DateTime @updatedAt
-  createdAt DateTime @default(now())
-}
-
-model PriceChangesTest {
-  id  String @id @default(cuid())
-  playerElementId Int 
-  name String
-  cost String
-  team String
-  type String
-  Date DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  createdAt DateTime @default(now())
-}
-
-model PriceChangesIncreaseTest {
-  id  String @id @default(cuid())
-  playerElementId Int 
-  name String
-  cost String
-  team String
-  updatedAt DateTime @updatedAt
-  createdAt DateTime @default(now())
-}
-
 model Top10kPlayers {
   id  String @id @default(cuid())
   entry Int
