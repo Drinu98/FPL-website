@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { prisma } from "../../../services/prisma";
+import { prisma } from "../../../../services/prisma";
 
 let risingPlayers = [] as Array<any>;
 let fallingPlayers = [] as Array<any>;
@@ -12,8 +12,6 @@ export async function GET() {
   const response = await fetch(
     "https://fantasy.premierleague.com/api/bootstrap-static/"
   );
-
-  await new Promise((resolve) => setTimeout(resolve, 1000));
   
   const data = await response.json();
 
@@ -105,65 +103,71 @@ export async function GET() {
     return !matchingOldFaller || matchingOldFaller.cost !== fallingPlayer.cost;
   });
 
-  await prisma.$transaction(async ($tx) => {
-    await Promise.all([
-      $tx.priceChangesIncreaseTest.deleteMany(),
-      $tx.priceChangesDecreaseTest.deleteMany(),
-      $tx.priceChanges.deleteMany(),
-    ]);
-    await Promise.all([
-      $tx.priceChangesIncreaseTest.createMany({
+  try{
+    await prisma.$transaction(async ($tx) => {
+      await Promise.all([
+        $tx.priceChangesIncreaseTest.deleteMany(),
+        $tx.priceChangesDecreaseTest.deleteMany(),
+        $tx.priceChanges.deleteMany(),
+      ]);
+      await Promise.all([
+        $tx.priceChangesIncreaseTest.createMany({
+          data: [
+            ...newRisingPlayers.map((item) => {
+              return {
+                playerElementId: item.id,
+                name: item.name,
+                cost: item.cost,
+                team: item.team,
+              };
+            }),
+          ],
+        }),
+        $tx.priceChangesDecreaseTest.createMany({
+          data: [
+            ...newFallingPlayers.map((item) => {
+              return {
+                playerElementId: item.id,
+                name: item.name,
+                cost: item.cost,
+                team: item.team,
+              };
+            }),
+          ],
+        }),
+      ]);
+      await $tx.priceChangesTest.createMany({
         data: [
-          ...newRisingPlayers.map((item) => {
+          ...risingPlayers.map((item) => {
             return {
               playerElementId: item.id,
               name: item.name,
               cost: item.cost,
               team: item.team,
+              type: "riser",
             };
           }),
-        ],
-      }),
-      $tx.priceChangesDecreaseTest.createMany({
-        data: [
-          ...newFallingPlayers.map((item) => {
+          ...fallingPlayers.map((item) => {
             return {
               playerElementId: item.id,
               name: item.name,
               cost: item.cost,
               team: item.team,
+              type: "faller",
             };
           }),
         ],
-      }),
-    ]);
-    await $tx.priceChangesTest.createMany({
-      data: [
-        ...risingPlayers.map((item) => {
-          return {
-            playerElementId: item.id,
-            name: item.name,
-            cost: item.cost,
-            team: item.team,
-            type: "riser",
-          };
-        }),
-        ...fallingPlayers.map((item) => {
-          return {
-            playerElementId: item.id,
-            name: item.name,
-            cost: item.cost,
-            team: item.team,
-            type: "faller",
-          };
-        }),
-      ],
+      });
     });
-  });
 
-  console.log("Price changes successfully gathered");
-
-  return new NextResponse(
-    JSON.stringify({ message: "Price changes Successful" })
-  );
+    return new NextResponse(
+      JSON.stringify({ message: "Price changes Successful" })
+    );
+  }catch(error){
+    console.error(error)
+    return new NextResponse(
+      JSON.stringify({ message: "Price changes Failed" })
+    );
+  }
+  
 }

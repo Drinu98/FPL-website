@@ -1,5 +1,8 @@
 {
     "crons": [
-        
-      ]
+      {
+        "path": "/api/cron/pricechangestest",
+        "schedule": "0 4 * * *"
+      }
+    ]
 }

@@ -45,3 +45,4 @@ next-env.d.ts
 /app/api/pricechanges2
 /app/api/top10kplayers
 /app/api/comparetop10kplayers
+/app/api/setandforget

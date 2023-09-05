@@ -85,7 +85,7 @@ async function getTwat() {
                   {twat[0]?.eventTotal} Points
                 </p>
                 <p className='twat-text'>
-                  {twat[0]?.lastRank} <Image  
+                  {twat[0]?.lastRank.toLocaleString()} <Image  
                                         src='/images/redarrowdark.png' 
                                         height={20}
                                         width= {20} 

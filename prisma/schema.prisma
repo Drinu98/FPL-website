@@ -73,12 +73,15 @@ model PriceChanges {
   createdAt DateTime @default(now())
 }
 
-model PriceChangesIncreaseTest {
+model PriceChangesGameweek {
   id  String @id @default(cuid())
   playerElementId Int 
   name String
   cost String
   team String
+  type String
+  gameweek Int
+  Date DateTime @default(now())
   updatedAt DateTime @updatedAt
   createdAt DateTime @default(now())
 }
@@ -105,15 +108,12 @@ model PriceChangesTest {
   createdAt DateTime @default(now())
 }
 
-model PriceChangesGameweek {
+model PriceChangesIncreaseTest {
   id  String @id @default(cuid())
   playerElementId Int 
   name String
   cost String
   team String
-  type String
-  gameweek Int
-  Date DateTime @default(now())
   updatedAt DateTime @updatedAt
   createdAt DateTime @default(now())
 }
@@ -138,6 +138,20 @@ model Top10kPlayersChange {
   eventTotal Int
   currentRank Int
   lastRank Int
+  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now())
+}
+
+model TopSetAndForget {
+  id  String @id @default(cuid())
+  playerEntryId Int
+  entryName String 
+  playerName String
+  eventTotal Int
+  currentRank Int
+  lastRank Int
+  totalPoints Int
+  transfers Int
   updatedAt DateTime @updatedAt
   createdAt DateTime @default(now())
 }
