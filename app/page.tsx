@@ -8,6 +8,7 @@ import Fixtures from "./components/fixtures";
 import GameweekInfo from "./components/gameweek";
 import UpcomingFixtures from "./components/upcomingfixtures";
 import TwatAPI from "./components/twat";
+import SetAndForget from "./components/setAndForget";
 import RealPlayers from "./components/realplayers";
 import PriceChange from "./components/pricechanges";
 import Captaincy from "./components/captaincy";
@@ -71,26 +72,6 @@ export default async function Home() {
                 {/* @ts-ignore */}
                 <Injuries />
               </div>
-            </div>
-            <div className="col-lg-5">
-              <div className="widget">
-                {/* @ts-ignore */}
-                <Transfers />
-              </div>
-            </div>
-            <div className="col-lg-3">
-              <div className="widget7">
-                {/* @ts-ignore */}
-                <TwatAPI />
-              </div>
-              <div className="widget8">
-                {/* @ts-ignore */}
-                <RealPlayers />
-              </div>
-            </div>
-          </div>
-          <div className="row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-3">
-            <div className="col-lg-4">
               <div className="widget9">
                 <div className="graphic-container">
                   <h2 className="transfers-title">Custom Kits</h2>
@@ -125,12 +106,28 @@ export default async function Home() {
               </div>
             </div>
             <div className="col-lg-5">
+              <div className="widget">
+                {/* @ts-ignore */}
+                <Transfers />
+              </div>
               <div className="widget10">
                 {/* @ts-ignore */}
                 <Expected />
               </div>
             </div>
             <div className="col-lg-3">
+              <div className="widget8">
+                {/* @ts-ignore */}
+                <RealPlayers />
+              </div>
+              <div className="widget7">
+                {/* @ts-ignore */}
+                <TwatAPI />
+              </div>
+              <div className="widget7">
+                {/* @ts-ignore */}
+                <SetAndForget />
+              </div>
               <div className="widget11">
                 {/* @ts-ignore */}
                 <Statistics />
