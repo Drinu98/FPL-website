@@ -13,7 +13,7 @@ export async function GET() {
     "https://fantasy.premierleague.com/api/bootstrap-static/",
     {
       next: {
-        revalidate: 1,
+        revalidate: 0,
       },
     }
   );
@@ -160,12 +160,14 @@ export async function GET() {
       });
     });
 
+    console.log("Price Changes Failed.");
     return new NextResponse(
       JSON.stringify({ message: "Price changes Successful" })
     );
 
   }catch(error){
     console.error(error);
+    console.log("Price Changes Failed.");
     return new NextResponse(
       JSON.stringify({ message: "Price changes Failed" })
     );
