@@ -14,6 +14,7 @@ import PriceChange from "./components/pricechanges";
 import Captaincy from "./components/captaincy";
 import Expected from "./components/expected";
 import Statistics from "./components/statistics";
+import FDR from "./components/fdr";
 import Footer from "./components/footer";
 
 import Link from "next/link";
@@ -68,9 +69,50 @@ export default async function Home() {
           </div>
           <div className="row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-3">
             <div className="col-lg-4">
+              <div className="widget10">
+                {/* @ts-ignore */}
+                <Expected />
+                {/* <Injuries /> */}
+              </div>
+              <div className="widget11">
+                {/* @ts-ignore */}
+                <Statistics />
+              </div>
+            </div>
+            <div className="col-lg-5">
+              <div className="widgetFDR">
+                {/* @ts-ignore */}
+                <FDR />
+              </div>
+              {/* <div className="widget"> */}
+                {/* @ts-ignore */}
+                {/* <Transfers /> */}
+              {/* </div> */}
+              {/* <div className="widget10"> */}
+                {/* @ts-ignore */}
+                {/* <Expected /> */}
+              {/* </div> */}
+               <div className="widget">
+                {/* @ts-ignore */}
+                <Transfers />
+              </div>
               <div className="widget">
                 {/* @ts-ignore */}
                 <Injuries />
+              </div>
+            </div>
+            <div className="col-lg-3">
+              <div className="widget8">
+                {/* @ts-ignore */}
+                <RealPlayers />
+              </div>
+              <div className="widget7">
+                {/* @ts-ignore */}
+                <TwatAPI />
+              </div>
+              <div className="widget7">
+                {/* @ts-ignore */}
+                <SetAndForget />
               </div>
               <div className="widget9">
                 <div className="graphic-container">
@@ -103,34 +145,6 @@ export default async function Home() {
                     </a>
                   </div>
                 </div>
-              </div>
-            </div>
-            <div className="col-lg-5">
-              <div className="widget">
-                {/* @ts-ignore */}
-                <Transfers />
-              </div>
-              <div className="widget10">
-                {/* @ts-ignore */}
-                <Expected />
-              </div>
-            </div>
-            <div className="col-lg-3">
-              <div className="widget8">
-                {/* @ts-ignore */}
-                <RealPlayers />
-              </div>
-              <div className="widget7">
-                {/* @ts-ignore */}
-                <TwatAPI />
-              </div>
-              <div className="widget7">
-                {/* @ts-ignore */}
-                <SetAndForget />
-              </div>
-              <div className="widget11">
-                {/* @ts-ignore */}
-                <Statistics />
               </div>
             </div>
           </div>

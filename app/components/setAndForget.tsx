@@ -67,7 +67,7 @@ export default async function SetAndForget() {
           <div className="graphic-container">
             <h2 className="transfers-title">Set & Forget</h2>
           </div>
-          <div>
+          <div style={{marginTop:'auto', marginBottom:'auto'}}>
             <div style={{marginTop:'10px'}}>
               <p className="twat-text" style={{ textAlign: "center", marginBottom:'0px' }}>
                 {twat[0]?.playerName}

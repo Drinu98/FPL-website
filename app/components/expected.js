@@ -189,6 +189,7 @@ const Expected = async () => {
           gwObj.teamLong = teamObj.name;
         }
         gwObj.name = playerObj.web_name;
+        gwObj.cost = (playerObj.now_cost / 10).toFixed(1);
         // delete gwObj.id;
         currentGameweekXG.push(gwObj);
       }
@@ -211,6 +212,7 @@ const Expected = async () => {
           gwObj.teamLong = teamObj.name;
         }
         gwObj.name = playerObj.web_name;
+        gwObj.cost = (playerObj.now_cost / 10).toFixed(1);
         // delete gwObj.id;
         previousGameweekXG.push(gwObj);
       }
@@ -257,6 +259,7 @@ const Expected = async () => {
           playerObj.teamLong = teamObj.name;
         }
         playerObj.name = playerData.web_name;
+        playerObj.cost = (playerData.now_cost / 10).toFixed(1);
         delete playerObj.id;
       }
     });

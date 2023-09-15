@@ -8,6 +8,7 @@ type Player = {
   teamLong: string;
   position_short: string;
   position: string;
+  cost: string;
   xG: string;
   xGA: string;
   xGI: string;
@@ -157,6 +158,12 @@ function Expected(props: ExpectedProps) {
                   <th className="transfer-header">Position</th>
                   <th
                     className="transfer-header"
+                    onClick={() => handleSortClick("cost")}
+                  >
+                    Cost {sortOrder === "asc" ? "▲" : "▼"}
+                  </th>
+                  <th
+                    className="transfer-header"
                     onClick={() => handleSortClick("xG")}
                   >
                     xG {sortOrder === "asc" ? "▲" : "▼"}
@@ -187,6 +194,9 @@ function Expected(props: ExpectedProps) {
                     </td>
                     <td className="player-info" style={{ textAlign: "left" }}>
                       {gwObj.position_short}
+                    </td>
+                    <td className="player-info" style={{ textAlign: "left" }}>
+                      {gwObj.cost}
                     </td>
                     <td className="player-info" style={{ textAlign: "left" }}>
                       {gwObj.xG}

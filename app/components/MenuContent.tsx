@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowRight,
   faBullseye,
+  faCalendarDays,
   faCrown,
   faCrutch,
   faHome,
@@ -36,6 +37,9 @@ export default function MenuContent() {
         <a href="/realplayers">
           Players League
           <FontAwesomeIcon icon={faPerson} />
+        </a>
+        <a href="/fixtureTicker">
+          Fixture Ticker <FontAwesomeIcon icon={faCalendarDays} />
         </a>
         <a href="/injuries">
           Injuries <FontAwesomeIcon icon={faPersonCircleXmark} />

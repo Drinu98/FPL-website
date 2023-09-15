@@ -65,7 +65,7 @@ async function getTwat() {
           <div className='graphic-container'>
             <h2 className='transfers-title'>Disaster of the Week</h2>
           </div>
-          <div>
+          <div style={{marginTop:'auto', marginBottom:'auto'}}>
               <div className='twat-box'>
                 <p className='twat-text'>
                     {twat[0]?.playerName} 

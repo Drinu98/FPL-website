@@ -219,7 +219,8 @@ ul {
 [data-theme="light"] .widget9,
 [data-theme="light"] .widget10,
 [data-theme="light"] .widget11,
-[data-theme="light"] .widget12 {
+[data-theme="light"] .widget12,
+[data-theme="light"] .widgetFDR {
   background-color: aliceblue;
   border: 5px solid black;
 }
@@ -235,7 +236,8 @@ ul {
 [data-theme="dark"] .widget9,
 [data-theme="dark"] .widget10,
 [data-theme="dark"] .widget11,
-[data-theme="dark"] .widget12 {
+[data-theme="dark"] .widget12,
+[data-theme="dark"] .widgetFDR {
   background-color: #1d1b1c;
   border: 5px solid white;
 }
@@ -267,25 +269,25 @@ ul {
 }
 
 .widget7 {
-  height: 17rem;
+  height: 20.9rem;
 
   margin-top: 1.7rem;
   display: flex;
 }
 
 .widget8 {
-  height: 24.75rem;
+  height: 43.5rem;
   margin-top: 1.7rem;
   display: flex;
 }
 
 .widget9 {
-  height: 18rem;
+  height: 21rem;
   margin-top: 1.7rem;
 }
 
 .widget10 {
-  height: 62.3rem;
+  height: 43.5rem;
   display: flex;
   margin-top: 1.7rem;
 }
@@ -297,8 +299,16 @@ ul {
 }
 
 .widget12 {
-  height: 18rem;
+  height: 20.7rem;
   margin-top: 1.7rem;
+  color: d;
+}
+
+.widgetFDR{
+  height: 43.5rem;
+  display: flex;
+  margin-top: 1.7rem;
+  overflow: auto;
 }
 
 .transfers-title {
@@ -329,7 +339,8 @@ td {
 .widget9,
 .widget10,
 .widget11,
-.widget12 {
+.widget12,
+.widgetFDR {
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
   border: 5px solid black;
   border-radius: 8px;
@@ -348,13 +359,17 @@ td {
 .pricechanges-container,
 .transfers-container,
 .realplayers-container,
-.captaincy-container {
+.captaincy-container,
+.fixtureTicker-container {
   display: flex;
   flex-direction: column;
   width: 100%;
   color: black;
 }
 
+.fixtureTicker-container{
+  text-align: center;
+}
 
 .graphic-container-deadline {
   background: black;
@@ -514,6 +529,7 @@ transform: scale(1.2);
 /* width */
 ::-webkit-scrollbar {
   width: 7px;
+  height: 7px;
 }
 
 /* Track */
@@ -571,7 +587,8 @@ transform: scale(1.2);
 [data-theme="dark"] .trademark,
 [data-theme="dark"] .courtesy-text,
 [data-theme="dark"] .realplayer2-name-box,
-[data-theme="dark"] .transfers-table-realplayers2 {
+[data-theme="dark"] .transfers-table-realplayers2,
+[data-theme="dark"] .fdr-teamNames{
   color: white;
 }
 
@@ -589,6 +606,7 @@ transform: scale(1.2);
 .transfers-container {
   text-align: center;
 }
+
 .topten-list {
   color: black;
   list-style: none;
@@ -627,6 +645,16 @@ transform: scale(1.2);
   /* border: 2px solid #05F26C; */
   font-size: 12px;
   color: black;
+}
+
+.fixtureTicker-table{
+  font-size: 10px;
+  color: black;
+  margin-top: 25px;
+  width: 100%;
+  overflow-y: auto;
+  /* border-collapse: separate; */
+  /* border-spacing: 3px; */
 }
 
 .transfers-table td {
@@ -928,9 +956,9 @@ margin-bottom: 10px;
 font-weight: inherit;
 text-align: center;
 } */
-.twat-box {
+/* .twat-box {
   margin-top: 25px;
-}
+} */
 
 .twat-text {
   text-align: center;
@@ -1029,6 +1057,7 @@ ul {
   padding: 20px;
   margin-left: auto;
   margin-right: auto; /* Add padding to make the outer container slightly bigger */
+  margin-top: 20px;
 }
 
 .outer-container-youtube {
@@ -1037,7 +1066,7 @@ ul {
   padding: 20px;
   margin-left: auto;
   margin-right: auto; /* Add padding to make the outer container slightly bigger */
-  margin-top: 10px;
+  margin-top: 30px;
 }
 
 .inner-container {
@@ -1102,7 +1131,50 @@ ul {
 }
 
 .expected-select {
+  width: 150px;
+}
+
+/* CSS */
+.custom-slider {
+  /* Remove default styles */
+  appearance: none;
   width: 200px;
+  height: 10px;
+  background: #ddd; /* Track color */
+  outline: none;
+  border-radius: 5px; /* Round edges of track */
+
+  /* Custom thumb (slider handle) styles */
+}
+
+/* Optional: Style the value display */
+p {
+  text-align: center;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.fdr-select-difficulty {
+  width: 200px;
+}
+
+.fdr-select {
+  width: 200px;
+  margin-left: 10px;
+}
+
+.fdr-opponents{
+  display: flex;
+  width: 100px;
+  justify-content: center;
+  border-radius: 4px;
+  /* margin-bottom: 5px; */
+  padding: 10px 20px;
+}
+
+.fdr-teamNames{
+  /* margin-top: 5px; */
+  width: 120px;
 }
 
 .statistics-select {
@@ -1115,7 +1187,7 @@ ul {
 }
 
 .expected-select-teams {
-  width: 170px;
+  width: 150px;
   margin-right: 20px;
 }
 
@@ -1827,6 +1899,25 @@ ul {
   .bonus-title{
     font-size: 10px;
   }
+  .fdr-teamNames{
+    font-size: 8px;
+  }
+  .fdr-opponents{
+    width: 80px;
+    justify-content: center;
+    border-radius: 4px;
+    /* margin-bottom: 5px; */
+    padding: 10px 20px;
+    font-size: 8px;
+  }
+  .fdr-select-difficulty {
+    width: 120px;
+  }
+  
+  .fdr-select {
+    width: 120px;
+    margin-left: 10px;
+  }
 }
 
 @media (max-width: 400px) {
@@ -1997,6 +2088,25 @@ ul {
   .deadline-date-time{
     font-size: 1.2rem;
   }
+  .fdr-teamNames{
+    font-size: 8px;
+  }
+  .fdr-opponents{
+    width: 75px;
+    justify-content: center;
+    border-radius: 4px;
+    /* margin-bottom: 5px; */
+    padding: 10px 20px;
+    font-size: 8px;
+  }
+  .fdr-select-difficulty {
+    width: 120px;
+  }
+  
+  .fdr-select {
+    width: 120px;
+    margin-left: 10px;
+  }
 }
 
 @media screen and (max-width: 992px) {
@@ -2006,6 +2116,9 @@ ul {
     flex-flow: row wrap;
   }
   .col-lg-4 {
+    order: 1;
+  }
+  .col-lg-3 {
     order: 1;
   }
 }
