@@ -160,6 +160,7 @@ const DisplayFDR = (props: DisplayFixturesProps) => {
       const eventFDR = eventFixtures.reduce((eventSum: any, fixture: any) => {
         return eventSum + fixture.FDR;
       }, 0);
+      
   
       // Check if there are exactly 2 fixtures in the event
       if (eventFixtures.length === 2) {
@@ -378,10 +379,10 @@ const sortTeamsHardest = (fdrData: Record<string, number>) => {
                   key={event}
                   style={{
                     textAlign: "center",
-                    display:
-                      fixturesByTeamAndEvent[teamName][event]?.length > 1
-                        ? "flex"
-                        : "",
+                    // display:
+                    //   fixturesByTeamAndEvent[teamName][event]?.length > 1
+                    //     ? "flex"
+                    //     : "",
                     paddingRight: "0px",
                   }}
                 >
@@ -403,7 +404,12 @@ const sortTeamsHardest = (fdrData: Record<string, number>) => {
                               : fixture.FDR === 5
                               ? "#ee4035"
                               : "transparent",
-                          marginLeft:
+                          // marginLeft:
+                          //   fixturesByTeamAndEvent[teamName][event]?.length >
+                          //     1 && index === 1
+                          //     ? "5px"
+                          //     : "",
+                          marginTop:
                             fixturesByTeamAndEvent[teamName][event]?.length >
                               1 && index === 1
                               ? "5px"

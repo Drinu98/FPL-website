@@ -109,7 +109,7 @@ export async function GET(req: Request) {
     page = endPage + 1;
     pagesProcessed+= (endPage - startPage)
 
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    // await new Promise((resolve) => setTimeout(resolve, 2000));
   }
 
   const result = await Promise.allSettled(promises);
