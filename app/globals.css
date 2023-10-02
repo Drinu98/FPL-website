@@ -1283,13 +1283,18 @@ p {
   .error-message-captaincy {
     font-size: 1.3rem;
   }
+  .outer-container-youtube {
+    width: 370px;
+    height: 180px;
+    margin-top: 50px;
+  }
 }
 
 @media (max-width: 1500px) {
   .outer-container-youtube {
-    width: 350px;
-    height: 150px;
-    margin-top: 30px;
+    width: 360px;
+    height: 175px;
+    margin-top: 50px;
   }
 }
 

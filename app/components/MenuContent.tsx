@@ -30,7 +30,7 @@ export default function MenuContent() {
         <a href="/top10k">
           Top 10K <FontAwesomeIcon icon={faCrown} />
         </a>
-        <a href="/pricechangeshistory">
+        <a href="/pricechanges">
           Price Changes
           <FontAwesomeIcon icon={faMoneyBillTransfer} />
         </a>
@@ -38,7 +38,7 @@ export default function MenuContent() {
           Players League
           <FontAwesomeIcon icon={faPerson} />
         </a>
-        <a href="/fixtureTicker">
+        <a href="/fixtureticker">
           Fixture Ticker <FontAwesomeIcon icon={faCalendarDays} />
         </a>
         <a href="/injuries">
