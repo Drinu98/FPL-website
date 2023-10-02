@@ -149,7 +149,7 @@ export default async function PriceChanges() {
               For Price Changes History go{" "}
               <a
                 target="_blank"
-                href={"/pricechangeshistory"}
+                href={"/pricechanges"}
                 className="courtesy-link"
                 rel="noopener noreferrer"
               >
