@@ -38,7 +38,7 @@ export default function MenuContent() {
           Players League
           <FontAwesomeIcon icon={faPerson} />
         </a>
-        <a href="/fixtureticker">
+        <a href="/fixtureTicker">
           Fixture Ticker <FontAwesomeIcon icon={faCalendarDays} />
         </a>
         <a href="/injuries">
@@ -54,5 +54,5 @@ export default function MenuContent() {
       </ul>
     </div>
   );
-  
+
 }
