@@ -84,12 +84,12 @@ export default async function SetAndForget() {
               </p>
             </div>
             <div className="twat-box">
-              <p className="twat-text" style={{marginBottom:'3px'}}>{twat[0]?.eventTotal} Points</p>
+              <p className="twat-text" style={{marginBottom:'3px'}}>Points: {twat[0]?.eventTotal}</p>
               <p className="twat-text" style={{marginBottom:'3px'}}>
-                {twat[0]?.currentRank.toLocaleString()}th
+                Rank: {twat[0]?.currentRank.toLocaleString()}
               </p>
               <p className="twat-text">
-                {twat[0].transfers} transfers
+                Transfers: {twat[0].transfers} 
               </p>
             </div>
           </div>

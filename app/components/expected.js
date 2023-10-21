@@ -266,29 +266,62 @@ const Expected = async () => {
 
     // const xGTotalLast4Gameweeks = {};
     // const startGameweek = currentGameweek - 5;
-    // // const endGameweek = currentGameweek - 1;
+    // const endGameweek = currentGameweek - 1;
 
-    // // for (let gw = startGameweek; gw <= endGameweek; gw++) {
-    // //   const gwArray = expectedGoalsByGameweek[gw];
-    // //   if (gwArray) {
-    // //     gwArray.forEach((gwObj) => {
-    // //       const playerId = gwObj.id;
-    // //       if (!xGTotalLast4Gameweeks[playerId]) {
-    // //         xGTotalLast4Gameweeks[playerId] = {
-    // //           id: playerId,
-    // //           xG: parseFloat(gwObj.xG).toFixed(3),
-    // //           xGA: parseFloat(gwObj.xGA).toFixed(3),
-    // //           xGI: parseFloat(gwObj.xGI).toFixed(3),
-    // //         };
-    // //       } else {
-    // //         xGTotalLast4Gameweeks[playerId].xG = (parseFloat(xGTotalLast4Gameweeks[playerId].xG) + parseFloat(gwObj.xG)).toFixed(1);
-    // //         xGTotalLast4Gameweeks[playerId].xGA = (parseFloat(xGTotalLast4Gameweeks[playerId].xGA) + parseFloat(gwObj.xGA)).toFixed(1);
-    // //         xGTotalLast4Gameweeks[playerId].xGI = (parseFloat(xGTotalLast4Gameweeks[playerId].xGI) + parseFloat(gwObj.xGI)).toFixed(2);
-    // //       }
-    // //     });
-    // //   }
-    // // }
+    // for (let gw = currentGameweek - 5; gw <= currentGameweek - 1; gw++) {
+    //   const gwArray = expectedGoalsTotal[gw];
+    //   if (gwArray) {
+    //     gwArray.forEach((gwObj) => {
+    //       const playerId = gwObj.id;
+    //       if (!xGTotalLast4Gameweeks[playerId]) {
+    //         xGTotalLast4Gameweeks[playerId] = {
+    //           id: playerId,
+    //           xG: parseFloat(gwObj.xG).toFixed(3),
+    //           xGA: parseFloat(gwObj.xGA).toFixed(3),
+    //           xGI: parseFloat(gwObj.xGI).toFixed(3),
+    //         };
+    //       } else {
+    //         xGTotalLast4Gameweeks[playerId].xG = (parseFloat(xGTotalLast4Gameweeks[playerId].xG) + parseFloat(gwObj.xG)).toFixed(1);
+    //         xGTotalLast4Gameweeks[playerId].xGA = (parseFloat(xGTotalLast4Gameweeks[playerId].xGA) + parseFloat(gwObj.xGA)).toFixed(1);
+    //         xGTotalLast4Gameweeks[playerId].xGI = (parseFloat(xGTotalLast4Gameweeks[playerId].xGI) + parseFloat(gwObj.xGI)).toFixed(2);
+    //       }
+    //     });
+    //   }
+    // }
 
+    function calculateTotalExpectedGoalsInRange(expectedGoalsTotal, startGameweek, endGameweek) {
+      const xGTotalRange = {};
+    
+      for (let gw = startGameweek; gw <= endGameweek; gw++) {
+        const gwArray = expectedGoalsTotal[gw];
+        if (gwArray) {
+          gwArray.forEach((gwObj) => {
+            const playerId = gwObj.id;
+            if (!xGTotalRange[playerId]) {
+              xGTotalRange[playerId] = {
+                id: playerId,
+                xG: parseFloat(gwObj.xG).toFixed(3),
+                xGA: parseFloat(gwObj.xGA).toFixed(3),
+                xGI: parseFloat(gwObj.xGI).toFixed(3),
+              };
+            } else {
+              xGTotalRange[playerId].xG = (parseFloat(xGTotalRange[playerId].xG) + parseFloat(gwObj.xG)).toFixed(1);
+              xGTotalRange[playerId].xGA = (parseFloat(xGTotalRange[playerId].xGA) + parseFloat(gwObj.xGA)).toFixed(1);
+              xGTotalRange[playerId].xGI = (parseFloat(xGTotalRange[playerId].xGI) + parseFloat(gwObj.xGI)).toFixed(2);
+            }
+          });
+        }
+      }
+    
+      return xGTotalRange;
+    }
+
+    const xGTotalLast2Gameweeks = calculateTotalExpectedGoalsInRange(expectedGoalsTotal, currentGameweek - 2, currentGameweek - 1);
+    const xGTotalLast3Gameweeks = calculateTotalExpectedGoalsInRange(expectedGoalsTotal, currentGameweek - 3, currentGameweek - 1);
+    const xGTotalLast4Gameweeks = calculateTotalExpectedGoalsInRange(expectedGoalsTotal, currentGameweek - 4, currentGameweek - 1);
+    const xGTotalLast5Gameweeks = calculateTotalExpectedGoalsInRange(expectedGoalsTotal, currentGameweek - 5, currentGameweek - 1);
+    const xGTotalLast6Gameweeks = calculateTotalExpectedGoalsInRange(expectedGoalsTotal, currentGameweek - 6, currentGameweek - 1);
+    const xGTotalLast7Gameweeks = calculateTotalExpectedGoalsInRange(expectedGoalsTotal, currentGameweek - 7, currentGameweek - 1);
     // for (let gw = startGameweek; gw <= currentGameweek; gw++) {
     //   const gwArray = expectedGoalsByGameweek[gw];
     //   if (gwArray && gwArray.length > 0) {
@@ -314,40 +347,72 @@ const Expected = async () => {
     //   }
     // }
 
-    // // Add position and team data to the xGTotalLast4Gameweeks object
-    //   Object.values(xGTotalLast4Gameweeks).forEach((playerObj) => {
-    //     const playerData = players.find((player) => player.id === playerObj.id);
-    //     if (playerData) {
-    //       const positionObj = elementTypes.find((position) => position.id === playerData.element_type);
-    //       const teamObj = teams.find((team) => team.id === playerData.team);
-    //       if (positionObj) {
-    //         playerObj.position_short = positionObj.singular_name_short;
-    //         playerObj.position = positionObj.plural_name;
-    //       }
-    //       if (teamObj) {
-    //         playerObj.team = teamObj.short_name;
-    //         playerObj.teamLong = teamObj.name;
-    //       }
-    //       playerObj.name = playerData.web_name;
-    //       delete playerObj.id;
-    //     }
-    //   });
+    // Add position and team data to the xGTotalLast4Gameweeks object
+      // Object.values(xGTotalLast4Gameweeks).forEach((playerObj) => {
+      //   const playerData = players.find((player) => player.id === playerObj.id);
+      //   if (playerData) {
+      //     const positionObj = elementTypes.find((position) => position.id === playerData.element_type);
+      //     const teamObj = teams.find((team) => team.id === playerData.team);
+      //     if (positionObj) {
+      //       playerObj.position_short = positionObj.singular_name_short;
+      //       playerObj.position = positionObj.plural_name;
+      //     }
+      //     if (teamObj) {
+      //       playerObj.team = teamObj.short_name;
+      //       playerObj.teamLong = teamObj.name;
+      //     }
+      //     playerObj.name = playerData.web_name;
+      //     playerObj.cost = (playerData.now_cost / 10).toFixed(1);
+      //     delete playerObj.id;
+      //   }
+      // });
 
-    // const expectedGoalsCurrentWeek = currentGameweekXG?.sort((a, b) => b.xGI - a.xGI);
-    // const finalexpectedGoalsCurrentGameweek = expectedGoalsCurrentWeek.splice(0, 15);
-
-    // const sortedExpectedGoalsLast4 = Object.values(xGTotalLast4Gameweeks).sort((a, b) => parseFloat(b.xGI) - parseFloat(a.xGI));
-    // const sortedExpectedGoalsLast6 = Object.values(xGTotal).sort((a, b) => parseFloat(b.xGI) - parseFloat(a.xGI));
-
-    // const splicedExpectedGoalsLast4 = sortedExpectedGoalsLast4.splice(0, 15);
-    // const splicedExpectedGoalsLast6 = sortedExpectedGoalsLast6.splice(0, 15);
-
-    // const xGTotalLast4GameweeksToArray = Object.values(xGTotalLast4Gameweeks);
+      function enrichPlayerData(playerObjects, players, elementTypes, teams) {
+        Object.values(playerObjects).forEach((playerObj) => {
+          const playerData = players.find((player) => player.id === playerObj.id);
+          if (playerData) {
+            const positionObj = elementTypes.find((position) => position.id === playerData.element_type);
+            const teamObj = teams.find((team) => team.id === playerData.team);
+            if (positionObj) {
+              playerObj.position_short = positionObj.singular_name_short;
+              playerObj.position = positionObj.plural_name;
+            }
+            if (teamObj) {
+              playerObj.team = teamObj.short_name;
+              playerObj.teamLong = teamObj.name;
+            }
+            playerObj.name = playerData.web_name;
+            playerObj.cost = (playerData.now_cost / 10).toFixed(1);
+            delete playerObj.id;
+          }
+        });
+      }
+      
+      // Example usage:
+    enrichPlayerData(xGTotalLast2Gameweeks, players, elementTypes, teams);
+    enrichPlayerData(xGTotalLast3Gameweeks, players, elementTypes, teams);
+    enrichPlayerData(xGTotalLast4Gameweeks, players, elementTypes, teams);
+    enrichPlayerData(xGTotalLast5Gameweeks, players, elementTypes, teams);
+    enrichPlayerData(xGTotalLast6Gameweeks, players, elementTypes, teams);
+    enrichPlayerData(xGTotalLast7Gameweeks, players, elementTypes, teams);
+    
+    const xGTotalLast2GameweeksToArray = Object.values(xGTotalLast2Gameweeks);
+    const xGTotalLast3GameweeksToArray = Object.values(xGTotalLast3Gameweeks);
+    const xGTotalLast4GameweeksToArray = Object.values(xGTotalLast4Gameweeks);
+    const xGTotalLast5GameweeksToArray = Object.values(xGTotalLast5Gameweeks);
+    const xGTotalLast6GameweeksToArray = Object.values(xGTotalLast6Gameweeks);
+    const xGTotalLast7GameweeksToArray = Object.values(xGTotalLast7Gameweeks);
     const xGTotalToArray = Object.values(xGTotal);
     return (
       <DisplayExpected
         currentGameweekXG={currentGameweekXG}
         previousGameweekXG={previousGameweekXG}
+        xGTotalLast2Gameweeks={xGTotalLast2GameweeksToArray}
+        xGTotalLast3Gameweeks={xGTotalLast3GameweeksToArray}
+        xGTotalLast4Gameweeks={xGTotalLast4GameweeksToArray}
+        xGTotalLast5Gameweeks={xGTotalLast5GameweeksToArray}
+        xGTotalLast6Gameweeks={xGTotalLast6GameweeksToArray}
+        xGTotalLast7Gameweeks={xGTotalLast7GameweeksToArray}
         xGTotal={xGTotalToArray}
       />
     );

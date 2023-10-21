@@ -17,7 +17,12 @@ type Player = {
 type ExpectedProps = {
   currentGameweekXG: Array<Player>;
   previousGameweekXG: Array<Player>;
+  xGTotalLast2Gameweeks: Array<Player>;
+  xGTotalLast3Gameweeks: Array<Player>;
   xGTotalLast4Gameweeks: Array<Player>;
+  xGTotalLast5Gameweeks: Array<Player>;
+  xGTotalLast6Gameweeks: Array<Player>;
+  xGTotalLast7Gameweeks: Array<Player>;
   xGTotal: Array<Player>;
 };
 
@@ -28,7 +33,7 @@ type DisplayGamweeksType =
   | "xGTotal";
 
 function Expected(props: ExpectedProps) {
-  const { currentGameweekXG, previousGameweekXG, xGTotal } = props;
+  const { currentGameweekXG, previousGameweekXG, xGTotalLast2Gameweeks, xGTotalLast3Gameweeks, xGTotalLast4Gameweeks, xGTotalLast5Gameweeks, xGTotalLast6Gameweeks, xGTotalLast7Gameweeks, xGTotal } = props;
   const [selectedData, setSelectedData] = useState(currentGameweekXG);
   const [selectedFilter, setSelectedFilter] = useState<string>("");
   const [sortedAndFilteredData, setSortedAndFilteredData] = useState<Player[]>(
@@ -61,6 +66,24 @@ function Expected(props: ExpectedProps) {
       case "previousGameweekXG":
         setSelectedData(previousGameweekXG);
         break;
+      case "xGTotalLast2Gameweeks":
+        setSelectedData(xGTotalLast2Gameweeks);
+        break;
+      case "xGTotalLast3Gameweeks":
+        setSelectedData(xGTotalLast3Gameweeks);
+        break;      
+      case "xGTotalLast4Gameweeks":
+        setSelectedData(xGTotalLast4Gameweeks);
+        break; 
+      case "xGTotalLast5Gameweeks":
+        setSelectedData(xGTotalLast5Gameweeks);
+        break;
+      case "xGTotalLast6Gameweeks":
+        setSelectedData(xGTotalLast6Gameweeks);
+        break;
+      case "xGTotalLast7Gameweeks":
+      setSelectedData(xGTotalLast7Gameweeks);
+      break;      
       case "xGTotal":
         setSelectedData(xGTotal);
         break;
@@ -139,11 +162,29 @@ function Expected(props: ExpectedProps) {
                 ? "currentGameweekXG"
                 : selectedData === previousGameweekXG
                 ? "previousGameweekXG"
+                : selectedData === xGTotalLast2Gameweeks
+                ? "xGTotalLast2Gameweeks"
+                : selectedData === xGTotalLast3Gameweeks
+                ? "xGTotalLast3Gameweeks"
+                : selectedData === xGTotalLast4Gameweeks
+                ? "xGTotalLast4Gameweeks"
+                : selectedData === xGTotalLast5Gameweeks
+                ? "xGTotalLast5Gameweeks"
+                : selectedData === xGTotalLast6Gameweeks
+                ? "xGTotalLast6Gameweeks"
+                : selectedData === xGTotalLast7Gameweeks
+                ? "xGTotalLast7Gameweeks"
                 : "xGTotal"
             }
           >
             <option value="currentGameweekXG">Current Gameweek</option>
             <option value="previousGameweekXG">Previous Gameweek</option>
+            <option value="xGTotalLast2Gameweeks">Last 2 GWs</option>
+            <option value="xGTotalLast3Gameweeks">Last 3 GWs</option>
+            <option value="xGTotalLast4Gameweeks">Last 4 GWs</option>
+            <option value="xGTotalLast5Gameweeks">Last 5 GWs</option>
+            <option value="xGTotalLast6Gameweeks">Last 6 GWs</option>
+            <option value="xGTotalLast7Gameweeks">Last 7 GWs</option>
             <option value="xGTotal">Total</option>
             {/* <option value="xGTotalLast4Gameweeks">Last 4 GWs</option> */}
             {/* <option value="xGTotal">Last 6 GWs</option> */}
