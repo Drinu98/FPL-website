@@ -5,7 +5,7 @@ async function getFixtures() {
     "https://fantasy.premierleague.com/api/bootstrap-static/",
     {
       next: {
-        revalidate: 5,
+        revalidate: 7,
       },
     }
   );
@@ -31,7 +31,7 @@ async function getFixtures() {
       `https://fantasy.premierleague.com/api/fixtures?event=${currentGameweek}`,
       {
         next: {
-          revalidate: 5,
+          revalidate: 7,
         },
       }
     );
