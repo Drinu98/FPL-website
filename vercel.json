@@ -8,5 +8,7 @@
         "path": "/api/cron/pricechanges2",
         "schedule": "15 3 * * *"
       }
-    ]
+    ],
+  
+    "regions": ["dub1"]
 }
