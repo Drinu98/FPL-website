@@ -388,7 +388,6 @@ const Expected = async () => {
         });
       }
       
-      // Example usage:
     enrichPlayerData(xGTotalLast2Gameweeks, players, elementTypes, teams);
     enrichPlayerData(xGTotalLast3Gameweeks, players, elementTypes, teams);
     enrichPlayerData(xGTotalLast4Gameweeks, players, elementTypes, teams);
