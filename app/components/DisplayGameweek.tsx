@@ -8,6 +8,7 @@ type DisplayGameweekProps = {
 const DisplayGameweek = (props: DisplayGameweekProps) => {
   const { id, deadline_time } = props;
 
+  //changing to local time depending on PC
   const deadlineTime = new Date(deadline_time);
   const deadlineDate = deadlineTime.toLocaleString("en-GB", {
     day: "numeric",
