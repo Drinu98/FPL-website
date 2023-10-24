@@ -1,6 +1,5 @@
 import Image from "next/image";
 import React from "react";
-import { Suspense } from "react";
 import HamburgerMenu from "./components/HamburgerMenu";
 import Transfers from "./components/transfers";
 import Injuries from "./components/Injuries";
@@ -15,10 +14,7 @@ import Captaincy from "./components/captaincy";
 import Expected from "./components/expected";
 import Statistics from "./components/statistics";
 import FDR from "./components/fdr";
-import Footer from "./components/footer";
 
-import Link from "next/link";
-import { relative } from "path";
 
 export default async function Home() {
   return (
@@ -150,7 +146,8 @@ export default async function Home() {
           </div>
         </div>
       </section>
-      {/* <Footer /> */}
     </main>
   );
 }
+
+export const revalidate = 40;
