@@ -32,7 +32,7 @@ export async function POST(req: Request) {
             `https://fantasy.premierleague.com/api/leagues-classic/${leagueId}/standings?page_standings=${page}`,
             {
               next: {
-                revalidate: 300,
+                revalidate: 0,
               },
             }
           );
@@ -51,7 +51,7 @@ export async function POST(req: Request) {
               `https://fantasy.premierleague.com/api/entry/${playerEntryId}/event/${currentGameweek}/picks/`,
               {
                 next: {
-                  revalidate: 300,
+                  revalidate: 0,
                 },
               }
             );

@@ -13,6 +13,7 @@ import PriceChange from "./components/pricechanges";
 import Captaincy from "./components/captaincy";
 import Expected from "./components/expected";
 import Statistics from "./components/statistics";
+import SetPieces from "./components/setpieces"
 import FDR from "./components/fdr";
 
 
@@ -73,6 +74,10 @@ export default async function Home() {
               <div className="widget11">
                 {/* @ts-ignore */}
                 <Statistics />
+              </div>
+              <div className="widget11">
+                {/* @ts-ignore */}
+                <SetPieces />
               </div>
             </div>
             <div className="col-lg-5">

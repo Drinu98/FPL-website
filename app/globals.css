@@ -588,6 +588,7 @@ transform: scale(1.2);
 [data-theme="dark"] .courtesy-text,
 [data-theme="dark"] .realplayer2-name-box,
 [data-theme="dark"] .transfers-table-realplayers2,
+[data-theme="dark"] .setPieces-table,
 [data-theme="dark"] .fdr-teamNames{
   color: white;
 }
@@ -628,6 +629,12 @@ transform: scale(1.2);
   overflow-y: auto;
 }
 
+.setPieces-table{
+  margin-top: 25px;
+  width: 100%;
+  overflow-y: auto;
+}
+
 .transfers-table-playerchanges {
   font-size: 0.66rem;
 }
@@ -641,7 +648,8 @@ transform: scale(1.2);
 
 .player-info,
 .transfer-header,
-.transfers-table {
+.transfers-table,
+.setPieces-table {
   /* border: 2px solid #05F26C; */
   font-size: 12px;
   color: black;
@@ -1888,6 +1896,9 @@ p {
   .transfers-table-playerchanges {
     font-size: 0.55rem;
   }
+  .setPieces-table .transfer-header{
+    font-size: 0.50rem;
+  }
   .scorers-list{
     font-size: 8px;
   }
@@ -1987,6 +1998,9 @@ p {
   }
   .transfers-table-playerchanges {
     font-size: 0.55rem;
+  }
+  .setPieces-table .transfer-header{
+    font-size: 0.45rem;
   }
   .player-photo {
     height: 50px;

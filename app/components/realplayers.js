@@ -44,6 +44,7 @@ async function getRealPlayers() {
     { name: "Ashley Phillips", id: 2145123, pic: "/images/spurs.png" },
     { name: "Chris Smalling", id: 6381366, pic: "/images/roma.png" },
     { name: "James Trafford", id: 7158249, pic: "/images/burnleygk.png" },
+    { name: "Kalvin Philips", id: 129410, pic: "/images/city.png" },
   ];
 
   const results = [];
