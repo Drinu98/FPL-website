@@ -45,6 +45,10 @@ async function getRealPlayers() {
     { name: "Chris Smalling", id: 6381366, pic: "/images/roma.png" },
     { name: "James Trafford", id: 7158249, pic: "/images/burnleygk.png" },
     { name: "Kalvin Philips", id: 129410, pic: "/images/city.png" },
+    { name: "Alfie Haaland", id: 6994707, pic: "/images/city.png" },
+    { name: "Astor Haaland", id: 4653050, pic: "/images/city.png" },
+    { name: "Thea Vigre (Haaland's girlfriend)", id: 5304103, pic: "/images/city.png" },
+    { name: "Norah Haaland", id: 7318533, pic: "/images/city.png" },
   ];
 
   const results = [];

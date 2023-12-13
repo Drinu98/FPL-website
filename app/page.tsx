@@ -85,14 +85,6 @@ export default async function Home() {
                 {/* @ts-ignore */}
                 <FDR />
               </div>
-              {/* <div className="widget"> */}
-                {/* @ts-ignore */}
-                {/* <Transfers /> */}
-              {/* </div> */}
-              {/* <div className="widget10"> */}
-                {/* @ts-ignore */}
-                {/* <Expected /> */}
-              {/* </div> */}
                <div className="widget">
                 {/* @ts-ignore */}
                 <Transfers />
@@ -154,5 +146,3 @@ export default async function Home() {
     </main>
   );
 }
-
-export const revalidate = 40;
