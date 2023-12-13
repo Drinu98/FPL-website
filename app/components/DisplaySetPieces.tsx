@@ -106,9 +106,12 @@ function Injuries(props: SetPiecesProps) {
               <tr className="table-row">
                 <td colSpan={3} className="player-info" style={{ textAlign: "left"}}>
                   <div>
-                    <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                    <ul style={{ padding: 0, margin: 0, listStyleType: 'none' }}>
                       {selectedTeamNotes.map((note: any, index: any) => (
-                        <li key={index} style={{marginTop:'20px', paddingLeft:'30px', paddingRight:'30px'}}>{note.info_message}</li>
+                        <li key={index} style={{ marginTop: '15px', paddingLeft: '30px', paddingRight: '30px', display: 'flex', alignItems: 'baseline' }}>
+                          <span style={{ marginRight: '10px', fontSize: '18px', fontWeight: 'bold' }}>&bull;</span>
+                          <span>{note.info_message}</span>
+                        </li>
                       ))}
                     </ul>
                   </div>
