@@ -9,12 +9,12 @@
         "schedule": "15 3 * * *"
       }
     ],
-    "functions": [
+    "functions": 
     {
       "app/page.tsx": {
         "maxDuration": 60
       }
-    }
-  ],
+    },
+    
     "regions": ["dub1"]
 }
