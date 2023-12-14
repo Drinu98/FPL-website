@@ -219,18 +219,17 @@ const Expected = async () => {
     const xGTotalLast6ToArray = mapXGTotalToArray(xGTotal6Ttoal);
     const xGTotalLast7ToArray = mapXGTotalToArray(xGTotal7Ttoal);
 
-    console.log(xGTotalLast3ToArray);
 
     return (
       <DisplayExpected
         currentGameweekXG={currentGameweekXG}
         previousGameweekXG={previousGameweekXG}
-        // xGTotalLast2Gameweeks={xGTotalLast2ToArray}
-        // xGTotalLast3Gameweeks={xGTotalLast3ToArray}
-        // xGTotalLast4Gameweeks={xGTotalLast4ToArray}
-        // xGTotalLast5Gameweeks={xGTotalLast5ToArray}
-        // xGTotalLast6Gameweeks={xGTotalLast6ToArray}
-        // xGTotalLast7Gameweeks={xGTotalLast7ToArray}
+        xGTotalLast2Gameweeks={xGTotalLast2ToArray}
+        xGTotalLast3Gameweeks={xGTotalLast3ToArray}
+        xGTotalLast4Gameweeks={xGTotalLast4ToArray}
+        xGTotalLast5Gameweeks={xGTotalLast5ToArray}
+        xGTotalLast6Gameweeks={xGTotalLast6ToArray}
+        xGTotalLast7Gameweeks={xGTotalLast7ToArray}
         xGTotal={xGTotalToArray}
       />
     );
