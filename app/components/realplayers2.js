@@ -49,6 +49,7 @@ async function getRealPlayers() {
     { name: "Astor Haaland", id: 4653050, pic: "/images/city.png" },
     { name: "Thea Vigre (Haaland's girlfriend)", id: 5304103, pic: "/images/city.png" },
     { name: "Norah Haaland", id: 7318533, pic: "/images/city.png" },
+    { name: "Martin Hognestad (Haaland's friend)", id: 1597282, pic: "/images/city.png" },
   ];
 
   const results = [];
