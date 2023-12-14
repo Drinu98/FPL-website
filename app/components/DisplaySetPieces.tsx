@@ -55,7 +55,7 @@ function Injuries(props: SetPiecesProps) {
             <table className="setPieces-table" style={{ tableLayout: "fixed" }}>
               <thead>
                 <tr>
-                  <th className="transfer-header" style={{paddingLeft: '40px'}}>Corners</th>
+                  <th className="transfer-header" style={{paddingLeft: '40px'}}>Penalties</th>
                   <th className="transfer-header">Direct free-kicks</th>
                   <th className="transfer-header">Corners & indirect free-kicks</th>
                 </tr>
