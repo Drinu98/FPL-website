@@ -229,7 +229,7 @@ const Expected = async () => {
         xGTotalLast4Gameweeks={xGTotalLast4ToArray}
         xGTotalLast5Gameweeks={xGTotalLast5ToArray}
         xGTotalLast6Gameweeks={xGTotalLast6ToArray}
-        xGTotalLast7Gameweeks={xGTotalLast7ToArray}
+        // xGTotalLast7Gameweeks={xGTotalLast7ToArray}
         xGTotal={xGTotalToArray}
       />
     );
