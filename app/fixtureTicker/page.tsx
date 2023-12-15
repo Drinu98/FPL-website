@@ -29,9 +29,24 @@ export default function page() {
             style={{ marginBottom: "40px", justifyContent: "center" }}
           >
             <div className="col-lg-8">
-              <div className="widgetFDR" style={{ height: "100%" }}>
+              <div className="widgetFDR" style={{ height: "400px" }}>
                 {/* @ts-ignore */}
-                <FDR />
+                {/* <FDR /> */}
+                <div className="transfers-container">
+          <div className="graphic-container">
+            <h2 className="transfers-title">Fixture Ticker</h2>
+          </div>
+          <p className="error-message">
+            <Image
+              src="/images/errorlogo.png"
+              alt="FPL Focal Logo"
+              width={50}
+              height={50}
+              className="error-logo"
+            ></Image>
+            The Game is Updating...
+          </p>
+        </div>
               </div>
             </div>
           </div>

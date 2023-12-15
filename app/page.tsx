@@ -86,7 +86,7 @@ export default async function Home() {
                 {/* <FDR /> */}
                 <div className="transfers-container">
           <div className="graphic-container">
-            <h2 className="transfers-title">Expected Data</h2>
+            <h2 className="transfers-title">Fixture Ticker</h2>
           </div>
           <p className="error-message">
             <Image
