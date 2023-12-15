@@ -49,50 +49,6 @@ const DisplayFDR = (props: DisplayFixturesProps) => {
   const [customSelectedValue1, setCustomSelectedValue1] = useState('');
   const [customSelectedValue2, setCustomSelectedValue2] = useState('')
 
-  // const fixturesByTeamAndEvent: {
-  //   [teamName: string]: {
-  //     [event: number]: FixtureByEvent[];
-  //   };
-  // } = {};
-
-  // const fixturesByTeamAndEvent: {
-  //   [teamName: string]: {
-  //     [event: number]: FixtureByEvent[];
-  //   };
-  // } = fixturesArray.forEach((fixture) => {
-  //   const { home, away, event } = fixture;
-
-  //   if (!fixturesByTeamAndEvent[home]) {
-  //     fixturesByTeamAndEvent[home] = {};
-  //   }
-  //   if (!fixturesByTeamAndEvent[away]) {
-  //     fixturesByTeamAndEvent[away] = {};
-  //   }
-
-  //   if (!fixturesByTeamAndEvent[home][event]) {
-  //     fixturesByTeamAndEvent[home][event] = [];
-  //   }
-  //   if (!fixturesByTeamAndEvent[away][event]) {
-  //     fixturesByTeamAndEvent[away][event] = [];
-  //   }
-
-  //   fixturesByTeamAndEvent[home][event].push({
-  //     event: fixture.event,
-  //     team: fixture.home,
-  //     teamImage: fixture.homeImage,
-  //     opponentShort: fixture.awayShort,
-  //     isHome: true,
-  //     FDR: fixture.homeFdr,
-  //   });
-  //   fixturesByTeamAndEvent[away][event].push({
-  //     event: fixture.event,
-  //     team: fixture.away,
-  //     teamImage: fixture.awayImage,
-  //     opponentShort: fixture.homeShort,
-  //     isHome: false,
-  //     FDR: fixture.awayFdr,
-  //   });
-  // });
 
   const fixturesByTeamAndEvent: {
       [teamName: string]: {
@@ -200,18 +156,6 @@ const sortTeamsHardest = (fdrData: Record<string, number>) => {
 };
 
 
-// const sortedTeamsEasiest2GWs = useMemo(() => sortTeamsEasiest(next2FDRs), []);
-// const sortedTeamsEasiest3GWs = useMemo(() => sortTeamsEasiest(next3FDRs), []);
-// const sortedTeamsEasiest4GWs = useMemo(() => sortTeamsEasiest(next4FDRs), []);
-// const sortedTeamsEasiest5GWs = useMemo(() => sortTeamsEasiest(next5FDRs), []);
-
-// const sortedTeamsHardestGW = useMemo(() => sortTeamsHardest(nextGWFDR), []);
-// const sortedTeamsHardest2GWs = useMemo(() => sortTeamsHardest(next2FDRs), []);
-// const sortedTeamsHardest3GWs = useMemo(() => sortTeamsHardest(next3FDRs), []);
-// const sortedTeamsHardest4GWs = useMemo(() => sortTeamsHardest(next4FDRs), []);
-// const sortedTeamsHardest5GWs = useMemo(() => sortTeamsHardest(next5FDRs), []);
-
-
 
   const handleDataSelect = (event: React.FormEvent<HTMLSelectElement>) => {
     const value = event.currentTarget.value;
@@ -278,7 +222,7 @@ const sortTeamsHardest = (fdrData: Record<string, number>) => {
   }, [selectedData, selectedFilter]);
 
   return (
-  <div className="fixtureTicker-container">
+    <div className="fixtureTicker-container">
     <div className="graphic-container">
       <h2 className="transfers-title">Fixture Ticker</h2>
     </div>
@@ -305,33 +249,6 @@ const sortTeamsHardest = (fdrData: Record<string, number>) => {
         <option value="next8FDR">Next 8 GWs</option>
       </select>
     </div>
-    {/* {selectedData === "custom" && (
-      <div>
-        <select
-          className="custom-select select"
-          onChange={(e) => setCustomSelectedValue1(e.target.value)}
-          value={customSelectedValue1}
-
-        >
-          {events.map((events, index) => (
-            <option key={index} value={events}>
-              {events}
-            </option>
-          ))}
-        </select>
-        <select
-          className="custom-select select"
-          onChange={(e) => setCustomSelectedValue2(e.target.value)}
-          value={customSelectedValue2}
-        >
-          {events.map((events, index) => (
-                <option key={index} value={events}>
-                  {events}
-                </option>
-          ))}
-        </select>
-      </div>
-    )} */}
     <div style={{ overflow: "auto" }}>
       <table className="fixtureTicker-table" style={{}}>
         <thead>
@@ -352,7 +269,10 @@ const sortTeamsHardest = (fdrData: Record<string, number>) => {
           {sortedAndFilteredData.map((teamName, index) => (
             <tr
               key={teamName}
-              style={{ borderTop: "1px solid rgba(55, 0, 60, 0.08)", verticalAlign:'baseline' }}
+              style={{
+                borderTop: "1px solid rgba(55, 0, 60, 0.08)",
+                verticalAlign: "baseline",
+              }}
             >
               <td
                 className="fdr-teamNames"
@@ -362,77 +282,71 @@ const sortTeamsHardest = (fdrData: Record<string, number>) => {
                   alignItems: "center",
                 }}
               >
-                <Image
-                  alt="team"
-                  src={
-                    fixturesByTeamAndEvent[teamName][events[0]][0].teamImage
-                  }
-                  width={25}
-                  height={25}
-                  style={{ marginRight: "5px" }}
-                  className="fdr-image"
-                />
+                {fixturesByTeamAndEvent[teamName][events[0]][0]?.teamImage && (
+                  <Image
+                    alt="team"
+                    src={
+                      fixturesByTeamAndEvent[teamName][events[0]][0].teamImage
+                    }
+                    width={25}
+                    height={25}
+                    style={{ marginRight: "5px" }}
+                    className="fdr-image"
+                  />
+                )}
                 {teamName}
               </td>
-              {events.map((event) => (
+              {events?.map((event) => (
                 <td
                   key={event}
                   style={{
                     textAlign: "center",
-                    // display:
-                    //   fixturesByTeamAndEvent[teamName][event]?.length > 1
-                    //     ? "flex"
-                    //     : "",
                     paddingRight: "0px",
                   }}
                 >
                   {fixturesByTeamAndEvent[teamName][event]?.map(
-                    (fixture: FixtureByEvent, index) => (
-                      <div
-                        key={fixture.event + index}
-                        className="fdr-opponents"
-                        style={{
-                          backgroundColor:
-                            fixture.FDR === 1
-                              ? "#0492cf"
-                              : fixture.FDR === 2
-                              ? "#7bc043"
-                              : fixture.FDR === 3
-                              ? "#fdf498"
-                              : fixture.FDR === 4
-                              ? "#f37736"
-                              : fixture.FDR === 5
-                              ? "#ee4035"
-                              : "transparent",
-                          // marginLeft:
-                          //   fixturesByTeamAndEvent[teamName][event]?.length >
-                          //     1 && index === 1
-                          //     ? "5px"
-                          //     : "",
-                          marginTop:
-                            fixturesByTeamAndEvent[teamName][event]?.length >
-                              1 && index === 1
-                              ? "5px"
-                              : "",
-                          width:
-                            fixturesByTeamAndEvent[teamName][event]?.length >
-                              1
-                              ? "48px"
-                              : "",
-                          padding:
-                            fixturesByTeamAndEvent[teamName][event]?.length >
-                              1
-                              ? "10px 0px"
-                              : "",
-                        }}
-                      >
-                        {fixture.isHome ? (
-                          <span>{fixture.opponentShort} (H)</span>
-                        ) : (
-                          <span>{fixture.opponentShort} (A)</span>
-                        )}
-                      </div>
-                    )
+                    (fixture: FixtureByEvent, index) =>
+                      fixture ? (
+                        <div
+                          key={fixture.event + index}
+                          className="fdr-opponents"
+                          style={{
+                            backgroundColor:
+                              fixture.FDR === 1
+                                ? "#0492cf"
+                                : fixture.FDR === 2
+                                ? "#7bc043"
+                                : fixture.FDR === 3
+                                ? "#fdf498"
+                                : fixture.FDR === 4
+                                ? "#f37736"
+                                : fixture.FDR === 5
+                                ? "#ee4035"
+                                : "transparent",
+                            marginTop:
+                              fixturesByTeamAndEvent[teamName][event]?.length >
+                                1 && index === 1
+                                ? "5px"
+                                : "",
+                            width:
+                              fixturesByTeamAndEvent[teamName][event]?.length >
+                                1
+                                ? "48px"
+                                : "",
+                            padding:
+                              fixturesByTeamAndEvent[teamName][event]?.length >
+                                1
+                                ? "10px 0px"
+                                : "",
+                          }}
+                        >
+                          {fixture.isHome ? (
+                            <span>{fixture.opponentShort} (H)</span>
+                          ) : (
+                            <span>{fixture.opponentShort} (A)</span>
+                          )}
+                        </div>
+                      ) : null
                   )}
                 </td>
               ))}
@@ -442,6 +356,8 @@ const sortTeamsHardest = (fdrData: Record<string, number>) => {
       </table>
     </div>
   </div>
+  
+
 );
 
 };
