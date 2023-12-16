@@ -95,6 +95,7 @@ const DisplayFDR = (props: DisplayFixturesProps) => {
     return result;
   }, [fixturesArray]);
 
+  
   const teamNames = Object.keys(fixturesByTeamAndEvent).sort();
 
   // Get a sorted list of unique events in descending order
@@ -104,7 +105,6 @@ const DisplayFDR = (props: DisplayFixturesProps) => {
 
   const [selectedEvent, setEvents] = useState<Number[]>();
 
-  // console.log(events);
   function calculateFDRSum(team: any, fixtures: any, numberOfEvents: any) {
     const eventKeys = Object.keys(fixtures)
       .map(Number)
@@ -130,7 +130,6 @@ const DisplayFDR = (props: DisplayFixturesProps) => {
   
     return fdrSum;
   }
-
 
 
 for (const team in fixturesByTeamAndEvent) {
@@ -223,10 +222,10 @@ const sortTeamsHardest = (fdrData: Record<string, number>) => {
 
   return (
     <div className="fixtureTicker-container">
-    <div className="graphic-container">
-      <h2 className="transfers-title">Fixture Ticker</h2>
-    </div>
-    <div>
+      <div className="graphic-container">
+        <h2 className="transfers-title">Fixture Ticker</h2>
+      </div>
+      <div>
       <select
         className="fdr-select-difficulty select"
         onChange={handleFilterSelect}
@@ -248,117 +247,134 @@ const sortTeamsHardest = (fdrData: Record<string, number>) => {
         <option value="next5FDR">Next 5 GWs</option>
         <option value="next8FDR">Next 8 GWs</option>
       </select>
-    </div>
-    <div style={{ overflow: "auto" }}>
-      <table className="fixtureTicker-table" style={{}}>
-        <thead>
-          <tr>
-            <th></th>
-            {events.map((event) => (
-              <th
-                key={event}
-                style={{ textAlign: "center" }}
-                className="fdr-teamNames"
-              >
-                GW {event}
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody className="transfers-body">
-          {sortedAndFilteredData.map((teamName, index) => (
-            <tr
-              key={teamName}
-              style={{
-                borderTop: "1px solid rgba(55, 0, 60, 0.08)",
-                verticalAlign: "baseline",
-              }}
-            >
-              <td
-                className="fdr-teamNames"
-                style={{
-                  textAlign: "left",
-                  display: "inline-block",
-                  alignItems: "center",
-                }}
-              >
-                {fixturesByTeamAndEvent[teamName][events[0]][0]?.teamImage && (
-                  <Image
-                    alt="team"
-                    src={
-                      fixturesByTeamAndEvent[teamName][events[0]][0].teamImage
-                    }
-                    width={25}
-                    height={25}
-                    style={{ marginRight: "5px" }}
-                    className="fdr-image"
-                  />
-                )}
-                {teamName}
-              </td>
-              {events?.map((event) => (
-                <td
+      </div>
+      <div style={{ overflow: "auto" }}>
+        <table className="fixtureTicker-table" style={{}}>
+          <thead>
+            <tr>
+              <th></th>
+              {events.map((event) => (
+                <th
                   key={event}
-                  style={{
-                    textAlign: "center",
-                    paddingRight: "0px",
-                  }}
+                  style={{ textAlign: "center" }}
+                  className="fdr-teamNames"
                 >
-                  {fixturesByTeamAndEvent[teamName][event]?.map(
-                    (fixture: FixtureByEvent, index) =>
-                      fixture ? (
-                        <div
-                          key={fixture.event + index}
-                          className="fdr-opponents"
-                          style={{
-                            backgroundColor:
-                              fixture.FDR === 1
-                                ? "#0492cf"
-                                : fixture.FDR === 2
-                                ? "#7bc043"
-                                : fixture.FDR === 3
-                                ? "#fdf498"
-                                : fixture.FDR === 4
-                                ? "#f37736"
-                                : fixture.FDR === 5
-                                ? "#ee4035"
-                                : "transparent",
-                            marginTop:
-                              fixturesByTeamAndEvent[teamName][event]?.length >
-                                1 && index === 1
-                                ? "5px"
-                                : "",
-                            width:
-                              fixturesByTeamAndEvent[teamName][event]?.length >
-                                1
-                                ? "48px"
-                                : "",
-                            padding:
-                              fixturesByTeamAndEvent[teamName][event]?.length >
-                                1
-                                ? "10px 0px"
-                                : "",
-                          }}
-                        >
-                          {fixture.isHome ? (
-                            <span>{fixture.opponentShort} (H)</span>
-                          ) : (
-                            <span>{fixture.opponentShort} (A)</span>
-                          )}
-                        </div>
-                      ) : null
-                  )}
-                </td>
+                  GW {event}
+                </th>
               ))}
             </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  </div>
-  
+          </thead>
+          <tbody className="transfers-body">
+            {sortedAndFilteredData.map((teamName, index) => (
+              <tr
+                key={teamName}
+                style={{
+                  borderTop: "1px solid rgba(55, 0, 60, 0.08)",
+                  verticalAlign: "baseline",
+                }}
+              >
+                <td
+                  className="fdr-teamNames"
+                  style={{
+                    textAlign: "left",
+                    display: "inline-block",
+                    alignItems: "center",
+                  }}
+                >
+                  {(() => {
+                    const firstEvent =
+                      fixturesByTeamAndEvent[teamName][events[0]];
+                    const secondEvent =
+                      fixturesByTeamAndEvent[teamName][events[1]];
 
-);
+                    const teamImage =
+                      (firstEvent && firstEvent[0]?.teamImage) ||
+                      (secondEvent && secondEvent[0]?.teamImage);
+
+                    return teamImage ? (
+                      <Image
+                        alt="team"
+                        src={teamImage}
+                        width={25}
+                        height={25}
+                        style={{ marginRight: "5px" }}
+                        className="fdr-image"
+                      />
+                    ) : null;
+                  })()}
+                  {teamName}
+                </td>
+                {events?.map((event) => (
+                  <td
+                    key={event}
+                    style={{
+                      textAlign: "center",
+                      paddingRight: "0px",
+                    }}
+                  >
+                    {fixturesByTeamAndEvent[teamName][event] ? (
+                      fixturesByTeamAndEvent[teamName][event]?.map(
+                        (fixture: FixtureByEvent, index) => (
+                          <div
+                            key={fixture.event + index}
+                            className="fdr-opponents"
+                            style={{
+                              backgroundColor:
+                                fixture.FDR === 1
+                                  ? "#0492cf"
+                                  : fixture.FDR === 2
+                                  ? "#7bc043"
+                                  : fixture.FDR === 3
+                                  ? "#fdf498"
+                                  : fixture.FDR === 4
+                                  ? "#f37736"
+                                  : fixture.FDR === 5
+                                  ? "#ee4035"
+                                  : "transparent",
+                              marginTop:
+                                fixturesByTeamAndEvent[teamName][event]?.length >
+                                  1 && index === 1
+                                  ? "5px"
+                                  : "",
+                              width:
+                                fixturesByTeamAndEvent[teamName][event]?.length >
+                                  1
+                                  ? "48px"
+                                  : "",
+                              padding:
+                                fixturesByTeamAndEvent[teamName][event]?.length >
+                                  1
+                                  ? "10px 0px"
+                                  : "",
+                            }}
+                          >
+                            {fixture.isHome ? (
+                              <span>{fixture.opponentShort} (H)</span>
+                            ) : (
+                              <span>{fixture.opponentShort} (A)</span>
+                            )}
+                          </div>
+                        )
+                      )
+                    ) : (
+                      <div
+                        className="fdr-opponents"
+                        style={{
+                          backgroundColor: "transparent",
+                        }}
+                      >
+                        No Fixture
+                      </div>
+                    )}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
 
 };
 export default DisplayFDR;
