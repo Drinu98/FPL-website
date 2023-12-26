@@ -47,9 +47,21 @@ async function getRealPlayers() {
     { name: "Kalvin Philips", id: 129410, pic: "/images/city.png" },
     { name: "Alfie Haaland", id: 6994707, pic: "/images/city.png" },
     { name: "Astor Haaland", id: 4653050, pic: "/images/city.png" },
-    { name: "Thea Vigre (Haaland's girlfriend)", id: 5304103, pic: "/images/city.png" },
+    { name: "Thea Vigre", id: 5304103, pic: "/images/city.png" },
     { name: "Norah Haaland", id: 7318533, pic: "/images/city.png" },
     { name: "Martin Hognestad (Haaland's friend)", id: 1597282, pic: "/images/city.png" },
+    { name: "Kiernan Dewsbury-Hall", id: 6219760, pic: "/images/leicster.png" },
+    { name: "Tammy Abraham", id: 8922433, pic: "/images/roma.png" },
+    { name: "Mark Gillespie", id: 4969199, pic: "/images/newcastlegk.png" },
+    { name: "João Virgínia", id: 5483224, pic: "/images/evertongk.png" },
+    { name: "Tyler Onyango", id: 6484074, pic: "/images/evertongk.png" },
+    { name: "Mackenzie Hunt", id: 1092173, pic: "/images/evertongk.png" },
+    { name: "Jack Hinshelwood", id: 2538469, pic: "/images/brighton.png" },
+    { name: "Joe Whitworth", id: 5987278, pic: "/images/palacegk.png" },
+    { name: "Harrison Reed", id: 7526999, pic: "/images/fulham.png" },
+    { name: "Conor Bradley", id: 7065685, pic: "/images/liverpool.png" },
+    { name: "Luke Chambers", id: 1942739, pic: "/images/liverpool.png" },
+    { name: "Stefan Bajcetic", id: 8862181, pic: "/images/liverpool.png" }
   ];
 
   const results = [];

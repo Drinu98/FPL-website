@@ -1,5 +1,4 @@
 import Image from "next/image";
-import React from "react";
 import HamburgerMenu from "./components/HamburgerMenu";
 import Transfers from "./components/transfers";
 import Injuries from "./components/Injuries";
@@ -69,7 +68,6 @@ export default async function Home() {
               <div className="widget10">
                 {/* @ts-ignore */}
                 <Expected />
-                {/* <Injuries /> */}
               </div>
               <div className="widget11">
                 {/* @ts-ignore */}

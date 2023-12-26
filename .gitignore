@@ -43,3 +43,4 @@ next-env.d.ts
 /app/api/top10kplayers
 /app/api/comparetop10kplayers
 /app/api/setandforget
+/app/api/deletetwat

@@ -46,8 +46,8 @@ const DisplayFDR = (props: DisplayFixturesProps) => {
   const [sortedAndFilteredData, setSortedAndFilteredData] = useState<string[]>(
     []
   );
-  const [customSelectedValue1, setCustomSelectedValue1] = useState('');
-  const [customSelectedValue2, setCustomSelectedValue2] = useState('')
+  // const [customSelectedValue1, setCustomSelectedValue1] = useState('');
+  // const [customSelectedValue2, setCustomSelectedValue2] = useState('')
 
 
   const fixturesByTeamAndEvent: {
@@ -103,7 +103,7 @@ const DisplayFDR = (props: DisplayFixturesProps) => {
     new Set(fixturesArray.map((fixture) => fixture.event))
   ).sort((a, b) => a - b);
 
-  const [selectedEvent, setEvents] = useState<Number[]>();
+  // const [selectedEvent, setEvents] = useState<Number[]>();
 
   function calculateFDRSum(team: any, fixtures: any, numberOfEvents: any) {
     const eventKeys = Object.keys(fixtures)
