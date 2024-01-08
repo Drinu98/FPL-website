@@ -7,12 +7,54 @@
       {
         "path": "/api/cron/pricechanges2",
         "schedule": "45 2 * * *"
+      },
+      {
+        "path": "/api/cron/deletetwat",
+        "schedule": "15 3 * * *"
+      },
+      {
+        "path": "/api/cron/deletetop10k",
+        "schedule": "30 3 * * *"
+      },
+      {
+        "path": "/api/cron/deletesetandforget",
+        "schedule": "45 3 * * *"
+      },
+      {
+        "path": "/api/cron/comparetop10kplayers",
+        "schedule": "30 4 * * *"
+      },
+      {
+        "path": "/api/setandforget",
+        "schedule": "* 4 * * *"
+      },
+      {
+        "path": "/api/top10kplayers",
+        "schedule": "15 4 * * *"
       }
     ],
     "functions": 
     {
       "app/page.tsx": {
         "maxDuration": 60
+      },
+      "app/api/cron/deletetwat": {
+        "maxDuration": 300
+      },
+      "app/api/cron/deletesetandforget": {
+        "maxDuration": 300
+      },
+      "app/api/cron/deletetop10k": {
+        "maxDuration": 300
+      },
+      "app/api/cron/comparetop10kplayers": {
+        "maxDuration": 300
+      },
+      "app/api/setandforget": {
+        "maxDuration": 300
+      },
+      "app/api/top10kplayers": {
+        "maxDuration": 300
       }
     },
     

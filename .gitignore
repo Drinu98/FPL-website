@@ -40,7 +40,3 @@ next-env.d.ts
 .env.staging
 
 # job folders
-/app/api/top10kplayers
-/app/api/comparetop10kplayers
-/app/api/setandforget
-/app/api/deletetwat
