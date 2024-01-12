@@ -73,7 +73,7 @@ export async function GET(req: Request) {
     }
 
     promises.push(
-      fetch(`${BASE_URL}/api/cron/setandforget/process-data`, {
+      fetch(`${BASE_URL}/api/setandforget/process-data`, {
         method: 'POST',
         body: JSON.stringify({
           startPage,
@@ -100,7 +100,7 @@ export async function GET(req: Request) {
       `Calling another cron api function. Processed ${page} of ${totalPages}. Execution count: ${executionCount}`
     );
 
-    fetch(`${BASE_URL}/api/cron/setandforget?page=${page}&executionCount=${executionCount}`, {
+    fetch(`${BASE_URL}/api/setandforget?page=${page}&executionCount=${executionCount}`, {
       method: 'GET',
     
       // body: JSON.stringify({
