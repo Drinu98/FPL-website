@@ -310,6 +310,11 @@ const sortTeamsHardest = (fdrData: Record<string, number>) => {
                     style={{
                       textAlign: "center",
                       paddingRight: "0px",
+                      display:
+                        fixturesByTeamAndEvent[teamName][event]?.length >
+                          1
+                          ? 'flex'
+                          : ""
                     }}
                   >
                     {fixturesByTeamAndEvent[teamName][event] ? (
@@ -330,12 +335,17 @@ const sortTeamsHardest = (fdrData: Record<string, number>) => {
                                   ? "#f37736"
                                   : fixture.FDR === 5
                                   ? "#ee4035"
-                                  : "transparent",
+                                  : "transparent", 
                               marginTop:
                                 fixturesByTeamAndEvent[teamName][event]?.length >
                                   1 && index === 1
-                                  ? "5px"
+                                  ? "0px"
                                   : "",
+                              marginRight:
+                                fixturesByTeamAndEvent[teamName][event]?.length >
+                                  1
+                                  ? "5px"
+                                  : "",   
                               width:
                                 fixturesByTeamAndEvent[teamName][event]?.length >
                                   1
