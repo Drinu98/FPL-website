@@ -1,2 +1,7 @@
 app/api/top10kplayers
 app/api/cron/deletetop10k
+app/api/cron/deletesetandforget
+app/api/cron/deletetwat
+app/api/cron/comparetop10kplayers
+app/api/setandforget
+
