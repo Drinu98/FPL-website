@@ -30,16 +30,16 @@
       "app/page.tsx": {
         "maxDuration": 60
       },
-      "api/cron/deletetwat": {
+      "app/api/cron/deletetwat/route.ts": {
         "maxDuration": 300
       },
-      "api/cron/deletesetandforget": {
+      "app/api/cron/deletesetandforget/route.ts": {
         "maxDuration": 300
       },
-      "api/cron/comparetop10kplayers": {
+      "app/api/cron/comparetop10kplayers/route.ts": {
         "maxDuration": 300
       },
-      "api/setandforget": {
+      "app/api/setandforget/route.ts": {
         "maxDuration": 300
       }
     },
