@@ -15,7 +15,12 @@ import url from 'url'
   }
 
 export async function GET(req: Request) {
-  let executionCount = 0
+  if (process.env.STOP_SCRIPT === 'true') {
+    console.log('Stopping script as per the condition.');
+    process.env.STOP_SCRIPT = 'false'; // Set to false for subsequent runs
+    process.exit(0);
+  }else{
+    let executionCount = 0
   let page = 1;
   const BASE_URL = `${process.env.VERCEL_URL?.startsWith('localhost') ? 'http' : 'https'}://${process.env.VERCEL_URL}`
   console.log('BASE URL', BASE_URL)
@@ -123,5 +128,7 @@ export async function GET(req: Request) {
     result
   });
   return new NextResponse(JSON.stringify({ page, result }));
+  }
+  
 }
 
