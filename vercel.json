@@ -28,7 +28,7 @@
     "functions": 
     {
       "app/page.tsx": {
-        "maxDuration": 60
+        "maxDuration": 300
       },
       "app/api/cron/deletetwat/route.ts": {
         "maxDuration": 300
