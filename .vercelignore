@@ -1,6 +1,6 @@
 /api/cron/comparetop10kplayers
 /api/cron/deletesetandforget
-/api/cron/deletetop10k
+app/api/cron/deletetop10k
 /api/cron/deletetwat
 /api/setandforget
-/api/top10k
+app/api/top10k
