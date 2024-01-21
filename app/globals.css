@@ -311,7 +311,7 @@ ul {
   overflow: auto;
 }
 
-.transfers-title {
+.transfers-title, .transfers-title-fewest {
   text-align: center;
   padding-top: 4px;
   background-image: linear-gradient(
@@ -636,7 +636,7 @@ transform: scale(1.2);
 }
 
 .transfers-table-playerchanges {
-  font-size: 0.66rem;
+  font-size: 12.5px;
 }
 
 .transfers-table-captaincy {
@@ -651,12 +651,12 @@ transform: scale(1.2);
 .transfers-table,
 .setPieces-table {
   /* border: 2px solid #05F26C; */
-  font-size: 12px;
+  font-size: 13px;
   color: black;
 }
 
 .fixtureTicker-table{
-  font-size: 10px;
+  font-size: 11px;
   color: black;
   margin-top: 25px;
   width: 100%;
@@ -773,38 +773,43 @@ transform: scale(1.2);
   display: flex;
   margin: 0.6rem 0px;
   -webkit-box-align: center;
-  align-items: center;
+  /* align-items: center; */
 }
 
 .home-box {
   display: flex;
-  align-items: center;
-  flex: 1 1 calc(50% - 2.3rem);
+  /* align-items: center; */
+  /* flex: 1 1 calc(50% - 2.3rem); */
+  width: 50%;
   justify-content: right;
 }
 
 .home-text {
-  font-size: 1rem;
+  font-size: 14px;
   vertical-align: middle;
 }
 
 .home-image-box {
-  width: 20px;
+  /* width: 20px;
   margin-right: 10px;
-  margin-left: 10px;
+  margin-left: 10px; */
+  display: flex;
+  align-items: center;
 }
 
 .home-image {
-  display: block;
-  margin: 0 auto;
-  width: 40px;
-  height: auto;
+  /* display: block; */
+  margin-right: 0px;
+  /* width: 40px; */
+  /* height: auto; */
+  margin-left: 5px;
 }
 
 .away-box {
   display: flex;
-  align-items: center;
-  flex: 1 1 calc(50% - 1.5rem);
+  /* align-items: center; */
+  /* flex: 1 1 calc(50% - 1.5rem); */
+  width: 50%;
 }
 
 .fixture-date-box {
@@ -826,62 +831,84 @@ transform: scale(1.2);
   color: black;
 }
 
+.outer-away-image-box{
+  width: 50%;
+}
 .away-image-box {
-  width: 20px;
-  margin-right: 30px;
+  /* width: 20px; */
+  /* margin-right: 30px; */
+  display: flex;
+  align-items: center;
 }
 
 .away-image {
   display: block;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   width: 40px;
   height: auto;
+  margin-right: 5px;
 }
 
 .away-text {
-  font-size: 1rem;
+  font-size: 14px;
   vertical-align: middle;
 }
 
 .score-box {
   display: inline-block;
-  flex: 1 0 3.6rem;
-  line-height: 1.1;
+  flex: 1 0 3.5rem;
+  /* line-height: 3; */
   text-align: center;
   font-size: 0.9rem;
-  margin-left: 10px;
-  /* margin-top: 22px; */
+  /* margin-left: 10px; */
+  margin-top: 10px;
 }
 
 .time-box {
-  display: inline-block;
-  flex: 1 0 3.6rem;
+  display: flex;
+  align-items: center;
+  flex: 1 0 3.5rem;
   line-height: 1.1;
   text-align: center;
   font-size: 0.8rem;
-  margin-left: 10px;
+  margin-left: 25px;
+  /* margin-right: 8px; */
+}
+.bonus-title{
+  margin-bottom: 20px;
 }
 
 .bonus-box {
-  margin-left: 30px;
+  margin-left: 12px;
   /* width: 8rem; */
+  margin-top: 7px;
 }
+
 .bonus-list {
   list-style: none;
-  font-size: 12px;
+  font-size: 13px;
+}
+
+.bonus-item{
+  display: flex;
+  align-items: center;
+  margin-top: 3px;
+  margin-left: 5px;
 }
 
 .scorers-list {
   list-style: none;
-  font-size: 12px;
+  font-size: 13px;
+  margin-right: 15px;
+  /* margin-top: 15px; */
 }
 
 .scorers-box-home{
-  margin-right: 42px;
+
 }
 
 .scorers-box-away{
-  margin-left: 42px;
+  margin-left: 12px;
 }
 
 .own-goal-label{
@@ -890,7 +917,7 @@ transform: scale(1.2);
 }
 .upcomingfixture-ul-list {
   margin: 0px 0px 2rem;
-  font-size: 0.7rem;
+  font-size: 13px;
   list-style: none;
   overflow-y: auto;
   overflow-x: hidden;
@@ -910,7 +937,7 @@ transform: scale(1.2);
 
 .upcomingfixture-home-text,
 .upcomingfixture-away-text {
-  font-size: 0.8rem;
+  font-size: 13px;
   vertical-align: middle;
 }
 
@@ -1269,7 +1296,7 @@ p {
 }
 
 @media (max-width: 1999px) {
-  .transfers-title {
+  .transfers-title, .transfers-title-fewest {
     font-size: 25px;
   }
   .news-info {
@@ -1277,7 +1304,7 @@ p {
   }
   .home-text,
   .away-text {
-    font-size: 0.8rem;
+    font-size: 13px;
   }
   .upcomingfixture-score-box {
     padding: 10px;
@@ -1304,6 +1331,9 @@ p {
     height: 175px;
     margin-top: 50px;
   }
+  .transfers-title-fewest {
+    font-size: 21px;
+  }
 }
 
 @media (max-width: 1400px) {
@@ -1312,6 +1342,9 @@ p {
   }
   .transfers-title {
     font-size: 23px;
+  }
+  .transfers-title-fewest {
+    font-size: 18px;
   }
   .expected-select-teams,
   .expected-select {
@@ -1403,6 +1436,10 @@ p {
   .transfers-title {
     font-size: 20px;
   }
+  .transfers-title-fewest {
+    font-size: 16px;
+    margin-top: 5px;
+  }
   .expected-select-teams,
   .expected-select {
     width: 120px;
@@ -1439,12 +1476,12 @@ p {
   }
   .score-box {
     flex: 1 0 2.7rem;
-    margin: 0px;
+    margin-top: 7px;
   }
   .home-image,
   .away-image {
-    height: 30px;
-    width: 30px;
+    height: 27px;
+    width: 27px;
   }
   .home-image-box {
     margin-left: 5px;
@@ -1466,10 +1503,11 @@ p {
   .upcomingfixture-ul-list {
     padding: 0;
     margin: 0px 20px 2rem;
+    font-size: 0.60rem;
   }
   .upcomingfixture-home-text,
   .upcomingfixture-away-text {
-    font-size: 0.55rem;
+    font-size: 0.60rem;
   }
   .upcomingfixture-score-box {
     padding: 5px;
@@ -1494,6 +1532,30 @@ p {
     width: 12px;
     height: 12px;
   }
+  .bonus-title{
+    font-size: 12px;
+  }
+  .bonus-box {
+    margin-left: 12px;
+  }
+  .bonus-cup{
+    height: 17px;
+    width: 17px;
+  }
+  .bonus-number{
+    height: 12px;
+    width: 12px;
+  }
+  .bonus-item{
+    margin-left: 2px;
+    margin-bottom: 4px;
+  }
+  .outer-away-image-box{
+    width: 50%;
+  }
+  .scorers-list{
+    font-size: 9px;
+  }
 }
 
 @media (max-width: 998px) {
@@ -1504,6 +1566,14 @@ p {
   .container-header {
     height: 8rem;
   }
+  .scorers-list{
+    font-size: 12px;
+  }
+  .transfers-title-fewest {
+    font-size: 23px;
+    margin-top: 0px;
+  }
+
 }
 
 @media (max-width: 992px) {
@@ -1549,15 +1619,19 @@ p {
     font-size: 0.75rem;
   }
   .home-image-box {
-    margin-right: 15px;
+    margin-right: 5px;
     margin-left: 10px;
   }
+  .outer-away-image-box{
+    width: 50%;
+  }
   .away-image-box {
-    margin-right: 17px;
+    margin-right: 5px;
     margin-left: 5px;
   }
   .time-box {
-    margin-left: -3px;
+    margin-left: 10px;
+    flex: 1 0 3rem;
   }
   .transfers-table-playerchanges {
     font-size: 0.7rem;
@@ -1605,10 +1679,12 @@ p {
     height: 35px;
   }
   .away-box {
-    flex: 1 1 calc(50% - 2rem);
+    /* flex: 1 1 calc(50% - 2rem); */
+    display: flex;
   }
   .home-box {
-    flex: 1 1 calc(50% - 2rem);
+    /* flex: 1 1 calc(50% - 2rem); */
+    display: flex;
   }
   .bonus-title{
     font-size: 14px;
@@ -1617,10 +1693,35 @@ p {
     margin-left: 60px;
   }
   .scorers-box-home{
-    margin-right: 40px;
+    margin-right: 0px;
   }
   .scorers-box-away{
-    margin-left: 40px;
+    margin-left: 17px;
+  }
+  .bonus-title{
+    font-size: 12px;
+  }
+  .bonus-box {
+    margin-left: 12px;
+  }
+  .bonus-cup{
+    height: 25px;
+    width: 25px;
+  }
+  .bonus-number{
+    height: 15px;
+    width: 15px;
+  }
+  .bonus-item{
+    margin-left: 5px;
+    margin-bottom: 4px;
+  }
+  .outer-away-image-box{
+    width: 65%;
+  }
+  .score-box {
+    flex: 1 0 3rem;
+    margin-top: 8px;
   }
 }
 
@@ -1643,7 +1744,7 @@ p {
     font-size: 0.6rem;
   }
   .away-image-box {
-    margin-right: 15px;
+    margin-right: 0px;
   }
   .realplayers2-kits {
     width: 28px;
@@ -1667,22 +1768,49 @@ p {
     height: 13px;
   }
   .scorers-box-home{
-    margin-right: 40px;
+    margin-right: 3px;
   }
   .scorers-box-away{
-    margin-left: 40px;
+    margin-left: 17px;
   }
   .away-box {
-    flex: 1 1 calc(50% - 2rem);
+    /* flex: 1 1 calc(50% - 2rem); */
+    display: flex;
   }
   .home-box {
-    flex: 1 1 calc(50% - 2rem);
+    /* flex: 1 1 calc(50% - 2rem); */
+    display: flex;
   }
   .bonus-title{
     font-size: 12px;
   }
   .bonus-box {
-    margin-left: 50px;
+    margin-left: 15px;
+  }
+  .bonus-cup{
+    height: 25px;
+    width: 25px;
+  }
+  .bonus-number{
+    height: 15px;
+    width: 15px;
+  }
+  .bonus-item{
+    margin-left: 5px;
+  }
+  .time-box{
+    flex: 1 0 3rem;
+    margin-left: 17px;
+  }
+  .score-box {
+    flex: 1 0 2.5rem;
+    margin-top: 8px;
+  }
+  .home-image-box{
+    margin-right: 5px;
+  }
+  .outer-away-image-box{
+    width: 60%;
   }
 }
 
@@ -1708,15 +1836,18 @@ p {
     width: 200px;
   }
   .score-box {
-    flex: 1 0 1.5rem;
-    margin: 0px;
+    flex: 1 0 2.5rem;
+    margin-top: 8px;
   }
   .home-text,
   .away-text {
     font-size: 0.7rem;
   }
+  .home-image-box{
+    margin-right: 5px;
+  }
   .away-image-box {
-    margin-right: 15px;
+    margin-right: 10px;
   }
   .realplayers2-kits {
     width: 27px;
@@ -1740,22 +1871,43 @@ p {
     height: 12px;
   }
   .scorers-box-home{
-    margin-right: 33px;
+    margin-right: 3px;
   }
   .scorers-box-away{
-    margin-left: 33px;
+    margin-left: 18px;
   }
   .away-box {
-    flex: 1 1 calc(50% - 2rem);
+    /* flex: 1 1 calc(50% - 2rem); */
+    display: flex;
   }
   .home-box {
-    flex: 1 1 calc(50% - 2rem);
+    /* flex: 1 1 calc(50% - 2rem); */
+    display: flex;
+  }
+  .time-box{
+    flex: 1 0 3.5rem;
+    margin-left: 25px;
   }
   .bonus-title{
     font-size: 12px;
   }
   .bonus-box {
-    margin-left: 30px;
+    margin-left: 12px;
+  }
+  .bonus-cup{
+    height: 20px;
+    width: 20px;
+  }
+  .bonus-number{
+    height: 15px;
+    width: 15px;
+  }
+  .bonus-item{
+    margin-left: 2px;
+    margin-bottom: 4px;
+  }
+  .outer-away-image-box{
+    width: 65%;
   }
 }
 
@@ -1807,7 +1959,7 @@ p {
   .home-text,
   .away-text,
   .score-box {
-    font-size: 10px;
+    font-size: 9px;
   }
   .minutes {
     font-size: 8px;
@@ -1816,11 +1968,11 @@ p {
     font-size: 0.52rem;
   }
   .bonus-box {
-    margin-left: 18px;
+    margin-left: 4px;
   }
   .score-box {
-    flex: 1 0 1rem;
-    margin: 0px;
+    flex: 1 0 1.4rem;
+    margin-top: 6px;
   }
   .player-info {
     font-size: 9px;
@@ -1840,22 +1992,27 @@ p {
   }
   .home-image,
   .away-image{
-    width: 31px;
-    height: 31px;
+    width: 28px;
+    height: 28px;
+  }
+  .away-image{
+    margin-right: 3px;
   }
   .away-box {
-    flex: 1 1 calc(50% - 2rem);
+    /* flex: 1 1 calc(50% - 2rem); */
+    display: flex;
   }
   .home-box {
-    flex: 1 1 calc(50% - 2rem);
+    /* flex: 1 1 calc(50% - 2rem); */
+    display: flex;
   }
   .home-image-box {
-    margin-right: 10px;
+    margin-right: 5px;
     margin-left: 7px;
   }
   .away-image-box {
-    margin-right: 15px;
-    margin-left: 0px;
+    margin-right: 0px;
+    margin-left: 2px;
   }
   .realplayers-transfer-list,
   .realplayer-name-box {
@@ -1907,13 +2064,13 @@ p {
     height: 10px;
   }
   .scorers-box-home{
-    margin-right: 25px;
+    margin-right: 0px;
   }
   .scorers-box-away{
-    margin-left: 25px;
+    margin-left: 15px;
   }
   .bonus-title{
-    font-size: 10px;
+    font-size: 9px;
   }
   .fdr-teamNames{
     font-size: 8px;
@@ -1933,6 +2090,23 @@ p {
   .fdr-select {
     width: 120px;
     margin-left: 10px;
+  }
+  .bonus-cup{
+    height: 16px;
+    width: 16px;
+  }
+  .bonus-number{
+    height: 12px;
+    width: 12px;
+  }
+  .bonus-item{
+    margin-left: 2px;
+  }
+  .outer-away-image-box{
+    width: 65%;
+  }
+  .transfers-title-fewest {
+    font-size: 20px;
   }
 }
 
@@ -1977,7 +2151,7 @@ p {
   }
   .upcomingfixture-home-text,
   .upcomingfixture-away-text {
-    font-size: 0.6rem;
+    font-size: 10px;
   }
   .transfers-table-playerchanges .transfer-header {
     font-size: 0.5rem;
@@ -2016,7 +2190,8 @@ p {
     font-size: 7px;
   }
   .bonus-box {
-    margin-left: 15px;
+    margin-left: 4px;
+    margin-top: 6px;
   }
   .time-box{
     margin-left: 0;
@@ -2028,19 +2203,21 @@ p {
   }
   .away-image,
   .home-image {
-    width: 25px;
-    height: 25px;
+    width: 23px;
+    height: 23px;
   }
   .time-box {
     font-size: 0.5rem;
-    flex: 1 0 1.5rem;
-    margin-right: 4px;
+    flex: 1 0 0rem;
+    margin-right: 0px;
   }
   .away-box {
-    flex: 1 1 calc(50% - 2rem);
+    /* flex: 1 1 calc(50% - 2rem); */
+    display: flex;
   }
   .home-box {
-    flex: 1 1 calc(50% - 2rem);
+    /* flex: 1 1 calc(50% - 2rem); */
+    display: flex;
   }
   .minutes {
     font-size: 8px;
@@ -2074,20 +2251,33 @@ p {
     font-size: 1.3rem;
   }
   .scorers-list{
-    font-size: 8px;
+    font-size: 7px;
+  }
+  .score-box{
+    margin-top: 5px;
+    flex: 1 0 1.1rem;
   }
   .away-icon-assists, .away-icon-goals, .home-icon-assists, .home-icon-goals, .away-icon-ownGoals{
     width: 10px;
     height: 10px;
   }
+  .away-image-box{
+    margin-right: 0px;
+    margin-left: 5px;
+  }
+  .home-image-box {
+    margin-right: 5px;
+    margin-left: 7px
+  }
   .scorers-box-home{
-    margin-right: 25px;
+    margin-right: 0px;
   }
   .scorers-box-away{
-    margin-left: 25px;
+    margin-left: 13px;
   }
   .bonus-title{
-    font-size: 9px;
+    font-size: 7px;
+    margin-bottom: 17px;
   }
   .darkmode-button {
     width: 40px;
@@ -2125,6 +2315,27 @@ p {
   .fdr-select {
     width: 120px;
     margin-left: 10px;
+  }
+  .bonus-cup{
+    height: 14px;
+    width: 14px;
+  }
+  .bonus-number{
+    height: 9px;
+    width: 9px;
+  }
+  .bonus-item{
+    margin-left: 2px;
+    margin-bottom: 2px;
+  }
+  .outer-away-image-box{
+    width: 65%;
+  }
+  .upcomingfixture-ul-list{
+    font-size: 10px;
+  }
+  .transfers-title-fewest {
+    font-size: 19px;
   }
 }
 

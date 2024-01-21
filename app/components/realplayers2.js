@@ -61,7 +61,10 @@ async function getRealPlayers() {
     { name: "Harrison Reed", id: 7526999, pic: "/images/fulham.png" },
     { name: "Conor Bradley", id: 7065685, pic: "/images/liverpool.png" },
     { name: "Luke Chambers", id: 1942739, pic: "/images/liverpool.png" },
-    { name: "Stefan Bajcetic", id: 8862181, pic: "/images/liverpool.png" }
+    { name: "Stefan Bajcetic", id: 8862181, pic: "/images/liverpool.png" },
+    { name: "Gabriel Osho", id: 7929890, pic: "/images/luton.png" },
+    { name: "Carlton Morris", id: 2845901, pic: "/images/luton.png" },
+    { name: "Jadon Sancho", id: 9033589, pic: "/images/dortmund3.png" },
   ];
 
   const results = [];

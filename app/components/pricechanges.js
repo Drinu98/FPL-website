@@ -60,8 +60,8 @@ export default async function PriceChanges() {
                           <Image
                             alt="greenarrow up"
                             src={"/images/greenarrowdark.png"}
-                            width={15}
-                            height={15}
+                            width={16}
+                            height={16}
                             className="greenarrowup"
                           ></Image>
                         </td>
@@ -73,7 +73,7 @@ export default async function PriceChanges() {
                     ))
                   ) : (
                     <tr>
-                      <td colSpan="5" style={{ marginLeft: 10, fontSize: 12 }}>
+                      <td colSpan="5" style={{ marginLeft: 10, fontSize: 13 }}>
                         No price rises
                       </td>
                     </tr>
@@ -135,7 +135,7 @@ export default async function PriceChanges() {
                     ))
                   ) : (
                     <tr>
-                      <td colSpan="5" style={{ marginLeft: 10, fontSize: 12 }}>
+                      <td colSpan="5" style={{ marginLeft: 10, fontSize: 13 }}>
                         No price falls
                       </td>
                     </tr>

@@ -234,7 +234,7 @@ export default async function Expected(){
         xGTotalLast2Gameweeks={xGTotalLast2ToArray}
         xGTotalLast3Gameweeks={xGTotalLast3ToArray}
         xGTotalLast4Gameweeks={xGTotalLast4ToArray}
-        xGTotalLast5Gameweeks={xGTotalLast5ToArray}
+        // xGTotalLast5Gameweeks={xGTotalLast5ToArray}
         // xGTotalLast6Gameweeks={xGTotalLast6ToArray}
         xGTotal={xGTotalToArray}
       />

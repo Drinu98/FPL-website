@@ -75,9 +75,9 @@ function Expected(props: ExpectedProps) {
       case "xGTotalLast4Gameweeks":
         setSelectedData(xGTotalLast4Gameweeks);
         break; 
-      case "xGTotalLast5Gameweeks":
-        setSelectedData(xGTotalLast5Gameweeks);
-        break;
+      // case "xGTotalLast5Gameweeks":
+      //   setSelectedData(xGTotalLast5Gameweeks);
+      //   break;
       // case "xGTotalLast6Gameweeks":
       //   setSelectedData(xGTotalLast6Gameweeks);
       //   break;
@@ -168,8 +168,8 @@ function Expected(props: ExpectedProps) {
                 ? "xGTotalLast3Gameweeks"
                 : selectedData === xGTotalLast4Gameweeks
                 ? "xGTotalLast4Gameweeks"
-                : selectedData === xGTotalLast5Gameweeks
-                ? "xGTotalLast5Gameweeks"
+                // : selectedData === xGTotalLast5Gameweeks
+                // ? "xGTotalLast5Gameweeks"
                 // : selectedData === xGTotalLast6Gameweeks
                 // ? "xGTotalLast6Gameweeks"
                 // : selectedData === xGTotalLast7Gameweeks
@@ -182,7 +182,7 @@ function Expected(props: ExpectedProps) {
             <option value="xGTotalLast2Gameweeks">Last 2 GWs</option>
             <option value="xGTotalLast3Gameweeks">Last 3 GWs</option>
             <option value="xGTotalLast4Gameweeks">Last 4 GWs</option>
-            <option value="xGTotalLast5Gameweeks">Last 5 GWs</option>
+            {/* <option value="xGTotalLast5Gameweeks">Last 5 GWs</option> */}
             {/* <option value="xGTotalLast6Gameweeks">Last 6 GWs</option> */}
             {/* <option value="xGTotalLast7Gameweeks">Last 7 GWs</option> */}
             <option value="xGTotal">Total</option>

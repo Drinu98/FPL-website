@@ -65,7 +65,7 @@ export default async function SetAndForget() {
       <>
         <div className="fixture-container">
           <div className="graphic-container">
-            <h2 className="transfers-title">Set & Forget</h2>
+            <h2 className="transfers-title-fewest">Top Team Fewest Transfers</h2>
           </div>
           <div style={{marginTop:'auto', marginBottom:'auto'}}>
             <div style={{marginTop:'10px'}}>
@@ -102,7 +102,7 @@ export default async function SetAndForget() {
       <>
         <div className="fixture-container">
           <div className="graphic-container">
-            <h2 className="transfers-title">Disaster of the Week</h2>
+            <h2 className="transfers-title">Top Team Fewest Transfers</h2>
           </div>
           <p className="error-message-twat">
             <Image

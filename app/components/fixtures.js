@@ -215,7 +215,7 @@ async function getFixtures() {
       bonusStatsPlayers.sort((a, b) => b.value - a.value);
       bonusPointsPlayers.sort((a, b) => b.value - a.value);
 
-      const bonusStatsPlayersList = bonusStatsPlayers.splice(0, 3);
+      const bonusStatsPlayersList = bonusStatsPlayers.splice(0, 10);
 
       const homeTeamImage = `https://resources.premierleague.com/premierleague/badges/70/t${homeTeam.code}.png`;
       const awayTeamImage = `https://resources.premierleague.com/premierleague/badges/70/t${awayTeam.code}.png`;
