@@ -112,25 +112,55 @@ export async function GET() {
     console.log("The GWs are the same"); 
   }
 
-  const newRisingPlayers = risingPlayers.filter((risingPlayer) => {
-    // Check if the player's ID exists in oldRisers array
-    const matchingOldRiser = previousPriceChanges.find(
-      (oldRiser) => oldRiser.playerElementId === risingPlayer.id
-    );
+  // const newRisingPlayers = risingPlayers.filter((risingPlayer) => {
+  //   // Check if the player's ID exists in oldRisers array
+  //   const matchingOldRiser = previousPriceChanges.find(
+  //     (oldRiser) => oldRiser.playerElementId === risingPlayer.id
+  //   );
 
-    // Return true if player's ID does not exist in oldRisers or the cost is different
-    return !matchingOldRiser || matchingOldRiser.cost !== risingPlayer.cost;
+  //   // Return true if player's ID does not exist in oldRisers or the cost is different
+  //   return !matchingOldRiser || matchingOldRiser.cost !== risingPlayer.cost;
+  // });
+
+  const newRisingPlayers = risingPlayers.filter((risingPlayer) => {
+    // Find the player's previous price change entries and sort them by cost in descending order
+    const playerPriceChanges = previousPriceChanges
+      .filter((oldRiser) => oldRiser.playerElementId === risingPlayer.id)
+      .sort((a:any, b:any) => b.cost - a.cost);
+  
+    // Return true if player's ID does not exist in oldRisers or
+    // the current cost is greater than the highest recorded cost
+    return (
+      playerPriceChanges.length === 0 ||
+      risingPlayer.cost > playerPriceChanges[0].cost
+    );
   });
+  
 
   const newFallingPlayers = fallingPlayers.filter((fallingPlayer) => {
-    // Check if the player's ID exists in oldRisers array
-    const matchingOldFaller = previousPriceChanges.find(
-      (oldFaller) => oldFaller.playerElementId === fallingPlayer.id
+    // Find the player's previous price change entries and sort them by cost in descending order
+    const playerPriceChanges = previousPriceChanges
+      .filter((oldFaller) => oldFaller.playerElementId === fallingPlayer.id)
+      .sort((a:any, b:any) => b.cost - a.cost);
+  
+    // Return true if player's ID does not exist in oldRisers or
+    // the current cost is greater than the highest recorded cost
+    return (
+      playerPriceChanges.length === 0 ||
+      fallingPlayer.cost > playerPriceChanges[0].cost
     );
-
-    // Return true if player's ID does not exist in oldRisers or the cost is different
-    return !matchingOldFaller || matchingOldFaller.cost !== fallingPlayer.cost;
   });
+  
+
+  // const newFallingPlayers = fallingPlayers.filter((fallingPlayer) => {
+  //   // Check if the player's ID exists in oldRisers array
+  //   const matchingOldFaller = previousPriceChanges.find(
+  //     (oldFaller) => oldFaller.playerElementId === fallingPlayer.id
+  //   );
+
+  //   // Return true if player's ID does not exist in oldRisers or the cost is different
+  //   return !matchingOldFaller || matchingOldFaller.cost !== fallingPlayer.cost;
+  // });
 
   try{
     await prisma.$transaction(async ($tx) => {
