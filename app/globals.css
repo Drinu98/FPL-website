@@ -222,7 +222,7 @@ ul {
 [data-theme="light"] .widget12,
 [data-theme="light"] .widgetFDR {
   background-color: aliceblue;
-  border: 5px solid black;
+  border: 2px solid #261038;
 }
 
 [data-theme="dark"] .widget,
@@ -239,7 +239,8 @@ ul {
 [data-theme="dark"] .widget12,
 [data-theme="dark"] .widgetFDR {
   background-color: #1d1b1c;
-  border: 5px solid white;
+  border: 2px solid white;
+  box-shadow: 5px 5px #1d1b1c;
 }
 
 .widget3 {
@@ -341,8 +342,9 @@ td {
 .widget11,
 .widget12,
 .widgetFDR {
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-  border: 5px solid black;
+  /* box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); */
+  box-shadow: 5px 5px #261038;
+  border: 1px solid black;
   border-radius: 8px;
 }
 

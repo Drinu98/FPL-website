@@ -445,7 +445,7 @@ const DisplayFixtures = (props: DisplayFixturesProps) => {
                                               {bonus.value === 3 && (
                                                 <Image
                                                   className="bonus-number"
-                                                  src={"/images/3.png"}
+                                                  src={"/images/three.png"}
                                                   alt={fixture.away}
                                                   width={18}
                                                   height={18}
@@ -545,7 +545,7 @@ const DisplayFixtures = (props: DisplayFixturesProps) => {
                                                 {points === 3 && (
                                                   <Image
                                                     className="bonus-number"
-                                                    src={"/images/3.png"}
+                                                    src={"/images/three.png"}
                                                     alt={fixture.away}
                                                     width={18}
                                                     height={18}
