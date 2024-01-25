@@ -326,7 +326,7 @@ const DisplayFDR = (props: DisplayFixturesProps) => {
                         (fixture: FixtureByEvent, index) => (
                           <div
                             key={fixture.event + index}
-                            className="fdr-opponents"
+                            className={`fdr-opponents ${fixturesByTeamAndEvent[teamName][event]?.length > 1 ? 'dynamic-width' : ''}`}
                             style={{
                               backgroundColor:
                                 fixture.FDR === 1
@@ -349,11 +349,6 @@ const DisplayFDR = (props: DisplayFixturesProps) => {
                                 fixturesByTeamAndEvent[teamName][event]
                                   ?.length > 1
                                   ? "5px"
-                                  : "",
-                              width:
-                                fixturesByTeamAndEvent[teamName][event]
-                                  ?.length > 1
-                                  ? "48px"
                                   : "",
                               padding:
                                 fixturesByTeamAndEvent[teamName][event]
