@@ -38,6 +38,16 @@ const DisplayTransfers = (props: DisplayTransfersProps) => {
     <div className="transfers-container">
       <div className="graphic-container">
         <h2 className="transfers-title">Top 10 Transfers</h2>
+
+      <a href="/transfers" className="expand-image-transfers">
+              <Image
+                alt="expand"
+                src={"/images/expand.png"}
+                width={20}
+                height={20}    
+                className="expand-image"
+              />
+          </a>
       </div>
       <div style={{ overflowY: "auto", overflowX: "hidden" }}>
         <div className="text-center captaincy-button-box">

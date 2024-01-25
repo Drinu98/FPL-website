@@ -30,14 +30,14 @@ type DisplayFixturesProps = {
   fixturesArray: Array<Fixture>;
 };
 
-import React, {useMemo} from "react";
+import React, { useMemo } from "react";
 
-  const nextGWFDR: Record<string, number> = {};
-  const next2FDRs: Record<string, number> = {};
-  const next3FDRs: Record<string, number> = {};
-  const next4FDRs: Record<string, number> = {};
-  const next5FDRs: Record<string, number> = {};
-  const next8FDRs: Record<string, number> = {};
+const nextGWFDR: Record<string, number> = {};
+const next2FDRs: Record<string, number> = {};
+const next3FDRs: Record<string, number> = {};
+const next4FDRs: Record<string, number> = {};
+const next5FDRs: Record<string, number> = {};
+const next8FDRs: Record<string, number> = {};
 
 const DisplayFDR = (props: DisplayFixturesProps) => {
   const { fixturesArray } = props;
@@ -49,12 +49,11 @@ const DisplayFDR = (props: DisplayFixturesProps) => {
   // const [customSelectedValue1, setCustomSelectedValue1] = useState('');
   // const [customSelectedValue2, setCustomSelectedValue2] = useState('')
 
-
   const fixturesByTeamAndEvent: {
-      [teamName: string]: {
-        [event: number]: FixtureByEvent[];
-      };
-    } = useMemo(() => {
+    [teamName: string]: {
+      [event: number]: FixtureByEvent[];
+    };
+  } = useMemo(() => {
     const result: any = {};
 
     fixturesArray.forEach((fixture) => {
@@ -95,7 +94,6 @@ const DisplayFDR = (props: DisplayFixturesProps) => {
     return result;
   }, [fixturesArray]);
 
-  
   const teamNames = Object.keys(fixturesByTeamAndEvent).sort();
 
   // Get a sorted list of unique events in descending order
@@ -110,51 +108,48 @@ const DisplayFDR = (props: DisplayFixturesProps) => {
       .map(Number)
       .sort((a, b) => a - b);
     const eventsToConsider = eventKeys.slice(0, numberOfEvents);
-  
+
     const fdrSum = eventsToConsider.reduce((sum, event) => {
       const eventFixtures = fixtures[event];
       const eventFDR = eventFixtures.reduce((eventSum: any, fixture: any) => {
         return eventSum + fixture.FDR;
       }, 0);
-      
-  
+
       // Check if there are exactly 2 fixtures in the event
       if (eventFixtures.length === 2) {
         // If there are 2 fixtures, add them and divide the result by 2
-        return sum + eventFDR / 2;
+        // return sum + eventFDR / 2;
+        const result = 1 / eventFDR;
+        return sum + (1 - result);
       } else {
         // If there are not 2 fixtures, simply add the eventFDR
         return sum + eventFDR;
       }
     }, 0);
-  
+
     return fdrSum;
   }
 
+  for (const team in fixturesByTeamAndEvent) {
+    nextGWFDR[team] = calculateFDRSum(team, fixturesByTeamAndEvent[team], 1);
+    next2FDRs[team] = calculateFDRSum(team, fixturesByTeamAndEvent[team], 2);
+    next3FDRs[team] = calculateFDRSum(team, fixturesByTeamAndEvent[team], 3);
+    next4FDRs[team] = calculateFDRSum(team, fixturesByTeamAndEvent[team], 4);
+    next5FDRs[team] = calculateFDRSum(team, fixturesByTeamAndEvent[team], 5);
+    next8FDRs[team] = calculateFDRSum(team, fixturesByTeamAndEvent[team], 8);
+  }
 
-for (const team in fixturesByTeamAndEvent) {
-  nextGWFDR[team] = calculateFDRSum(team, fixturesByTeamAndEvent[team], 1);
-  next2FDRs[team] = calculateFDRSum(team, fixturesByTeamAndEvent[team], 2);
-  next3FDRs[team] = calculateFDRSum(team, fixturesByTeamAndEvent[team], 3);
-  next4FDRs[team] = calculateFDRSum(team, fixturesByTeamAndEvent[team], 4);
-  next5FDRs[team] = calculateFDRSum(team, fixturesByTeamAndEvent[team], 5);
-  next8FDRs[team] = calculateFDRSum(team, fixturesByTeamAndEvent[team], 8);
-}
+  const sortTeamsEasiest = (fdrData: Record<string, number>) => {
+    return Object.keys(fdrData).sort((teamA, teamB) => {
+      return fdrData[teamA] - fdrData[teamB];
+    });
+  };
 
-
-const sortTeamsEasiest = (fdrData: Record<string, number>) => {
-  return Object.keys(fdrData).sort((teamA, teamB) => {
-    return fdrData[teamA] - fdrData[teamB];
-  });
-};
-
-const sortTeamsHardest = (fdrData: Record<string, number>) => {
-  return Object.keys(fdrData).sort((teamA, teamB) => {
-    return fdrData[teamB] - fdrData[teamA];
-  });
-};
-
-
+  const sortTeamsHardest = (fdrData: Record<string, number>) => {
+    return Object.keys(fdrData).sort((teamA, teamB) => {
+      return fdrData[teamB] - fdrData[teamA];
+    });
+  };
 
   const handleDataSelect = (event: React.FormEvent<HTMLSelectElement>) => {
     const value = event.currentTarget.value;
@@ -170,84 +165,94 @@ const sortTeamsHardest = (fdrData: Record<string, number>) => {
     // Filter the data based on selected position or team
     let filteredData: any[] = [];
 
-    if(selectedFilter === 'easiest'){
+    if (selectedFilter === "easiest") {
       if (selectedData === "CurrentTeams") {
         filteredData = teamNames;
-      }else if (selectedData === "nextGWFDR") {
+      } else if (selectedData === "nextGWFDR") {
         const sortedTeamsEasiestGW = sortTeamsEasiest(nextGWFDR);
         filteredData = sortedTeamsEasiestGW;
-      }else if (selectedData === "next2FDR") {
+      } else if (selectedData === "next2FDR") {
         const sortedTeamsEasiest2GWs = sortTeamsEasiest(next2FDRs);
         filteredData = sortedTeamsEasiest2GWs;
-      }else if (selectedData === "next3FDR") {
+      } else if (selectedData === "next3FDR") {
         const sortedTeamsEasiest3GWs = sortTeamsEasiest(next3FDRs);
         filteredData = sortedTeamsEasiest3GWs;
-      }else if (selectedData === "next4FDR") {
+      } else if (selectedData === "next4FDR") {
         const sortedTeamsEasiest4GWs = sortTeamsEasiest(next4FDRs);
         filteredData = sortedTeamsEasiest4GWs;
       } else if (selectedData === "next5FDR") {
         const sortedTeamsEasiest5GWs = sortTeamsEasiest(next5FDRs);
         filteredData = sortedTeamsEasiest5GWs;
-      }else if (selectedData === "next8FDR") {
+      } else if (selectedData === "next8FDR") {
         const sortedTeamsEasiest8GWs = sortTeamsEasiest(next8FDRs);
         filteredData = sortedTeamsEasiest8GWs;
       }
-    }else if(selectedFilter === 'hardest'){
+    } else if (selectedFilter === "hardest") {
       if (selectedData === "CurrentTeams") {
         filteredData = teamNames;
-      }else if (selectedData === "nextGWFDR") {
+      } else if (selectedData === "nextGWFDR") {
         const sortedTeamsHardestGW = sortTeamsHardest(nextGWFDR);
         filteredData = sortedTeamsHardestGW;
-      }else if (selectedData === "next2FDR") {
+      } else if (selectedData === "next2FDR") {
         const sortedTeamsHardest2GWs = sortTeamsHardest(next2FDRs);
         filteredData = sortedTeamsHardest2GWs;
-      }else if (selectedData === "next3FDR") {
+      } else if (selectedData === "next3FDR") {
         const sortedTeamsHardest3GWs = sortTeamsHardest(next3FDRs);
         filteredData = sortedTeamsHardest3GWs;
-      }else if (selectedData === "next4FDR") {
+      } else if (selectedData === "next4FDR") {
         const sortedTeamsHardest4GWs = sortTeamsHardest(next4FDRs);
         filteredData = sortedTeamsHardest4GWs;
       } else if (selectedData === "next5FDR") {
         const sortedTeamsHardest5GWs = sortTeamsHardest(next5FDRs);
         filteredData = sortedTeamsHardest5GWs;
-      }else if (selectedData === "next8FDR") {
+      } else if (selectedData === "next8FDR") {
         const sortedTeamsEasiest8GWs = sortTeamsHardest(next8FDRs);
         filteredData = sortedTeamsEasiest8GWs;
       }
     }
-    
+
     setSortedAndFilteredData(filteredData);
     // Trim the sorted data to the top 30
   }, [selectedData, selectedFilter]);
 
   return (
     <div className="fixtureTicker-container">
-      <div className="graphic-container">
-        <h2 className="transfers-title">Fixture Ticker</h2>
-      </div>
+          <div className="graphic-container">
+            <h2 className="transfers-title">Fixture Ticker</h2>
+            <a href="/fixtureTicker" className="expand-image-fdr">
+              <Image
+                alt="expand"
+                src={"/images/expand.png"}
+                width={20}
+                height={20}    
+                className="expand-image"
+              />
+            </a>
+          </div>
       <div>
-      <select
-        className="fdr-select-difficulty select"
-        onChange={handleFilterSelect}
-        value={selectedFilter}
-      >
-        <option value="easiest">Easiest</option>
-        <option value="hardest">Hardest</option>
-      </select>
-      <select
-        className="fdr-select select"
-        onChange={handleDataSelect}
-        value={selectedData}
-      >
-        <option value="CurrentTeams">Alphabetical</option>
-        <option value="nextGWFDR">Next GW</option>
-        <option value="next2FDR">Next 2 GWs</option>
-        <option value="next3FDR">Next 3 GWs</option>
-        <option value="next4FDR">Next 4 GWs</option>
-        <option value="next5FDR">Next 5 GWs</option>
-        <option value="next8FDR">Next 8 GWs</option>
-      </select>
+        <select
+          className="fdr-select-difficulty select"
+          onChange={handleFilterSelect}
+          value={selectedFilter}
+        >
+          <option value="easiest">Easiest</option>
+          <option value="hardest">Hardest</option>
+        </select>
+        <select
+          className="fdr-select select"
+          onChange={handleDataSelect}
+          value={selectedData}
+        >
+          <option value="CurrentTeams">Alphabetical</option>
+          <option value="nextGWFDR">Next GW</option>
+          <option value="next2FDR">Next 2 GWs</option>
+          <option value="next3FDR">Next 3 GWs</option>
+          <option value="next4FDR">Next 4 GWs</option>
+          <option value="next5FDR">Next 5 GWs</option>
+          <option value="next8FDR">Next 8 GWs</option>
+        </select>
       </div>
+
       <div style={{ overflow: "auto" }}>
         <table className="fixtureTicker-table" style={{}}>
           <thead>
@@ -311,10 +316,9 @@ const sortTeamsHardest = (fdrData: Record<string, number>) => {
                       textAlign: "center",
                       paddingRight: "0px",
                       display:
-                        fixturesByTeamAndEvent[teamName][event]?.length >
-                          1
-                          ? 'flex'
-                          : ""
+                        fixturesByTeamAndEvent[teamName][event]?.length > 1
+                          ? "flex"
+                          : "",
                     }}
                   >
                     {fixturesByTeamAndEvent[teamName][event] ? (
@@ -335,25 +339,25 @@ const sortTeamsHardest = (fdrData: Record<string, number>) => {
                                   ? "#f37736"
                                   : fixture.FDR === 5
                                   ? "#ee4035"
-                                  : "transparent", 
+                                  : "transparent",
                               marginTop:
-                                fixturesByTeamAndEvent[teamName][event]?.length >
-                                  1 && index === 1
+                                fixturesByTeamAndEvent[teamName][event]
+                                  ?.length > 1 && index === 1
                                   ? "0px"
                                   : "",
                               marginRight:
-                                fixturesByTeamAndEvent[teamName][event]?.length >
-                                  1
+                                fixturesByTeamAndEvent[teamName][event]
+                                  ?.length > 1
                                   ? "5px"
-                                  : "",   
+                                  : "",
                               width:
-                                fixturesByTeamAndEvent[teamName][event]?.length >
-                                  1
+                                fixturesByTeamAndEvent[teamName][event]
+                                  ?.length > 1
                                   ? "48px"
                                   : "",
                               padding:
-                                fixturesByTeamAndEvent[teamName][event]?.length >
-                                  1
+                                fixturesByTeamAndEvent[teamName][event]
+                                  ?.length > 1
                                   ? "10px 0px"
                                   : "",
                             }}
@@ -385,6 +389,5 @@ const sortTeamsHardest = (fdrData: Record<string, number>) => {
       </div>
     </div>
   );
-
 };
 export default DisplayFDR;

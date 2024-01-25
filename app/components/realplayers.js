@@ -171,6 +171,15 @@ export default async function RealPlayers() {
       <div className="realplayers-container">
         <div className="graphic-container">
           <h2 className="transfers-title">Players League</h2>
+          <a href="/realplayers" className="expand-image-realplayers">
+              <Image
+                alt="expand"
+                src={"/images/expand.png"}
+                width={20}
+                height={20}    
+                className="expand-image"
+              />
+            </a>
         </div>
         <div style={{ overflowY: "auto", overflowX: "hidden" }}>
           <table className="transfers-table-realplayers">

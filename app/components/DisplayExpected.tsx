@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 
 type Player = {
   name: string;
@@ -131,6 +132,15 @@ function Expected(props: ExpectedProps) {
       <div className="transfers-container">
         <div className="graphic-container">
           <h2 className="transfers-title">Expected Data</h2>
+          <a href="/expected" className="expand-image-expected">
+              <Image
+                alt="expand"
+                src={"/images/expand.png"}
+                width={20}
+                height={20}    
+                className="expand-image"
+              />
+            </a>
         </div>
         <div style={{ overflowY: "auto", overflowX: "hidden" }}>
           <select

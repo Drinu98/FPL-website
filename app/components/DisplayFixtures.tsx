@@ -69,6 +69,15 @@ const DisplayFixtures = (props: DisplayFixturesProps) => {
         <div className="fixture-container">
           <div className="graphic-container">
             <h2 className="transfers-title">Bonus Points</h2>
+            <a href="/bonus" className="expand-image-bonus">
+              <Image
+                alt="expand"
+                src={"/images/expand.png"}
+                width={20}
+                height={20}    
+                className="expand-image"
+              />
+            </a>
           </div>
           <ul
             className="fixture-ul-list"

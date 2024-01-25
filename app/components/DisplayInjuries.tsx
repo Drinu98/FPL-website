@@ -141,6 +141,15 @@ function Injuries(props: InjuriesProps) {
       <div className="transfers-container">
         <div className="graphic-container">
           <h2 className="transfers-title">Injuries</h2>
+          <a href="/injuries" className="expand-image-injuries">
+              <Image
+                alt="expand"
+                src={"/images/expand.png"}
+                width={20}
+                height={20}    
+                className="expand-image"
+              />
+          </a>
         </div>
         <label>
           <select

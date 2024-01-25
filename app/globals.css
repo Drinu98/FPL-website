@@ -191,6 +191,12 @@ ul {
 .scout-photo:hover{
   transform: scale(1.2);
 }
+.expand-image{
+  transition: all 0.5s ease 0s;
+}
+.expand-image:hover{
+  transform: scale(1.2);
+}
 
 .widget-box {
   padding: 30px 0;
@@ -356,6 +362,7 @@ td {
   margin-right: auto;
   border-bottom-right-radius: 20px;
   border-bottom-left-radius: 20px;
+  position: relative;
 }
 
 .pricechanges-container,
@@ -593,6 +600,11 @@ transform: scale(1.2);
 [data-theme="dark"] .setPieces-table,
 [data-theme="dark"] .fdr-teamNames{
   color: white;
+}
+
+[data-theme="dark"] .expand-image{
+  filter: invert(48%) sepia(13%) saturate(3207%) hue-rotate(130deg) brightness(95%) contrast(80%);
+
 }
 
 [data-theme="dark"] .footer {
@@ -982,20 +994,49 @@ transform: scale(1.2);
   margin-bottom: 10px;
   margin-top: 5px;
   font-weight: inherit;
-  /* border-bottom-right-radius: 10px;
-  border-bottom-left-radius: 10px; */
 }
 
-/* .twat-description{
-font-size: 1rem;
-margin-top: 10px;
-margin-bottom: 10px;
-font-weight: inherit;
-text-align: center;
-} */
-/* .twat-box {
-  margin-top: 25px;
-} */
+.expand-image-fdr{
+  position: absolute;
+  left: 107%;
+  top: 15%;
+}
+
+.expand-image-bonus{
+  position: absolute;
+  left: 107%;
+  top: 15%;
+}
+
+.expand-image-expected{
+  position: absolute;
+  left: 104.5%;
+  top: 15%;
+}
+
+.expand-image-injuries{
+  position: absolute;
+  left: 107%;
+  top: 15%;
+}
+
+.expand-image-transfers{
+  position: absolute;
+  left: 107%;
+  top: 15%;
+}
+
+.expand-image-realplayers{
+  position: absolute;
+  left: 104.5%;
+  top: 15%;
+}
+
+.expand-image-captaincy{
+  position: absolute;
+  left: 104.5%;
+  top: 15%;
+}
 
 .twat-text {
   text-align: center;
@@ -1336,6 +1377,51 @@ p {
   .transfers-title-fewest {
     font-size: 21px;
   }
+  .expand-image-fdr{
+    position: absolute;
+    left: 106%;
+    top: 10%;
+  }
+  
+  .expand-image-bonus{
+    position: absolute;
+    left: 106%;
+    top: 10%;
+  }
+  
+  .expand-image-expected{
+    position: absolute;
+    left: 103%;
+    top: 10%;
+  }
+  
+  .expand-image-injuries{
+    position: absolute;
+    left: 106%;
+    top: 10%;
+  }
+  
+  .expand-image-transfers{
+    position: absolute;
+    left: 106%;
+    top: 10%;
+  }
+  
+  .expand-image-realplayers{
+    position: absolute;
+    left: 103%;
+    top: 10%;
+  }
+  
+  .expand-image-captaincy{
+    position: absolute;
+    left: 103%;
+    top: 10%;
+  }
+  .expand-image{
+    width: 20px;
+    height: 20px;
+  }
 }
 
 @media (max-width: 1400px) {
@@ -1414,6 +1500,51 @@ p {
   }
   .upcomingfixture-date {
     font-size: 0.8rem;
+  }
+  .expand-image-fdr{
+    position: absolute;
+    left: 105.5%;
+    top: 10%;
+  }
+  
+  .expand-image-bonus{
+    position: absolute;
+    left: 105.5%;
+    top: 10%;
+  }
+  
+  .expand-image-expected{
+    position: absolute;
+    left: 103%;
+    top: 10%;
+  }
+  
+  .expand-image-injuries{
+    position: absolute;
+    left: 105.5%;
+    top: 10%;
+  }
+  
+  .expand-image-transfers{
+    position: absolute;
+    left: 105.5%;
+    top: 10%;
+  }
+  
+  .expand-image-realplayers{
+    position: absolute;
+    left: 103%;
+    top: 10%;
+  }
+  
+  .expand-image-captaincy{
+    position: absolute;
+    left: 103%;
+    top: 10%;
+  }
+  .expand-image{
+    width: 18px;
+    height: 18px;
   }
 }
 
@@ -1557,6 +1688,51 @@ p {
   }
   .scorers-list{
     font-size: 9px;
+  }
+  .expand-image-fdr{
+    position: absolute;
+    left: 105%;
+    top: 10%;
+  }
+  
+  .expand-image-bonus{
+    position: absolute;
+    left: 105%;
+    top: 10%;
+  }
+  
+  .expand-image-expected{
+    position: absolute;
+    left: 103%;
+    top: 10%;
+  }
+  
+  .expand-image-injuries{
+    position: absolute;
+    left: 105%;
+    top: 10%;
+  }
+  
+  .expand-image-transfers{
+    position: absolute;
+    left: 105%;
+    top: 10%;
+  }
+  
+  .expand-image-realplayers{
+    position: absolute;
+    left: 102%;
+    top: 10%;
+  }
+  
+  .expand-image-captaincy{
+    position: absolute;
+    left: 102%;
+    top: 10%;
+  }
+  .expand-image{
+    width: 16px;
+    height: 16px;
   }
 }
 
@@ -1814,6 +1990,51 @@ p {
   .outer-away-image-box{
     width: 60%;
   }
+  .expand-image-fdr{
+    position: absolute;
+    left: 106%;
+    top: 10%;
+  }
+  
+  .expand-image-bonus{
+    position: absolute;
+    left: 106%;
+    top: 10%;
+  }
+  
+  .expand-image-expected{
+    position: absolute;
+    left: 106%;
+    top: 10%;
+  }
+  
+  .expand-image-injuries{
+    position: absolute;
+    left: 106%;
+    top: 10%;
+  }
+  
+  .expand-image-transfers{
+    position: absolute;
+    left: 106%;
+    top: 10%;
+  }
+  
+  .expand-image-realplayers{
+    position: absolute;
+    left: 106%;
+    top: 10%;
+  }
+  
+  .expand-image-captaincy{
+    position: absolute;
+    left: 106%;
+    top: 10%;
+  }
+  .expand-image{
+    width: 18px;
+    height: 18px;
+  }
 }
 
 @media (max-width: 576px) {
@@ -1910,6 +2131,51 @@ p {
   }
   .outer-away-image-box{
     width: 65%;
+  }
+  .expand-image-fdr{
+    position: absolute;
+    left: 105%;
+    top: 10%;
+  }
+  
+  .expand-image-bonus{
+    position: absolute;
+    left: 105%;
+    top: 10%;
+  }
+  
+  .expand-image-expected{
+    position: absolute;
+    left: 105%;
+    top: 10%;
+  }
+  
+  .expand-image-injuries{
+    position: absolute;
+    left: 105%;
+    top: 10%;
+  }
+  
+  .expand-image-transfers{
+    position: absolute;
+    left: 105%;
+    top: 10%;
+  }
+  
+  .expand-image-realplayers{
+    position: absolute;
+    left: 105%;
+    top: 10%;
+  }
+  
+  .expand-image-captaincy{
+    position: absolute;
+    left: 105%;
+    top: 10%;
+  }
+  .expand-image{
+    width: 18px;
+    height: 18px;
   }
 }
 
@@ -2109,6 +2375,51 @@ p {
   }
   .transfers-title-fewest {
     font-size: 20px;
+  }
+  .expand-image-fdr{
+    position: absolute;
+    left: 104%;
+    top: 8%;
+  }
+  
+  .expand-image-bonus{
+    position: absolute;
+    left: 104%;
+    top: 8%;
+  }
+  
+  .expand-image-expected{
+    position: absolute;
+    left: 104%;
+    top: 8%;
+  }
+  
+  .expand-image-injuries{
+    position: absolute;
+    left: 104%;
+    top: 8%;
+  }
+  
+  .expand-image-transfers{
+    position: absolute;
+    left: 104%;
+    top: 8%;
+  }
+  
+  .expand-image-realplayers{
+    position: absolute;
+    left: 104%;
+    top: 8%;
+  }
+  
+  .expand-image-captaincy{
+    position: absolute;
+    left: 104%;
+    top: 8%;
+  }
+  .expand-image{
+    width: 17px;
+    height: 17px;
   }
 }
 
@@ -2338,6 +2649,51 @@ p {
   }
   .transfers-title-fewest {
     font-size: 19px;
+  }
+  .expand-image-fdr{
+    position: absolute;
+    left: 102.5%;
+    top: 8%;
+  }
+  
+  .expand-image-bonus{
+    position: absolute;
+    left: 102.5%;
+    top: 8%;
+  }
+  
+  .expand-image-expected{
+    position: absolute;
+    left: 102.5%;
+    top: 8%;
+  }
+  
+  .expand-image-injuries{
+    position: absolute;
+    left: 102.5%;
+    top: 8%;
+  }
+  
+  .expand-image-transfers{
+    position: absolute;
+    left: 102.5%;
+    top: 8%;
+  }
+  
+  .expand-image-realplayers{
+    position: absolute;
+    left: 102.5%;
+    top: 8%;
+  }
+  
+  .expand-image-captaincy{
+    position: absolute;
+    left: 102.5%;
+    top: 8%;
+  }
+  .expand-image{
+    width: 17px;
+    height: 17px;
   }
 }
 
