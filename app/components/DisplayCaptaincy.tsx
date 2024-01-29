@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { usePathname } from 'next/navigation';
 
 type Player = {
   name: string;
@@ -31,20 +32,24 @@ function Captaincy(props: DisplayCaptaincyProps) {
   }
 
   const player = showCaptains === "captaincy" ? captaincy : eo;
-
+  
+  const router = usePathname();
+  
   return (
     <div className="captaincy-container">
       <div className="graphic-container">
         <h2 className="transfers-title">Top 10K</h2>
-        <a href="/top10k" className="expand-image-captaincy">
-              <Image
-                alt="expand"
-                src={"/images/expand.png"}
-                width={20}
-                height={20}    
-                className="expand-image"
-              />
-        </a>
+        {router ==='/' && (
+          <a href="/top10k" className="expand-image-captaincy">
+                <Image
+                  alt="expand"
+                  src={"/images/expand.png"}
+                  width={20}
+                  height={20}    
+                  className="expand-image"
+                />
+          </a>
+        )}
       </div>
       <div>
         <h2 className="deadline-date">Gameweek {gameweek}</h2>

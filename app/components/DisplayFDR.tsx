@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { usePathname } from 'next/navigation';
 
 type Fixture = {
   event: number;
@@ -215,19 +216,23 @@ const DisplayFDR = (props: DisplayFixturesProps) => {
     // Trim the sorted data to the top 30
   }, [selectedData, selectedFilter]);
 
+  const router = usePathname();
+
   return (
     <div className="fixtureTicker-container">
           <div className="graphic-container">
             <h2 className="transfers-title">Fixture Ticker</h2>
-            <a href="/fixtureTicker" className="expand-image-fdr">
-              <Image
-                alt="expand"
-                src={"/images/expand.png"}
-                width={20}
-                height={20}    
-                className="expand-image"
-              />
-            </a>
+            {router ==='/' && (
+              <a href="/fixtureTicker" className="expand-image-fdr">
+                <Image
+                  alt="expand"
+                  src={"/images/expand.png"}
+                  width={20}
+                  height={20}    
+                  className="expand-image"
+                />
+              </a>
+            )}
           </div>
       <div>
         <select

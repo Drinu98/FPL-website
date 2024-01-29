@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faA, faFutbol } from "@fortawesome/free-solid-svg-icons";
+import { usePathname } from 'next/navigation';
 
 type Fixture = {
   home: string;
@@ -63,21 +64,26 @@ const DisplayFixtures = (props: DisplayFixturesProps) => {
 
     fixturesByDate[date]?.push(fixture);
   });
+
+  const router = usePathname();
+  
   return (
     <>
       {
         <div className="fixture-container">
           <div className="graphic-container">
             <h2 className="transfers-title">Bonus Points</h2>
-            <a href="/bonus" className="expand-image-bonus">
-              <Image
-                alt="expand"
-                src={"/images/expand.png"}
-                width={20}
-                height={20}    
-                className="expand-image"
-              />
-            </a>
+            {router ==='/' && (
+              <a href="/bonus" className="expand-image-bonus">
+                <Image
+                  alt="expand"
+                  src={"/images/expand.png"}
+                  width={20}
+                  height={20}    
+                  className="expand-image"
+                />
+              </a>
+            )}
           </div>
           <ul
             className="fixture-ul-list"

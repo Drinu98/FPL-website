@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import { usePathname } from 'next/navigation';
 
 type Player = {
   name: string;
@@ -127,11 +128,14 @@ function Expected(props: ExpectedProps) {
     setSortOrder(sortOrder === "asc" ? "desc" : "asc");
   };
 
+  const router = usePathname();
+
   return (
     <>
       <div className="transfers-container">
         <div className="graphic-container">
           <h2 className="transfers-title">Expected Data</h2>
+          {router ==='/' && (
           <a href="/expected" className="expand-image-expected">
               <Image
                 alt="expand"
@@ -141,6 +145,7 @@ function Expected(props: ExpectedProps) {
                 className="expand-image"
               />
             </a>
+          )}
         </div>
         <div style={{ overflowY: "auto", overflowX: "hidden" }}>
           <select
