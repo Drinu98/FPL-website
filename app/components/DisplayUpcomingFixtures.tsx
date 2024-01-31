@@ -76,7 +76,7 @@ const DisplayUpcomingFixtures = (props: DisplayUpcomingFixturesProps) => {
               </div>
               <ul className="upcomingfixture-ul-list">
                 {fixturesByDate[date]?.map((fixture: any, index: any) => (
-                  <li className="fixture-item" key={index}>
+                  <li className="fixture-item-upcoming" key={index}>
                     <div className="upcomingfixture-home-box">
                       <div className="upcomingfixture-inner-box">
                         <div className="home-box-2">

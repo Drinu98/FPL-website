@@ -587,6 +587,7 @@ transform: scale(1.2);
 [data-theme="dark"] .deadline-date-time,
 [data-theme="dark"] .player-info,
 [data-theme="dark"] .fixture-item,
+[data-theme="dark"] .fixture-item-upcoming,
 [data-theme="dark"] .transfers-table-captaincy,
 [data-theme="dark"] .pricechanges-container,
 [data-theme="dark"] .news-info,
@@ -774,7 +775,7 @@ transform: scale(1.2);
   width: 100%;
 }
 
-.fixture-item {
+.fixture-item, .fixture-item-upcoming {
   border-bottom: 1px solid rgba(55, 0, 60, 0.08);
   color: black;
 }
@@ -809,6 +810,7 @@ transform: scale(1.2);
   margin-left: 10px; */
   display: flex;
   align-items: center;
+  justify-content: right;
 }
 
 .home-image {
@@ -913,7 +915,7 @@ transform: scale(1.2);
 .scorers-list {
   list-style: none;
   font-size: 13px;
-  margin-right: 15px;
+  margin-right: 11px;
   /* margin-top: 15px; */
 }
 
@@ -922,7 +924,7 @@ transform: scale(1.2);
 }
 
 .scorers-box-away{
-  margin-left: 12px;
+  margin-left: 13px;
 }
 
 .own-goal-label{
@@ -1481,19 +1483,34 @@ p {
     margin-left: 5px;
     margin-right: 5px;
   }
-  .upcomingfixture-ul-list {
-    padding: 0;
-    margin: 0px 20px 2rem;
+  .home-box-2, .away-box-2{
+    flex: 0px;
+  }
+  .upcomingfixture-ul-list{
+    font-size: 11px;
+    margin: 0px;
+  }
+  .upcomingfixture-home-box{
+    width: 100%;
+  }
+  .fixture-item-upcoming{
+    display: flex;
+    justify-content: center;
   }
   .upcomingfixture-home-text,
   .upcomingfixture-away-text {
-    font-size: 0.55rem;
+    font-size: 12px;
   }
   .upcomingfixture-score-box {
     padding: 5px;
   }
-  .home-box-2 {
-    flex: 1 1 calc(50% - 5rem);
+  .home-image,
+  .away-image {
+    height: 30px;
+    width: 30px;
+  }
+  .bonus-title{
+    font-size: 13px;
   }
   .deadline-date-time {
     font-size: 1.3rem;
@@ -1559,6 +1576,32 @@ p {
   .redarrowdown {
     width: 12px;
     height: 12px;
+  }
+  .home-box-2, .away-box-2{
+    flex: 0px;
+  }
+  .upcomingfixture-ul-list{
+    font-size: 8px;
+    margin: 0px;
+  }
+  .upcomingfixture-home-box{
+    width: 100%;
+  }
+  .fixture-item-upcoming{
+    display: flex;
+    justify-content: center;
+  }
+  .home-image,
+  .away-image {
+    height: 27px;
+    width: 27px;
+  }
+  .bonus-cup{
+    width: 22px;
+    height: 22px;
+  }
+  .bonus-title{
+    font-size: 13px;
   }
 }
 
@@ -1636,10 +1679,19 @@ p {
   .arrow-box {
     padding-left: 2px !important;
   }
-  .upcomingfixture-ul-list {
-    padding: 0;
-    margin: 0px 20px 2rem;
-    font-size: 0.60rem;
+  .home-box-2, .away-box-2{
+    flex: 0px;
+  }
+  .upcomingfixture-ul-list{
+    font-size: 8px;
+    margin: 0px;
+  }
+  .upcomingfixture-home-box{
+    width: 100%;
+  }
+  .fixture-item-upcoming{
+    display: flex;
+    justify-content: center;
   }
   .upcomingfixture-home-text,
   .upcomingfixture-away-text {
@@ -1754,6 +1806,20 @@ p {
     font-size: 23px;
     margin-top: 0px;
   }
+  .home-box-2, .away-box-2{
+    flex: 0px;
+  }
+  .upcomingfixture-ul-list{
+    font-size: 9px;
+    margin: 0px;
+  }
+  .upcomingfixture-home-box{
+    width: 100%;
+  }
+  .fixture-item-upcoming{
+    display: flex;
+    justify-content: center;
+  }
 
 }
 
@@ -1830,13 +1896,24 @@ p {
   }
   .upcomingfixture-home-text,
   .upcomingfixture-away-text {
-    font-size: 0.8rem;
+    font-size: 13px;
   }
   .upcomingfixture-score-box {
     padding: 10px;
   }
-  .home-box-2 {
-    flex: 1 1 calc(50% - 5rem);
+  .home-box-2, .away-box-2{
+    flex: 0px;
+  }
+  .upcomingfixture-ul-list{
+    font-size: 13px;
+    margin: 0px;
+  }
+  .upcomingfixture-home-box{
+    width: 100%;
+  }
+  .fixture-item-upcoming{
+    display: flex;
+    justify-content: center;
   }
   .deadline-date {
     font-size: 1.5rem;
@@ -1961,6 +2038,20 @@ p {
   .home-box {
     /* flex: 1 1 calc(50% - 2rem); */
     display: flex;
+  }
+  .home-box-2, .away-box-2{
+    flex: 0px;
+  }
+  .upcomingfixture-ul-list{
+    font-size: 12px;
+    margin: 0px;
+  }
+  .upcomingfixture-home-box{
+    width: 100%;
+  }
+  .fixture-item-upcoming{
+    display: flex;
+    justify-content: center;
   }
   .bonus-title{
     font-size: 12px;
@@ -2101,6 +2192,20 @@ p {
   }
   .scorers-box-away{
     margin-left: 18px;
+  }
+  .home-box-2, .away-box-2{
+    flex: 0px;
+  }
+  .upcomingfixture-ul-list{
+    font-size: 12px;
+    margin: 0px;
+  }
+  .upcomingfixture-home-box{
+    width: 100%;
+  }
+  .fixture-item-upcoming{
+    display: flex;
+    justify-content: center;
   }
   .away-box {
     /* flex: 1 1 calc(50% - 2rem); */
@@ -2335,10 +2440,24 @@ p {
     height: 10px;
   }
   .scorers-box-home{
-    margin-right: 0px;
+    margin-right: 2px;
   }
   .scorers-box-away{
-    margin-left: 15px;
+    margin-left: 13px;
+  }
+  .home-box-2, .away-box-2{
+    flex: 0px;
+  }
+  .upcomingfixture-ul-list{
+    font-size: 11px;
+    margin: 0px;
+  }
+  .upcomingfixture-home-box{
+    width: 100%;
+  }
+  .fixture-item-upcoming{
+    display: flex;
+    justify-content: center;
   }
   .bonus-title{
     font-size: 9px;
@@ -2653,8 +2772,15 @@ p {
   .outer-away-image-box{
     width: 65%;
   }
+  .upcomingfixture-home-box{
+    width: 100%;
+  }
+  .home-box-2, .away-box-2{
+    flex: 0px;
+  }
   .upcomingfixture-ul-list{
     font-size: 10px;
+    margin: 0px;
   }
   .transfers-title-fewest {
     font-size: 19px;
@@ -2703,6 +2829,10 @@ p {
   .expand-image{
     width: 17px;
     height: 17px;
+  }
+  .fixture-item-upcoming{
+    display: flex;
+    justify-content: center;
   }
 }
 
