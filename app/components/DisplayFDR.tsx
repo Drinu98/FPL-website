@@ -47,8 +47,6 @@ const DisplayFDR = (props: DisplayFixturesProps) => {
   const [sortedAndFilteredData, setSortedAndFilteredData] = useState<string[]>(
     []
   );
-  // const [customSelectedValue1, setCustomSelectedValue1] = useState('');
-  // const [customSelectedValue2, setCustomSelectedValue2] = useState('')
 
   const fixturesByTeamAndEvent: {
     [teamName: string]: {
@@ -56,24 +54,24 @@ const DisplayFDR = (props: DisplayFixturesProps) => {
     };
   } = useMemo(() => {
     const result: any = {};
-
+  
     fixturesArray.forEach((fixture) => {
       const { home, away, event } = fixture;
-
+  
       if (!result[home]) {
         result[home] = {};
       }
       if (!result[away]) {
         result[away] = {};
       }
-
+  
       if (!result[home][event]) {
         result[home][event] = [];
       }
       if (!result[away][event]) {
         result[away][event] = [];
       }
-
+  
       result[home][event].push({
         event: fixture.event,
         team: fixture.home,
@@ -91,10 +89,23 @@ const DisplayFDR = (props: DisplayFixturesProps) => {
         FDR: fixture.awayFdr,
       });
     });
-
+  
+    // Add missing events for each team
+    Object.keys(result).forEach((team) => {
+      const events = new Set(
+        fixturesArray.map((fixture) => fixture.event)
+      );
+  
+      Array.from(events).forEach((event) => {
+        if (!result[team][event]) {
+          result[team][event] = null;
+        }
+      });
+    });
+  
     return result;
   }, [fixturesArray]);
-
+  
   const teamNames = Object.keys(fixturesByTeamAndEvent).sort();
 
   // Get a sorted list of unique events in descending order
@@ -102,35 +113,37 @@ const DisplayFDR = (props: DisplayFixturesProps) => {
     new Set(fixturesArray.map((fixture) => fixture.event))
   ).sort((a, b) => a - b);
 
-  // const [selectedEvent, setEvents] = useState<Number[]>();
-
   function calculateFDRSum(team: any, fixtures: any, numberOfEvents: any) {
     const eventKeys = Object.keys(fixtures)
       .map(Number)
       .sort((a, b) => a - b);
     const eventsToConsider = eventKeys.slice(0, numberOfEvents);
-
+  
     const fdrSum = eventsToConsider.reduce((sum, event) => {
       const eventFixtures = fixtures[event];
+  
+      if (eventFixtures === null || eventFixtures.length === 0) {
+        // If there are no fixtures, add 7 to the fdrSum
+        return sum + 5;
+      }
+  
       const eventFDR = eventFixtures.reduce((eventSum: any, fixture: any) => {
         return eventSum + fixture.FDR;
       }, 0);
-
+  
       // Check if there are exactly 2 fixtures in the event
       if (eventFixtures.length === 2) {
-        // If there are 2 fixtures, add them and divide the result by 2
-        // return sum + eventFDR / 2;
         const result = 1 / eventFDR;
-        return sum + (1 - result);
+        return sum + (0 - result);
       } else {
         // If there are not 2 fixtures, simply add the eventFDR
         return sum + eventFDR;
       }
     }, 0);
-
+  
     return fdrSum;
   }
-
+  
   for (const team in fixturesByTeamAndEvent) {
     nextGWFDR[team] = calculateFDRSum(team, fixturesByTeamAndEvent[team], 1);
     next2FDRs[team] = calculateFDRSum(team, fixturesByTeamAndEvent[team], 2);
@@ -140,6 +153,7 @@ const DisplayFDR = (props: DisplayFixturesProps) => {
     next8FDRs[team] = calculateFDRSum(team, fixturesByTeamAndEvent[team], 8);
   }
 
+  
   const sortTeamsEasiest = (fdrData: Record<string, number>) => {
     return Object.keys(fdrData).sort((teamA, teamB) => {
       return fdrData[teamA] - fdrData[teamB];

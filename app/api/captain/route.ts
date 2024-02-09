@@ -50,7 +50,7 @@ export async function GET(req: Request) {
     "https://fantasy.premierleague.com/api/bootstrap-static/",
     {
       next: {
-        revalidate: 300,
+        revalidate: 0,
       },
     }
   );

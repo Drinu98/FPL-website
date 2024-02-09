@@ -70,50 +70,6 @@ async function getFixtureFDR() {
       });
     }
 
-    const fixturesByDate = {};
-    // fixturesArray.forEach(fixture => {
-    //     const team = fixture.home;
-
-    //     if(!fixturesByDate[team]){
-    //         fixturesByDate[team] = [];
-    //     }
-
-    //     fixturesByDate[team]?.push(fixture);
-    // })
-
-    const fixturesByTeam = {};
-
-fixturesArray.forEach(fixture => {
-    const homeTeam = fixture.home;
-    const awayTeam = fixture.away;
-
-    // Group by home team
-    if (!fixturesByTeam[homeTeam]) {
-        fixturesByTeam[homeTeam] = [];
-    }
-
-    fixturesByTeam[homeTeam].push({
-        event: fixture.event,
-        home: fixture.home,
-        fdr: fixture.homeFdr,
-        homeImage: fixture.homeImage,
-        awayOpponent: fixture.awayShort,
-    });
-
-    // Group by away team
-    if (!fixturesByTeam[awayTeam]) {
-        fixturesByTeam[awayTeam] = [];
-    }
-
-    fixturesByTeam[awayTeam].push({
-        event: fixture.event,
-        away: fixture.away,
-        fdr: fixture.awayFdr,
-        awayImage: fixture.awayImage,
-        homeOpponent: fixture.homeShort,
-    });
-});
-
     return fixturesArray;
   } catch (error) {
     console.error(error);
