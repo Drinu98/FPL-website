@@ -295,13 +295,14 @@ const DisplayFDR = (props: DisplayFixturesProps) => {
                 style={{
                   borderTop: "1px solid rgba(55, 0, 60, 0.08)",
                   verticalAlign: "baseline",
+                  display:'flex'
                 }}
               >
                 <td
                   className="fdr-teamNames"
                   style={{
                     textAlign: "left",
-                    display: "inline-block",
+                    display: "flex",
                     alignItems: "center",
                   }}
                 >
