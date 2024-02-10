@@ -295,7 +295,7 @@ const DisplayFDR = (props: DisplayFixturesProps) => {
                 style={{
                   borderTop: "1px solid rgba(55, 0, 60, 0.08)",
                   verticalAlign: "baseline",
-                  display:'flex'
+                  // display:'flex'
                 }}
               >
                 <td
@@ -335,15 +335,19 @@ const DisplayFDR = (props: DisplayFixturesProps) => {
                     style={{
                       textAlign: "center",
                       paddingRight: "0px",
-                      display:
-                        fixturesByTeamAndEvent[teamName][event]?.length > 1
-                          ? "flex"
-                          : "",
+                      // display:
+                      //   fixturesByTeamAndEvent[teamName][event]?.length > 1
+                      //     ? "inline-block"
+                      //     : "",
+                      alignItems:'center',
+                      justifyContent:'center'
                     }}
+                    className={`${fixturesByTeamAndEvent[teamName][event]?.length > 1 ? 'dynamic' : ''}`}
                   >
                     {fixturesByTeamAndEvent[teamName][event] ? (
                       fixturesByTeamAndEvent[teamName][event]?.map(
                         (fixture: FixtureByEvent, index) => (
+
                           <div
                             key={fixture.event + index}
                             className={`fdr-opponents ${fixturesByTeamAndEvent[teamName][event]?.length > 1 ? 'dynamic-width' : ''}`}
@@ -365,9 +369,14 @@ const DisplayFDR = (props: DisplayFixturesProps) => {
                                   ?.length > 1 && index === 1
                                   ? "0px"
                                   : "",
+                              // marginBottom:
+                              //   fixturesByTeamAndEvent[teamName][event]
+                              //     ?.length > 1 && index === 0
+                              //     ? "5px"
+                              //     : "",
                               marginRight:
                                 fixturesByTeamAndEvent[teamName][event]
-                                  ?.length > 1
+                                  ?.length > 1 && index === 0
                                   ? "5px"
                                   : "",
                               padding:
@@ -375,6 +384,10 @@ const DisplayFDR = (props: DisplayFixturesProps) => {
                                   ?.length > 1
                                   ? "10px 0px"
                                   : "",
+                                  display:
+                        fixturesByTeamAndEvent[teamName][event]?.length > 1
+                          ? "inline-flex"
+                          : "",
                             }}
                           >
                             {fixture.isHome ? (

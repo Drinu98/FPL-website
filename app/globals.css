@@ -1253,7 +1253,7 @@ p {
 }
 
 .fdr-opponents.dynamic-width{
-  width: 48px;
+  width: 45px;
 }
 .fdr-teamNames{
   /* margin-top: 5px; */
@@ -2474,7 +2474,7 @@ p {
     font-size: 8px;
   }
   .fdr-opponents.dynamic-width{
-    width: 38px;
+    width: 37px;
   }
   .fdr-select-difficulty {
     width: 120px;
@@ -2747,7 +2747,7 @@ p {
     font-size: 8px;
   }
   .fdr-opponents.dynamic-width{
-    width: 35.5px;
+    width: 35px;
   }
   .fdr-select-difficulty {
     width: 120px;
