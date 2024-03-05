@@ -87,40 +87,47 @@ export async function GET() {
     return date.toLocaleDateString("en-GB");
   });
 
-  const previousGameweeks = previousPriceChanges.map((gw) => {
-    const gameweek = gw.gameweek;
-    return gameweek;
-  });
+  const sortedDates = updatedDates.sort((a: string, b: string) => new Date(a).getTime() - new Date(b).getTime());
+
+  const earliestDate = new Date(sortedDates.slice(0, 1)[0]);
+  const newDate = new Date(earliestDate);
+  newDate.setDate(newDate.getDate() + 7);
+  const formattedNewDate = newDate.toLocaleDateString("en-GB");
+
+  // const previousGameweeks = previousPriceChanges.map((gw) => {
+  //   const gameweek = gw.gameweek;
+  //   return gameweek;
+  // });
 
   const currentDate = new Date();
   const todayDate = currentDate.toLocaleDateString("en-GB");
 
   if (updatedDates.some((dates) => dates === todayDate)) {
-
     console.log("Dates match!");
     return;
   } else {
     console.log("Dates are different.");
   }
 
-  if(previousGameweeks.some((gw) => gw !== currentGameweek)){
-    console.log("The GWs are different!");
+  if(formattedNewDate === todayDate){
+    console.log("Time to refresh the list");
     console.log("Deleting from Database");
     await prisma.priceChangesGameweek.deleteMany();
     console.log("Deleted previous gameweek");
   }else{
-    console.log("The GWs are the same"); 
+    console.log("No Deletion yet"); 
   }
 
-  // const newRisingPlayers = risingPlayers.filter((risingPlayer) => {
-  //   // Check if the player's ID exists in oldRisers array
-  //   const matchingOldRiser = previousPriceChanges.find(
-  //     (oldRiser) => oldRiser.playerElementId === risingPlayer.id
-  //   );
 
-  //   // Return true if player's ID does not exist in oldRisers or the cost is different
-  //   return !matchingOldRiser || matchingOldRiser.cost !== risingPlayer.cost;
-  // });
+  // if(previousGameweeks.some((gw) => gw !== currentGameweek)){
+  //   console.log("The GWs are different!");
+  //   console.log("Deleting from Database");
+  //   await prisma.priceChangesGameweek.deleteMany();
+  //   console.log("Deleted previous gameweek");
+  // }else{
+  //   console.log("The GWs are the same"); 
+  // }
+
 
   const newRisingPlayers = risingPlayers.filter((risingPlayer) => {
     // Find the player's previous price change entries and sort them by cost in descending order
@@ -151,16 +158,6 @@ export async function GET() {
     );
   });
   
-
-  // const newFallingPlayers = fallingPlayers.filter((fallingPlayer) => {
-  //   // Check if the player's ID exists in oldRisers array
-  //   const matchingOldFaller = previousPriceChanges.find(
-  //     (oldFaller) => oldFaller.playerElementId === fallingPlayer.id
-  //   );
-
-  //   // Return true if player's ID does not exist in oldRisers or the cost is different
-  //   return !matchingOldFaller || matchingOldFaller.cost !== fallingPlayer.cost;
-  // });
 
   try{
     await prisma.$transaction(async ($tx) => {

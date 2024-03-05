@@ -109,7 +109,7 @@ export default async function Home() {
                 {/* @ts-ignore */}
                 <MostBenchedPoints />
               </div>
-              <div className="widget12">
+              <div className="widget12" style={{backgroundColor:'#ffe9f0'}}>
                 <div className="graphic-container">
                   <h2 className="transfers-title">More</h2>
                 </div>
