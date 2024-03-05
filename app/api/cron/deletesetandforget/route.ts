@@ -9,7 +9,7 @@ export async function GET(req: Request) {
       }else{
         let remainingPlayers = true;
         let offset = 0;
-        const batchSize = 1000;
+        const batchSize = 5000;
     
         while (remainingPlayers) {
           // Fetch 1000 players from the database

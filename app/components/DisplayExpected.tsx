@@ -50,6 +50,8 @@ function Expected(props: ExpectedProps) {
     new Set(currentGameweekXG.map((player) => player.teamLong))
   );
 
+  teams.sort((a, b) => a.localeCompare(b));
+
   const handleFilterSelect = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedFilter = event.target.value;
     setSelectedFilter(selectedFilter);

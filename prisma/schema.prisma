@@ -124,3 +124,16 @@ model TopSetAndForget {
   createdAt DateTime @default(now())
 }
 
+model MostBenchedPoints {
+  id  String @id @default(cuid())
+  playerEntryId Int
+  entryName String 
+  playerName String
+  eventTotal Int
+  currentRank Int
+  lastRank Int
+  benchedPoints Int
+  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now())
+}
+

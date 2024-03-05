@@ -13,16 +13,16 @@ export async function GET(req: Request) {
     
         while (remainingPlayers) {
           // Fetch 1000 players from the database
-          const playersToDelete = await prisma.top10kPlayersChange.findMany({
+          const playersToDelete = await prisma.mostBenchedPoints.findMany({
             take: batchSize,
           });
           console.log(`Total players fetched: ${playersToDelete.length}.`);
           // If there are players to delete, delete them
           if (playersToDelete.length > 0) {
-            await prisma.top10kPlayersChange.deleteMany({
+            await prisma.mostBenchedPoints.deleteMany({
 
               where: {
-                entry: { in: playersToDelete.map((player) => player.entry) },
+                playerEntryId: { in: playersToDelete.map((player) => player.playerEntryId) },
               },
             });
     
@@ -40,7 +40,7 @@ export async function GET(req: Request) {
         }
     
         console.log('All players deleted.');
-      }   
+      } 
       } catch (error) {
         console.error('Error deleting players:', error);
       }

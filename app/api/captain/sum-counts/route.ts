@@ -36,19 +36,33 @@ export async function POST(request: Request, response: Response) {
     {
       captaincy: {} as Record<string, any>,
       effectiveOwnership: {} as Record<string, any>,
+      triple: {} as Record<string, any>,
     }
   );
 
   //   console.log(pickByTypeWithSum);
   const allCaptains = Object.values(pickByTypeWithSum.captaincy);
   const allPlayers = Object.values(pickByTypeWithSum.effectiveOwnership);
+  const allTriple = Object.values(pickByTypeWithSum.triple);
+
   const totalCaptains = allCaptains.reduce(
+    (total, player) => total + player.count,
+    0
+  );
+
+  const totalTriple = allTriple.reduce(
     (total, player) => total + player.count,
     0
   );
   const allCaptainsWithPercentage = allCaptains.map((player) => {
     const percentage = (player.count / totalCaptains) * 100;
     player.chosenAsCaptainPercentage = percentage;
+    return player;
+  });
+
+  const allTripleWithPercentage = allTriple.map((player) => {
+    const percentage = (player.count / totalTriple) * 100;
+    player.chosenAsTriplePercentage = percentage;
     return player;
   });
 
@@ -60,18 +74,30 @@ export async function POST(request: Request, response: Response) {
     {} as Record<string, (typeof allCaptainsWithPercentage)[number]>
   );
 
+  const allTripleWithPercentageById = allTripleWithPercentage.reduce(
+    (acc, captain) => {
+      acc[captain.playerElementId] = captain;
+      return acc;
+    },
+    {} as Record<string, (typeof allTripleWithPercentage)[number]>
+  );
+
   const allPlayersWithEoPercentage = allPlayers.map((player) => {
     const isPlayerCaptain =
       allCaptainsWithPercentageById[player.playerElementId];
 
-    if (!isPlayerCaptain) {
+    const isPlayerTriple =
+      allTripleWithPercentageById[player.playerElementId];
+
+    if (!isPlayerCaptain || !isPlayerTriple) {
       return {
         ...player,
         chosenEffectiveOwnershipPercentage: ((player.count + 0) / 10000) * 100,
       };
     }
     const captaincyCount = isPlayerCaptain.count ?? 0;
-    const combinedCount = ((player.count + captaincyCount) / 10000) * 100;
+    const tripleCount = isPlayerTriple.count ?? 0;
+    const combinedCount = ((player.count + captaincyCount + tripleCount) / 10000) * 100;
     return {
       ...player,
       chosenEffectiveOwnershipPercentage: combinedCount,

@@ -64,7 +64,7 @@ export async function GET(req: Request) {
             entryName: player.entryName,
             playerName: player.playerName,
             eventTotal: currentGameweekScore,
-            currentRank: currentGameweekRank,
+            currentRank: currentGameweekRank !== null ? currentGameweekRank : 0,
             lastRank: player.currentRank,
           };
         } catch (error) {

@@ -294,7 +294,7 @@ const DisplayFDR = (props: DisplayFixturesProps) => {
                 key={teamName}
                 style={{
                   borderTop: "1px solid rgba(55, 0, 60, 0.08)",
-                  verticalAlign: "baseline",
+                  // verticalAlign: "baseline",
                   // display:'flex'
                 }}
               >

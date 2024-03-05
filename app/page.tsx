@@ -12,9 +12,9 @@ import PriceChange from "./components/pricechanges";
 import Captaincy from "./components/captaincy";
 import Expected from "./components/expected";
 import Statistics from "./components/statistics";
-import SetPieces from "./components/setpieces"
+import SetPieces from "./components/setpieces";
+import MostBenchedPoints from "./components/mostbenchedpoints";
 import FDR from "./components/fdr";
-
 
 export default async function Home() {
   return (
@@ -83,7 +83,7 @@ export default async function Home() {
                 {/* @ts-ignore */}
                 <FDR />
               </div>
-               <div className="widget">
+              <div className="widget">
                 {/* @ts-ignore */}
                 <Transfers />
               </div>
@@ -106,27 +106,22 @@ export default async function Home() {
                 <SetAndForget />
               </div>
               <div className="widget9">
-                <div className="graphic-container">
-                  <h2 className="transfers-title">Custom Kits</h2>
-                  <div className="outer-container">
-                    <div className="inner-container">
-                      <a
-                        target="_blank"
-                        href="https://fplfocal.com/"
-                        rel="noopener noreferrer"
-                      >
-                        <div className="image-container"></div>
-                      </a>
-                    </div>
-                  </div>
-                </div>
+                {/* @ts-ignore */}
+                <MostBenchedPoints />
               </div>
               <div className="widget12">
                 <div className="graphic-container">
-                  <h2 className="transfers-title">Youtube</h2>
+                  <h2 className="transfers-title">More</h2>
                 </div>
-                <div className="outer-container-youtube">
+                <div className="outer-container">
                   <div className="inner-container">
+                    <a
+                      target="_blank"
+                      href="https://fplfocal.com/"
+                      rel="noopener noreferrer"
+                    >
+                      <div className="image-container"></div>
+                    </a>
                     <a
                       target="_blank"
                       href="https://www.youtube.com/@FPLFocal"

@@ -22,6 +22,7 @@ export async function POST(req: Request) {
     // console.log("STARTING LOOP - ", startPage, endPage);
     const countMapCaptaincy = new Map();
     const countMapEo = new Map();
+    const countMapTriple = new Map();
     const promises = [] as Array<Promise<any>>;
     for (let i = startPage; i <= endPage; i++) {
       const page = i;
@@ -59,6 +60,7 @@ export async function POST(req: Request) {
             const playerPicks = await picksResponse.json();
 
             const picksData = playerPicks?.picks;
+
             // console.log('PICKS DATA', picksData.length)
             const captainPick = picksData?.find(
               (pick: any) => pick.is_captain === true
@@ -77,20 +79,39 @@ export async function POST(req: Request) {
               });
             }
 
+            const triplePick = picksData?.find(
+              (pick: any) => pick.is_captain === true && pick.multiplier === 3
+            );
+
+            const triplePlayer = playerList.find(
+              (player) => player.id === triplePick?.element
+            );
+
+            const playerNameTriple = triplePlayer?.web_name;
+            const tripleElementId = triplePlayer?.id;
+            if (playerNameTriple) {
+              const count = countMapTriple.get(tripleElementId)?.count ?? 0;
+              countMapTriple.set(tripleElementId, {
+                name: playerNameTriple,
+                count: count + 1,
+              });
+            }
+
             picksData.forEach((pick: any) => {
-              const player = playerList.find(
-                (player) => player.id === pick.element
-              );
-              const playerName = player?.web_name;
-              const playerElementId = player?.id;
-              if (playerName) {
-                const count = countMapEo.get(playerElementId)?.count ?? 0;
-                countMapEo.set(playerElementId, {
-                  name: playerName,
-                  count: count + 1,
-                });
+              if (pick.multiplier > 0) {
+                const player = playerList.find((player) => player.id === pick.element);
+                const playerName = player?.web_name;
+                const playerElementId = player?.id;
+                if (playerName) {
+                  const count = countMapEo.get(playerElementId)?.count ?? 0;
+                  countMapEo.set(playerElementId, {
+                    name: playerName,
+                    count: count + 1,
+                  });
+                }
               }
             });
+            
           }
 
           return resolve(true);
@@ -118,6 +139,16 @@ export async function POST(req: Request) {
       }
     );
 
+    const triple = Array.from(countMapTriple.entries()).map(
+      ([playerElementId, { name, count }]) => {
+        return {
+          name,
+          count,
+          playerElementId,
+        };
+      }
+    );
+
     await prisma.playerPicks.createMany({
       data: [
         ...captaincy.map((item) => {
@@ -130,6 +161,12 @@ export async function POST(req: Request) {
           return {
             ...item,
             type: "effectiveOwnership",
+          };
+        }),
+        ...triple.map((item) => {
+          return {
+            ...item,
+            type: "triple",
           };
         }),
       ],

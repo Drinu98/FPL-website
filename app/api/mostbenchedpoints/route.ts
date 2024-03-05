@@ -15,7 +15,12 @@ import url from 'url'
   }
 
 export async function GET(req: Request) {
-  let executionCount = 0
+  if (process.env.STOP_SCRIPT === 'true') {
+    console.log('Stopping script as per the condition.');
+    process.env.STOP_SCRIPT = 'false'; // Set to false for subsequent runs
+    process.exit(0);
+  }else{
+    let executionCount = 0
   let page = 1;
   const BASE_URL = `${process.env.VERCEL_URL?.startsWith('localhost') ? 'http' : 'https'}://${process.env.VERCEL_URL}`
   console.log('BASE URL', BASE_URL)
@@ -46,6 +51,7 @@ export async function GET(req: Request) {
     console.log("execution count exceeded", executionCount);
     return;
   }
+
   const generalResponse = await fetch(
     "https://fantasy.premierleague.com/api/bootstrap-static/",
     {
@@ -63,6 +69,7 @@ export async function GET(req: Request) {
   const currentGameweekData = events?.find(
     (event: any) => event?.is_current === true
   );
+
   const currentGameweek = currentGameweekData?.id;
   const leagueId = 314; // Change league ID to your league ID
   // const maxRank = 10000; // Change max number of players to retrieve
@@ -90,14 +97,13 @@ export async function GET(req: Request) {
     }
 
     promises.push(
-      fetch(`${BASE_URL}/api/captain/process-data`, {
+      fetch(`${BASE_URL}/api/mostbenchedpoints/process-data`, {
         method: 'POST',
         body: JSON.stringify({
           startPage,
           endPage,
           leagueId,
           currentGameweek,
-          playerList
         })
       })
     );
@@ -109,7 +115,7 @@ export async function GET(req: Request) {
     page = endPage + 1;
     pagesProcessed+= (endPage - startPage)
 
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    // await new Promise((resolve) => setTimeout(resolve, 2000));
   }
 
   const result = await Promise.allSettled(promises);
@@ -119,7 +125,7 @@ export async function GET(req: Request) {
       `Calling another cron api function. Processed ${page} of ${totalPages}. Execution count: ${executionCount}`
     );
 
-    fetch(`${BASE_URL}/api/captain?page=${page}&executionCount=${executionCount}`, {
+    fetch(`${BASE_URL}/api/mostbenchedpoints?page=${page}&executionCount=${executionCount}`, {
       method: 'GET',
     
       // body: JSON.stringify({
@@ -134,13 +140,15 @@ export async function GET(req: Request) {
       })
     );
   }
-  fetch(`${BASE_URL}/api/captain/sum-counts`, {
-    method: 'POST'
-  })
+//   fetch(`${BASE_URL}/api/captain/sum-counts`, {
+//     method: 'POST'
+//   })
   console.log("Done", {
     page,
     result
   });
   return new NextResponse(JSON.stringify({ page, result }));
+  }
+  
 }
 
