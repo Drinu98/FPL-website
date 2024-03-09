@@ -92,7 +92,7 @@ async function getRealPlayers() {
       summary_overall_points,
       summary_overall_rank,
     } = playerData;
-    const formattedOverallPoints = summary_overall_rank.toLocaleString();
+    const formattedOverallPoints = summary_overall_rank?.toLocaleString();
     const result = {
       name: player.name,
       points: summary_event_points,
