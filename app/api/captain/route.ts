@@ -67,7 +67,7 @@ export async function GET(req: Request) {
   const leagueId = 314; // Change league ID to your league ID
   // const maxRank = 10000; // Change max number of players to retrieve
   const maxRank = 10; // Change max number of players to retrieve
-  let totalPages = 202; // Change to the total number of pages to fetch
+  let totalPages = 200; // Change to the total number of pages to fetch
   // let totalPages = 1; // Change to the total number of pages to fetch
   // const pagesPerCron = Math.ceil(totalPages / 4);
   const pagesPerCron = 5;

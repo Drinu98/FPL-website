@@ -98,11 +98,14 @@ export async function POST(request: Request, response: Response) {
     const captaincyCount = isPlayerCaptain.count ?? 0;
     const tripleCount = isPlayerTriple.count ?? 0;
     const combinedCount = ((player.count + captaincyCount + tripleCount) / 10000) * 100;
+    console.log(combinedCount);
     return {
       ...player,
       chosenEffectiveOwnershipPercentage: combinedCount,
     };
   });
+
+
 
   await prisma.$transaction(async ($tx) => {
     await Promise.all([
