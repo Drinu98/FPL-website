@@ -47,6 +47,26 @@ export default async function Home() {
                 {/* @ts-ignore */}
                 <UpcomingFixtures />
               </div>
+            </div>
+            <div className="col-lg-5">
+              <div className="widget3">
+                {/* @ts-ignore */}
+                <Fixtures />
+              </div>
+            </div>
+            <div className="col-lg-3">
+              <div className="widgetLive">
+                {/* @ts-ignore */}
+                <LiveRank />
+              </div>
+              <div className="widget4">
+                {/* @ts-ignore */}
+                <Captaincy />
+              </div>
+            </div>
+          </div>
+          <div className="row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-3">
+            <div className="col-lg-4">
               <div className="widget10">
                 {/* @ts-ignore */}
                 <Expected />
@@ -57,10 +77,6 @@ export default async function Home() {
               </div>
             </div>
             <div className="col-lg-5">
-              <div className="widget3">
-                {/* @ts-ignore */}
-                <Fixtures />
-              </div>
               <div className="widgetFDR">
                 {/* @ts-ignore */}
                 <FDR />
@@ -71,14 +87,6 @@ export default async function Home() {
               </div>
             </div>
             <div className="col-lg-3">
-            <div className="widgetLive">
-                {/* @ts-ignore */}
-                <LiveRank />
-              </div>
-              <div className="widget4">
-                {/* @ts-ignore */}
-                <Captaincy />
-              </div>
               <div className="widget6">
                 {/* @ts-ignore */}
                 <PriceChange />
@@ -95,31 +103,23 @@ export default async function Home() {
           </div>
           <div className="row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-3">
             <div className="col-lg-4">
-              
-              
               <div className="widget11">
                 {/* @ts-ignore */}
                 <SetPieces />
               </div>
             </div>
             <div className="col-lg-5">
-              
-              
               <div className="widget">
                 {/* @ts-ignore */}
                 <Injuries />
               </div>
             </div>
             <div className="col-lg-3">
-              {/* <div className="widget7"> */}
-                {/* @ts-ignore */}
-                {/* <SetAndForget /> */}
-              {/* </div> */}
               <div className="widget9">
                 {/* @ts-ignore */}
                 <MostBenchedPoints />
               </div>
-              <div className="widget12" style={{backgroundColor:'#ffe9f0'}}>
+              <div className="widget12" style={{ backgroundColor: "#ffe9f0" }}>
                 <div className="graphic-container">
                   <h2 className="transfers-title">More</h2>
                 </div>
