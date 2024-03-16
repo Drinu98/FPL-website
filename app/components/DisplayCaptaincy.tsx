@@ -79,6 +79,8 @@ function Captaincy(props: DisplayCaptaincyProps) {
             EO
           </button>
         </div>
+        <div>
+        <div>
         <table
           className="transfers-table-captaincy"
           style={{ tableLayout: "fixed" }}
@@ -86,14 +88,16 @@ function Captaincy(props: DisplayCaptaincyProps) {
           <thead>
             <tr>
               <th className="transfer-header"></th>
+              <th className="transfer-header"></th>
               <th className="transfer-header" style={{ width: "30%" }}>
                 Name
               </th>
               <th className="transfer-header"></th>
-              <th className="transfer-header"></th>
+              {/* <th className="transfer-header"></th> */}
               <th className="transfer-header">
                 {selectedButton === "captaincy" ? "Captaincy" : "EO"}
               </th>
+              <th className="transfer-header"></th>
               <th className="transfer-header"></th>
             </tr>
           </thead>
@@ -101,19 +105,23 @@ function Captaincy(props: DisplayCaptaincyProps) {
             {player.map((player, index) => (
               <tr key={index} className="table-row">
                 <td></td>
+                <td></td>
                 <td className="player-info-captaincy">{player.name}</td>
                 <td></td>
-                <td></td>
+                {/* <td></td> */}
                 <td className="player-info-captaincy">
                   {showCaptains === "captaincy"
                     ? player.chosenAsCaptainPercentage + "%"
                     : player.chosenEffectiveOwnershipPercentage + "%"}
                 </td>
                 <td></td>
+                <td></td>
               </tr>
             ))}
           </tbody>
         </table>
+        </div>
+        </div>
       </div>
     </div>
   );

@@ -40,7 +40,6 @@ export async function POST(request: Request, response: Response) {
     }
   );
 
-  //   console.log(pickByTypeWithSum);
   const allCaptains = Object.values(pickByTypeWithSum.captaincy);
   const allPlayers = Object.values(pickByTypeWithSum.effectiveOwnership);
   const allTriple = Object.values(pickByTypeWithSum.triple);
@@ -54,17 +53,16 @@ export async function POST(request: Request, response: Response) {
     (total, player) => total + player.count,
     0
   );
-  const allCaptainsWithPercentage = allCaptains.map((player) => {
-    const percentage = (player.count / totalCaptains) * 100;
-    player.chosenAsCaptainPercentage = percentage;
-    return player;
-  });
 
-  const allTripleWithPercentage = allTriple.map((player) => {
-    const percentage = (player.count / totalTriple) * 100;
-    player.chosenAsTriplePercentage = percentage;
-    return player;
-  });
+  const allCaptainsWithPercentage = allCaptains.map((player) => ({
+    ...player,
+    chosenAsCaptainPercentage: (player.count / totalCaptains) * 100,
+  }));
+
+  const allTripleWithPercentage = allTriple.map((player) => ({
+    ...player,
+    chosenAsTriplePercentage: (player.count / totalTriple) * 100,
+  }));
 
   const allCaptainsWithPercentageById = allCaptainsWithPercentage.reduce(
     (acc, captain) => {
@@ -85,27 +83,19 @@ export async function POST(request: Request, response: Response) {
   const allPlayersWithEoPercentage = allPlayers.map((player) => {
     const isPlayerCaptain =
       allCaptainsWithPercentageById[player.playerElementId];
+    const isPlayerTriple = allTripleWithPercentageById[player.playerElementId];
 
-    const isPlayerTriple =
-      allTripleWithPercentageById[player.playerElementId];
+    const captaincyCount = isPlayerCaptain ? isPlayerCaptain.count ?? 0 : 0;
+    const tripleCount = isPlayerTriple ? isPlayerTriple.count ?? 0 : 0;
 
-    if (!isPlayerCaptain || !isPlayerTriple) {
-      return {
-        ...player,
-        chosenEffectiveOwnershipPercentage: ((player.count + 0) / 10000) * 100,
-      };
-    }
-    const captaincyCount = isPlayerCaptain.count ?? 0;
-    const tripleCount = isPlayerTriple.count ?? 0;
-    const combinedCount = ((player.count + captaincyCount + tripleCount) / 10000) * 100;
-    console.log(combinedCount);
+    const combinedCount =
+      ((player.count + captaincyCount + tripleCount) / 10000) * 100;
+
     return {
       ...player,
       chosenEffectiveOwnershipPercentage: combinedCount,
     };
   });
-
-
 
   await prisma.$transaction(async ($tx) => {
     await Promise.all([

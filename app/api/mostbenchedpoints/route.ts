@@ -77,12 +77,12 @@ export async function GET(req: Request) {
   let totalPages = 202; // Change to the total number of pages to fetch
   // let totalPages = 1; // Change to the total number of pages to fetch
   // const pagesPerCron = Math.ceil(totalPages / 4);
-  const pagesPerCron = 5;
+  const pagesPerCron = 2;
   // const pagesPerCron = 1
   // console.log("--------");
   // console.log("pages per cron", pagesPerCron);
   // console.log("--------");
-  const pagesPerFunction = 5;
+  const pagesPerFunction = 2;
   const promises = [] as Array<Promise<any>>;
   let pagesProcessed = 0;
 
@@ -115,7 +115,7 @@ export async function GET(req: Request) {
     page = endPage + 1;
     pagesProcessed+= (endPage - startPage)
 
-    // await new Promise((resolve) => setTimeout(resolve, 2000));
+    await new Promise((resolve) => setTimeout(resolve, 2000));
   }
 
   const result = await Promise.allSettled(promises);
