@@ -2910,7 +2910,7 @@ p {
   }
   .score-box{
     margin-top: 5px;
-    flex: 1 0 1.1rem;
+    flex: 1 0 1.2rem;
   }
   .away-icon-assists, .away-icon-goals, .home-icon-assists, .home-icon-goals, .away-icon-ownGoals{
     width: 10px;
