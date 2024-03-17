@@ -132,7 +132,7 @@ export default function LiveRank() {
       <div className="liveRankLink-box">
         <p>
           Live rank via{" "}
-          <a href="https://www.fplgameweek.com/" style={{ color: "#f2055c" }}>
+          <a target="_blank" href="https://www.fplgameweek.com/" style={{ color: "#f2055c" }} rel="noopener noreferrer">
             FPLGameweek.com
           </a>
         </p>

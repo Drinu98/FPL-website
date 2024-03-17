@@ -2,6 +2,7 @@ body {
   height: 100%;
   font-weight: bold !important;
   font-family: var(--roboto-font);
+  -webkit-text-size-adjust: 100%
 }
 
 body[data-theme="light"] {
@@ -1358,6 +1359,9 @@ p {
   border: 1px solid black;
   margin-right: 10px;
   border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 3px 4px 0px,
+    rgba(0, 0, 0, 0.08) 0px 3px 3px -2px, rgba(0, 0, 0, 0.16) 0px 1px 8px 0px;
+  padding-left: 10px;
 }
 
 .search::placeholder {
@@ -1373,6 +1377,9 @@ p {
   background-color: #f2055c;
   color: white;
   transition: all 0.5s ease 0s;
+  text-align: center;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 3px 4px 0px,
+    rgba(0, 0, 0, 0.08) 0px 3px 3px -2px, rgba(0, 0, 0, 0.16) 0px 1px 8px 0px;
 }
 
 .resetButton{
@@ -1384,6 +1391,10 @@ p {
   color: white;
   transition: all 0.5s ease 0s;
   margin-left: 8px;
+  text-align: center;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 3px 4px 0px,
+    rgba(0, 0, 0, 0.08) 0px 3px 3px -2px, rgba(0, 0, 0, 0.16) 0px 1px 8px 0px;
+
 }
 
 .rankBox{
@@ -1405,11 +1416,6 @@ p {
 
 .liveRankLink-box{
   margin-top: 30px;
-}
-
-.searchButton:hover,
-.resetButton:hover{
-  transform: scale(1.2);
 }
 
 @media (max-width: 1999px) {
