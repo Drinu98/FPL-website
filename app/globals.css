@@ -686,8 +686,8 @@ transform: scale(1.2);
 }
 
 .fixtureTicker-table{
-  font-size: 11px;
-  color: black;
+  font-size: 10px;
+  /* color: black; */
   margin-top: 25px;
   width: 100%;
   overflow-y: auto;
@@ -2655,7 +2655,7 @@ p {
     border-radius: 4px;
     /* margin-bottom: 5px; */
     padding: 10px 20px;
-    font-size: 8px;
+    font-size: 7px;
   }
   .fdr-opponents.dynamic-width{
     width: 37px;
@@ -2910,7 +2910,7 @@ p {
   }
   .score-box{
     margin-top: 5px;
-    flex: 1 0 1.2rem;
+    flex: 1 0 1.3rem;
   }
   .away-icon-assists, .away-icon-goals, .home-icon-assists, .home-icon-goals, .away-icon-ownGoals{
     width: 10px;
@@ -2964,7 +2964,7 @@ p {
     border-radius: 4px;
     /* margin-bottom: 5px; */
     /* padding: 10px 20px; */
-    font-size: 8px;
+    font-size: 7px;
   }
   .fdr-opponents.dynamic-width{
     width: 35px;
