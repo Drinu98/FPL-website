@@ -37,11 +37,11 @@ export default async function Captaincy() {
     const currentGameweek = data.currentGameweek.id;
 
     allCaptains.forEach(captain => {
-      captain.chosenAsCaptainPercentage = captain.chosenAsCaptainPercentage.toFixed(2);
+      captain.chosenAsCaptainPercentage = captain.chosenAsCaptainPercentage.toFixed(1);
     });
 
     allEffectiveOwnership.forEach(captain => {
-      captain.chosenEffectiveOwnershipPercentage = captain.chosenEffectiveOwnershipPercentage.toFixed(2);
+      captain.chosenEffectiveOwnershipPercentage = captain.chosenEffectiveOwnershipPercentage.toFixed(1);
     });
 
     const dataSortedByChosenAsCaptainPercentage = [...allCaptains].sort((a, b) => b.chosenAsCaptainPercentage - a.chosenAsCaptainPercentage);

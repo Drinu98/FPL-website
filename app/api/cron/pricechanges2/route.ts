@@ -91,7 +91,7 @@ export async function GET() {
 
   const earliestDate = new Date(sortedDates.slice(0, 1)[0]);
   const newDate = new Date(earliestDate);
-  newDate.setDate(newDate.getDate() + 7);
+  newDate.setDate(newDate.getDate() + 10);
   const formattedNewDate = newDate.toLocaleDateString("en-GB");
 
   // const previousGameweeks = previousPriceChanges.map((gw) => {
@@ -109,7 +109,7 @@ export async function GET() {
     console.log("Dates are different.");
   }
 
-  if(formattedNewDate === todayDate){
+  if(formattedNewDate === todayDate || todayDate > formattedNewDate){
     console.log("Time to refresh the list");
     console.log("Deleting from Database");
     await prisma.priceChangesGameweek.deleteMany();
@@ -148,13 +148,13 @@ export async function GET() {
     // Find the player's previous price change entries and sort them by cost in descending order
     const playerPriceChanges = previousPriceChanges
       .filter((oldFaller) => oldFaller.playerElementId === fallingPlayer.id)
-      .sort((a:any, b:any) => b.cost - a.cost);
+      .sort((a:any, b:any) => a.cost - b.cost);
   
     // Return true if player's ID does not exist in oldRisers or
     // the current cost is greater than the highest recorded cost
     return (
       playerPriceChanges.length === 0 ||
-      fallingPlayer.cost > playerPriceChanges[0].cost
+      fallingPlayer.cost < playerPriceChanges[0].cost
     );
   });
   

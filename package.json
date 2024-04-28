@@ -6,6 +6,7 @@
     "dev:start": "next dev",
     "dev": "concurrently \"next dev\" \"npm run db:connect:dev\"",
     "master": "concurrently \"next dev\" \"npm run db:connect:master\"",
+    "start-forever": "forever start -c \"npm run master\" .",
     "build": "prisma generate && next build",
     "start": "next start",
     "lint": "next lint",

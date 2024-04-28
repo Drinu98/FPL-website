@@ -11,6 +11,7 @@ import {
   faPerson,
   faPersonCircleXmark,
   faPlus,
+  faRankingStar,
   faUpRightAndDownLeftFromCenter,
 } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
@@ -24,6 +25,9 @@ export default function MenuContent() {
           Home
           <FontAwesomeIcon icon={faHome} />
         </a>
+        {/* <a href="/rank">
+          Live Rank <FontAwesomeIcon icon={faRankingStar} />
+        </a> */}
         <a href="/bonus">
           Bonus Points <FontAwesomeIcon icon={faPlus} />
         </a>

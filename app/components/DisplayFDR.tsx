@@ -334,7 +334,7 @@ const DisplayFDR = (props: DisplayFixturesProps) => {
                     key={event}
                     style={{
                       textAlign: "center",
-                      paddingRight: "0px",
+                      // paddingRight: "0px",
                       // display:
                       //   fixturesByTeamAndEvent[teamName][event]?.length > 1
                       //     ? "inline-block"
@@ -377,7 +377,7 @@ const DisplayFDR = (props: DisplayFixturesProps) => {
                               marginRight:
                                 fixturesByTeamAndEvent[teamName][event]
                                   ?.length > 1 && index === 0
-                                  ? "5px"
+                                  ? "4px"
                                   : "",
                               padding:
                                 fixturesByTeamAndEvent[teamName][event]
