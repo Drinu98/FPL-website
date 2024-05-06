@@ -26,7 +26,7 @@ export default function LiveRank() {
   const encodedSearchQuery = encodeURI(searchQuery || "");
 
   useEffect(() => {
-    if(encodedSearchQuery === ""){
+    if (encodedSearchQuery === "") {
       setTeamData(undefined);
     }
     const fetchData = async () => {
@@ -59,7 +59,8 @@ export default function LiveRank() {
       </div>
       <div className="liveTeamBox">
         <h2 className="liveTeam">
-          {teamData?.TeamName ?? "Team name"} ({teamData?.PlayerName ?? "Player name"})
+          {teamData?.TeamName ?? "Team name"} (
+          {teamData?.PlayerName ?? "Player name"})
         </h2>
       </div>
       <div className="rankBox">
@@ -105,12 +106,16 @@ export default function LiveRank() {
                       alt={
                         teamData?.OverallRankDirection === "down"
                           ? "greenarrow down"
-                          : "redarrow up"
+                          : teamData?.OverallRankDirection === "up"
+                          ? "redarrow up"
+                          : "Grey Arrow" // Set alt to "Grey Arrow" if direction is null
                       }
                       src={
                         teamData?.OverallRankDirection === "down"
                           ? "/images/greenarrowdark.png"
-                          : "/images/redarrowdark.png"
+                          : teamData?.OverallRankDirection === "up"
+                          ? "/images/redarrowdark.png"
+                          : "/images/grey.png" // Use grey.png if direction is null
                       }
                       width={17}
                       height={17}
@@ -132,7 +137,12 @@ export default function LiveRank() {
       <div className="liveRankLink-box">
         <p>
           Live rank via{" "}
-          <a target="_blank" href="https://www.fplgameweek.com/" style={{ color: "#f2055c" }} rel="noopener noreferrer">
+          <a
+            target="_blank"
+            href="https://www.fplgameweek.com/"
+            style={{ color: "#f2055c" }}
+            rel="noopener noreferrer"
+          >
             FPLGameweek.com
           </a>
         </p>

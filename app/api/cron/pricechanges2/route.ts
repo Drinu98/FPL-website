@@ -187,7 +187,7 @@ export async function GET() {
       });
     });
 
-    console.log("Price Changes Failed.");
+    console.log("Price changes Successful.");
     return new NextResponse(
       JSON.stringify({ message: "Price changes Successful" })
     );
