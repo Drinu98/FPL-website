@@ -47,6 +47,31 @@ export default function HamburgerMenu() {
 
   return (
     <>
+      <a 
+        href="https://s.id/FFScout"
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{
+          display: "flex",
+          alignItems: "center",
+          textDecoration: "none",
+        }}
+        className="scout"
+      >
+        <Image
+          src={"/images/scout2.png"}
+          alt="FFS Scout"
+          width={45}
+          height={45}
+          className="scout-photo"
+        />
+        <div style={{ marginLeft: "10px", color:'white' }}>
+          FFS
+          <br style={{ lineHeight: "0.5" }}/>
+          Members
+        </div>
+      </a>
+
       <button className="darkmode-button" onClick={toggleTheme}>
         <Image
           src="/images/darkmode.png"

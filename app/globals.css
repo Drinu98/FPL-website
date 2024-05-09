@@ -131,6 +131,23 @@ body[data-theme="dark"] {
   transition: all 0.5s ease 0s;
 }
 
+.scout{
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  left: 15px;
+  cursor: pointer;
+  display: flex;
+  font-size: 15px;
+  transition: all 0.5s ease 0s;
+}
+
+.scout:hover{
+  transform: scale(1.2);
+}
+
 [data-theme="dark"] .darkmode-button {
   border: 3px solid white;
   border-radius: 50%;
@@ -185,13 +202,7 @@ ul {
   transform: scale(1.2); /* Increase size on hover */
 }
 
-.scout-photo{
-  transition: all 0.5s ease 0s; /* Apply smooth transition effect */
-}
 
-.scout-photo:hover{
-  transform: scale(1.2);
-}
 .expand-image{
   transition: all 0.5s ease 0s;
 }
@@ -2753,6 +2764,9 @@ p {
     font-size: 20px;
     font-weight: bold;
   }
+  .scout{
+    font-size: 13px;
+  }
 }
 
 @media only screen and (max-width: 400px) {
@@ -2941,6 +2955,15 @@ p {
     right: 75px;
     z-index: 1000;
   }
+  .scout{
+    font-size: 11px;
+  }
+
+  .scout-photo{
+    width: 40px;
+    height: 40px;
+    /* left: 40px; */
+  }
   .darkmode-img{
     width: 40px;
     height: 40px;
@@ -3076,6 +3099,7 @@ p {
     font-size: 18px;
     font-weight: bold;
   }
+  
   
 }
 

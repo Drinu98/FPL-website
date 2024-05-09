@@ -58,7 +58,7 @@ function Footer() {
             </p>
           </span>
         </div>
-        <div style={{display:'flex', justifyContent:'end'}}>
+        {/* <div style={{display:'flex', justifyContent:'end'}}>
         <a
             href="https://www.fantasyfootballscout.co.uk/"
             target="_blank"
@@ -66,7 +66,7 @@ function Footer() {
           >
             <Image src={'/images/scout.png'} alt="FFS Scout" width={55} height={75} className="scout-photo"/>
           </a>
-        </div> 
+        </div>  */}
       </div>
     </footer>
   );
