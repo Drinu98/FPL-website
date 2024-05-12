@@ -118,17 +118,6 @@ export async function GET() {
     console.log("No Deletion yet"); 
   }
 
-
-  // if(previousGameweeks.some((gw) => gw !== currentGameweek)){
-  //   console.log("The GWs are different!");
-  //   console.log("Deleting from Database");
-  //   await prisma.priceChangesGameweek.deleteMany();
-  //   console.log("Deleted previous gameweek");
-  // }else{
-  //   console.log("The GWs are the same"); 
-  // }
-
-
   const newRisingPlayers = risingPlayers.filter((risingPlayer) => {
     // Find the player's previous price change entries and sort them by cost in descending order
     const playerPriceChanges = previousPriceChanges
