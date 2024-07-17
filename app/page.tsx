@@ -69,7 +69,24 @@ export default async function Home() {
             <div className="col-lg-4">
               <div className="widget10">
                 {/* @ts-ignore */}
-                <Expected />
+                {/* <Expected /> */}
+                <>
+                  <div className="transfers-container">
+                    <div className="graphic-container">
+                      <h2 className="transfers-title">Expected Data</h2>
+                    </div>
+                    <p className="error-message">
+                      <Image
+                        src="/images/errorlogo.png"
+                        alt="FPL Focal Logo"
+                        width={50}
+                        height={50}
+                        className="error-logo"
+                      ></Image>
+                      Coming soon
+                    </p>
+                  </div>
+                </>
               </div>
               <div className="widget11">
                 {/* @ts-ignore */}
@@ -93,7 +110,24 @@ export default async function Home() {
               </div>
               <div className="widget8">
                 {/* @ts-ignore */}
-                <RealPlayers />
+                {/* <RealPlayers /> */}
+                <>
+                  <div className="transfers-container">
+                    <div className="graphic-container">
+                      <h2 className="transfers-title">Players League</h2>
+                    </div>
+                    <p className="error-message">
+                      <Image
+                        src="/images/errorlogo.png"
+                        alt="FPL Focal Logo"
+                        width={50}
+                        height={50}
+                        className="error-logo"
+                      ></Image>
+                      Coming soon
+                    </p>
+                  </div>
+                </>
               </div>
               <div className="widget7">
                 {/* @ts-ignore */}
@@ -105,7 +139,24 @@ export default async function Home() {
             <div className="col-lg-4">
               <div className="widget11">
                 {/* @ts-ignore */}
-                <SetPieces />
+                {/* <SetPieces /> */}
+                <>
+                  <div className="transfers-container">
+                    <div className="graphic-container">
+                      <h2 className="transfers-title">Set Pieces</h2>
+                    </div>
+                    <p className="error-message">
+                      <Image
+                        src="/images/errorlogo.png"
+                        alt="FPL Focal Logo"
+                        width={50}
+                        height={50}
+                        className="error-logo"
+                      ></Image>
+                      Coming soon
+                    </p>
+                  </div>
+                </>
               </div>
             </div>
             <div className="col-lg-5">
