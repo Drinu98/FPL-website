@@ -30,7 +30,24 @@ export default function page() {
             <div className="col-lg-6">
               <div className="widget8" style={{ height: "100%" }}>
                 {/* @ts-ignore */}
-                <RealPlayers />
+                {/* <RealPlayers /> */}
+                <>
+                  <div className="transfers-container">
+                    <div className="graphic-container">
+                      <h2 className="transfers-title">Players League</h2>
+                    </div>
+                    <p className="error-message">
+                      <Image
+                        src="/images/errorlogo.png"
+                        alt="FPL Focal Logo"
+                        width={50}
+                        height={50}
+                        className="error-logo"
+                      ></Image>
+                      Coming Soon
+                    </p>
+                  </div>
+                </>
               </div>
             </div>
           </div>
