@@ -139,9 +139,9 @@ export default async function Home() {
             <div className="col-lg-4">
               <div className="widget11">
                 {/* @ts-ignore */}
-                {/* <SetPieces /> */}
+                <SetPieces />
                 <>
-                  <div className="transfers-container">
+                  {/* <div className="transfers-container">
                     <div className="graphic-container">
                       <h2 className="transfers-title">Set Pieces</h2>
                     </div>
@@ -155,7 +155,7 @@ export default async function Home() {
                       ></Image>
                       Coming soon
                     </p>
-                  </div>
+                  </div> */}
                 </>
               </div>
             </div>
