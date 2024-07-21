@@ -1,7 +1,8 @@
-import Image from "next/image";
-import RealPlayers from "../components/realplayers2";
 import { FC } from "react";
 import HamburgerMenu from "../components/HamburgerMenu";
+import Image from "next/image";
+import LiveRank from "../components/liverank2";
+
 interface Props {}
 
 export default function page() {
@@ -27,27 +28,10 @@ export default function page() {
             className="row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-3"
             style={{ marginBottom: "40px", justifyContent: "center" }}
           >
-            <div className="col-lg-6">
-              <div className="widget8" style={{ height: "300px" }}>
+            <div className="col-lg-5">
+              <div className="widget3" style={{ height: "100%" }}>
                 {/* @ts-ignore */}
-                {/* <RealPlayers /> */}
-                <>
-                  <div className="transfers-container">
-                    <div className="graphic-container">
-                      <h2 className="transfers-title">Players League</h2>
-                    </div>
-                    <p className="error-message">
-                      <Image
-                        src="/images/errorlogo.png"
-                        alt="FPL Focal Logo"
-                        width={50}
-                        height={50}
-                        className="error-logo"
-                      ></Image>
-                      Coming Soon
-                    </p>
-                  </div>
-                </>
+                <LiveRank />
               </div>
             </div>
           </div>
@@ -57,4 +41,4 @@ export default function page() {
   );
 }
 
-export const revalidate = 60;
+export const revalidate = 5;

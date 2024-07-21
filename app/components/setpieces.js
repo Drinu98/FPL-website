@@ -153,7 +153,6 @@ async function getSetPieces() {
       };
     });
 
-    console.log(currentGameweekData);
     return currentGameweekData;
 
   } catch (error) {

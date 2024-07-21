@@ -1,12 +1,16 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+  faArrowDown,
   faArrowRight,
   faBullseye,
   faCalendarDays,
+  faChair,
+  faChartLine,
   faCrown,
   faCrutch,
   faHome,
+  faList,
   faMoneyBillTransfer,
   faPerson,
   faPersonCircleXmark,
@@ -25,9 +29,9 @@ export default function MenuContent() {
           Home
           <FontAwesomeIcon icon={faHome} />
         </a>
-        {/* <a href="/rank">
+        <a href="/rank">
           Live Rank <FontAwesomeIcon icon={faRankingStar} />
-        </a> */}
+        </a>
         <a href="/bonus">
           Bonus Points <FontAwesomeIcon icon={faPlus} />
         </a>
@@ -55,8 +59,19 @@ export default function MenuContent() {
         <a href="/expected">
           Expected Data <FontAwesomeIcon icon={faBullseye} />
         </a>
+        <a href="/twat">
+          Disaster of the Week <FontAwesomeIcon icon={faArrowDown} />
+        </a>
+        <a href="/bench">
+          Bench Disaster <FontAwesomeIcon icon={faChair} />
+        </a>
+        <a href="/stats">
+          Statistics <FontAwesomeIcon icon={faChartLine} />
+        </a>
+        <a href="/fixtures">
+          Fixtures <FontAwesomeIcon icon={faList} />
+        </a>
       </ul>
     </div>
   );
-
 }
