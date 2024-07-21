@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { prisma } from "../../services/prisma";
 
+
 async function getTwat() {
   try{
 

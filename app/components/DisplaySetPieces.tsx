@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
+import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 type Player = {
     team: string,
@@ -30,12 +32,24 @@ function Injuries(props: SetPiecesProps) {
   
     const selectedTeamNotes = filteredSetPieces.length > 0 ? filteredSetPieces[0].notes : [];
 
-    // console.log(filteredSetPieces);
+    const router = usePathname();
+
     return (
       <>
         <div className="transfers-container">
           <div className="graphic-container">
             <h2 className="transfers-title">Set Piece Takers</h2>
+            {router === "/" && (
+            <a href="/setpieces" className="expand-image-realplayers">
+              <Image
+                alt="expand"
+                src={"/images/expand.png"}
+                width={20}
+                height={20}
+                className="expand-image"
+              />
+            </a>
+          )}
           </div>
           <label>
             <select

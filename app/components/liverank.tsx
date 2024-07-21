@@ -4,6 +4,7 @@ import Image from "next/image";
 import Search from "./search";
 import { useSearchParams } from "next/navigation";
 import React, { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 type Team = {
   GwGross: number;
@@ -53,10 +54,23 @@ export default function LiveRank() {
     ? teamData?.OverallRank
     : overallRank.toLocaleString();
 
+    const router = usePathname();
+
   return (
     <div className="pricechanges-container">
       <div className="graphic-container">
         <h2 className="transfers-title">Live Rank</h2>
+        {router === "/" && (
+            <a href="/rank" className="expand-image-captaincy">
+              <Image
+                alt="expand"
+                src={"/images/expand.png"}
+                width={20}
+                height={20}
+                className="expand-image"
+              />
+            </a>
+          )}
       </div>
       <div className="liveTeamBox">
         <h2 className="liveTeam">

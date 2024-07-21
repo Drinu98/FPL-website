@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 type Fixture = {
   home: string;
@@ -56,11 +57,24 @@ const DisplayUpcomingFixtures = (props: DisplayUpcomingFixturesProps) => {
     fixturesByDate[date]?.push(fixture);
   });
 
+  const router = usePathname();
+
   return (
     <>
       <div className="fixture-container">
         <div className="graphic-container">
           <h2 className="transfers-title">Fixtures</h2>
+          {router === "/" && (
+            <a href="/fixtures" className="expand-image-realplayers">
+              <Image
+                alt="expand"
+                src={"/images/expand.png"}
+                width={20}
+                height={20}
+                className="expand-image"
+              />
+            </a>
+          )}
         </div>
         <ul
           className="upcomingfixture-ul-list"

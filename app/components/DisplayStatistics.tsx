@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 type Player = {
   web_name: string;
@@ -185,11 +186,23 @@ const DisplayStatistics = (props: DisplayTransfersProps) => {
     team: "Team name",
   };
 
+  const router = usePathname();
 
   return (
     <div className="transfers-container">
       <div className="graphic-container">
         <h2 className="transfers-title">Statistics</h2>
+        {router === "/" && (
+            <a href="/stats" className="expand-image-realplayers">
+              <Image
+                alt="expand"
+                src={"/images/expand.png"}
+                width={20}
+                height={20}
+                className="expand-image"
+              />
+            </a>
+          )}
       </div>
       <div style={{ overflowY: "auto", overflowX: "hidden" }}>
         <select
