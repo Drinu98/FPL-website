@@ -14,6 +14,7 @@ import {
   faMoneyBillTransfer,
   faPerson,
   faPersonCircleXmark,
+  faPersonWalkingArrowRight,
   faPlus,
   faRankingStar,
   faUpRightAndDownLeftFromCenter,
@@ -70,6 +71,9 @@ export default function MenuContent() {
         </a>
         <a href="/fixtures">
           Fixtures <FontAwesomeIcon icon={faList} />
+        </a>
+        <a href="/setpieces">
+          Set Pieces <FontAwesomeIcon icon={faPersonWalkingArrowRight} />
         </a>
       </ul>
     </div>
