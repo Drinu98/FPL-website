@@ -2,11 +2,6 @@ import { prisma } from "../../../../services/prisma";
 
 export async function GET(req: Request) {
     try {
-      if (process.env.STOP_SCRIPT === 'true') {
-        console.log('Stopping script as per the condition.');
-        process.env.STOP_SCRIPT = 'false'; // Set to false for subsequent runs
-        process.exit(0);
-      }else{
         let remainingPlayers = true;
         let offset = 0;
         const batchSize = 5000;
@@ -40,7 +35,7 @@ export async function GET(req: Request) {
         }
     
         console.log('All players deleted.');
-      }   
+           
       } catch (error) {
         console.error('Error deleting players:', error);
       }

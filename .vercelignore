@@ -1,5 +1,6 @@
 app/api/top10kplayers
 app/api/cron/comparetop10kplayers
 app/api/setandforget
+app/api/cron/deletesetandforget
 app/api/mostbenchedpoints
 
