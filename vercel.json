@@ -13,17 +13,18 @@
         "schedule": "15 3 * * *"
       },
       {
-        "path": "/api/cron/deletesetandforget",
-        "schedule": "30 3 * * *"
+        "path": "/api/cron/deletemostbenched",
+        "schedule": "15 3 * * *"
       },
       {
         "path": "/api/cron/comparetop10kplayers",
-        "schedule": "45 3 * * *"
+        "schedule": "30 3 * * *"
       },
       {
-        "path": "/api/setandforget",
-        "schedule": "15 4 * * *"
+        "path": "/api/mostbenchedpoints",
+        "schedule": "45 3 * * *"
       }
+      
     ],
     "functions": 
     {
