@@ -69,24 +69,7 @@ export default async function Home() {
             <div className="col-lg-4">
               <div className="widget10">
                 {/* @ts-ignore */}
-                {/* <Expected /> */}
-                <>
-                  <div className="transfers-container">
-                    <div className="graphic-container">
-                      <h2 className="transfers-title">Expected Data</h2>
-                    </div>
-                    <p className="error-message">
-                      <Image
-                        src="/images/errorlogo.png"
-                        alt="FPL Focal Logo"
-                        width={50}
-                        height={50}
-                        className="error-logo"
-                      ></Image>
-                      Coming soon
-                    </p>
-                  </div>
-                </>
+                <Expected />
               </div>
               <div className="widget11">
                 {/* @ts-ignore */}
