@@ -120,7 +120,7 @@
 // }
 
 import { NextResponse } from "next/server";
-import { prisma } from "../../../../services/prisma";
+import { prisma } from "../../../../../services/prisma";
 
 const BATCH_SIZE = 20;
 
