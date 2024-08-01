@@ -1,10 +1,17 @@
-import { NextResponse } from "next/server";
+import { NextResponse, NextRequest } from "next/server";
 import { prisma } from "../../../../services/prisma";
 
 let risingPlayers = [] as Array<any>;
 let fallingPlayers = [] as Array<any>;
 
-export async function GET() {
+export async function GET(request: NextRequest) {
+  const authHeader = request.headers.get('authorization');
+  if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
+    return new Response('Unauthorized', {
+      status: 401,
+    });
+  }
+
   console.log("Gathering Price changes");
   const risers = new Map();
   const fallers = new Map();

@@ -466,9 +466,9 @@ async function getExpected() {
           position_short: elementTypes.find(et => et.id === player.element_type)?.singular_name_short,
           position: elementTypes.find(et => et.id === player.element_type)?.singular_name,
           cost: (player.now_cost / 10).toFixed(1),
-          xG: pastData.expected_goals,
-          xGA: pastData.expected_assists,
-          xGI: pastData.expected_goal_involvements
+          xG: pastData ? pastData.expected_goals : 0,
+          xGA: pastData ? pastData.expected_assists : 0,
+          xGI: pastData ? pastData.expected_goal_involvements : 0
         };
       }
       return null;

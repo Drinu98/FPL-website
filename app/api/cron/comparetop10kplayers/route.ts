@@ -101,11 +101,19 @@
 
 import { prisma } from "../../../../services/prisma";
 import { Prisma } from "@prisma/client";
+import { NextRequest } from "next/server";
 
 type Top10kPlayersChangeCreateInput = Prisma.Top10kPlayersChangeCreateInput;
 
-export async function GET(req: Request) {
+export async function GET(req: NextRequest) {
 
+  const authHeader = req.headers.get('authorization');
+  if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
+    return new Response('Unauthorized', {
+      status: 401,
+    });
+  }
+  
   console.log("Starting data processing...");
 
   const [top10kplayers, bootstrapData] = await Promise.all([

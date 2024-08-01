@@ -21,7 +21,7 @@
         "schedule": "30 3 * * *"
       },
       {
-        "path": "/api/mostbenchedpoints",
+        "path": "/api/cron/mostbenchedpoints",
         "schedule": "45 3 * * *"
       }
       
@@ -40,7 +40,7 @@
       "app/api/cron/comparetop10kplayers/route.ts": {
         "maxDuration": 300
       },
-      "app/api/setandforget/route.ts": {
+      "app/api/cron/mostbenchedpoints/route.ts": {
         "maxDuration": 300
       }
     },
