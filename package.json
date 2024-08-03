@@ -5,6 +5,7 @@
   "scripts": {
     "dev:start": "next dev",
     "dev": "concurrently \"next dev\" \"npm run db:connect:dev\"",
+    "dev1": "next dev",
     "master": "concurrently \"next dev\" \"npm run db:connect:master\"",
     "start-forever": "forever start -c \"npm run master\" .",
     "build": "prisma generate && next build",
@@ -25,6 +26,7 @@
     "@types/react": "18.0.33",
     "@types/react-dom": "18.0.11",
     "@vercel/analytics": "^1.0.2",
+    "@vercel/postgres": "^0.9.0",
     "bootstrap": "^5.2.3",
     "eslint": "8.37.0",
     "eslint-config-next": "^13.4.0",

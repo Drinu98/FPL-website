@@ -29,9 +29,26 @@ export default function page() {
             style={{ marginBottom: "40px", justifyContent: "center" }}
           >
             <div className="col-lg-5">
-              <div className="widget10" style={{ height: "100%" }}>
+              <div className="widget10" style={{ height: "300px" }}>
                 {/* @ts-ignore */}
-                <Expected />
+                {/* <Expected /> */}
+                <>
+                  <div className="transfers-container">
+                    <div className="graphic-container">
+                      <h2 className="transfers-title">Expected Data</h2>
+                    </div>
+                    <p className="error-message">
+                      <Image
+                        src="/images/errorlogo.png"
+                        alt="FPL Focal Logo"
+                        width={50}
+                        height={50}
+                        className="error-logo"
+                      ></Image>
+                      Coming soon
+                    </p>
+                  </div>
+                </>
               </div>
             </div>
           </div>

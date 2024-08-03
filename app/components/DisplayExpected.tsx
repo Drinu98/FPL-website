@@ -301,21 +301,20 @@ type ExpectedProps = {
   xGTotalLast3Gameweeks: Array<Player>;
   xGTotalLast4Gameweeks: Array<Player>;
   xGTotal: Array<Player>;
-  pastPlayers: Array<Player>;
 };
 
 type SortableColumn = 'cost' | 'xG' | 'xGA' | 'xGI';
 
 const DisplayExpected: React.FC<ExpectedProps> = (props) => {
-  const [selectedData, setSelectedData] = useState<Player[]>(props.pastPlayers);
+  const [selectedData, setSelectedData] = useState<Player[]>(props.xGTotal);
   const [selectedFilter, setSelectedFilter] = useState<string>("");
   const [sortColumn, setSortColumn] = useState<SortableColumn>('xGI');
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
 
   const router = usePathname();
 
-  const positions = useMemo(() => Array.from(new Set(props.pastPlayers.map(player => player.position))), [props.currentGameweekXG]);
-  const teams = useMemo(() => Array.from(new Set(props.pastPlayers.map(player => player.teamLong))).sort(), [props.currentGameweekXG]);
+  const positions = useMemo(() => Array.from(new Set(props.xGTotal.map(player => player.position))), [props.currentGameweekXG]);
+  const teams = useMemo(() => Array.from(new Set(props.xGTotal.map(player => player.teamLong))).sort(), [props.currentGameweekXG]);
 
   const handleFilterSelect = useCallback((event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedFilter(event.target.value);
@@ -395,7 +394,6 @@ const DisplayExpected: React.FC<ExpectedProps> = (props) => {
           <option value="xGTotalLast3Gameweeks">Last 3 GWs</option>
           <option value="xGTotalLast4Gameweeks">Last 4 GWs</option>
           <option value="xGTotal">Total</option>
-          <option value="pastPlayers">Last Season</option>
         </select>
         <table style={{ width: "100%" }}>
           <thead>

@@ -387,12 +387,12 @@ async function fetchData(url) {
   return response.json();
 }
 
-async function fetchPlayerPastData(playerId) {
-  const url = `${API_BASE_URL}/element-summary/${playerId}/`;
-  const data = await fetchData(url);
-  const currentSeasonData = data.history_past.find(season => season.season_name === "2023/24");
-  return currentSeasonData || null;
-}
+// async function fetchPlayerPastData(playerId) {
+//   const url = `${API_BASE_URL}/element-summary/${playerId}/`;
+//   const data = await fetchData(url);
+//   const currentSeasonData = data.history_past.find(season => season.season_name === "2023/24");
+//   return currentSeasonData || null;
+// }
 
 function enrichPlayerData(playerObj, players, elementTypes, teams, pastData) {
   const playerData = players.find((player) => player.id === playerObj.id);
@@ -450,32 +450,32 @@ async function getExpected() {
     const xGTotal = calculateExpectedGoals(gameweekJsonArray);
     
     // Fetch past data for all players
-    const playerPastData = await Promise.all(
-      players.map(player => fetchPlayerPastData(player.id))
-    );
+    // const playerPastData = await Promise.all(
+    //   players.map(player => fetchPlayerPastData(player.id))
+    // );
 
     // Create an array of past players
-    const pastPlayers = players.map((player, index) => {
-      const pastData = playerPastData[index];
-      if (pastData) {
-        return {
-          id: player.id,
-          name: player.web_name,
-          team: teams.find(t => t.id === player.team)?.short_name,
-          teamLong: teams.find(t => t.id === player.team)?.name,
-          position_short: elementTypes.find(et => et.id === player.element_type)?.singular_name_short,
-          position: elementTypes.find(et => et.id === player.element_type)?.singular_name,
-          cost: (player.now_cost / 10).toFixed(1),
-          xG: pastData ? pastData.expected_goals : 0,
-          xGA: pastData ? pastData.expected_assists : 0,
-          xGI: pastData ? pastData.expected_goal_involvements : 0
-        };
-      }
-      return null;
-    }).filter(Boolean);
+    // const pastPlayers = players.map((player, index) => {
+    //   const pastData = playerPastData[index];
+    //   if (pastData) {
+    //     return {
+    //       id: player.id,
+    //       name: player.web_name,
+    //       team: teams.find(t => t.id === player.team)?.short_name,
+    //       teamLong: teams.find(t => t.id === player.team)?.name,
+    //       position_short: elementTypes.find(et => et.id === player.element_type)?.singular_name_short,
+    //       position: elementTypes.find(et => et.id === player.element_type)?.singular_name,
+    //       cost: (player.now_cost / 10).toFixed(1),
+    //       xG: pastData ? pastData.expected_goals : 0,
+    //       xGA: pastData ? pastData.expected_assists : 0,
+    //       xGI: pastData ? pastData.expected_goal_involvements : 0
+    //     };
+    //   }
+    //   return null;
+    // }).filter(Boolean);
 
-    // Sort past players by xGI
-    pastPlayers.sort((a, b) => b.xGI - a.xGI);
+    // // Sort past players by xGI
+    // pastPlayers.sort((a, b) => b.xGI - a.xGI);
 
     const enrichPlayerDataWithPastXGI = (playerObj) => {
       const pastData = playerPastData[players.findIndex(p => p.id === playerObj.id)];
@@ -495,8 +495,7 @@ async function getExpected() {
       xGTotalLast2Gameweeks: getXGForRange(currentGameweek - 3, currentGameweek - 1),
       xGTotalLast3Gameweeks: getXGForRange(currentGameweek - 4, currentGameweek - 1),
       xGTotalLast4Gameweeks: getXGForRange(currentGameweek - 5, currentGameweek - 1),
-      xGTotal: enrichedXGTotal,
-      pastPlayers: pastPlayers
+      xGTotal: enrichedXGTotal
     };
   } catch (error) {
     console.error(error);
